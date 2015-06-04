@@ -1,10 +1,72 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>systems.uom</groupId>
-    <artifactId>uom-systems</artifactId>
-    <version>0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>uom-systems-common</artifactId>
-  <name>Units of Measurement Common Unit Systems</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>systems.uom</groupId>
+		<artifactId>uom-systems</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>uom-systems-common</artifactId>
+	<name>Units of Measurement Common Unit Systems</name>
+	<!-- ======================================================= -->
+	<!-- Build Settings -->
+	<!-- ======================================================= -->
+	<properties>
+		<jdkVersion>1.7</jdkVersion>
+		<ri.version>0.8-SNAPSHOT</ri.version>
+		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
+		<maven.compile.targetLevel>1.7</maven.compile.targetLevel>
+		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>tec.units</groupId>
+				<artifactId>unit-ri</artifactId>
+				<version>${ri.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>si.uom</groupId>
+				<artifactId>si-quantity</artifactId>
+				<version>${si.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>si.uom</groupId>
+				<artifactId>si-impl</artifactId>
+				<version>${si.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>tec.units</groupId>
+			<artifactId>unit-ri</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>si.uom</groupId>
+			<artifactId>si-quantity</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>si.uom</groupId>
+			<artifactId>si-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+
+			<!-- ======================================================= -->
+			<!-- Source Attachment -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
