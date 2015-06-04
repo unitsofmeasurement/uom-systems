@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>tec.uom</groupId>
+    <artifactId>uom-parent</artifactId>
+    <version>0.8-RC2</version>
+  </parent>
+  <groupId>systems.uom</groupId>
+  <artifactId>uom-systems</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Units of Measurement Systems Parent</name>
+  <description>Parent POM for Unit Systems</description>
+  
+  <!-- ======================================================= -->
+  <!-- Build Settings -->
+  <!-- ======================================================= -->
+  <properties>
+	<jdkVersion>1.6</jdkVersion>
+	<si.version>${project.version}</si.version>
+	<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
+	<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
+	<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+  </properties>
+  <modules>
+  	<!-- module>quantity</module -->
+  </modules>
+
+  <!-- Additional repositories -->
+  <!-- Helps to resolve Parent POM -->
+  <repositories>
+	<repository>
+		<id>jcenter</id>
+		<name>JCenter</name>
+		<url>http://jcenter.bintray.com</url>
+	</repository>
+   </repositories>
+</project>
