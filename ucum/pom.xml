@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>systems.uom</groupId>
+		<artifactId>uom-systems</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>uom-systems-ucum</artifactId>
+	<name>Units of Measurement UCUM System</name>
+	<description>Unit System supporting the Unified Code for Units of Measure (UCUM)</description>
+	<!-- ======================================================= -->
+	<!-- Build Settings -->
+	<!-- ======================================================= -->
+	<properties>
+		<jdkVersion>1.8</jdkVersion>
+		<se.version>0.8-SNAPSHOT</se.version>
+		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
+		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
+		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>tec.uom</groupId>
+				<artifactId>uom-se</artifactId>
+				<version>${se.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>tec.uom</groupId>
+			<artifactId>uom-se</artifactId>
+		</dependency>
+	</dependencies>
+</project>

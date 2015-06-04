@@ -26,6 +26,7 @@
   <modules>
   	<module>quantity</module>
   	<module>common</module>
+  	<module>ucum</module>
   </modules>
 
   <!-- Additional repositories -->
