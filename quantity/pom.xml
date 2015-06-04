@@ -6,5 +6,5 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
   <artifactId>uom-systems-quantity</artifactId>
-  <name>Unit of Measurement Systems Quantities</name>
+  <name>Units of Measurement Systems Quantities</name>
 </project>
