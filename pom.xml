@@ -23,7 +23,8 @@
 	<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
   </properties>
   <modules>
-  	<!-- module>quantity</module -->
+  	<module>quantity</module>
+  	<module>common</module>
   </modules>
 
   <!-- Additional repositories -->
