@@ -26,7 +26,7 @@
 package systems.uom.common;
 
 import static tec.units.ri.unit.MetricPrefix.MICRO;
-import static si.uom.impl.SI.*;
+import static si.uom.SI.*;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.function.RationalConverter;

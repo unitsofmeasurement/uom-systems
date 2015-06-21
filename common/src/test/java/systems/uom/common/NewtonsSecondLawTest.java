@@ -37,10 +37,10 @@ import org.junit.Test;
 import javax.measure.Unit;
 import javax.measure.quantity.Force;
 
+import si.uom.SI;
 import si.uom.impl.quantity.AccelerationAmount;
 import si.uom.impl.quantity.ForceAmount;
 import si.uom.impl.quantity.MassAmount;
-import si.uom.impl.SI;
 
 /**
  *
