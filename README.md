@@ -8,7 +8,7 @@ Units of Measurement Systems
 
 The project currently contains the following modules:
 
-- [Reusable Quantities](quantity) (TBD)
+- [Reusable Quantities](quantity)
 - [Common Unit Systems](common)
 - [Unified Code for Units of Measure](ucum)
 
