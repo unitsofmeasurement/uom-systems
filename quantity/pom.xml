@@ -7,4 +7,21 @@
   </parent>
   <artifactId>uom-systems-quantity</artifactId>
   <name>Units of Measurement Systems Quantities</name>
+    <dependencies>
+        <dependency>
+            <groupId>javax.measure</groupId>
+            <artifactId>unit-api</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- ======================================================= -->
+            <!-- Source Attachment -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
