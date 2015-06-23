@@ -25,10 +25,10 @@
  */
 package systems.uom.common;
 
+import static tec.units.ri.AbstractUnit.ONE;
 import static tec.units.ri.unit.MetricPrefix.*;
 import static tec.units.ri.unit.SI.AMPERE;
 import static tec.units.ri.unit.SI.BECQUEREL;
-import static tec.units.ri.unit.SI.BIT;
 import static tec.units.ri.unit.SI.COULOMB;
 import static tec.units.ri.unit.SI.GRAM;
 import static tec.units.ri.unit.SI.GRAY;
@@ -51,6 +51,7 @@ import static tec.units.ri.unit.SI.TESLA;
 import static tec.units.ri.unit.SI.WATT;
 import static tec.units.ri.unit.SI.WEBER;
 
+import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.*;
 
@@ -58,8 +59,8 @@ import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.RationalConverter;
+import tec.units.ri.unit.AlternateUnit;
 import tec.units.ri.unit.SI;
-
 
 /**
  * <p>
@@ -80,8 +81,7 @@ import tec.units.ri.unit.SI;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.17 ($Revision: 231 $), $Date: 2011-09-11 14:57:59 +0200 (So, 11 Sep
- *          2011) $
+ * @version 1.18, $Date: 2015-06-24$
  */
 public final class NonSI extends AbstractSystemOfUnits {
 
@@ -394,6 +394,13 @@ public final class NonSI extends AbstractSystemOfUnits {
 	// ///////////////
 	// Information //
 	// ///////////////
+	  /**
+     * The SI unit for binary information (standard name <code>bit</code>).
+     * @deprecated see https://github.com/unitsofmeasurement/si-units/issues/2
+     */
+    public static final AlternateUnit<Information> BIT
+            = addUnit(new AlternateUnit<Information>(ONE, "bit"), Information.class);
+    
 	/**
 	 * A unit of data amount equal to <code>8 {@link SI#BIT}</code> (BinarY
 	 * TErm, standard name <code>byte</code>).
@@ -631,6 +638,19 @@ public final class NonSI extends AbstractSystemOfUnits {
      */
     private static <U extends Unit<?>>  U addUnit(U unit) {
         INSTANCE.units.add(unit);
+        return unit;
+    }
+    
+    /**
+     * Adds a new unit and maps it to the specified quantity type.
+     *
+     * @param  unit the unit being added.
+     * @param type the quantity type.
+     * @return <code>unit</code>.
+     */
+    private static <U extends AbstractUnit<?>>  U addUnit(U unit, Class<? extends Quantity<?>> type) {
+        INSTANCE.units.add(unit);
+        INSTANCE.quantityToUnit.put(type, unit);
         return unit;
     }
     
