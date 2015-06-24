@@ -19,5 +19,5 @@ The project currently contains the following modules:
 
 Modular Unit Systems
 -------------------------------------
-Unit systems are defined in a modular nature. On top of the [API](../../unit-api) and implementations (e.g. [RI](../unit-ri) each application may use one or more unit systems.
+Unit systems are defined in a modular nature. On top of the [API](../../../unit-api) and implementations (e.g. [RI](../../../unit-ri) each application may use one or more unit systems.
 ![Dependencies](/src/site/resources/images/dependencies.png)
