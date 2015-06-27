@@ -83,7 +83,7 @@ import tec.units.ri.unit.SI;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 1.18, $Date: 2015-06-24$
  */
-public final class NonSI extends AbstractSystemOfUnits {
+final class NonSI extends AbstractSystemOfUnits {
 
 	/**
 	 * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
