@@ -16,3 +16,8 @@ The project currently contains the following modules:
 [![Stories in Progress](https://badge.waffle.io/unitsofmeasurement/uom-systems.png?label=in%20progress&title=In Progress)](https://waffle.io/unitsofmeasurement/uom-systems)
 
 [![Throughput Graph](https://graphs.waffle.io/unitsofmeasurement/uom-systems/throughput.svg)](https://waffle.io/unitsofmeasurement/uom-systems/metrics)
+
+Modular Unit Systems
+-------------------------------------
+Unit systems are defined in a modular nature. On top of [API](../../../unit-api) and implementations (e.g. [RI](../../../unit-ri)) each application may use one or more unit systems.
+![Dependencies](/src/site/resources/images/dependencies.png)
