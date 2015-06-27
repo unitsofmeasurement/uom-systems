@@ -36,7 +36,7 @@ import tec.units.ri.unit.TransformedUnit;
 import javax.measure.Unit;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
-import javax.measure.quantity.Information;
+import systems.uom.quantity.Information;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -303,7 +303,7 @@ public final class US extends AbstractSystemOfUnits {
 	 * A unit of data amount equal to <code>8 {@link SI#BIT}</code> (BinarY
 	 * TErm, standard name <code>byte</code>).
 	 */
-	public static final Unit<Information> BYTE = addUnit(BIT.multiply(8));
+	public static final Unit<Information> BYTE = addUnit(NonSI.BIT.multiply(8));
 
 	/**
 	 * Equivalent {@link #BYTE}

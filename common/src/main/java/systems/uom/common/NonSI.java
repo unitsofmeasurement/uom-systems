@@ -26,41 +26,68 @@
 package systems.uom.common;
 
 import static tec.units.ri.AbstractUnit.ONE;
-import static tec.units.ri.unit.MetricPrefix.*;
-import static tec.units.ri.unit.SI.AMPERE;
-import static tec.units.ri.unit.SI.BECQUEREL;
-import static tec.units.ri.unit.SI.COULOMB;
-import static tec.units.ri.unit.SI.GRAM;
-import static tec.units.ri.unit.SI.GRAY;
-import static tec.units.ri.unit.SI.JOULE;
-import static tec.units.ri.unit.SI.KELVIN;
-import static tec.units.ri.unit.SI.KILOGRAM;
-import static tec.units.ri.unit.SI.LUX;
-import static tec.units.ri.unit.SI.METRE;
-import static tec.units.ri.unit.SI.METRES_PER_SECOND;
-import static tec.units.ri.unit.SI.METRES_PER_SQUARE_SECOND;
-import static tec.units.ri.unit.SI.MOLE;
-import static tec.units.ri.unit.SI.NEWTON;
-import static tec.units.ri.unit.SI.PASCAL;
-import static tec.units.ri.unit.SI.RADIAN;
-import static tec.units.ri.unit.SI.SECOND;
-import static tec.units.ri.unit.SI.SIEVERT;
-import static tec.units.ri.unit.SI.SQUARE_METRE;
-import static tec.units.ri.unit.SI.STERADIAN;
-import static tec.units.ri.unit.SI.TESLA;
-import static tec.units.ri.unit.SI.WATT;
-import static tec.units.ri.unit.SI.WEBER;
+import static tec.units.ri.unit.MetricPrefix.CENTI;
+import static tec.units.ri.unit.Units.AMPERE;
+import static tec.units.ri.unit.Units.BECQUEREL;
+import static tec.units.ri.unit.Units.COULOMB;
+import static tec.units.ri.unit.Units.GRAM;
+import static tec.units.ri.unit.Units.GRAY;
+import static tec.units.ri.unit.Units.JOULE;
+import static tec.units.ri.unit.Units.KELVIN;
+import static tec.units.ri.unit.Units.KILOGRAM;
+import static tec.units.ri.unit.Units.LUX;
+import static tec.units.ri.unit.Units.METRE;
+import static tec.units.ri.unit.Units.METRES_PER_SECOND;
+import static tec.units.ri.unit.Units.METRES_PER_SQUARE_SECOND;
+import static tec.units.ri.unit.Units.MOLE;
+import static tec.units.ri.unit.Units.NEWTON;
+import static tec.units.ri.unit.Units.PASCAL;
+import static tec.units.ri.unit.Units.RADIAN;
+import static tec.units.ri.unit.Units.SECOND;
+import static tec.units.ri.unit.Units.SIEVERT;
+import static tec.units.ri.unit.Units.SQUARE_METRE;
+import static tec.units.ri.unit.Units.STERADIAN;
+import static tec.units.ri.unit.Units.TESLA;
+import static tec.units.ri.unit.Units.WATT;
+import static tec.units.ri.unit.Units.WEBER;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.*;
+import javax.measure.quantity.Acceleration;
+import javax.measure.quantity.AmountOfSubstance;
+import javax.measure.quantity.Angle;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.quantity.ElectricCharge;
+import javax.measure.quantity.ElectricCurrent;
+import javax.measure.quantity.Energy;
+import javax.measure.quantity.Force;
+import javax.measure.quantity.Frequency;
+import javax.measure.quantity.Illuminance;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.MagneticFlux;
+import javax.measure.quantity.MagneticFluxDensity;
+import javax.measure.quantity.Mass;
+import javax.measure.quantity.Power;
+import javax.measure.quantity.Pressure;
+import javax.measure.quantity.RadiationDoseAbsorbed;
+import javax.measure.quantity.RadiationDoseEffective;
+import javax.measure.quantity.Radioactivity;
+import javax.measure.quantity.SolidAngle;
+import javax.measure.quantity.Speed;
+import javax.measure.quantity.Temperature;
+import javax.measure.quantity.Time;
 
+import si.uom.SI;
+import si.uom.quantity.DynamicViscosity;
+import si.uom.quantity.IonizingRadiation;
+import si.uom.quantity.KinematicViscosity;
+import systems.uom.quantity.Information;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.RationalConverter;
 import tec.units.ri.unit.AlternateUnit;
-import tec.units.ri.unit.SI;
 
 /**
  * <p>
@@ -396,9 +423,8 @@ final class NonSI extends AbstractSystemOfUnits {
 	// ///////////////
 	  /**
      * The SI unit for binary information (standard name <code>bit</code>).
-     * @deprecated see https://github.com/unitsofmeasurement/si-units/issues/2
      */
-    public static final AlternateUnit<Information> BIT
+    public static final Unit<Information> BIT
             = addUnit(new AlternateUnit<Information>(ONE, "bit"), Information.class);
     
 	/**

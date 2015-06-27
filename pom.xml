@@ -17,7 +17,7 @@
   <!-- ======================================================= -->
   <properties>
 	<jdkVersion>1.6</jdkVersion>
-	<ri.version>0.8-SNAPSHOT</ri.version>
+	<ri.version>0.8-RC2</ri.version>
 	<si.version>0.4-SNAPSHOT</si.version>
 	<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 	<maven.compile.targetLevel>1.6</maven.compile.targetLevel>

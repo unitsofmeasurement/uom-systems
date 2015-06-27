@@ -36,6 +36,11 @@
 				<artifactId>si-impl</artifactId>
 				<version>${si.version}</version>
 			</dependency>
+			<dependency>
+                <groupId>systems.uom</groupId>
+                <artifactId>uom-systems-quantity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -51,6 +56,10 @@
 			<groupId>si.uom</groupId>
 			<artifactId>si-impl</artifactId>
 		</dependency>
+		<dependency>
+             <groupId>systems.uom</groupId>
+             <artifactId>uom-systems-quantity</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
