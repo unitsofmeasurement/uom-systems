@@ -83,11 +83,13 @@ import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import systems.uom.quantity.Information;
+import systems.uom.quantity.InformationRate;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.RationalConverter;
 import tec.units.ri.unit.AlternateUnit;
+import tec.units.ri.unit.ProductUnit;
 
 /**
  * <p>
@@ -110,7 +112,7 @@ import tec.units.ri.unit.AlternateUnit;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 1.18, $Date: 2015-06-24$
  */
-final class NonSI extends AbstractSystemOfUnits {
+public final class NonSI extends AbstractSystemOfUnits {
 
 	/**
 	 * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
@@ -433,6 +435,13 @@ final class NonSI extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Information> BYTE = addUnit(BIT.multiply(8));
 
+	  /**
+     * The SI unit for binary information rate (standard name <code>bit/s</code>).
+     * @deprecated see https://java.net/jira/browse/UNITSOFMEASUREMENT-100
+     */
+    public static final ProductUnit<InformationRate> BITS_PER_SECOND
+            = addUnit(new ProductUnit<InformationRate>(BIT.divide(SECOND)), InformationRate.class);
+	
 	/**
 	 * Equivalent {@link #BYTE}
 	 */

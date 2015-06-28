@@ -29,15 +29,60 @@
  */
 package systems.uom.ucum;
 
+import si.uom.SI;
+import si.uom.quantity.Action;
+import si.uom.quantity.DynamicViscosity;
+import si.uom.quantity.IonizingRadiation;
+import si.uom.quantity.KinematicViscosity;
+import si.uom.quantity.MagneticPermeability;
+import si.uom.quantity.MagnetomotiveForce;
+import si.uom.quantity.WaveNumber;
+import systems.uom.quantity.Information;
+import systems.uom.quantity.InformationRate;
 import tec.uom.se.*;
 import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.unit.AlternateUnit;
 import tec.uom.se.unit.ProductUnit;
-import tec.uom.se.unit.SI;
+import tec.uom.se.unit.Units;
+import systems.uom.common.NonSI;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.*;
+import javax.measure.quantity.Acceleration;
+import javax.measure.quantity.AmountOfSubstance;
+import javax.measure.quantity.Angle;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.quantity.ElectricCapacitance;
+import javax.measure.quantity.ElectricCharge;
+import javax.measure.quantity.ElectricConductance;
+import javax.measure.quantity.ElectricCurrent;
+import javax.measure.quantity.ElectricInductance;
+import javax.measure.quantity.ElectricPermittivity;
+import javax.measure.quantity.ElectricPotential;
+import javax.measure.quantity.ElectricResistance;
+import javax.measure.quantity.Energy;
+import javax.measure.quantity.Force;
+import javax.measure.quantity.Frequency;
+import javax.measure.quantity.Illuminance;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Luminance;
+import javax.measure.quantity.LuminousFlux;
+import javax.measure.quantity.LuminousIntensity;
+import javax.measure.quantity.MagneticFieldStrength;
+import javax.measure.quantity.MagneticFlux;
+import javax.measure.quantity.MagneticFluxDensity;
+import javax.measure.quantity.Mass;
+import javax.measure.quantity.Power;
+import javax.measure.quantity.Pressure;
+import javax.measure.quantity.RadiationDoseAbsorbed;
+import javax.measure.quantity.RadiationDoseEffective;
+import javax.measure.quantity.Radioactivity;
+import javax.measure.quantity.SolidAngle;
+import javax.measure.quantity.Speed;
+import javax.measure.quantity.Temperature;
+import javax.measure.quantity.Time;
+import javax.measure.quantity.Volume;
 
 import static tec.uom.se.unit.MetricPrefix.*;
 
@@ -85,24 +130,25 @@ public final class UCUM extends AbstractSystemOfUnits {
 	// BASE UNITS: UCUM 4.2 §25 //
 	// ////////////////////////////
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Length> METER = addUnit(SI.METRE);
+	public static final Unit<Length> METER = addUnit(Units.METRE);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> SECOND = addUnit(SI.SECOND);
+	public static final Unit<Time> SECOND = addUnit(Units.SECOND);
 	/**
 	 * We deviate slightly from the standard here, to maintain compatibility
 	 * with the existing SI units. In UCUM, the gram is the base unit of mass,
 	 * rather than the kilogram. This doesn't have much effect on the units
 	 * themselves, but it does make formatting the units a challenge.
 	 */
-	public static final Unit<Mass> GRAM = addUnit(SI.GRAM);
+	public static final Unit<Mass> GRAM = addUnit(Units.GRAM);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Angle> RADIAN = addUnit(SI.RADIAN);
+	public static final Unit<Angle> RADIAN = addUnit(Units.RADIAN);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Temperature> KELVIN = addUnit(SI.KELVIN);
+	public static final Unit<Temperature> KELVIN = addUnit(Units.KELVIN);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<ElectricCharge> COULOMB = addUnit(SI.COULOMB);
+	public static final Unit<ElectricCharge> COULOMB = addUnit(Units.COULOMB);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<LuminousIntensity> CANDELA = addUnit(SI.CANDELA);
+	public static final Unit<LuminousIntensity> CANDELA = addUnit(Units.CANDELA);
+	
 	// /////////////////////////////////////////////
 	// DIMENSIONLESS DERIVED UNITS: UCUM 4.3 §26 //
 	// /////////////////////////////////////////////
@@ -147,60 +193,61 @@ public final class UCUM extends AbstractSystemOfUnits {
 	 * with the existing SI units. In UCUM, the mole is no longer a base unit,
 	 * but is defined as <code>Unit.ONE.multiply(6.0221367E23)</code>.
 	 */
-	public static final Unit<AmountOfSubstance> MOLE = addUnit(SI.MOLE);
+	public static final Unit<AmountOfSubstance> MOLE = addUnit(Units.MOLE);
 	/**
 	 * We deviate slightly from the standard here, to maintain compatibility
 	 * with the existing SI units. In UCUM, the steradian is defined as
 	 * <code>RADIAN.pow(2)</code>.
 	 */
-	public static final Unit<SolidAngle> STERADIAN = addUnit(SI.STERADIAN);
+	public static final Unit<SolidAngle> STERADIAN = addUnit(Units.STERADIAN);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Frequency> HERTZ = addUnit(SI.HERTZ);
+	public static final Unit<Frequency> HERTZ = addUnit(Units.HERTZ);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Force> NEWTON = addUnit(SI.NEWTON);
+	public static final Unit<Force> NEWTON = addUnit(Units.NEWTON);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Pressure> PASCAL = addUnit(SI.PASCAL);
+	public static final Unit<Pressure> PASCAL = addUnit(Units.PASCAL);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Energy> JOULE = addUnit(SI.JOULE);
+	public static final Unit<Energy> JOULE = addUnit(Units.JOULE);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Power> WATT = addUnit(SI.WATT);
+	public static final Unit<Power> WATT = addUnit(Units.WATT);
 	/**
 	 * We deviate slightly from the standard here, to maintain compatability
 	 * with the existing SI units. In UCUM, the ampere is defined as
 	 * <code>COULOMB.divide(SECOND)</code>.
 	 */
-	public static final Unit<ElectricCurrent> AMPERE = addUnit(SI.AMPERE);
-//	public static final Unit<MagnetomotiveForce> AMPERE_TURN = addUnit(SI.AMPERE_TURN);
+	public static final Unit<ElectricCurrent> AMPERE = addUnit(Units.AMPERE);
+//	public static final Unit<MagnetomotiveForce> AMPERE_TURN = addUnit(Units.AMPERE_TURN);
 	/**
 	 * We deviate slightly from the standard here, to maintain compatibility
 	 * with the existing SI units. In UCUM, the volt is defined as
 	 * <code>JOULE.divide(COULOMB)</code>.
 	 */
-	public static final Unit<ElectricPotential> VOLT = addUnit(SI.VOLT);
+	public static final Unit<ElectricPotential> VOLT = addUnit(Units.VOLT);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<ElectricCapacitance> FARAD = addUnit(SI.FARAD);
+	public static final Unit<ElectricCapacitance> FARAD = addUnit(Units.FARAD);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<ElectricResistance> OHM = addUnit(SI.OHM);
+	public static final Unit<ElectricResistance> OHM = addUnit(Units.OHM);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<ElectricConductance> SIEMENS = addUnit(SI.SIEMENS);
+	public static final Unit<ElectricConductance> SIEMENS = addUnit(Units.SIEMENS);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<MagneticFlux> WEBER = addUnit(SI.WEBER);
+	public static final Unit<MagneticFlux> WEBER = addUnit(Units.WEBER);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Temperature> CELSIUS = addUnit(SI.CELSIUS);
+	public static final Unit<Temperature> CELSIUS = addUnit(Units.CELSIUS);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<MagneticFluxDensity> TESLA = addUnit(SI.TESLA);
+	public static final Unit<MagneticFluxDensity> TESLA = addUnit(Units.TESLA);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<ElectricInductance> HENRY = addUnit(SI.HENRY);
+	public static final Unit<ElectricInductance> HENRY = addUnit(Units.HENRY);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<LuminousFlux> LUMEN = addUnit(SI.LUMEN);
+	public static final Unit<LuminousFlux> LUMEN = addUnit(Units.LUMEN);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Illuminance> LUX = addUnit(SI.LUX);
+	public static final Unit<Illuminance> LUX = addUnit(Units.LUX);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Radioactivity> BECQUEREL = addUnit(SI.BECQUEREL);
+	public static final Unit<Radioactivity> BECQUEREL = addUnit(Units.BECQUEREL);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<RadiationDoseAbsorbed> GRAY = addUnit(SI.GRAY);
+	public static final Unit<RadiationDoseAbsorbed> GRAY = addUnit(Units.GRAY);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<RadiationDoseEffective> SIEVERT = addUnit(SI.SIEVERT);
+	public static final Unit<RadiationDoseEffective> SIEVERT = addUnit(Units.SIEVERT);
+	
 	// /////////////////////////////////////////////////////////////////////
 	// OTHER UNITS FROM ISO 1000, ISO 2955, AND ANSI X3.50: UCUM 4.3 §28 //
 	// /////////////////////////////////////////////////////////////////////
@@ -211,39 +258,39 @@ public final class UCUM extends AbstractSystemOfUnits {
 	 * with the existing NonSI units. In UCUM, the degree is defined as
 	 * <code>PI.multiply(RADIAN.divide(180))</code>.
 	 */
-	public static final Unit<Angle> DEGREE = addUnit(SI.DEGREE_ANGLE);
+	public static final Unit<Angle> DEGREE = addUnit(Units.DEGREE_ANGLE);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Angle> GRADE = addUnit(SI.DEGREE_ANGLE
+	public static final Unit<Angle> GRADE = addUnit(Units.DEGREE_ANGLE
 			.multiply(0.9));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Angle> GON = GRADE;
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Angle> MINUTE_ANGLE = addUnit(SI.MINUTE_ANGLE);
+	public static final Unit<Angle> MINUTE_ANGLE = addUnit(Units.MINUTE_ANGLE);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Angle> SECOND_ANGLE = addUnit(SI.SECOND_ANGLE);
+	public static final Unit<Angle> SECOND_ANGLE = addUnit(Units.SECOND_ANGLE);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Volume> LITER = addUnit(SI.LITRE);
+	public static final Unit<Volume> LITER = addUnit(Units.LITRE);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Area> ARE = addUnit(SI.SQUARE_METRE.multiply(100));
+	public static final Unit<Area> ARE = addUnit(Units.SQUARE_METRE.multiply(100));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> MINUTE = addUnit(SI.MINUTE);
+	public static final Unit<Time> MINUTE = addUnit(Units.MINUTE);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> HOUR = addUnit(SI.HOUR);
+	public static final Unit<Time> HOUR = addUnit(Units.HOUR);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> DAY = addUnit(SI.DAY);
+	public static final Unit<Time> DAY = addUnit(Units.DAY);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> YEAR_TROPICAL = addUnit(SI.DAY
+	public static final Unit<Time> YEAR_TROPICAL = addUnit(Units.DAY
 			.multiply(365.24219));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> YEAR_JULIAN = addUnit(SI.DAY
+	public static final Unit<Time> YEAR_JULIAN = addUnit(Units.DAY
 			.multiply(365.25));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> YEAR_GREGORIAN = addUnit(SI.DAY
+	public static final Unit<Time> YEAR_GREGORIAN = addUnit(Units.DAY
 			.multiply(365.2425));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> YEAR = addUnit(SI.DAY.multiply(365.25));
+	public static final Unit<Time> YEAR = addUnit(Units.DAY.multiply(365.25));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Time> MONTH_SYNODAL = addUnit(SI.DAY
+	public static final Unit<Time> MONTH_SYNODAL = addUnit(Units.DAY
 			.multiply(29.53059));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Time> MONTH_JULIAN = addUnit(YEAR_JULIAN
@@ -254,30 +301,31 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Time> MONTH = addUnit(YEAR_JULIAN.divide(12));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Mass> TONNE = addUnit(SI.KILOGRAM.multiply(1000));
+	public static final Unit<Mass> TONNE = addUnit(Units.KILOGRAM.multiply(1000));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Pressure> BAR = addUnit(SI.PASCAL.multiply(100000));
+	public static final Unit<Pressure> BAR = addUnit(Units.PASCAL.multiply(100000));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Mass> ATOMIC_MASS_UNIT = addUnit(SI.UNIFIED_ATOMIC_MASS);
 //	public static final Unit<Mass> ATOMIC_MASS_UNIT = addUnit(
-//			new AlternateUnit<Mass>(SI.UNIFIED_ATOMIC_MASS,
-//					SI.UNIFIED_ATOMIC_MASS.getSymbol()), Mass.class);
+//			new AlternateUnit<Mass>(Units.UNIFIED_ATOMIC_MASS,
+//					Units.UNIFIED_ATOMIC_MASS.getSymbol()), Mass.class);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Energy> ELECTRON_VOLT = addUnit(SI.ELECTRON_VOLT);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Length> ASTRONOMIC_UNIT = addUnit(SI.ASTRONOMICAL_UNIT);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Length> PARSEC = addUnit(SI.METRE
+	public static final Unit<Length> PARSEC = addUnit(Units.METRE
 			.multiply(3.085678E16));
+	
 	// ///////////////////////////////
 	// NATURAL UNITS: UCUM 4.3 §29 //
 	// ///////////////////////////////
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Speed> C = addUnit(SI.METRES_PER_SECOND
+	public static final Unit<Speed> C = addUnit(Units.METRES_PER_SECOND
 			.multiply(299792458));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
-			.multiply(6.6260755E-24));
+	/*public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
+			.multiply(6.6260755E-24)); FIXME get rid of JXQ import (where from??) */
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<?> BOLTZMAN = addUnit(JOULE.divide(KELVIN)
 			.multiply(1.380658E-23));
@@ -290,12 +338,12 @@ public final class UCUM extends AbstractSystemOfUnits {
 					.multiply(PI.multiply(4).divide(1E7))),
 			MagneticPermeability.class);
 //	public static final Unit<MagneticPermeability> PERMEABILITY_OF_VACUUM = addUnit(
-//			new ProductUnit<MagneticPermeability>(SI.NEWTONS_PER_SQUARE_AMPERE
+//			new ProductUnit<MagneticPermeability>(Units.NEWTONS_PER_SQUARE_AMPERE
 //					.multiply(PI).multiply(4).divide(1E7)),
 //			MagneticPermeability.class);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<ElectricCharge> ELEMENTARY_CHARGE = addUnit(SI.COULOMB
-			.transform(SI.ELECTRON_VOLT.getConverterToSI()));
+	public static final Unit<ElectricCharge> ELEMENTARY_CHARGE = addUnit(Units.COULOMB
+			.transform(((AbstractUnit<Energy>)SI.ELECTRON_VOLT).getSystemConverter()));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Mass> ELECTRON_MASS = addUnit(GRAM
 			.multiply(9.1093897E-28));
@@ -304,13 +352,13 @@ public final class UCUM extends AbstractSystemOfUnits {
 			.multiply(1.6726231E-24));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<?> NEWTON_CONSTANT_OF_GRAVITY = addUnit(METER
-			.pow(3).multiply(SI.KILOGRAM.pow(-1)).multiply(SECOND.pow(-2))
+			.pow(3).multiply(Units.KILOGRAM.pow(-1)).multiply(SECOND.pow(-2))
 			.multiply(6.67259E-11));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(SI.METRES_PER_SQUARE_SECOND
+	public static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(Units.METRES_PER_SQUARE_SECOND
 			.multiply(9.80665));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Pressure> ATMOSPHERE = addUnit(SI.PASCAL
+	public static final Unit<Pressure> ATMOSPHERE = addUnit(Units.PASCAL
 			.multiply(101325));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Length> LIGHT_YEAR = addUnit(new ProductUnit<Length>(
@@ -320,46 +368,47 @@ public final class UCUM extends AbstractSystemOfUnits {
 			GRAM.multiply(ACCELLERATION_OF_FREEFALL)));
 	// POUND_FORCE contains a forward reference to avoirdupois pound weight, so
 	// it has been moved after section §36 below
+	
 	// ///////////////////////////
 	// CGS UNITS: UCUM 4.3 §30 //
 	// ///////////////////////////
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<WaveNumber> KAYSER = addUnit(SI.RECIPROCAL_METRE
-			.divide(100));
+	/*public static final Unit<WaveNumber> KAYSER = addUnit(SI.RECIPROCAL_METRE
+			.divide(100)); FIXME get rid of JXQ import (where from??) */
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Acceleration> GAL = addUnit(new ProductUnit<Acceleration>(
 			CENTI(METER).divide(SECOND.pow(2))));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Force> DYNE = addUnit(new ProductUnit<Force>(
-			SI.GRAM.multiply(CENTI(SI.METRE).divide(SI.SECOND
+			Units.GRAM.multiply(CENTI(Units.METRE).divide(Units.SECOND
 					.pow(2)))));
 //	public static final Unit<Force> DYNE = addUnit(new ProductUnit<Force>(
-//			SI.GRAM.multiply(new ProductUnit(CENTI(SI.METRE)).divide(SI.SECOND
+//			Units.GRAM.multiply(new ProductUnit(CENTI(Units.METRE)).divide(Units.SECOND
 //					.pow(2)))));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Energy> ERG = addUnit(new ProductUnit<Energy>(
-			DYNE.multiply(CENTI(SI.METRE))));
+			DYNE.multiply(CENTI(Units.METRE))));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<DynamicViscosity> POISE = addUnit(new ProductUnit<DynamicViscosity>(
-			DYNE.multiply(SECOND).divide(CENTI(SI.METRE).pow(2))));
+			DYNE.multiply(SECOND).divide(CENTI(Units.METRE).pow(2))));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<ElectricCurrent> BIOT = addUnit(AMPERE
 			.multiply(10));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<KinematicViscosity> STOKES = addUnit(new ProductUnit<KinematicViscosity>(
-			CENTI(SI.METRE).pow(2).divide(SI.SECOND)));
+			CENTI(Units.METRE).pow(2).divide(Units.SECOND)));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<MagneticFlux> MAXWELL = addUnit(SI.WEBER
+	public static final Unit<MagneticFlux> MAXWELL = addUnit(Units.WEBER
 			.divide(1E8));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<MagneticFluxDensity> GAUSS = addUnit(SI.TESLA
+	public static final Unit<MagneticFluxDensity> GAUSS = addUnit(Units.TESLA
 			.divide(1E4));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<MagneticFieldStrength> OERSTED = addUnit(new ProductUnit<MagneticFieldStrength>(
 			SI.AMPERES_PER_METRE.multiply(250).divide(PI)));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<MagnetomotiveForce> GILBERT = addUnit(new ProductUnit<MagnetomotiveForce>(
-			OERSTED.multiply(CENTI(SI.METRE))));
+			OERSTED.multiply(CENTI(Units.METRE))));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Luminance> STILB = addUnit(new ProductUnit<Luminance>(
 			CANDELA.divide(CENTI(METER).pow(2))));
@@ -369,19 +418,19 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Illuminance> PHOT = addUnit(LUX.divide(1E4));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Radioactivity> CURIE = addUnit(SI.BECQUEREL
+	public static final Unit<Radioactivity> CURIE = addUnit(Units.BECQUEREL
 			.multiply(3.7E10));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<IonizingRadiation> ROENTGEN = addUnit(SI.COULOMBS_PER_KILOGRAM
-			.multiply(2.58E-4));
+	/*public static final Unit<IonizingRadiation> ROENTGEN = addUnit(SI.COULOMBS_PER_KILOGRAM
+			.multiply(2.58E-4)); FIXME add later when JMQ issue fixed */
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<RadiationDoseAbsorbed> RAD = addUnit(new ProductUnit<RadiationDoseAbsorbed>(
-			ERG.divide(SI.GRAM.multiply(100))));
+			ERG.divide(Units.GRAM.multiply(100))));
 //	public static final Unit<RadiationDoseAbsorbed> RAD = addUnit(new ProductUnit<RadiationDoseAbsorbed>(
-//			ERG.divide(SI.GRAM).multiply(100)));
+//			ERG.divide(Units.GRAM).multiply(100)));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<RadiationDoseEffective> REM = addUnit(new ProductUnit<RadiationDoseEffective>(
-			ERG.divide(SI.GRAM.multiply(100))));
+			ERG.divide(Units.GRAM.multiply(100))));
 //	public static final Unit<RadiationDoseEffective> REM = addUnit(new AlternateUnit<RadiationDoseEffective>(
 //			RAD, RAD.getSymbol())); // TODO are symbols for RAD and REM same?
 	// ///////////////////////////////////////////////
@@ -799,15 +848,16 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Dimensionless> CARAT_GOLD = addUnit(AbstractUnit.ONE
 			.divide(24));
+	
 	// //////////////////////////////////////////////
 	// INFORMATION TECHNOLOGY UNITS: UCUM 4.6 §45 //
 	// //////////////////////////////////////////////
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Information> BIT = addUnit(SI.BIT);
+	public static final Unit<Information> BIT = addUnit(NonSI.BIT);
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Information> BYTE = addUnit(SI.BIT.multiply(8));
+	public static final Unit<Information> BYTE = addUnit(NonSI.BIT.multiply(8));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<InformationRate> BAUD = addUnit(SI.BITS_PER_SECOND);
+	public static final Unit<InformationRate> BAUD = addUnit(NonSI.BITS_PER_SECOND);
 
 	// /////////////////////
 	// MISSING FROM UCUM //
@@ -834,11 +884,11 @@ public final class UCUM extends AbstractSystemOfUnits {
 	 * system uses the same mapping as the {@link SI} system.
 	 *
 	 * @param quantityType
-	 * @return <code>SI.getInstance().getUnit(quantityType)</code>
+	 * @return <code>Units.getInstance().getUnit(quantityType)</code>
 	 */
 	// @Override
 	// public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
-	// return SI.getInstance().getUnit(quantityType);
+	// return Units.getInstance().getUnit(quantityType);
 	// }
 
 	/**

@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -27,20 +27,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-/**
- * This package provides utility classes in conformity with the
- * <a href="http://www.unitsofmeasurement.org/">Units of Measurement API</a>.
- *
- * <h3> UCUM Units</h3>
- * <ul>
- *    <li> The class {@link UCUM} contains standard and non-standard units 
- *      as defined by the <a href="http://unitsofmeasure.org/">
- *      "Uniform Code for CommonUnits of Measure"</a>.</li>
- *    <li> The class {@link Units} contains other commonly used non-standard units.</li>
- * </ul>
- *
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.3
- */
-package systems.uom.ucum;
+package systems.uom.common;
+
+import static org.junit.Assert.assertEquals;
+import static systems.uom.common.IndianPrefix.CRORE;
+import static systems.uom.common.IndianPrefix.LAKH;
+import static tec.units.ri.unit.MetricPrefix.KILO;
+import static tec.units.ri.unit.SI.METRE;
+
+import org.junit.Test;
+
+import tec.units.ri.function.RationalConverter;
+
+public class IndianTest {
+	@Test
+	public void testLakhPrefix() {
+		assertEquals(LAKH(METRE).getConverterTo(KILO(METRE)),
+				new RationalConverter(100l, 1l));
+	}
+	
+	@Test
+	public void testCrorePrefix() {
+		assertEquals(CRORE(METRE).getConverterTo(KILO(METRE)),
+				new RationalConverter(10000l, 1l));
+	}
+}

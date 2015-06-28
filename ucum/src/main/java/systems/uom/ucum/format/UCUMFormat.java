@@ -29,18 +29,18 @@
  */
 package systems.uom.ucum.format;
 
+import si.uom.SI;
+import systems.uom.ucum.format.internal.UCUMFormatParser;
 import tec.uom.se.AbstractConverter;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.AbstractUnitFormat;
 import tec.uom.se.format.SymbolMap;
 import tec.uom.se.format.internal.TokenException;
 import tec.uom.se.format.internal.TokenMgrError;
-import tec.uom.se.format.internal.UCUMFormatParser;
 import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.RationalConverter;
 import tec.uom.se.unit.AnnotatedUnit;
 import tec.uom.se.unit.MetricPrefix;
-import tec.uom.se.unit.SI;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -52,7 +52,6 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.text.ParsePosition;
 import java.util.*;
-
 
 /**
  * <p> This class provides the interface for formatting and parsing
@@ -72,7 +71,7 @@ import java.util.*;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.3, 24 January 2015
+ * @version 0.6, 28 January 2015
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
 
