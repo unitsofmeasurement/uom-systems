@@ -423,8 +423,8 @@ public final class NonSI extends AbstractSystemOfUnits {
 	// ///////////////
 	// Information //
 	// ///////////////
-	  /**
-     * The SI unit for binary information (standard name <code>bit</code>).
+	/**
+     * The unit for binary information (standard name <code>bit</code>).
      */
     public static final Unit<Information> BIT
             = addUnit(new AlternateUnit<Information>(ONE, "bit"), Information.class);
