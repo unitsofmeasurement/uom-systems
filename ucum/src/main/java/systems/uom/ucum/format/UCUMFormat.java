@@ -29,8 +29,9 @@
  */
 package systems.uom.ucum.format;
 
-import si.uom.SI;
+
 import systems.uom.ucum.format.internal.UCUMFormatParser;
+import systems.uom.ucum.internal.SI;
 import tec.uom.se.AbstractConverter;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.AbstractUnitFormat;

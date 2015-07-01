@@ -29,7 +29,6 @@
  */
 package systems.uom.ucum;
 
-import si.uom.SI;
 import si.uom.quantity.Action;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
@@ -39,12 +38,13 @@ import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
+import systems.uom.ucum.internal.NonSI;
+import systems.uom.ucum.internal.SI;
 import tec.uom.se.*;
 import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.unit.AlternateUnit;
 import tec.uom.se.unit.ProductUnit;
 import tec.uom.se.unit.Units;
-import systems.uom.common.NonSI;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -324,8 +324,8 @@ public final class UCUM extends AbstractSystemOfUnits {
 	public static final Unit<Speed> C = addUnit(Units.METRES_PER_SECOND
 			.multiply(299792458));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	/*public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
-			.multiply(6.6260755E-24)); FIXME get rid of JXQ import (where from??) */
+	public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
+			.multiply(6.6260755E-24)); //FIXME get rid of JXQ import (where from??) */
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<?> BOLTZMAN = addUnit(JOULE.divide(KELVIN)
 			.multiply(1.380658E-23));
@@ -373,8 +373,8 @@ public final class UCUM extends AbstractSystemOfUnits {
 	// CGS UNITS: UCUM 4.3 §30 //
 	// ///////////////////////////
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	/*public static final Unit<WaveNumber> KAYSER = addUnit(SI.RECIPROCAL_METRE
-			.divide(100)); FIXME get rid of JXQ import (where from??) */
+	public static final Unit<WaveNumber> KAYSER = addUnit(SI.RECIPROCAL_METRE
+			.divide(100)); // get rid of JXQ import (where from??) */
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Acceleration> GAL = addUnit(new ProductUnit<Acceleration>(
 			CENTI(METER).divide(SECOND.pow(2))));
@@ -421,8 +421,8 @@ public final class UCUM extends AbstractSystemOfUnits {
 	public static final Unit<Radioactivity> CURIE = addUnit(Units.BECQUEREL
 			.multiply(3.7E10));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	/*public static final Unit<IonizingRadiation> ROENTGEN = addUnit(SI.COULOMBS_PER_KILOGRAM
-			.multiply(2.58E-4)); FIXME add later when JMQ issue fixed */
+	public static final Unit<IonizingRadiation> ROENTGEN = addUnit(SI.COULOMBS_PER_KILOGRAM
+			.multiply(2.58E-4)); // add later when JMQ issue fixed */
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<RadiationDoseAbsorbed> RAD = addUnit(new ProductUnit<RadiationDoseAbsorbed>(
 			ERG.divide(Units.GRAM.multiply(100))));
