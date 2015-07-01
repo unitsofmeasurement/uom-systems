@@ -23,7 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.ucum.internal;
+package systems.uom.ucum;
 
 import static tec.uom.se.AbstractUnit.ONE;
 import static tec.uom.se.unit.MetricPrefix.CENTI;
@@ -85,6 +85,7 @@ import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
+import systems.uom.ucum.internal.SI;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.function.LogConverter;
@@ -113,7 +114,7 @@ import tec.uom.se.unit.ProductUnit;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 1.18, $Date: 2015-06-24$
  */
-public final class NonSI extends AbstractSystemOfUnits {
+final class NonSI extends AbstractSystemOfUnits {
 
 	/**
 	 * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
@@ -689,16 +690,4 @@ public final class NonSI extends AbstractSystemOfUnits {
         INSTANCE.quantityToUnit.put(type, unit);
         return unit;
     }
-    
-    /**
-	 * Adds a new named unit to the collection.
-	 * 
-	 * @param unit the unit being added.
-	 * @param name the name of the unit.
-	 * @return <code>unit</code>.
-	 */
-//	@SuppressWarnings("unchecked")
-//	protected static <U extends Unit<?>> U addUnit(U unit, String name) {
-//		
-//	}
 }

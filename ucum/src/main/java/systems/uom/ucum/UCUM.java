@@ -38,7 +38,6 @@ import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
-import systems.uom.ucum.internal.NonSI;
 import systems.uom.ucum.internal.SI;
 import tec.uom.se.*;
 import tec.uom.se.function.PiMultiplierConverter;
