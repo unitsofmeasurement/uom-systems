@@ -102,7 +102,7 @@ import static tec.uom.se.unit.MetricPrefix.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.6.3, $Date: 2015-06-04 $
+ * @version 0.6.4, $Date: 2015-07-01 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
