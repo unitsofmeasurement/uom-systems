@@ -279,7 +279,7 @@ public final class UCUMFormatParser {
     /** Generated Token Manager. */
     public UCUMTokenManager token_source;
 
-    SimpleCharStream jj_input_stream;
+    UCUMCharStream jj_input_stream;
 
     /** Current token. */
     public Token token;
@@ -320,7 +320,7 @@ public final class UCUMFormatParser {
     /** Constructor with InputStream and supplied encoding */
     public UCUMFormatParser(java.io.InputStream stream, String encoding) {
         try {
-            jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1);
+            jj_input_stream = new UCUMCharStream(stream, encoding, 1, 1);
         } catch (java.io.UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
@@ -362,7 +362,7 @@ public final class UCUMFormatParser {
 
     /** Constructor. */
     public UCUMFormatParser(java.io.Reader stream) {
-        jj_input_stream = new SimpleCharStream(stream, 1, 1);
+        jj_input_stream = new UCUMCharStream(stream, 1, 1);
         token_source = new UCUMTokenManager(jj_input_stream);
         token = new Token();
         jj_ntk = -1;

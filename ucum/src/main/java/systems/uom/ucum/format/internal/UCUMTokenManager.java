@@ -280,25 +280,25 @@ null, "\50", "\51", };
 public static final String[] lexStateNames = {
    "DEFAULT",
 };
-protected SimpleCharStream input_stream;
+protected UCUMCharStream input_stream;
 private final int[] jjrounds = new int[14];
 private final int[] jjstateSet = new int[28];
 protected char curChar;
 /** Constructor. */
-public UCUMTokenManager(SimpleCharStream stream){
-   if (SimpleCharStream.staticFlag)
+public UCUMTokenManager(UCUMCharStream stream){
+   if (UCUMCharStream.staticFlag)
       throw new Error("ERROR: Cannot use a static CharStream class with a non-static lexical analyzer.");
    input_stream = stream;
 }
 
 /** Constructor. */
-public UCUMTokenManager(SimpleCharStream stream, int lexState){
+public UCUMTokenManager(UCUMCharStream stream, int lexState){
    this(stream);
    SwitchTo(lexState);
 }
 
 /** Reinitialise parser. */
-public void ReInit(SimpleCharStream stream)
+public void ReInit(UCUMCharStream stream)
 {
    jjmatchedPos = jjnewStateCnt = 0;
    curLexState = defaultLexState;
@@ -314,7 +314,7 @@ private void ReInitRounds()
 }
 
 /** Reinitialise parser. */
-public void ReInit(SimpleCharStream stream, int lexState)
+public void ReInit(UCUMCharStream stream, int lexState)
 {
    ReInit(stream);
    SwitchTo(lexState);

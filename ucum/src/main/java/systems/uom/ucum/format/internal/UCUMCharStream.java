@@ -38,7 +38,7 @@ package systems.uom.ucum.format.internal;
  * @version 5.1, December 25, 2013
  */
 
-final class SimpleCharStream
+final class UCUMCharStream
 {
 /** Whether parser is static. */
   public static final boolean staticFlag = false;
@@ -280,7 +280,7 @@ final class SimpleCharStream
   }
 
   /** Constructor. */
-  public SimpleCharStream(java.io.Reader dstream, int startline,
+  public UCUMCharStream(java.io.Reader dstream, int startline,
   int startcolumn, int buffersize)
   {
     inputStream = dstream;
@@ -294,14 +294,14 @@ final class SimpleCharStream
   }
 
   /** Constructor. */
-  public SimpleCharStream(java.io.Reader dstream, int startline,
+  public UCUMCharStream(java.io.Reader dstream, int startline,
                           int startcolumn)
   {
     this(dstream, startline, startcolumn, 4096);
   }
 
   /** Constructor. */
-  public SimpleCharStream(java.io.Reader dstream)
+  public UCUMCharStream(java.io.Reader dstream)
   {
     this(dstream, 1, 1, 4096);
   }
@@ -339,41 +339,41 @@ final class SimpleCharStream
     ReInit(dstream, 1, 1, 4096);
   }
   /** Constructor. */
-  public SimpleCharStream(java.io.InputStream dstream, String encoding, int startline,
+  public UCUMCharStream(java.io.InputStream dstream, String encoding, int startline,
   int startcolumn, int buffersize) throws java.io.UnsupportedEncodingException
   {
     this(encoding == null ? new java.io.InputStreamReader(dstream) : new java.io.InputStreamReader(dstream, encoding), startline, startcolumn, buffersize);
   }
 
   /** Constructor. */
-  public SimpleCharStream(java.io.InputStream dstream, int startline,
+  public UCUMCharStream(java.io.InputStream dstream, int startline,
   int startcolumn, int buffersize)
   {
     this(new java.io.InputStreamReader(dstream), startline, startcolumn, buffersize);
   }
 
   /** Constructor. */
-  public SimpleCharStream(java.io.InputStream dstream, String encoding, int startline,
+  public UCUMCharStream(java.io.InputStream dstream, String encoding, int startline,
                           int startcolumn) throws java.io.UnsupportedEncodingException
   {
     this(dstream, encoding, startline, startcolumn, 4096);
   }
 
   /** Constructor. */
-  public SimpleCharStream(java.io.InputStream dstream, int startline,
+  public UCUMCharStream(java.io.InputStream dstream, int startline,
                           int startcolumn)
   {
     this(dstream, startline, startcolumn, 4096);
   }
 
   /** Constructor. */
-  public SimpleCharStream(java.io.InputStream dstream, String encoding) throws java.io.UnsupportedEncodingException
+  public UCUMCharStream(java.io.InputStream dstream, String encoding) throws java.io.UnsupportedEncodingException
   {
     this(dstream, encoding, 1, 1, 4096);
   }
 
   /** Constructor. */
-  public SimpleCharStream(java.io.InputStream dstream)
+  public UCUMCharStream(java.io.InputStream dstream)
   {
     this(dstream, 1, 1, 4096);
   }

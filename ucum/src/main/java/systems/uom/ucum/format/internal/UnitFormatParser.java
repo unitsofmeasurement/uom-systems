@@ -535,7 +535,7 @@ public final class UnitFormatParser {
     /** Generated Token Manager. */
     public UnitTokenManager tokenSource;
 
-    SimpleCharStream inputStream;
+    UCUMCharStream inputStream;
 
     /** Current token. */
     public Token token;
@@ -576,7 +576,7 @@ public final class UnitFormatParser {
     /** Constructor with InputStream and supplied encoding */
     public UnitFormatParser(java.io.InputStream stream, String encoding) {
         try {
-            inputStream = new SimpleCharStream(stream, encoding, 1, 1);
+            inputStream = new UCUMCharStream(stream, encoding, 1, 1);
         } catch (java.io.UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
@@ -618,7 +618,7 @@ public final class UnitFormatParser {
 
     /** Constructor. */
     public UnitFormatParser(java.io.Reader stream) {
-        inputStream = new SimpleCharStream(stream, 1, 1);
+        inputStream = new UCUMCharStream(stream, 1, 1);
         tokenSource = new UnitTokenManager(inputStream);
         token = new Token();
         nextTokenIndex = -1;
