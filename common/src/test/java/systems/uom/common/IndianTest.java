@@ -1,6 +1,6 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -33,7 +33,7 @@ import static org.junit.Assert.assertEquals;
 import static systems.uom.common.IndianPrefix.CRORE;
 import static systems.uom.common.IndianPrefix.LAKH;
 import static tec.units.ri.unit.MetricPrefix.KILO;
-import static tec.units.ri.unit.SI.METRE;
+import static tec.units.ri.unit.Units.METRE;
 
 import org.junit.Test;
 

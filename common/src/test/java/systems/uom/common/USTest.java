@@ -32,11 +32,18 @@ package systems.uom.common;
 import static org.junit.Assert.assertEquals;
 import static systems.uom.common.US.POUND; 
 
+import javax.measure.format.UnitFormat;
+
 import org.junit.Test;
+
+import tec.units.ri.format.EBNFUnitFormat;
 
 public class USTest {
 	@Test
-	public void testPrefixes() {
-		assertEquals("lb", POUND.toString());
+	public void testFormat() {
+		EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+		
+		//assertEquals("lb", POUND.toString());
+		assertEquals("lb", format.format(POUND));
 	}
 }
