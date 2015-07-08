@@ -1,6 +1,6 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -59,7 +59,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.17, $Date: 2014-04-06 22:44:42 +0200 (So, 06 Apr 2014) $
+ * @version 1.18, $Date: 2015-07-08 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
@@ -294,7 +294,8 @@ public final class US extends AbstractSystemOfUnits {
 	 * An acre is about 40% of a <code>HECTARE</code> – slightly smaller than an American football field. 
 	 * (standard name <code>ac</code>
 	 * ).
-	 * @see http://en.wikipedia.org/wiki/Acre
+	 * 
+	 * @see <a href="http://en.wikipedia.org/wiki/Acre">Wikipedia: Acre</a>
 	 */
 	public static final Unit<Area> ACRE = addUnit(SQUARE_FOOT.multiply(43560));
 	
