@@ -1,4 +1,4 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
  *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
@@ -25,7 +25,7 @@
  */
 package systems.uom.common;
 
-import static tec.units.ri.AbstractUnit.ONE;
+import static tec.units.ri.unit.Units.ONE;
 import static tec.units.ri.unit.MetricPrefix.CENTI;
 import static tec.units.ri.unit.Units.AMPERE;
 import static tec.units.ri.unit.Units.BECQUEREL;
@@ -162,21 +162,21 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A dimensionless unit equals to <code>pi</code> (standard name
 	 * <code>Ï€</code>).
 	 */
-	static final Unit<Dimensionless> PI = addUnit(AbstractUnit.ONE
+	static final Unit<Dimensionless> PI = addUnit(ONE
 			.multiply(StrictMath.PI));
 
 	/**
 	 * A dimensionless unit equals to <code>0.01</code> (standard name
 	 * <code>%</code>).
 	 */
-	static final Unit<Dimensionless> PERCENT = addUnit(AbstractUnit.ONE
-			.divide(100));
+//	static final Unit<Dimensionless> PERCENT = addUnit(ONE
+//			.divide(100));
 
 	/**
 	 * A logarithmic unit used to describe a ratio (standard name
 	 * <code>dB</code>).
 	 */
-	static final Unit<Dimensionless> DECIBEL = addUnit(AbstractUnit.ONE
+	static final Unit<Dimensionless> DECIBEL = addUnit(ONE
 			.transform(new LogConverter(10).inverse().concatenate(
 					new RationalConverter(1d, 10d))));
 
@@ -642,7 +642,7 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * produces unique consecutive images (standard name <code>fps</code>).
 	 */
 	static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(
-			AbstractUnit.ONE.divide(SECOND)).asType(Frequency.class);
+			ONE.divide(SECOND)).asType(Frequency.class);
 
 	// //////////
 	// Others //
