@@ -36,10 +36,10 @@ import tec.uom.se.AbstractConverter;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.AbstractUnitFormat;
 import tec.uom.se.format.SymbolMap;
-import tec.uom.se.format.internal.TokenException;
-import tec.uom.se.format.internal.TokenMgrError;
 import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.RationalConverter;
+import tec.uom.se.internal.format.TokenException;
+import tec.uom.se.internal.format.TokenMgrError;
 import tec.uom.se.unit.AnnotatedUnit;
 import tec.uom.se.unit.MetricPrefix;
 
