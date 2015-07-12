@@ -33,13 +33,11 @@ import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.RationalConverter;
 import tec.units.ri.unit.ProductUnit;
 import tec.units.ri.unit.TransformedUnit;
-import tec.units.ri.unit.Units;
-
 import javax.measure.Unit;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
 
-import systems.uom.quantity.Information;
+import systems.uom.quantity.*;
 
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
