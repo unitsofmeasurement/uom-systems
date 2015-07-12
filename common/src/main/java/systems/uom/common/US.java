@@ -29,9 +29,11 @@ import static tec.units.ri.unit.MetricPrefix.MICRO;
 import static si.uom.SI.*;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
+import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.RationalConverter;
 import tec.units.ri.unit.ProductUnit;
 import tec.units.ri.unit.TransformedUnit;
+import tec.units.ri.unit.Units;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Angle;
@@ -412,6 +414,12 @@ public final class US extends AbstractSystemOfUnits {
 	public static final Unit<Volume> BARREL = addUnit(LITER
 			.multiply(238.4810d));
 
+	// //////////////////////////////////////////////////////////////////////////
+	// Label adjustments for US system
+	static {
+		SimpleUnitFormat.getInstance().label(POUND, "lb");
+	}
+	
 	/**
 	 * Holds the international foot: 0.3048 m exact.
 	 */

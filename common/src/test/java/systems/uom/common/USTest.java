@@ -30,20 +30,44 @@
 package systems.uom.common;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static systems.uom.common.US.POUND; 
+import static tec.units.ri.unit.MetricPrefix.*;
+import static tec.units.ri.unit.Units.GRAM;
+import static tec.units.ri.unit.Units.KILOGRAM;
 
-import javax.measure.format.UnitFormat;
-
+import org.junit.Ignore;
 import org.junit.Test;
 
 import tec.units.ri.format.EBNFUnitFormat;
 
 public class USTest {
 	@Test
-	public void testFormat() {
+	public void testFormat() {	
+		assertEquals("lb", POUND.toString());
+	}
+	
+	@Test
+	@Ignore
+	public void testFormatEBNF() {
 		EBNFUnitFormat format = EBNFUnitFormat.getInstance();
 		
 		//assertEquals("lb", POUND.toString());
 		assertEquals("lb", format.format(POUND));
+	}
+	
+	@Test
+	public void testGetSymbol() {
+		// TODO see https://github.com/unitsofmeasurement/uom-se/issues/54 / https://java.net/jira/browse/UNITSOFMEASUREMENT-109
+		assertEquals("kg", KILOGRAM.getSymbol());
+//		assertEquals("kg", SI.GRAM.getSymbol()); //"g"
+//		assertEquals("kg", UCUM.POUND.getSymbol()); //"lb"
+//		assertEquals("kg", UCUM.OUNCE.getSymbol());//"oz"
+		assertEquals("kg", KILO(GRAM).getSymbol());
+//		assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
+//		assertEquals("kg", US.POUND.getSymbol()); //"lb"
+		assertNull(GRAM.getSymbol());
+//		assertNull(UCUM.OUNCE.getSymbol());
+		assertNull(POUND.getSymbol());
 	}
 }
