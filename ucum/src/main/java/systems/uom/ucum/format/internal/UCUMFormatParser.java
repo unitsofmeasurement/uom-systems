@@ -29,6 +29,8 @@
  */
 package systems.uom.ucum.format.internal;
 
+import static tec.uom.se.unit.Units.ONE;
+
 import javax.measure.Unit;
 
 import tec.uom.se.AbstractUnit;
@@ -69,8 +71,8 @@ public final class UCUMFormatParser {
     }
     
     final public Unit Term() throws TokenException {
-        Unit result = AbstractUnit.ONE;
-        Unit temp = AbstractUnit.ONE;
+        Unit result = ONE;
+        Unit temp = ONE;
         result = Component();
         label_1:
         while (true) {
@@ -105,7 +107,7 @@ public final class UCUMFormatParser {
     }
 
     final public Unit Component() throws TokenException {
-        Unit result = (AbstractUnit) AbstractUnit.ONE;
+        Unit result = (AbstractUnit) ONE;
         Token token = null;
         if (jj_2_1(2147483647)) {
             result = Annotatable();
@@ -131,7 +133,7 @@ public final class UCUMFormatParser {
                 case SOLIDUS:
                     jj_consume_token(SOLIDUS);
                     result = Component(); {
-                    return AbstractUnit.ONE.divide(result);
+                    return ONE.divide(result);
                 }
                 case 14:
                     jj_consume_token(14);
@@ -148,7 +150,7 @@ public final class UCUMFormatParser {
     }
 
     final public Unit Annotatable() throws TokenException {
-    	Unit result = AbstractUnit.ONE;
+    	Unit result = ONE;
         Token token1 = null;
         Token token2 = null;
         if (jj_2_2(2147483647)) {

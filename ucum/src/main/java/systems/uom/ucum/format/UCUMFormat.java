@@ -1,4 +1,4 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
  *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
@@ -29,6 +29,7 @@
  */
 package systems.uom.ucum.format;
 
+import static tec.uom.se.unit.Units.ONE;
 
 import systems.uom.ucum.format.internal.UCUMFormatParser;
 import systems.uom.ucum.internal.SI;
@@ -72,7 +73,7 @@ import java.util.*;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, 28 January 2015
+ * @version 0.6.1, 21 July 2015
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
 
@@ -231,7 +232,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                     converter = converter.concatenate(MetricPrefix.KILO.getConverter());
                 }
                 format(parentUnit, temp);
-                printSeparator = !parentUnit.equals(AbstractUnit.ONE);
+                printSeparator = !parentUnit.equals(ONE);
             }
             formatConverter(converter, printSeparator, temp);
             symbol = temp;
@@ -471,11 +472,11 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
             int start = cursor.getIndex();
             int end = csq.length();
             if (end <= start) {
-                return AbstractUnit.ONE;
+                return ONE;
             }
             String source = csq.subSequence(start, end).toString().trim();
             if (source.length() == 0) {
-                return AbstractUnit.ONE;
+                return ONE;
             }
             if (!caseSensitive) {
                 source = source.toUpperCase();

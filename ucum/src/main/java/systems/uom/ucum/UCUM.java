@@ -1,4 +1,4 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
  *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
@@ -29,6 +29,9 @@
  */
 package systems.uom.ucum;
 
+import static tec.uom.se.unit.MetricPrefix.*;
+import static tec.uom.se.unit.Units.ONE;
+
 import si.uom.quantity.Action;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
@@ -47,43 +50,7 @@ import tec.uom.se.unit.Units;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
-import javax.measure.quantity.AmountOfSubstance;
-import javax.measure.quantity.Angle;
-import javax.measure.quantity.Area;
-import javax.measure.quantity.Dimensionless;
-import javax.measure.quantity.ElectricCapacitance;
-import javax.measure.quantity.ElectricCharge;
-import javax.measure.quantity.ElectricConductance;
-import javax.measure.quantity.ElectricCurrent;
-import javax.measure.quantity.ElectricInductance;
-import javax.measure.quantity.ElectricPermittivity;
-import javax.measure.quantity.ElectricPotential;
-import javax.measure.quantity.ElectricResistance;
-import javax.measure.quantity.Energy;
-import javax.measure.quantity.Force;
-import javax.measure.quantity.Frequency;
-import javax.measure.quantity.Illuminance;
-import javax.measure.quantity.Length;
-import javax.measure.quantity.Luminance;
-import javax.measure.quantity.LuminousFlux;
-import javax.measure.quantity.LuminousIntensity;
-import javax.measure.quantity.MagneticFieldStrength;
-import javax.measure.quantity.MagneticFlux;
-import javax.measure.quantity.MagneticFluxDensity;
-import javax.measure.quantity.Mass;
-import javax.measure.quantity.Power;
-import javax.measure.quantity.Pressure;
-import javax.measure.quantity.RadiationDoseAbsorbed;
-import javax.measure.quantity.RadiationDoseEffective;
-import javax.measure.quantity.Radioactivity;
-import javax.measure.quantity.SolidAngle;
-import javax.measure.quantity.Speed;
-import javax.measure.quantity.Temperature;
-import javax.measure.quantity.Time;
-import javax.measure.quantity.Volume;
-
-import static tec.uom.se.unit.MetricPrefix.*;
+import javax.measure.quantity.*;
 
 /**
  * <p>
@@ -101,7 +68,7 @@ import static tec.uom.se.unit.MetricPrefix.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.6.4, $Date: 2015-07-01 $
+ * @version 0.6.5, $Date: 2015-07-21 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -152,37 +119,37 @@ public final class UCUM extends AbstractSystemOfUnits {
 	// DIMENSIONLESS DERIVED UNITS: UCUM 4.3 §26 //
 	// /////////////////////////////////////////////
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> TRILLIONS = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> TRILLIONS = addUnit(ONE
 			.multiply(1000000000000L));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> BILLIONS = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> BILLIONS = addUnit(ONE
 			.multiply(1000000000));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> MILLIONS = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> MILLIONS = addUnit(ONE
 			.multiply(1000000));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> THOUSANDS = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> THOUSANDS = addUnit(ONE
 			.multiply(1000));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> HUNDREDS = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> HUNDREDS = addUnit(ONE
 			.multiply(100));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> PI = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> PI = addUnit(ONE
 			.transform(new PiMultiplierConverter()));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> PERCENT = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> PERCENT = addUnit(ONE
 			.divide(100));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> PER_THOUSAND = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> PER_THOUSAND = addUnit(ONE
 			.divide(1000));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> PER_MILLION = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> PER_MILLION = addUnit(ONE
 			.divide(1000000));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> PER_BILLION = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> PER_BILLION = addUnit(ONE
 			.divide(1000000000));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> PER_TRILLION = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> PER_TRILLION = addUnit(ONE
 			.divide(1000000000000L));
 	// //////////////////////////
 	// SI UNITS: UCUM 4.3 §27 //
@@ -845,7 +812,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Mass> CARAT_METRIC = addUnit(GRAM.divide(5));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Dimensionless> CARAT_GOLD = addUnit(AbstractUnit.ONE
+	public static final Unit<Dimensionless> CARAT_GOLD = addUnit(ONE
 			.divide(24));
 	
 	// //////////////////////////////////////////////
@@ -867,7 +834,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 	 * standard.
 	 */
 	public static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(
-			AbstractUnit.ONE.divide(SECOND)).asType(Frequency.class);
+			ONE.divide(SECOND)).asType(Frequency.class);
 
 	// ///////////////////
 	// Collection View //

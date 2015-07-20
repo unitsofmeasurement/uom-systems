@@ -1,4 +1,4 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
  *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
@@ -31,10 +31,10 @@
 package systems.uom.ucum.format.internal;
 
 import static systems.uom.ucum.format.internal.UnitTokenConstants.*;
+import static tec.uom.se.unit.Units.ONE;
 
 import javax.measure.Unit;
 
-import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SymbolMap;
 import tec.uom.se.function.LogConverter;
 import tec.uom.se.unit.MetricPrefix;
@@ -69,13 +69,12 @@ public final class UnitFormatParser {
         }
     }
 
-
     final public Unit CompoundExpr() throws TokenException {
         throw new UnsupportedOperationException("Compound units not supported");
     }
 
     final public Unit AddExpr() throws TokenException {
-        Unit result = AbstractUnit.ONE;
+        Unit result = ONE;
         Number n1 = null;
         Token sign1 = null;
         Number n2 = null;
@@ -113,10 +112,9 @@ public final class UnitFormatParser {
         }
     }
 
-
     final public Unit MulExpr() throws TokenException {
-        Unit result = AbstractUnit.ONE;
-        Unit temp = AbstractUnit.ONE;
+        Unit result = ONE;
+        Unit temp = ONE;
         result = ExponentExpr();
         label_2:
         while (true) {
@@ -164,7 +162,7 @@ public final class UnitFormatParser {
     }
 
     final public Unit ExponentExpr() throws TokenException {
-        Unit result = AbstractUnit.ONE;
+        Unit result = ONE;
         Exponent exponent = null;
         Token token = null;
         if (jj_2_2(2147483647)) {
@@ -259,7 +257,7 @@ public final class UnitFormatParser {
     }
 
     final public Unit AtomicExpr() throws TokenException {
-        Unit result = AbstractUnit.ONE;
+        Unit result = ONE;
         Number n = null;
         Token token = null;
         switch ((nextTokenIndex == -1) ? jj_ntk() : nextTokenIndex) {

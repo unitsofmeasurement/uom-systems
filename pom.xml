@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>0.8-RC2</version>
+		<version>0.8-RC3</version>
 	</parent>
 	<groupId>systems.uom</groupId>
 	<artifactId>uom-systems</artifactId>
@@ -18,7 +18,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.6</jdkVersion>
-		<ri.version>0.8-RC2</ri.version>
+		<ri.version>0.8-RC3</ri.version>
 		<si.version>0.4-SNAPSHOT</si.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>

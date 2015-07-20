@@ -1,4 +1,4 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
  *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
@@ -48,6 +48,7 @@ import systems.uom.ucum.UCUM;
 import tec.uom.se.AbstractUnit;
 import static org.junit.Assert.*;
 import static tec.uom.se.unit.MetricPrefix.KILO;
+import static tec.uom.se.unit.Units.ONE;
 import static tec.uom.se.unit.Units.GRAM;
 import static tec.uom.se.unit.Units.METRE;
 import static tec.uom.se.unit.Units.WATT;
@@ -77,7 +78,7 @@ public class UnitsTest {
     @Before
     public void setUp() throws Exception {
 //      super.setUp();
-        one = AbstractUnit.ONE;
+        one = ONE;
     }
 
     /* (non-Javadoc)
@@ -378,5 +379,4 @@ public class UnitsTest {
 	@Test
 	public void testEquals() {
 	}
-
 }

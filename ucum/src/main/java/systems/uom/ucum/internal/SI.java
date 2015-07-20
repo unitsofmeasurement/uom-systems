@@ -1,4 +1,4 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
  *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
@@ -24,8 +24,6 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package systems.uom.ucum.internal;
-
-import static tec.uom.se.AbstractUnit.ONE;
 
 import java.util.HashMap;
 
@@ -63,7 +61,7 @@ import tec.uom.se.unit.Units;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, July 1, 2015
+ * @version 0.7.1, July 21, 2015
 */
 public final class SI extends Units {
 
