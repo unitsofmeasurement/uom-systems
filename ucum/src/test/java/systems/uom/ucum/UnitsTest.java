@@ -47,12 +47,12 @@ import tec.uom.se.unit.Units;
 import systems.uom.ucum.UCUM;
 import tec.uom.se.AbstractUnit;
 import static org.junit.Assert.*;
+import static tec.uom.se.internal.format.OutputHelper.println;
 import static tec.uom.se.unit.MetricPrefix.KILO;
 import static tec.uom.se.unit.Units.ONE;
 import static tec.uom.se.unit.Units.GRAM;
 import static tec.uom.se.unit.Units.METRE;
 import static tec.uom.se.unit.Units.WATT;
-import static tec.uom.se.util.OutputHelper.println;
 
 /**
  *
