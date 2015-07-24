@@ -30,7 +30,7 @@
 package systems.uom.common;
 
 import static org.junit.Assert.assertEquals;
-import static tec.units.ri.util.OutputHelper.println;
+import static tec.units.ri.internal.format.OutputHelper.println;
 
 import org.junit.Test;
 
