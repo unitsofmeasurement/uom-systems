@@ -46,6 +46,7 @@
 				<groupId>systems.uom</groupId>
 				<artifactId>uom-systems-quantity</artifactId>
 				<version>${project.version}</version>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
