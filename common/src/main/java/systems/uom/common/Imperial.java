@@ -50,12 +50,11 @@ import tec.units.ri.unit.AlternateUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.3, $Date: 2015-01-28 $
+ * @version 0.3.1, $Date: 2015-08-03 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
- *      Imperial CommonUnits</a>
+ *      Imperial Units</a>
  */
- // TODO while SE-specific, consider moving to a module like "imperial" under uom-systems
 public final class Imperial extends AbstractSystemOfUnits  {
 
 	/**
@@ -95,6 +94,10 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	 */
 	static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(
 			AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR));
+	/**
+	 * An English and imperial unit of weight or mass now equal to 14 avoirdupois pounds or 6.35029318 kg (<code>st</code>).
+	 */
+	static final Unit<Mass> STONE = addUnit(KILOGRAM.multiply(6.35029318));
 
 	/**
 	 * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
