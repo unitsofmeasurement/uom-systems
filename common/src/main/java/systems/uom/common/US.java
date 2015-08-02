@@ -377,7 +377,7 @@ public final class US extends AbstractSystemOfUnits {
 	 * A unit of volume equal to <code>1 / 128 {@link #GALLON_LIQUID}</code>
 	 * (standard name <code>oz_fl</code>).
 	 */
-	public static final Unit<Volume> OUNCE_LIQUID = addUnit(GALLON_LIQUID
+	public static final Unit<Volume> FLUID_OUNCE = addUnit(GALLON_LIQUID
 			.divide(128));
 
 	/**
@@ -392,6 +392,14 @@ public final class US extends AbstractSystemOfUnits {
 	 * <code>fl dr</code>).
 	 */
 	public static final Unit<Volume> FLUID_DRAM = addUnit(MINIM.multiply(60));
+	
+
+	/**
+	 * The cup is a unit of measurement for volume, used in cooking to measure liquids (fluid measurement) and bulk foods such as granulated sugar (dry measurement). 
+	 * A cup is equal to <code>8 {@link #FLUID_OUNCE}</code> (standard name
+	 * <code>cup</code>).
+	 */
+	public static final Unit<Volume> CUP = addUnit(FLUID_OUNCE.multiply(8));	
 
 	/**
 	 * A unit of volume equal to <code>80 {@link #MINIM}</code> (standard name
