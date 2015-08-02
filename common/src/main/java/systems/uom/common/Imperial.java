@@ -97,7 +97,7 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	/**
 	 * An English and imperial unit of weight or mass now equal to 14 avoirdupois pounds or 6.35029318 kg (<code>st</code>).
 	 */
-	static final Unit<Mass> STONE = addUnit(KILOGRAM.multiply(6.35029318));
+	public static final Unit<Mass> STONE = addUnit(KILOGRAM.multiply(6.35029318));
 
 	/**
 	 * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
