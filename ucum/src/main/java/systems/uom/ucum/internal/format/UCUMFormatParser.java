@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.ucum.format.internal;
+package systems.uom.ucum.internal.format;
 
 import static tec.uom.se.unit.Units.ONE;
 
@@ -36,7 +36,7 @@ import javax.measure.Unit;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SymbolMap;
 import tec.uom.se.unit.MetricPrefix;
-import static systems.uom.ucum.format.internal.UCUMTokenConstants.*;
+import static systems.uom.ucum.internal.format.UCUMTokenConstants.*;
 
 /**
  * <p> 
