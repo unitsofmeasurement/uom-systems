@@ -99,12 +99,6 @@
                 <artifactId>si-units-java8</artifactId>
                 <version>${si.version}</version>
             </dependency>
-			<dependency>
-				<groupId>systems.uom</groupId>
-				<artifactId>uom-systems-quantity</artifactId>
-				<version>${project.version}</version>
-				<scope>provided</scope>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	
@@ -120,25 +114,15 @@
 			<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
 		</snapshotRepository>
 		<site>
-			<id>www.unitsofmeasurement.org</id>
-			<url>scp://www.unitsofmeasurement.org/www/docs/lib/</url>
+			<id>unitsofmeasurement.github.io</id>
+			<url>scp://unitsofmeasurement.github.io/www/docs/lib/</url>
 		</site>
 	</distributionManagement>
 
   <!-- Additional repositories -->
     <!-- Helps to resolve Parent POM and Snapshot artifacts -->
     <repositories>
-        <!--<repository> Only if API was snapshot
-            <id>geotoolkit</id>
-            <name>Geotoolkit.org project</name>
-            <url>http://maven.geotoolkit.org</url>
-        </repository> -->
-        <repository>
-            <id>jcenter</id>
-            <name>JCenter</name>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-        <repository>
+         <repository>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -153,6 +137,16 @@
             <id>bintray-snapshot</id>
             <name>libs-snapshot</name>
             <url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+        </repository>
+        <!--<repository> Only if API was snapshot
+            <id>geotoolkit</id>
+            <name>Geotoolkit.org project</name>
+            <url>http://maven.geotoolkit.org</url>
+        </repository> -->
+        <repository>
+            <id>jcenter</id>
+            <name>JCenter</name>
+            <url>http://jcenter.bintray.com</url>
         </repository>
     </repositories>
 	
