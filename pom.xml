@@ -25,9 +25,9 @@
 	</licenses>
 	
 	<modules>
-		<module>quantity</module>
+		<module>quantity</module> <!-- 
 		<module>common</module>
-		<module>ucum</module>
+		<module>ucum</module>  -->
 	</modules>
 	
 	<!-- ======================================================= -->
@@ -138,11 +138,11 @@
             <name>libs-snapshot</name>
             <url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
         </repository>
-        <!--<repository> Only if API was snapshot
+        <repository>
             <id>geotoolkit</id>
             <name>Geotoolkit.org project</name>
             <url>http://maven.geotoolkit.org</url>
-        </repository> -->
+        </repository>
         <repository>
             <id>jcenter</id>
             <name>JCenter</name>
