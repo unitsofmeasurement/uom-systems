@@ -35,7 +35,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.6</jdkVersion>
-		<ri.version>0.8-RC3</ri.version>
+		<ri.version>0.8-SNAPSHOT</ri.version>
 		<si.version>0.4-SNAPSHOT</si.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.6</maven.compile.targetLevel>
@@ -91,9 +91,14 @@
 			</dependency>
 			<dependency>
 				<groupId>si.uom</groupId>
-				<artifactId>si-impl</artifactId>
+				<artifactId>si-units</artifactId>
 				<version>${si.version}</version>
 			</dependency>
+			 <dependency>
+                <groupId>si.uom</groupId>
+                <artifactId>si-units-java8</artifactId>
+                <version>${si.version}</version>
+            </dependency>
 			<dependency>
 				<groupId>systems.uom</groupId>
 				<artifactId>uom-systems-quantity</artifactId>
