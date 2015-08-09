@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
-	<groupId>systems.uom</groupId>	
+	<groupId>systems.uom</groupId>
 	<version>0.2-SNAPSHOT</version>
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
 		<version>0.8-RC3</version>
-	</parent>	
+	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
 	<url>http://github.com/unitsofmeasurement/uom-systems</url>
@@ -23,7 +23,7 @@
 			<url>LICENSE</url>
 		</license>
 	</licenses>
-	
+
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
@@ -36,52 +36,52 @@
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
-	
-	<modules>
-        <module>quantity</module> <!-- 
-        <module>common</module>
-        <module>ucum-java8</module>  -->
-    </modules>
-	
-	<build>
-		<plugins>
-			<!-- ======================================================= -->
-			<!-- Compilation -->
-			<!-- ======================================================= -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${project.build.javaVersion}</source>
-					<target>${project.build.javaVersion}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
 
-			<!-- ======================================================= -->
-			<!-- JAR packaging -->
-			<!-- ======================================================= -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-						</manifest>
-						<manifestEntries>
-							<Specification-Title>Units of Measurement Systems</Specification-Title>
-							<Specification-Version>${project.version}</Specification-Version>
-							<Specification-Vendor>${project.organization.name}</Specification-Vendor>
-							<Implementation-Vendor>Unit-API contributors</Implementation-Vendor>
-							<Implementation-URL>${project.organization.url}</Implementation-URL>
-						</manifestEntries>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
+	<modules>
+		<module>quantity</module> <!-- <module>common</module> <module>ucum-java8</module> -->
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- ======================================================= -->
+				<!-- Compilation -->
+				<!-- ======================================================= -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${project.build.javaVersion}</source>
+						<target>${project.build.javaVersion}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+
+				<!-- ======================================================= -->
+				<!-- JAR packaging -->
+				<!-- ======================================================= -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+								<Specification-Title>Units of Measurement Systems</Specification-Title>
+								<Specification-Version>${project.version}</Specification-Version>
+								<Specification-Vendor>${project.organization.name}</Specification-Vendor>
+								<Implementation-Vendor>Unit-API contributors</Implementation-Vendor>
+								<Implementation-URL>${project.organization.url}</Implementation-URL>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
-	
+
 	<!-- Dependency Management -->
 	<dependencyManagement>
 		<dependencies>
@@ -95,14 +95,14 @@
 				<artifactId>si-units</artifactId>
 				<version>${si.version}</version>
 			</dependency>
-			 <dependency>
-                <groupId>si.uom</groupId>
-                <artifactId>si-units-java8</artifactId>
-                <version>${si.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>si.uom</groupId>
+				<artifactId>si-units-java8</artifactId>
+				<version>${si.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>bintray-release</id>
@@ -120,37 +120,37 @@
 		</site>
 	</distributionManagement>
 
-  <!-- Additional repositories -->
-    <!-- Helps to resolve Parent POM and Snapshot artifacts -->
-    <repositories>
-         <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-release</id>
-            <name>libs-release</name>
-            <url>http://oss.jfrog.org/artifactory/libs-release</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>bintray-snapshot</id>
-            <name>libs-snapshot</name>
-            <url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
-        </repository>
-        <repository>
-            <id>geotoolkit</id>
-            <name>Geotoolkit.org project</name>
-            <url>http://maven.geotoolkit.org</url>
-        </repository>
-        <repository>
-            <id>jcenter</id>
-            <name>JCenter</name>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
-	
+	<!-- Additional repositories -->
+	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-release</id>
+			<name>libs-release</name>
+			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>bintray-snapshot</id>
+			<name>libs-snapshot</name>
+			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+		</repository>
+		<repository>
+			<id>geotoolkit</id>
+			<name>Geotoolkit.org project</name>
+			<url>http://maven.geotoolkit.org</url>
+		</repository>
+		<repository>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
+
 	<profiles>
 		<profile>
 			<id>license</id>
