@@ -18,6 +18,8 @@ Modular Unit Systems
 Unit systems are defined in a modular nature. On top of [API](../../../unit-api) and implementations (e.g. [RI](../../../unit-ri)) each application may use one or more unit systems.
 ![Dependencies](/src/site/resources/images/dependencies.png)
 
+Also see [The evolution of unit systems](http://info.ee.surrey.ac.uk/Workshop/advice/coils/unit_systems/#sug)
+
 ### Environment
 Depending on the environment (Embedded, Desktop/Server or a particular Java version) implementations use a different Maven artifactId. Unless explicitly highlighted, all other systems run on every supported environment using the [Reference Implementation](../../../unit-ri).
 
