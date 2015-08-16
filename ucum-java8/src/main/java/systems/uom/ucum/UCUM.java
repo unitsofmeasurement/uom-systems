@@ -31,7 +31,6 @@ package systems.uom.ucum;
 
 import static tec.uom.se.unit.MetricPrefix.*;
 import static tec.uom.se.unit.Units.ONE;
-
 import si.uom.quantity.Action;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
@@ -43,6 +42,7 @@ import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import systems.uom.ucum.internal.SI;
 import tec.uom.se.*;
+import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.unit.AlternateUnit;
 import tec.uom.se.unit.ProductUnit;
@@ -68,7 +68,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.6.5, $Date: 2015-07-21 $
+ * @version 0.7, $Date: 2015-08-16 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -844,30 +844,6 @@ public final class UCUM extends AbstractSystemOfUnits {
 	public String getName() {
 		return "UCUM";
 	}
-
-	/**
-	 * Returns the unit corresponding to the specified quantity type. The UCUM
-	 * system uses the same mapping as the {@link SI} system.
-	 *
-	 * @param quantityType
-	 * @return <code>Units.getInstance().getUnit(quantityType)</code>
-	 */
-	// @Override
-	// public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
-	// return Units.getInstance().getUnit(quantityType);
-	// }
-
-	/**
-	 * Adds a new unit not mapped to any specified quantity type.
-	 *
-	 * @param unit
-	 *            the unit being added.
-	 * @return <code>unit</code>.
-	 */
-//	private static <U extends Unit<?>> U addUnit(U unit) {
-//		INSTANCE.units.add(unit);
-//		return unit;
-//	}
 	
     private static <U extends Unit<Q>, Q extends Quantity<Q>> U addUnit(U unit) {
         INSTANCE.units.add(unit);
@@ -888,5 +864,12 @@ public final class UCUM extends AbstractSystemOfUnits {
 		INSTANCE.units.add(unit);
 		INSTANCE.quantityToUnit.put(type, unit);
 		return unit;
+	}
+	
+	// //////////////////////////////////////////////////////////////////////////
+	// Label adjustments for UCUM system
+	static {
+		SimpleUnitFormat.getInstance().label(ATOMIC_MASS_UNIT, "AMU");
+		SimpleUnitFormat.getInstance().label(POUND, "lb");
 	}
 }

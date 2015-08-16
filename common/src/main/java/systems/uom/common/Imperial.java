@@ -39,6 +39,7 @@ import javax.measure.quantity.Volume;
 import javax.measure.spi.SystemOfUnits;
 
 import tec.units.ri.AbstractSystemOfUnits;
+import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.unit.AlternateUnit;
 
 /**
@@ -50,7 +51,7 @@ import tec.units.ri.unit.AlternateUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.3.1, $Date: 2015-08-03 $
+ * @version 0.4, $Date: 2015-08-16 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
@@ -276,6 +277,17 @@ public final class Imperial extends AbstractSystemOfUnits  {
         return unit;
     }
     
+	// //////////////////////////////////////////////////////////////////////////
+	// Label adjustments for Imperial system
+	static {
+		SimpleUnitFormat.getInstance().label(POUND, "lb");
+	}
+    
+	// ///////////////////
+	// Collection View //
+	// ///////////////////
+
+	@Override
 	public String getName() {
 		return getClass().getSimpleName();
 	}
