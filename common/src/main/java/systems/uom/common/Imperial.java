@@ -281,6 +281,8 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	// Label adjustments for Imperial system
 	static {
 		SimpleUnitFormat.getInstance().label(POUND, "lb");
+		SimpleUnitFormat.getInstance().label(FLUID_DRACHM, "fl drc");
+		SimpleUnitFormat.getInstance().label(FLUID_SCRUPLE, "fl scr");
 	}
     
 	// ///////////////////
