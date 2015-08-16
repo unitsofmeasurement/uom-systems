@@ -31,6 +31,7 @@
 		<jdkVersion>1.6</jdkVersion>
 		<jsr.version>0.8-SNAPSHOT</jsr.version>
 		<ri.version>0.8-SNAPSHOT</ri.version>
+		<se.version>0.8-SNAPSHOT</se.version>
 		<si.version>0.4-SNAPSHOT</si.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
@@ -38,7 +39,10 @@
 	</properties>
 
 	<modules>
-		<module>quantity</module> <!-- <module>common</module> <module>ucum-java8</module> -->
+		<module>quantity</module> 
+		<module>common</module>
+		<module>common-java8</module>
+		<module>ucum-java8</module>
 	</modules>
 
 	<build>
