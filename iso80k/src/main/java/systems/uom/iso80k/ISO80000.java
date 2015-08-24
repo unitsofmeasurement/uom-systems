@@ -40,6 +40,7 @@ import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
+import systems.uom.quantity.Level;
 import si.uom.SI;
 import tec.units.ri.*;
 import tec.units.ri.format.SimpleUnitFormat;
@@ -68,7 +69,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.iso.org">ISO80000</a>
  * @see <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO 80000-3</a>
- * @version 0.1, $Date: 2015-08-23 $
+ * @version 0.2, $Date: 2015-08-24 $
  */
 public final class ISO80000 extends AbstractSystemOfUnits {
 
@@ -96,7 +97,7 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	// BASE UNITS: ISO80000 4.2 §25 //
 	// ////////////////////////////
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<Length> METER = addUnit(Units.METRE);
+	public static final Unit<Length> METRE = addUnit(Units.METRE);
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Time> SECOND = addUnit(Units.SECOND);
 	/**
@@ -166,7 +167,7 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	 * <code>RADIAN.pow(2)</code>.
 	 */
 	public static final Unit<SolidAngle> STERADIAN = addUnit(Units.STERADIAN);
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	/** As per <a href="https://en.wikipedia.org/wiki/ISO_80000-8">ISO80000-8</a> standard. */
 	public static final Unit<Frequency> HERTZ = addUnit(Units.HERTZ);
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Force> NEWTON = addUnit(Units.NEWTON);
@@ -225,18 +226,18 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	 * <code>PI.multiply(RADIAN.divide(180))</code>.
 	 */
 	public static final Unit<Angle> DEGREE = addUnit(SI.DEGREE_ANGLE);
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	/** As per <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO80000-3</a> standard. */
 	public static final Unit<Angle> GRADE = addUnit(SI.DEGREE_ANGLE
 			.multiply(0.9));
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	/** As per <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO80000-3</a> standard. */
 	public static final Unit<Angle> GON = GRADE;
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	/** As per <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO80000-3</a> standard. */
 	public static final Unit<Angle> MINUTE_ANGLE = addUnit(SI.MINUTE_ANGLE);
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	/** As per <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO80000-3</a> standard. */
 	public static final Unit<Angle> SECOND_ANGLE = addUnit(SI.SECOND_ANGLE);
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<Volume> LITER = addUnit(Units.LITRE);
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	/** As per <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO80000-3</a> standard. */
+	public static final Unit<Volume> LITRE = addUnit(Units.LITRE);
+	/** As per <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO80000-3</a> standard. */
 	public static final Unit<Area> ARE = addUnit(Units.SQUARE_METRE.multiply(100));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Time> MINUTE = addUnit(Units.MINUTE);
@@ -317,10 +318,10 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	public static final Unit<Mass> PROTON_MASS = addUnit(GRAM
 			.multiply(1.6726231E-24));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<?> NEWTON_CONSTANT_OF_GRAVITY = addUnit(METER
+	public static final Unit<?> NEWTON_CONSTANT_OF_GRAVITY = addUnit(METRE
 			.pow(3).multiply(Units.KILOGRAM.pow(-1)).multiply(SECOND.pow(-2))
 			.multiply(6.67259E-11));
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	/** As per <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO80000-3</a> standard. */
 	public static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(Units.METRES_PER_SQUARE_SECOND
 			.multiply(9.80665));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
@@ -343,7 +344,7 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 			.divide(100)); // get rid of JXQ import (where from??) */
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Acceleration> GAL = addUnit(new ProductUnit<Acceleration>(
-			CENTI(METER).divide(SECOND.pow(2))));
+			CENTI(METRE).divide(SECOND.pow(2))));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Force> DYNE = addUnit(new ProductUnit<Force>(
 			Units.GRAM.multiply(CENTI(Units.METRE).divide(Units.SECOND
@@ -377,7 +378,7 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 			OERSTED.multiply(CENTI(Units.METRE))));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Luminance> STILB = addUnit(new ProductUnit<Luminance>(
-			CANDELA.divide(CENTI(METER).pow(2))));
+			CANDELA.divide(CENTI(METRE).pow(2))));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Luminance> LAMBERT = addUnit(new ProductUnit<Luminance>(
 			STILB.divide(PI)));
@@ -403,13 +404,13 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	// INTERNATIONAL CUSTOMARY UNITS: ISO80000 4.4 §31 //
 	// ///////////////////////////////////////////////
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	static final Unit<Length> INCH_INTERNATIONAL = addUnit(CENTI(METER)
+	static final Unit<Length> INCH_INTERNATIONAL = addUnit(CENTI(METRE)
 			.multiply(254).divide(100));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	static final Unit<Length> FOOT_INTERNATIONAL = addUnit(INCH_INTERNATIONAL
 			.multiply(12));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<Length> NAUTICAL_MILE_INTERNATIONAL = addUnit(METER
+	public static final Unit<Length> NAUTICAL_MILE_INTERNATIONAL = addUnit(METRE
 			.multiply(1852));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Speed> KNOT = addUnit(new ProductUnit<Speed>(
@@ -449,7 +450,7 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	public static final Unit<Length> PICA_PRINTER = addUnit(POINT_PRINTER
 			.multiply(12));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<Length> PIED = addUnit(CENTI(METER).multiply(3248)
+	public static final Unit<Length> PIED = addUnit(CENTI(METRE).multiply(3248)
 			.divide(100));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Length> POUCE = addUnit(PIED.divide(12));
@@ -520,17 +521,17 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Volume> STERE = addUnit(new ProductUnit<Volume>(
-			METER.pow(3)));
+			METRE.pow(3)));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<Length> ANGSTROM = addUnit(NANO(METER).divide(10));
+	public static final Unit<Length> ANGSTROM = addUnit(NANO(METRE).divide(10));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Area> BARN = addUnit(new ProductUnit<Area>(FEMTO(
-			METER).pow(2)).multiply(100));
+			METRE).pow(2)).multiply(100));
 //	public static final Unit<Area> BARN = addUnit(new ProductUnit<Area>(FEMTO(
 //			METER).pow(2).multiply(100)));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Pressure> ATMOSPHERE_TECHNICAL = addUnit(new ProductUnit<Pressure>(
-			KILO(GRAM_FORCE).divide(CENTI(METER).pow(2))));
+			KILO(GRAM_FORCE).divide(CENTI(METRE).pow(2))));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<ElectricConductance> MHO = addUnit(new AlternateUnit<ElectricConductance>(
 			TMP_MHO, TMP_MHO.getSymbol()));
@@ -553,9 +554,10 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	public static final Unit<Dimensionless> CARAT_GOLD = addUnit(ONE
 			.divide(24));
 	
-	// ///////////////
-	// Information //
-	// ///////////////
+	// /////////////////////////////////////////////
+	// IEC 80000-13 Information                   //
+	// https://en.wikipedia.org/wiki/IEC_80000-13 //
+	// /////////////////////////////////////////////
 	/**
      * The unit for binary information (standard name <code>bit</code>).
      */
@@ -578,6 +580,8 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	 * Equivalent {@link #BYTE}
 	 */
 	static final Unit<Information> OCTET = BYTE;
+	
+	// TODO add more units in https://en.wikipedia.org/wiki/IEC_80000-13
 
 	// /////////////////////
 	// MISSING FROM ISO80000 //
@@ -590,6 +594,13 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	public static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(
 			ONE.divide(SECOND)).asType(Frequency.class);
 
+	
+	//public static final Unit<Dimensionless> CURVATURE = addUnit(ONE.divide(METER).asType(Dimensionless.class));
+	// TODO or shall we actually have a Quantity Curvature in systems-quantity?
+	
+	@SuppressWarnings("unchecked")
+	public static final Unit<Level<Power>> NEPER = addUnit(ONE.asType(Level.class));
+	
 	// ///////////////////
 	// Collection View //
 	// ///////////////////
@@ -625,5 +636,6 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	static {
 		SimpleUnitFormat.getInstance().label(ATOMIC_MASS_UNIT, "AMU");
 		SimpleUnitFormat.getInstance().label(POUND, "lb");
+		SimpleUnitFormat.getInstance().label(NEPER, "Np");
 	}
 }

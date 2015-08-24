@@ -32,8 +32,8 @@ package systems.uom.iso80k;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static tec.units.ri.unit.MetricPrefix.*;
-import static tec.units.ri.unit.Units.GRAM;
 import static tec.units.ri.unit.Units.KILOGRAM;
+import static systems.uom.iso80k.ISO80000.*;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Speed;
@@ -47,6 +47,7 @@ public class ISO80kTest {
 	@Test
 	public void testFormat() {	
 		assertEquals("kg", KILOGRAM.toString());
+		assertEquals("Np", NEPER.toString());
 	}
 	
 	@Test
