@@ -110,9 +110,9 @@ import tec.uom.se.unit.ProductUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.19, $Date: 2015-08-16$
+ * @version 1.20, $Date: 2015-08-25$
  */
-public final class NonSI extends AbstractSystemOfUnits {
+final class NonSI extends AbstractSystemOfUnits {
 
 	/**
 	 * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
