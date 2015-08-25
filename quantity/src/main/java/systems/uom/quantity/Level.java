@@ -32,10 +32,10 @@ import javax.measure.Quantity;
  * In the International System of Quantities, the level of a quantity is the logarithm of the ratio of the value of that quantity to a reference value of the same quantity.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.1
+ * @version 0.2, Aug 25, 2015
  *
- * @see InformationRate
  * @see <a href="https://en.wikipedia.org/wiki/Level_(logarithmic_quantity)">Wikipedia: Level (logarithmic quantity)</a>
+ * @see <a href="https://en.wikipedia.org/wiki/International_System_of_Quantities">Wikipedia: International System of Quantities (ISQ)</a>
  */
 public interface Level<Q extends Quantity<Q>> extends Quantity<Level<Q>> {
 }
