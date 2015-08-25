@@ -44,7 +44,9 @@ import systems.uom.quantity.Level;
 import si.uom.SI;
 import tec.units.ri.*;
 import tec.units.ri.format.SimpleUnitFormat;
+import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.PiMultiplierConverter;
+import tec.units.ri.function.RationalConverter;
 import tec.units.ri.unit.AlternateUnit;
 import tec.units.ri.unit.ProductUnit;
 import tec.units.ri.unit.Units;
@@ -214,6 +216,41 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	public static final Unit<RadiationDoseAbsorbed> GRAY = addUnit(Units.GRAY);
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<RadiationDoseEffective> SIEVERT = addUnit(Units.SIEVERT);
+
+	/**
+	 * Holds the Avogadro constant.
+	 */
+	private static final double AVOGADRO_CONSTANT = 6.02214199e23; // (1/mol).
+
+	/**
+	 * Holds the electric charge of one electron.
+	 */
+	private static final double ELEMENTARY_CHARGE_CONSTANT = 1.602176462e-19; // (C).
+	
+	// ///////////////////
+	// Electric charge //
+	// ///////////////////
+	/**
+	 * A unit of electric charge equal to the charge on one electron (standard
+	 * name <code>e</code>).
+	 */
+	static final Unit<ElectricCharge> E = addUnit(COULOMB
+			.multiply(ELEMENTARY_CHARGE_CONSTANT));
+
+	/**
+	 * A unit of electric charge equal to equal to the product of Avogadro's
+	 * number (see {@link SI#MOLE}) and the charge (1 e) on a single electron
+	 * (standard name <code>Fd</code>).
+	 */
+	static final Unit<ElectricCharge> FARADAY = addUnit(COULOMB
+			.multiply(ELEMENTARY_CHARGE_CONSTANT * AVOGADRO_CONSTANT)); // e/mol
+
+	/**
+	 * A unit of electric charge which exerts a force of one dyne on an equal
+	 * charge at a distance of one centimeter (standard name <code>Fr</code>).
+	 */
+	static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB
+			.multiply(3.3356e-10));
 	
 	// /////////////////////////////////////////////////////////////////////
 	// OTHER UNITS FROM ISO 1000, ISO 2955, AND ANSI X3.50: ISO80000 4.3 §28 //
@@ -278,11 +315,7 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 //					Units.UNIFIED_ATOMIC_MASS.getSymbol()), Mass.class);
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Energy> ELECTRON_VOLT = addUnit(SI.ELECTRON_VOLT);
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<Length> ASTRONOMIC_UNIT = addUnit(SI.ASTRONOMICAL_UNIT);
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<Length> PARSEC = addUnit(Units.METRE
-			.multiply(3.085678E16));
+	
 	
 	// ///////////////////////////////
 	// NATURAL UNITS: ISO80000 4.3 §29 //
@@ -308,7 +341,9 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 //			new ProductUnit<MagneticPermeability>(Units.NEWTONS_PER_SQUARE_AMPERE
 //					.multiply(PI).multiply(4).divide(1E7)),
 //			MagneticPermeability.class);
+		
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	
 	public static final Unit<ElectricCharge> ELEMENTARY_CHARGE = addUnit(Units.COULOMB
 			.transform(((AbstractUnit<Energy>)SI.ELECTRON_VOLT).getSystemConverter()));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
@@ -327,9 +362,23 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Pressure> ATMOSPHERE = addUnit(Units.PASCAL
 			.multiply(101325));
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	// //////////
+	// Length //
+	// //////////
+	
+	/**
+	 * A unit of length equal to the distance that light travels in one year
+	 * through a vacuum (standard name <code>ly</code>).
+	 */
 	public static final Unit<Length> LIGHT_YEAR = addUnit(new ProductUnit<Length>(
 			C.multiply(YEAR_JULIAN)));
+	/**
+	 * A unit of length equal to the distance that light travels in one year
+	 * through a vacuum (standard name <code>ly</code>).
+	 */
+	//static final Unit<Length> LIGHT_YEAR = addUnit(METRE
+		//	.multiply(9.460528405e15));
+
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Force> GRAM_FORCE = addUnit(new ProductUnit<Force>(
 			GRAM.multiply(ACCELLERATION_OF_FREEFALL)));
@@ -433,14 +482,74 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 //			POUND.multiply(ACCELLERATION_OF_FREEFALL)));
 	private static final Unit<Force> POUND_FORCE = addUnit(POUND.multiply(ACCELLERATION_OF_FREEFALL).asType(Force.class));
 	
+	/**
+	 * A unit of length equal to <code>0.3048 m</code> (standard name
+	 * <code>ft</code>).
+	 */
+	static final Unit<Length> FOOT = addUnit(METRE.multiply(3048)
+			.divide(10000));
+	
+	/**
+	 * A unit of length equal to <code>0.0254 m</code> (standard name
+	 * <code>in</code>).
+	 */
+	static final Unit<Length> INCH = addUnit(FOOT.divide(12));
+	
+	/**
+	 * A unit of length equal to <code>1E-10 m</code> (standard name
+	 * <code>\u00C5ngstr\u00F6m</code>).
+	 */
+	static final Unit<Length> ANGSTROM = addUnit(METRE
+			.divide(10000000000L));
+
+	/**
+	 * A unit of length equal to the average distance from the center of the
+	 * Earth to the center of the Sun (standard name <code>ua</code>).
+	 */
+	public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(METRE
+			.multiply(149597870691.0));
+
+	/**
+	 * A unit of length equal to the distance at which a star would appear to
+	 * shift its position by one arcsecond over the course the time (about 3
+	 * months) in which the Earth moves a distance of {@link #ASTRONOMICAL_UNIT}
+	 * in the direction perpendicular to the direction to the star (standard
+	 * name <code>pc</code>).
+	 */
+	public static final Unit<Length> PARSEC = addUnit(METRE
+			.multiply(30856770e9));
+
+	/**
+	 * A unit of length equal to <code>1/72 {@link #INCH}</code> (standard name
+	 * <code>pixel</code>). It is the American point rounded to an even 1/72
+	 * inch.
+	 * 
+	 * @see #POINT
+	 */
+	public static final Unit<Length> PIXEL = addUnit(INCH.divide(72));
+
+	/**
+	 * Equivalent {@link #PIXEL}
+	 */
+	public static final Unit<Length> COMPUTER_POINT = PIXEL;
+
+	
 	// ///////////////////////////////////////////
 	// TYPESETTER'S LENGTH UNITS: ISO80000 4.4 §39 //
 	// ///////////////////////////////////////////
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Length> LINE = addUnit(INCH_INTERNATIONAL
 			.divide(12));
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
+	/**
+	 * A unit of length equal to <code>0.013837 {@link #INCH}</code> exactly
+	 * (standard name <code>pt</code>).
+	 * 
+	 * @see #PIXEL
+	 */
 	public static final Unit<Length> POINT = addUnit(LINE.divide(6));
+	//static final Unit<Length> POINT = addUnit(INCH.multiply(13837)
+		//	.divide(1000000));
+
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Length> PICA = addUnit(POINT.multiply(12));
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
@@ -522,8 +631,7 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Volume> STERE = addUnit(new ProductUnit<Volume>(
 			METRE.pow(3)));
-	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
-	public static final Unit<Length> ANGSTROM = addUnit(NANO(METRE).divide(10));
+
 	/** As per <a href="http//www.iso.org/">ISO80000</a> standard. */
 	public static final Unit<Area> BARN = addUnit(new ProductUnit<Area>(FEMTO(
 			METRE).pow(2)).multiply(100));
@@ -598,8 +706,21 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	//public static final Unit<Dimensionless> CURVATURE = addUnit(ONE.divide(METER).asType(Dimensionless.class));
 	// TODO or shall we actually have a Quantity Curvature in systems-quantity?
 	
+	// /////////////////////////////////////////////////////////////////////////////
+	// IEC 80000-3 Logarithmic quantities and units                               //
+	// https://en.wikipedia.org/wiki/ISO_80000-3#Logarithmic_quantities_and_units //
+	// /////////////////////////////////////////////////////////////////////////////
+	
 	@SuppressWarnings("unchecked")
 	public static final Unit<Level<Power>> NEPER = addUnit(ONE.asType(Level.class));
+	
+	/**
+	 * A logarithmic unit used to describe a power {@link Level} ratio (standard name
+	 * <code>dB</code>).
+	 */
+	public static final Unit<Level<Power>> DECIBEL = addUnit(NEPER
+			.transform(new LogConverter(10).inverse().concatenate(
+					new RationalConverter(1d, 10d))));
 	
 	// ///////////////////
 	// Collection View //
@@ -610,26 +731,29 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 		return "ISO80000";
 	}
 	
-    private static <U extends Unit<Q>, Q extends Quantity<Q>> U addUnit(U unit) {
+	/**
+     * Adds a new unit not mapped to any specified quantity type.
+     *
+     * @param  unit the unit being added.
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>>  U addUnit(U unit) {
         INSTANCE.units.add(unit);
         return unit;
     }
-
-	/**
-	 * Adds a new unit and maps it to the specified quantity type.
-	 *
-	 * @param unit
-	 *            the unit being added.
-	 * @param type
-	 *            the quantity type.
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends AbstractUnit<?>> U addUnit(U unit,
-			Class<? extends Quantity<?>> type) {
-		INSTANCE.units.add(unit);
-		INSTANCE.quantityToUnit.put(type, unit);
-		return unit;
-	}
+    
+    /**
+     * Adds a new unit and maps it to the specified quantity type.
+     *
+     * @param  unit the unit being added.
+     * @param type the quantity type.
+     * @return <code>unit</code>.
+     */
+    private static <U extends AbstractUnit<?>>  U addUnit(U unit, Class<? extends Quantity<?>> type) {
+        INSTANCE.units.add(unit);
+        INSTANCE.quantityToUnit.put(type, unit);
+        return unit;
+    }
 	
 	// //////////////////////////////////////////////////////////////////////////
 	// Label adjustments for ISO80000 system
@@ -637,5 +761,7 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 		SimpleUnitFormat.getInstance().label(ATOMIC_MASS_UNIT, "AMU");
 		SimpleUnitFormat.getInstance().label(POUND, "lb");
 		SimpleUnitFormat.getInstance().label(NEPER, "Np");
+		SimpleUnitFormat.getInstance().label(DECIBEL, "dB");
+		
 	}
 }
