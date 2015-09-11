@@ -59,7 +59,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.18, $Date: 2015-07-08 $
+ * @version 1.19, $Date: 2015-09-11 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
@@ -424,6 +424,7 @@ public final class US extends AbstractSystemOfUnits {
 	// Label adjustments for US system
 	static {
 		SimpleUnitFormat.getInstance().label(POUND, "lb");
+		SimpleUnitFormat.getInstance().label(LITER, "L");
 	}
 	
 	/**

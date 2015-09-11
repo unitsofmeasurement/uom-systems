@@ -51,7 +51,7 @@ import tec.units.ri.unit.AlternateUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, $Date: 2015-08-16 $
+ * @version 0.4.1, $Date: 2015-09-11 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
@@ -281,6 +281,7 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	// Label adjustments for Imperial system
 	static {
 		SimpleUnitFormat.getInstance().label(POUND, "lb");
+		SimpleUnitFormat.getInstance().label(LITRE, "L");
 		SimpleUnitFormat.getInstance().label(FLUID_DRACHM, "fl drc");
 		SimpleUnitFormat.getInstance().label(FLUID_SCRUPLE, "fl scr");
 	}
