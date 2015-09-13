@@ -72,7 +72,7 @@ import java.util.*;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.1, 21 July 2015
+ * @version 0.6.2, 13 September 2015
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
 
@@ -161,6 +161,11 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     @Override
     public abstract Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException;
 
+	@Override
+	public void label(Unit<?> unit, String label) {
+		
+	}
+    
     ////////////////
     // Formatting //
     // //////////////
