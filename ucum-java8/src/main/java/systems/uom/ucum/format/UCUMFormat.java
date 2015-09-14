@@ -72,7 +72,7 @@ import java.util.*;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.2, 13 September 2015
+ * @version 0.6.3, 14 September 2015
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
 
@@ -161,11 +161,6 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     @Override
     public abstract Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException;
 
-	@Override
-	public void label(Unit<?> unit, String label) {
-		
-	}
-    
     ////////////////
     // Formatting //
     // //////////////
@@ -256,6 +251,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         }
 
         return appendable;
+    }
+    
+    public void label(Unit<?> unit, String label) {
     }
 
     void appendAnnotation(CharSequence symbol,
@@ -420,7 +418,6 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	 * is passed to its constructor.
 	 */
     private static final class Parsing extends UCUMFormat {
-
 //        private static final long serialVersionUID = -922531801940132715L;
         private static final SymbolMap CASE_SENSITIVE_SYMBOLS = SymbolMap.of(
                 ResourceBundle.getBundle(BUNDLE_BASE + "_CS",
