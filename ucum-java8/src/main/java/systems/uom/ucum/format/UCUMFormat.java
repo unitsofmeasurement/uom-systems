@@ -72,10 +72,9 @@ import java.util.*;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.3, 14 September 2015
+ * @version 0.6.4, 14 September 2015
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
-
     /**
 	 * 
 	 */
@@ -255,6 +254,10 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     
     public void label(Unit<?> unit, String label) {
     }
+    
+	public boolean isLocaleSensitive() {
+		return false;
+	}
 
     void appendAnnotation(CharSequence symbol,
                           CharSequence annotation, Appendable appendable) throws IOException {
