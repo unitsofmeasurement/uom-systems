@@ -832,6 +832,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/**
 	 * To be added to the <a href="http://unitsofmeasure.org/">UCUM</a>
 	 * standard.
+	 * @deprecated so far not in UCUM
 	 */
 	public static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(
 			ONE.divide(SECOND)).asType(Frequency.class);
@@ -845,10 +846,10 @@ public final class UCUM extends AbstractSystemOfUnits {
 		return "UCUM";
 	}
 	
-    private static <U extends Unit<Q>, Q extends Quantity<Q>> U addUnit(U unit) {
-        INSTANCE.units.add(unit);
-        return unit;
-    }
+    	private static <U extends Unit<Q>, Q extends Quantity<Q>> U addUnit(U unit) {
+        	INSTANCE.units.add(unit);
+        	return unit;
+    	}
 
 	/**
 	 * Adds a new unit and maps it to the specified quantity type.
