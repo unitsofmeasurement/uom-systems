@@ -71,7 +71,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.iso.org">ISO80000</a>
  * @see <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO 80000-3</a>
- * @version 0.2, $Date: 2015-08-24 $
+ * @version 0.3, $Date: 2015-09-27 $
  */
 public final class ISO80000 extends AbstractSystemOfUnits {
 
@@ -759,9 +759,11 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	// Label adjustments for ISO80000 system
 	static {
 		SimpleUnitFormat.getInstance().label(ATOMIC_MASS_UNIT, "AMU");
+		SimpleUnitFormat.getInstance().label(BYTE, "B");
+		SimpleUnitFormat.getInstance().label(CARAT_GOLD, "kt");
+		SimpleUnitFormat.getInstance().label(CARAT_METRIC, "ct");
+		SimpleUnitFormat.getInstance().label(DECIBEL, "dB");
 		SimpleUnitFormat.getInstance().label(POUND, "lb");
 		SimpleUnitFormat.getInstance().label(NEPER, "Np");
-		SimpleUnitFormat.getInstance().label(DECIBEL, "dB");
-		
 	}
 }
