@@ -29,6 +29,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.ServiceLoader;
 
 import javax.measure.spi.Bootstrap;
 import javax.measure.spi.SystemOfUnits;
@@ -44,27 +46,32 @@ public class SystemOfUnitsServiceTest {
 
     @BeforeClass
     public static void setUp() {
-      defaultService = Bootstrap.getService(SystemOfUnitsService.class);
+      //defaultService = Bootstrap.getService(SystemOfUnitsService.class);
+      defaultService =  ServiceLoader.load(SystemOfUnitsService.class).iterator().next();
     }
 
     @Test
     public void testDefaultUnitSystemService() {
     	assertNotNull(defaultService);
-    	assertEquals("DefaultSystemOfUnitsService", defaultService.getClass().getSimpleName());
+    	//assertEquals("DefaultSystemOfUnitsService", defaultService.getClass().getSimpleName());
+    	assertEquals("ISO80kSystemService", defaultService.getClass().getSimpleName());
     	SystemOfUnits system = defaultService.getSystemOfUnits();
     	assertNotNull(system);
-    	assertEquals("Units", system.getClass().getSimpleName());
-    	assertEquals("Units", system.getName());
+    	assertEquals("ISO80000", system.getClass().getSimpleName());
+    	assertEquals("ISO80000", system.getName());
     	assertNotNull(system.getUnits());
-    	assertEquals(39, system.getUnits().size());
+    	assertEquals(140, system.getUnits().size());
     }
     
     @Test
     public void testOtherUnitSystemServices() {
-    	Collection<SystemOfUnitsService> services = Bootstrap.getServices(SystemOfUnitsService.class);
+    	//Collection<SystemOfUnitsService> services = Bootstrap.getServices(SystemOfUnitsService.class);
+    	Iterator<SystemOfUnitsService> services = ServiceLoader.load(SystemOfUnitsService.class).iterator();
     	assertNotNull(services);
 //    	assertEquals(3, services.size());
-    	for (SystemOfUnitsService service : services) {
+    	//for (SystemOfUnitsService service : services) {
+    	while (services.hasNext()) {
+    		SystemOfUnitsService service = services.next();
     		checkService(service);
     	}
     }
