@@ -46,8 +46,8 @@ public class SystemOfUnitsServiceTest {
 
     @BeforeClass
     public static void setUp() {
-      //defaultService = Bootstrap.getService(SystemOfUnitsService.class);
-      defaultService =  ServiceLoader.load(SystemOfUnitsService.class).iterator().next();
+      defaultService = Bootstrap.getService(SystemOfUnitsService.class);
+//      defaultService =  ServiceLoader.load(SystemOfUnitsService.class).iterator().next();
     }
 
     @Test

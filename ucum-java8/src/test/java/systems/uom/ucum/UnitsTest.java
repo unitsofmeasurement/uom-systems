@@ -297,9 +297,9 @@ public class UnitsTest {
 	public void testToString() {
 		assertEquals("kg", MetricPrefix.KILO(UCUM.GRAM).toString());
 		assertEquals("lb", UCUM.POUND.toString());
-		assertEquals("uz", UCUM.OUNCE.toString()); // TODO try using UCUM.Print for toString()
+		assertEquals("oz", UCUM.OUNCE.toString());
 		assertEquals("g", UCUM.GRAM.toString());
-//		assertEquals("lb", US.POUND.toString());
+		assertEquals("lb", UCUM.POUND.toString());
 	}
 
 	@Test
