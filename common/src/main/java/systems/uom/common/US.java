@@ -33,6 +33,7 @@ import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.RationalConverter;
 import tec.units.ri.unit.ProductUnit;
 import tec.units.ri.unit.TransformedUnit;
+
 import javax.measure.Unit;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
