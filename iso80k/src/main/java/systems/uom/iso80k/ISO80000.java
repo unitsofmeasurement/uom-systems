@@ -58,7 +58,7 @@ import javax.measure.quantity.*;
 /**
  * <p>
  * This class contains {@link SI} and Non-SI units as defined in the <a
- * href="http//www.iso.org/"> Unified Code for Units of Measure</a>.
+ * href="http//www.iso.org/"> ISO 80000</a>.
  * </p>
  *
  * <p>
@@ -67,11 +67,13 @@ import javax.measure.quantity.*;
  * definitions in this class deviate from the ISO80000 standard, but such notes are
  * likely to be incomplete.
  * </p>
+ * 
+ * @noextend This class is not intended to be extended by clients.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.iso.org">ISO80000</a>
  * @see <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO 80000-3</a>
- * @version 0.3, $Date: 2015-09-27 $
+ * @version 0.4, $Date: 2015-10-20 $
  */
 public final class ISO80000 extends AbstractSystemOfUnits {
 
