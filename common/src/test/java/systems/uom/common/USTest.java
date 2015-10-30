@@ -36,24 +36,12 @@ import static tec.units.ri.unit.MetricPrefix.*;
 import static tec.units.ri.unit.Units.GRAM;
 import static tec.units.ri.unit.Units.KILOGRAM;
 
-import org.junit.Ignore;
 import org.junit.Test;
-
-import tec.units.ri.format.EBNFUnitFormat;
 
 public class USTest {
 	@Test
 	public void testFormat() {	
 		assertEquals("lb", POUND.toString());
-	}
-	
-	@Test
-	@Ignore
-	public void testFormatEBNF() {
-		EBNFUnitFormat format = EBNFUnitFormat.getInstance();
-		
-		//assertEquals("lb", POUND.toString());
-		assertEquals("lb", format.format(POUND));
 	}
 	
 	@Test
