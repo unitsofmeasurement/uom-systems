@@ -36,7 +36,7 @@ import systems.uom.iso80k.ISO80000;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.1, August 25, 2015
+ * @version 0.2, November 3, 2015
  */
 public class ISO80kSystemService implements SystemOfUnitsService {
 	
@@ -46,7 +46,7 @@ public class ISO80kSystemService implements SystemOfUnitsService {
 		souMap.put(ISO80000.class.getSimpleName(), ISO80000.getInstance());
 	}
 	
-	public Collection<SystemOfUnits> getSystemsOfUnits() {
+	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
 		return souMap.values();
 	}
 	
