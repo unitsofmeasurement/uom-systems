@@ -111,7 +111,7 @@ import tec.uom.se.unit.ProductUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.20, $Date: 2015-08-25$
+ * @version 1.21, $Date: 2015-11-17$
  */
 final class NonSI extends AbstractSystemOfUnits {
 
@@ -422,9 +422,8 @@ final class NonSI extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Information> BYTE = addUnit(BIT.multiply(8));
 
-	  /**
-     * The SI unit for binary information rate (standard name <code>bit/s</code>).
-     * @deprecated see https://java.net/jira/browse/UNITSOFMEASUREMENT-100
+	/**
+     * The unit for binary information rate (standard name <code>bit/s</code>).
      */
     public static final ProductUnit<InformationRate> BITS_PER_SECOND
             = addUnit(new ProductUnit<InformationRate>(BIT.divide(SECOND)), InformationRate.class);

@@ -527,11 +527,13 @@ public final class ISO80000 extends AbstractSystemOfUnits {
 	 * inch.
 	 * 
 	 * @see #POINT
+	 * @deprecated Does not seem to be in ISO80k
 	 */
 	public static final Unit<Length> PIXEL = addUnit(INCH.divide(72));
 
 	/**
 	 * Equivalent {@link #PIXEL}
+	 * @deprecated Does not seem to be in ISO80k
 	 */
 	public static final Unit<Length> COMPUTER_POINT = PIXEL;
 
