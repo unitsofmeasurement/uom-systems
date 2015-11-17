@@ -25,7 +25,6 @@
  */
 package systems.uom.common;
 
-import static tec.uom.se.unit.Units.ONE;
 import static tec.uom.se.unit.MetricPrefix.CENTI;
 import static tec.uom.se.unit.Units.AMPERE;
 import static tec.uom.se.unit.Units.BECQUEREL;
@@ -41,6 +40,7 @@ import static tec.uom.se.unit.Units.METRES_PER_SECOND;
 import static tec.uom.se.unit.Units.METRES_PER_SQUARE_SECOND;
 import static tec.uom.se.unit.Units.MOLE;
 import static tec.uom.se.unit.Units.NEWTON;
+import static tec.uom.se.unit.Units.ONE;
 import static tec.uom.se.unit.Units.PASCAL;
 import static tec.uom.se.unit.Units.RADIAN;
 import static tec.uom.se.unit.Units.SECOND;
@@ -84,6 +84,7 @@ import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
+import systems.uom.quantity.Resolution;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.function.LogConverter;
@@ -246,20 +247,6 @@ final class NonSI extends AbstractSystemOfUnits {
 	 */
 	static final Unit<Length> POINT = addUnit(INCH.multiply(13837)
 			.divide(1000000));
-
-	/**
-	 * A unit of length equal to <code>1/72 {@link #INCH}</code> (standard name
-	 * <code>pixel</code>). It is the American point rounded to an even 1/72
-	 * inch.
-	 * 
-	 * @see #POINT
-	 */
-	static final Unit<Length> PIXEL = addUnit(INCH.divide(72));
-
-	/**
-	 * Equivalent {@link #PIXEL}
-	 */
-	static final Unit<Length> COMPUTER_POINT = PIXEL;
 
 	// ////////////
 	// Duration //
@@ -446,6 +433,29 @@ final class NonSI extends AbstractSystemOfUnits {
 	 * Equivalent {@link #BYTE}
 	 */
 	static final Unit<Information> OCTET = BYTE;
+	
+	/**
+	 * A pixel has 4 channels which define transparency (alpha), red, green and blue color values. 
+	 * Each channel is one byte wide.
+	 * 
+	 * @see #BYTE
+	 */
+	static final Unit<Information> PIXEL = addUnit(BYTE.multiply(4.0));
+
+	/**
+	 * Pixel per inch describe the resolution for any output device (monitor, printer) that deals with 
+	 * outputting digital raster images.
+	 * 
+	 * @see #INCH
+	 * @see #PIXEL
+	 */
+	static final Unit<Resolution> PIXEL_PER_INCH = addUnit(PIXEL
+			.divide(INCH).asType(Resolution.class));
+	
+	/**
+	 * Equivalent {@link #PIXEL}
+	 */
+	static final Unit<Information> COMPUTER_POINT = PIXEL;
 
 	// ////////////////////
 	// Electric current //
