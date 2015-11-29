@@ -5,14 +5,14 @@
     <artifactId>systems-parent</artifactId>
     <version>0.2</version>
   </parent>
-  <artifactId>systems-iso80k</artifactId>
-  <name>Units of Measurement ISO 80000</name>
+  <artifactId>systems-iso80k-java8</artifactId>
+  <name>Units of Measurement ISO 80000 for Java SE 8</name>
   <description>ISO/IEC 80000 Standard</description>
   <!-- ======================================================= -->
     <!-- Build Settings -->
     <!-- ======================================================= -->
     <properties>
-        <jdkVersion>1.7</jdkVersion>
+        <jdkVersion>1.8</jdkVersion>
         <project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
         <maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
         <maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -21,9 +21,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>tec.units</groupId>
-                <artifactId>unit-ri</artifactId>
-                <version>${ri.version}</version>
+                <groupId>tec.uom</groupId>
+                <artifactId>uom-se</artifactId>
+                <version>${se.version}</version>
             </dependency>
             <dependency>
                 <groupId>systems.uom</groupId>
@@ -35,8 +35,8 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>tec.units</groupId>
-            <artifactId>unit-ri</artifactId>
+            <groupId>tec.uom</groupId>
+            <artifactId>uom-se</artifactId>
         </dependency>
         <dependency>
             <groupId>si.uom</groupId>
@@ -44,7 +44,7 @@
         </dependency>
         <dependency>
             <groupId>si.uom</groupId>
-            <artifactId>si-units</artifactId>
+            <artifactId>si-units-java8</artifactId>
         </dependency>
         <dependency>
             <groupId>systems.uom</groupId>

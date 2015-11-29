@@ -59,7 +59,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.19, $Date: 2015-10-08 $
+ * @version 1.20, $Date: 2015-11-22 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
@@ -138,6 +138,24 @@ public final class US extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Length> NAUTICAL_MILE = addUnit(METER
 			.multiply(1852));
+	
+	/**
+	 * A unit of length equal to <code>0.013837 {@link #INCH}</code> exactly
+	 * (standard name <code>pt</code>).
+	 * 
+	 * @see #PIXEL
+	 */
+	static final Unit<Length> POINT = addUnit(INCH.multiply(13837)
+			.divide(1000000));
+
+	/**
+	 * A unit of length equal to <code>1/72 {@link #INCH}</code> (standard name
+	 * <code>pixel</code>). It is the American point rounded to an even 1/72
+	 * inch.
+	 * 
+	 * @see #POINT
+	 */
+	static final Unit<Length> PIXEL = addUnit(INCH.divide(72));
 
 	// ////////
 	// Mass //

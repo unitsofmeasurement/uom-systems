@@ -23,19 +23,40 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.quantity;
+package systems.uom.iso80k.internal;
 
-import javax.measure.Quantity;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.spi.SystemOfUnitsService;
+
+import systems.uom.iso80k.ISO80000;
 
 /**
- * Measure of resolution, in pixels, of an image file.
- * The metric system unit for this quantity is "bit".
- *
- * @author <a href="mailto:oliver+uom.bugabinga.net">Oliver Krylow</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2
- *
- * @see <a href="https://en.wikipedia.org/wiki/Display_resolution">Wikipedia: Display Resolution</a>
+ * @version 0.2, November 3, 2015
  */
-public interface Resolution extends Quantity<Resolution> {
+public class ISO80kSystemService implements SystemOfUnitsService {
+	
+	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+
+	public ISO80kSystemService() {
+		souMap.put(ISO80000.class.getSimpleName(), ISO80000.getInstance());
+	}
+	
+	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
+		return souMap.values();
+	}
+	
+	@Override
+	public SystemOfUnits getSystemOfUnits() {
+		return getSystemOfUnits(ISO80000.class.getSimpleName());
+	}
+
+	@Override
+	public SystemOfUnits getSystemOfUnits(String name) {
+		return souMap.get(name);
+	}
 }
