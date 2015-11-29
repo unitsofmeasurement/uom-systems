@@ -28,6 +28,8 @@ package systems.uom.common;
 import static org.junit.Assert.*;
 import static tec.uom.se.unit.Units.METRE;
 
+import java.math.BigDecimal;
+
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -62,7 +64,7 @@ public class ArithmeticTest {
 		Quantity<Length> km = Quantities.getQuantity(1000, Units.METRE);
 		Quantity<Length> mile = Quantities.getQuantity(1, US.MILE);
 		Quantity<Length> result = km.add(mile);
-		assertEquals(2609, result.getValue());
+		assertEquals(BigDecimal.valueOf(2609.344), result.getValue());
 		assertEquals(Units.METRE, result.getUnit());
 	}
 	
@@ -80,7 +82,7 @@ public class ArithmeticTest {
 		Quantity<Length> km = Quantities.getQuantity(2000, Units.METRE);
 		Quantity<Length> mile = Quantities.getQuantity(1, US.MILE);
 		Quantity<Length> result = km.subtract(mile);
-		assertEquals(391, result.getValue());
+		assertEquals(BigDecimal.valueOf(390.656), result.getValue());
 		assertEquals(Units.METRE, result.getUnit());
 	}
 	
