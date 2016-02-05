@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>0.2</version>
+		<version>0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>systems-ucum-java8</artifactId>
 	<name>Units of Measurement UCUM System</name>
@@ -14,7 +14,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.8</jdkVersion>
-		<se.version>0.8</se.version>
+		<se.version>0.9-SNAPSHOT</se.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>

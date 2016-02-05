@@ -33,6 +33,7 @@ import static tec.uom.se.unit.MetricPrefix.*;
 import static tec.uom.se.unit.Units.ONE;
 import si.uom.quantity.Action;
 import si.uom.quantity.DynamicViscosity;
+import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import si.uom.quantity.MagneticPermeability;
