@@ -36,6 +36,8 @@ import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
+import si.uom.quantity.Luminance;
+import si.uom.quantity.MagneticFieldStrength;
 import si.uom.quantity.MagneticPermeability;
 //import si.uom.quantity.*;
 import si.uom.quantity.MagnetomotiveForce;
@@ -148,13 +150,6 @@ public final class SI extends Units {
     public static final Unit<DynamicViscosity> PASCAL_SECOND
             = addUnit(new ProductUnit<DynamicViscosity>(
             PASCAL.multiply(SECOND)), DynamicViscosity.class);
-
-    /**
-     * The SI unit for luminance quantities (standard name <code>cd/m2</code>).
-     */
-    public static final Unit<Luminance> CANDELAS_PER_SQUARE_METRE
-            = addUnit(new ProductUnit<Luminance>(
-            CANDELA.divide(SQUARE_METRE)), Luminance.class);
 
     /**
      * The SI unit for kinematic viscosity quantities (standard name <code>m2/s"</code>).

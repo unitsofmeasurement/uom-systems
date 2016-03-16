@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Unit Systems
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -36,6 +36,8 @@ import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
+import si.uom.quantity.Luminance;
+import si.uom.quantity.MagneticFieldStrength;
 import si.uom.quantity.MagneticPermeability;
 import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
@@ -74,7 +76,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.iso.org">ISO80000</a>
  * @see <a href="https://en.wikipedia.org/wiki/ISO_80000-3">ISO 80000-3</a>
- * @version 0.4, $Date: 2015-10-20 $
+ * @version 0.4.1, $Date: 2016-03-16 $
  */
 public final class ISO80000 extends AbstractSystemOfUnits {
 

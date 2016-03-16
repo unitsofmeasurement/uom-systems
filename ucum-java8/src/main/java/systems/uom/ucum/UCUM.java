@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Unit Systems
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -30,12 +30,14 @@
 package systems.uom.ucum;
 
 import static tec.uom.se.unit.MetricPrefix.*;
-import static tec.uom.se.unit.Units.ONE;
+import static tec.uom.se.AbstractUnit.ONE;
 import si.uom.quantity.Action;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.ElectricPermittivity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
+import si.uom.quantity.Luminance;
+import si.uom.quantity.MagneticFieldStrength;
 import si.uom.quantity.MagneticPermeability;
 import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
@@ -69,7 +71,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.7, $Date: 2015-08-16 $
+ * @version 0.7.1, $Date: 2016-03-16 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
