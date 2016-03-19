@@ -28,6 +28,7 @@ package systems.uom.iso80k.internal;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 
@@ -64,13 +65,13 @@ public class SystemOfUnitsServiceTest {
     
     @Test
     public void testOtherUnitSystemServices() {
-    	//Collection<SystemOfUnitsService> services = Bootstrap.getServices(SystemOfUnitsService.class);
-    	Iterator<SystemOfUnitsService> services = ServiceLoader.load(SystemOfUnitsService.class).iterator();
+    	Collection<SystemOfUnitsService> services = Bootstrap.getServices(SystemOfUnitsService.class);
+    	//Iterator<SystemOfUnitsService> services = ServiceLoader.load(SystemOfUnitsService.class).iterator();
     	assertNotNull(services);
-//    	assertEquals(3, services.size());
-    	//for (SystemOfUnitsService service : services) {
-    	while (services.hasNext()) {
-    		SystemOfUnitsService service = services.next();
+    	assertEquals(4, services.size());
+    	for (SystemOfUnitsService service : services) {
+    	//while (services.hasNext()) {
+    		//SystemOfUnitsService service = services.next();
     		checkService(service);
     	}
     }
