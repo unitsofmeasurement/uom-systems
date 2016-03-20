@@ -29,16 +29,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.ServiceLoader;
-
 import javax.measure.spi.Bootstrap;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 
 public class SystemOfUnitsServiceTest {
 
@@ -53,11 +49,10 @@ public class SystemOfUnitsServiceTest {
     @Test
     public void testDefaultUnitSystemService() {
     	assertNotNull(defaultService);
-    	//assertEquals("DefaultSystemOfUnitsService", defaultService.getClass().getSimpleName());
-    	assertEquals("ISO80kSystemService", defaultService.getClass().getSimpleName());
+    	assertEquals("systems.uom.iso80k.internal.ISO80kSystemService", defaultService.getClass().getName());
     	SystemOfUnits system = defaultService.getSystemOfUnits();
     	assertNotNull(system);
-    	assertEquals("ISO80000", system.getClass().getSimpleName());
+    	assertEquals("systems.uom.iso80k.ISO80000", system.getClass().getName());
     	assertEquals("ISO80000", system.getName());
     	assertNotNull(system.getUnits());
     	assertEquals(140, system.getUnits().size());
@@ -78,9 +73,9 @@ public class SystemOfUnitsServiceTest {
     
     private void checkService(SystemOfUnitsService service) {
     	SystemOfUnits system;
-    	switch ( service.getClass().getSimpleName()) {
-	    	case "ISO80kSystemService":
-	    		assertEquals("ISO80kSystemService", service.getClass().getSimpleName());
+    	switch ( service.getClass().getName()) {
+	    	case "systems.uom.iso80k.internal.ISO80kSystemService":
+	    		assertEquals("systems.uom.iso80k.internal.ISO80kSystemService", service.getClass().getName());
 	    		system = service.getSystemOfUnits();
 	    		assertNotNull(system);
 	    		assertEquals("ISO80000", system.getName());
@@ -88,14 +83,14 @@ public class SystemOfUnitsServiceTest {
 	        	assertNotNull(system);
 	        	assertEquals("ISO80000", system.getName());
 	    		break;
-	    	case "DefaultSystemOfUnitsService":
-	    		assertEquals("DefaultSystemOfUnitsService", service.getClass().getSimpleName());
+	    	case "systems.uom.iso80k.internal.DefaultSystemOfUnitsService":
+	    		assertEquals("systems.uom.iso80k.internal.DefaultSystemOfUnitsService", service.getClass().getName());
 	    		system = service.getSystemOfUnits();
 	    		assertNotNull(system);
 	    		assertEquals("Units", system.getName());
 	    		break;
-	    	case "SISystemService":
-	    		assertEquals("SISystemService", service.getClass().getSimpleName());
+	    	case "si.uom.impl.SISystemService":
+	    		assertEquals("si.uom.impl.SISystemService", service.getClass().getName());
 	    		system = service.getSystemOfUnits();
 	    		assertNotNull(system);
 	    		assertEquals("SI", system.getName());

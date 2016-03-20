@@ -36,14 +36,14 @@ import systems.uom.iso80k.ISO80000;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.3, November 30, 2015
+ * @version 0.4, March 20, 2016
  */
 public class ISO80kSystemService implements SystemOfUnitsService {
 	
 	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
 
 	public ISO80kSystemService() {
-		souMap.put(ISO80000.class.getSimpleName(), ISO80000.getInstance());
+		souMap.put("ISO80000", ISO80000.getInstance());
 	}
 	
 	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {

@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -51,13 +51,14 @@ import tec.units.ri.unit.AlternateUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4.1, $Date: 2015-09-11 $
+ * @version 0.5, $Date: 2016-03-20 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
  */
 public final class Imperial extends AbstractSystemOfUnits  {
-
+	private static final String SYSTEM_NAME = "Imperial";
+	
 	/**
 	 * Default constructor (prevents this class from being instantiated).
 	 */
@@ -292,6 +293,6 @@ public final class Imperial extends AbstractSystemOfUnits  {
 
 	@Override
 	public String getName() {
-		return getClass().getSimpleName();
+		return SYSTEM_NAME;
 	}
 }
