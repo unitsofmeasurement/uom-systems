@@ -23,7 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.iso80k.internal;
+package systems.uom.common.internal;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -33,19 +33,21 @@ import javax.annotation.Priority;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
-import systems.uom.iso80k.ISO80000;
+import systems.uom.common.Imperial;
+import systems.uom.common.US;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, March 20, 2016
+ * @version 0.1, March 20, 2016
  */
 @Priority(100)
-public class ISO80kSystemService implements SystemOfUnitsService {
+public class CommonSystemService implements SystemOfUnitsService {
 	
-	final Map<String, SystemOfUnits> souMap = new HashMap<>();
+	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
 
-	public ISO80kSystemService() {
-		souMap.put(ISO80000.class.getSimpleName(), ISO80000.getInstance());
+	public CommonSystemService() {
+		souMap.put("Imperial", Imperial.getInstance());
+		souMap.put("US", US.getInstance());
 	}
 	
 	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
@@ -54,7 +56,7 @@ public class ISO80kSystemService implements SystemOfUnitsService {
 	
 	@Override
 	public SystemOfUnits getSystemOfUnits() {
-		return getSystemOfUnits(ISO80000.class.getSimpleName());
+		return getSystemOfUnits("US"); // We assume US Customary as the more common system here
 	}
 
 	@Override

@@ -40,7 +40,7 @@ import javax.measure.spi.SystemOfUnits;
 
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.unit.AlternateUnit;
+import tec.units.ri.unit.ProductUnit;
 
 /**
  * <p>
@@ -172,18 +172,13 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	 * A unit of area (standard name <code>sft</code>
 	 * ).
 	 */
-//	public static final Unit<Area> SQUARE_FOOT = US.SQUARE_FOOT;
+	public static final Unit<Area> SQUARE_FOOT = US.SQUARE_FOOT;
 	
 	/**
 	 * One acre is 43,560 <code>square feet</code> (standard name <code>a</code>
 	 * ).
 	 */
 	public static final Unit<Area> ACRE = addUnit(US.SQUARE_FOOT.multiply(43560));
-
-	// ///////////////
-	// Data Amount //
-	// ///////////////
-	
 
 	// //////////
 	// Energy //
@@ -202,7 +197,7 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	/**
 	 * A unit of volume equal to one cubic inch (<code>in³</code>).
 	 */
-	static final Unit<Volume> CUBIC_INCH = addUnit(new AlternateUnit<Volume>(US.INCH.pow(3), "in³"));
+	static final Unit<Volume> CUBIC_INCH = addUnit(new ProductUnit<Volume>(US.INCH.pow(3))); //, "in³"));
 
 	/**
 	 * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard

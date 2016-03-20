@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -32,6 +32,7 @@ import static systems.uom.common.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Area;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
@@ -40,7 +41,7 @@ import javax.measure.spi.SystemOfUnits;
 
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.format.SimpleUnitFormat;
-import tec.uom.se.unit.AlternateUnit;
+import tec.uom.se.unit.ProductUnit;
 
 /**
  * <p>
@@ -51,7 +52,7 @@ import tec.uom.se.unit.AlternateUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, $Date: 2015-08-16 $
+ * @version 0.5, $Date: 2016-03-20 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
@@ -83,7 +84,7 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	 * A unit of length equal to <code>0.0254 m</code> (standard name
 	 * <code>in</code>).
 	 */
-//	public static final Unit<Length> INCH = tec.uom.se.util.US.INCH;
+	public static final Unit<Length> INCH = US.INCH;
 	
 	// ////////
 	// Mass //
@@ -171,18 +172,13 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	 * A unit of area (standard name <code>sft</code>
 	 * ).
 	 */
-//	public static final Unit<Area> SQUARE_FOOT = US.SQUARE_FOOT;
+	public static final Unit<Area> SQUARE_FOOT = US.SQUARE_FOOT;
 	
 	/**
 	 * One acre is 43,560 <code>square feet</code> (standard name <code>a</code>
 	 * ).
 	 */
 	public static final Unit<Area> ACRE = addUnit(US.SQUARE_FOOT.multiply(43560));
-
-	// ///////////////
-	// Data Amount //
-	// ///////////////
-	
 
 	// //////////
 	// Energy //
@@ -201,7 +197,7 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	/**
 	 * A unit of volume equal to one cubic inch (<code>in³</code>).
 	 */
-	static final Unit<Volume> CUBIC_INCH = addUnit(new AlternateUnit<Volume>(US.INCH.pow(3), "in³"));
+	static final Unit<Volume> CUBIC_INCH = addUnit(new ProductUnit<Volume>(US.INCH.pow(3))); //, "in³"));
 
 	/**
 	 * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard

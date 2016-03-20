@@ -23,7 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.iso80k.internal;
+package systems.uom.iso80k;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
