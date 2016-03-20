@@ -60,13 +60,15 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.20, $Date: 2015-11-22 $
+ * @version 1.21, $Date: 2016-03-20 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
  */
 public final class US extends AbstractSystemOfUnits {
 
+	private static final String SYSTEM_NAME = "US";
+	
 	/**
 	 * Default constructor (prevents this class from being instantiated).
 	 */
@@ -498,6 +500,6 @@ public final class US extends AbstractSystemOfUnits {
 	
 	@Override
 	public String getName() {
-		return getClass().getSimpleName();
+		return SYSTEM_NAME;
 	}
 }
