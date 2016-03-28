@@ -66,8 +66,10 @@ public class USTest {
 		assertEquals("kg", KILO(GRAM).getSymbol());
 //		assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
 //		assertEquals("kg", US.POUND.getSymbol()); //"lb"
-		assertNull(GRAM.getSymbol());
+		assertEquals("g", GRAM.toString());
+		assertNull(GRAM.getSymbol());  // FIXME this is somewhat inconsitent, symbol should be either null or "g", but not "kg"
 //		assertNull(UCUM.OUNCE.getSymbol());
+		assertEquals("lb", POUND.toString());
 		assertNull(POUND.getSymbol());
 	}
 }
