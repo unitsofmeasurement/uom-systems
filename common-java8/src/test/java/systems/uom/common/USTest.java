@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -66,9 +66,9 @@ public class USTest {
 	// assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
 	// assertEquals("kg", US.POUND.getSymbol()); //"lb"
 	assertEquals("g", GRAM.toString());
-	assertNull(GRAM.getSymbol()); // FIXME this is somewhat inconsitent,
+	assertNull(GRAM.getSymbol()); // FIXME this is inconsitent,
 				      // symbol should be either null or "g",
-				      // but not "kg"
+				      // but not "kg" (works for RI)
 	// assertNull(UCUM.OUNCE.getSymbol());
 	assertEquals("lb", POUND.toString());
 	assertNull(POUND.getSymbol());

@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -43,11 +43,10 @@ import tec.units.ri.function.RationalConverter;
  * Unit<Length>CRORE_METER = CRORE(METER); [/code]
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.5 $Date: 2015-06-27 $
+ * @version 1.6 $Date: 2016-03-29 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Indian_numbering_system">Wikipedia: Indian numbering system</a>
  */
- // TODO while SE-specific, consider moving to a local module in uom-systems
 public abstract class IndianPrefix {
 
 	/**
