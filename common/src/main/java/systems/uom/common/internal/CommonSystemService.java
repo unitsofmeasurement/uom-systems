@@ -34,31 +34,39 @@ import javax.measure.spi.SystemOfUnitsService;
 
 import systems.uom.common.Imperial;
 import systems.uom.common.US;
+import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.1, March 20, 2016
+ * @version 0.2, March 29, 2016
  */
-public class CommonSystemService implements SystemOfUnitsService {
-	
-	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+public class CommonSystemService implements SystemOfUnitsService, IntPrioritySupplier {
+    private static final int PRIO = 100;
 
-	public CommonSystemService() {
-		souMap.put("Imperial", Imperial.getInstance());
-		souMap.put("US", US.getInstance());
-	}
-	
-	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
-		return souMap.values();
-	}
-	
-	@Override
-	public SystemOfUnits getSystemOfUnits() {
-		return getSystemOfUnits("US"); // We assume US Customary as the more common system here
-	}
+    final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
 
-	@Override
-	public SystemOfUnits getSystemOfUnits(String name) {
-		return souMap.get(name);
-	}
+    public CommonSystemService() {
+	souMap.put("Imperial", Imperial.getInstance());
+	souMap.put("US", US.getInstance());
+    }
+
+    public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
+	return souMap.values();
+    }
+
+    @Override
+    public SystemOfUnits getSystemOfUnits() {
+	return getSystemOfUnits("US"); // We assume US Customary as the more
+				       // common system here
+    }
+
+    @Override
+    public SystemOfUnits getSystemOfUnits(String name) {
+	return souMap.get(name);
+    }
+
+    @Override
+    public int getPriority() {
+	return PRIO;
+    }
 }
