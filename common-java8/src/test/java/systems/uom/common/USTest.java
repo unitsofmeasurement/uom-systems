@@ -31,45 +31,46 @@ package systems.uom.common;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static systems.uom.common.US.POUND; 
+import static systems.uom.common.US.POUND;
 import static tec.uom.se.unit.MetricPrefix.*;
 import static tec.uom.se.unit.Units.GRAM;
 import static tec.uom.se.unit.Units.KILOGRAM;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import tec.uom.se.format.EBNFUnitFormat;
 
 public class USTest {
-	@Test
-	public void testFormat() {	
-		assertEquals("lb", POUND.toString());
-	}
-	
-	@Test
-	@Ignore
-	public void testFormatEBNF() {
-		EBNFUnitFormat format = EBNFUnitFormat.getInstance();
-		
-		//assertEquals("lb", POUND.toString());
-		assertEquals("lb", format.format(POUND));
-	}
-	
-	@Test
-	public void testGetSymbol() {
-		// TODO see https://github.com/unitsofmeasurement/uom-se/issues/54 / https://java.net/jira/browse/UNITSOFMEASUREMENT-109
-		assertEquals("kg", KILOGRAM.getSymbol());
-//		assertEquals("kg", SI.GRAM.getSymbol()); //"g"
-//		assertEquals("kg", UCUM.POUND.getSymbol()); //"lb"
-//		assertEquals("kg", UCUM.OUNCE.getSymbol());//"oz"
-		assertEquals("kg", KILO(GRAM).getSymbol());
-//		assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
-//		assertEquals("kg", US.POUND.getSymbol()); //"lb"
-		assertEquals("g", GRAM.toString());
-		assertNull(GRAM.getSymbol());  // FIXME this is somewhat inconsitent, symbol should be either null or "g", but not "kg"
-//		assertNull(UCUM.OUNCE.getSymbol());
-		assertEquals("lb", POUND.toString());
-		assertNull(POUND.getSymbol());
-	}
+    @Test
+    public void testFormat() {
+	assertEquals("lb", POUND.toString());
+    }
+
+    @Test
+    public void testFormatEBNF() {
+	EBNFUnitFormat format = EBNFUnitFormat.getInstance();
+
+	// assertEquals("lb", POUND.toString());
+	assertEquals("lb", format.format(POUND));
+    }
+
+    @Test
+    public void testGetSymbol() {
+	// TODO see https://github.com/unitsofmeasurement/uom-se/issues/54 /
+	// https://java.net/jira/browse/UNITSOFMEASUREMENT-109
+	assertEquals("kg", KILOGRAM.getSymbol());
+	// assertEquals("kg", SI.GRAM.getSymbol()); //"g"
+	// assertEquals("kg", UCUM.POUND.getSymbol()); //"lb"
+	// assertEquals("kg", UCUM.OUNCE.getSymbol());//"oz"
+	assertEquals("kg", KILO(GRAM).getSymbol());
+	// assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
+	// assertEquals("kg", US.POUND.getSymbol()); //"lb"
+	assertEquals("g", GRAM.toString());
+	assertNull(GRAM.getSymbol()); // FIXME this is somewhat inconsitent,
+				      // symbol should be either null or "g",
+				      // but not "kg"
+	// assertNull(UCUM.OUNCE.getSymbol());
+	assertEquals("lb", POUND.toString());
+	assertNull(POUND.getSymbol());
+    }
 }
