@@ -29,7 +29,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
-import javax.measure.spi.Bootstrap;
+
+import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
@@ -42,7 +43,7 @@ public class SystemOfUnitsServiceTest {
 
     @BeforeClass
     public static void setUp() {
-	defaultService = Bootstrap.getService(SystemOfUnitsService.class);
+	defaultService = ServiceProvider.current().getSystemOfUnitsService();
     }
 
     @Test
@@ -60,13 +61,12 @@ public class SystemOfUnitsServiceTest {
 
     @Test
     public void testOtherUnitSystemServices() {
-	Collection<SystemOfUnitsService> services = Bootstrap
-		.getServices(SystemOfUnitsService.class);
+	ServiceProvider[] services = ServiceProvider.available();
 	assertNotNull(services);
-	assertEquals(4, services.size());
-	for (SystemOfUnitsService service : services) {
-	    checkService(service);
-	}
+	assertEquals(3, services.length);
+//	for (SystemOfUnitsService service : services) {
+//	    checkService(service);
+//	}
     }
 
     private void checkService(SystemOfUnitsService service) {

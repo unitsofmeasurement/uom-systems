@@ -38,9 +38,9 @@ import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2, March 29, 2016
+ * @version 0.3, March 29, 2016
  */
-public class CommonSystemService implements SystemOfUnitsService, IntPrioritySupplier {
+class CommonSystemService implements SystemOfUnitsService, IntPrioritySupplier {
     private static final int PRIO = 100;
 
     final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();

@@ -36,9 +36,9 @@ import systems.uom.iso80k.ISO80000;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, March 20, 2016
+ * @version 0.5, April 1, 2016
  */
-public class ISO80kSystemService implements SystemOfUnitsService {
+class ISO80kSystemService implements SystemOfUnitsService {
 	
 	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
 
