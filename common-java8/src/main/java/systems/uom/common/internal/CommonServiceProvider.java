@@ -27,27 +27,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.iso80k.internal;
+package systems.uom.common.internal;
 
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tec.units.ri.spi.DefaultServiceProvider;
+
+import tec.uom.se.spi.DefaultServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.1
+ * @version 0.2
  */
-public class ISO80kServiceProvider extends DefaultServiceProvider {
+public class CommonServiceProvider extends DefaultServiceProvider {
 
     public int getPriority() {
-	return 8000;
+	return 1000;
     }
 
     @Override
     public SystemOfUnitsService getSystemOfUnitsService() {
-	return new ISO80kSystemService();
+	return new CommonSystemService();
     }
 }

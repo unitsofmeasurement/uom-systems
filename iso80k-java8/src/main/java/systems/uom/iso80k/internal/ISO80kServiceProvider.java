@@ -31,14 +31,14 @@ package systems.uom.iso80k.internal;
 
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tec.units.ri.spi.DefaultServiceProvider;
+import tec.uom.se.spi.DefaultServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.1
+ * @version 0.2
  */
 public class ISO80kServiceProvider extends DefaultServiceProvider {
 

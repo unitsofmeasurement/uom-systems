@@ -31,7 +31,7 @@ package systems.uom.common.internal;
 
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tec.units.ri.spi.RIServiceProvider;
+import tec.units.ri.spi.DefaultServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
@@ -40,7 +40,7 @@ import tec.units.ri.spi.RIServiceProvider;
  * @author Werner Keil
  * @version 0.1
  */
-public class CommonServiceProvider extends RIServiceProvider {
+public class CommonServiceProvider extends DefaultServiceProvider {
 
     public int getPriority() {
 	return 1000;

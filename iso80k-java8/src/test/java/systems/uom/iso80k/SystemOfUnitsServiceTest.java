@@ -29,9 +29,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
-import java.util.ServiceLoader;
-
-import javax.measure.spi.Bootstrap;
+import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
@@ -44,7 +42,7 @@ public class SystemOfUnitsServiceTest {
 
     @BeforeClass
     public static void setUp() {
-      defaultService = Bootstrap.getService(SystemOfUnitsService.class);
+      defaultService = ServiceProvider.current().getSystemOfUnitsService();
 //      defaultService =  ServiceLoader.load(SystemOfUnitsService.class).iterator().next();
     }
 
@@ -63,21 +61,21 @@ public class SystemOfUnitsServiceTest {
     
     @Test
     public void testAvailableSystems() {
-    	 SystemOfUnitsService service = Bootstrap.getService(SystemOfUnitsService.class);
+    	 SystemOfUnitsService service = ServiceProvider.current().getSystemOfUnitsService();
     	 assertEquals(1, service.getAvailableSystemsOfUnits().size());
     }
     
     @Test
     public void testOtherUnitSystemServices() {
-    	Collection<SystemOfUnitsService> services = Bootstrap.getServices(SystemOfUnitsService.class);
+	ServiceProvider[] services = ServiceProvider.available();
     	//Iterator<SystemOfUnitsService> services = ServiceLoader.load(SystemOfUnitsService.class).iterator();
     	assertNotNull(services);
-//    	assertEquals(3, services.size());
-    	for (SystemOfUnitsService service : services) {
+    	assertEquals(3, services.length);
+//    	for (SystemOfUnitsService service : services) {
     	//while (services.hasNext()) {
     		//SystemOfUnitsService service = services.next();
-    		checkService(service);
-    	}
+//    		checkService(service);
+//    	}
     }
     
     private void checkService(SystemOfUnitsService service) {
