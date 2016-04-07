@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -30,12 +30,11 @@
 package systems.uom.common;
 
 import static org.junit.Assert.assertEquals;
-import static tec.uom.se.internal.format.OutputHelper.println;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Test;
-
-import javax.measure.Unit;
-import javax.measure.quantity.Force;
 
 import si.uom.SI;
 import si.uom.impl.quantity.AccelerationAmount;
@@ -49,53 +48,57 @@ import si.uom.impl.quantity.MassAmount;
  *
  */
 public class NewtonsSecondLawTest {
+    static final Logger logger = Logger.getLogger(NewtonsSecondLawTest.class
+	    .getName());
 
-//	@Test
-//	public void testCalculateForce() {
-//		MassAmount m = new MassAmount(1000, SI.KILOGRAM);
-//		AccelerationAmount a = new AccelerationAmount(2.5, SI.METRES_PER_SQUARE_SECOND);
-//		ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
-//	    System.out.println("ForceAmountL= " + force.longValue(SI.NEWTON));
-//		assertEquals(2500, force.doubleValue(SI.NEWTON), 0.0001);
-//	}
+    // @Test
+    // public void testCalculateForce() {
+    // MassAmount m = new MassAmount(1000, SI.KILOGRAM);
+    // AccelerationAmount a = new AccelerationAmount(2.5,
+    // SI.METRES_PER_SQUARE_SECOND);
+    // ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
+    // System.out.println("ForceAmountL= " + force.longValue(SI.NEWTON));
+    // assertEquals(2500, force.doubleValue(SI.NEWTON), 0.0001);
+    // }
 
-	// TODO change System.out.println to OutputHelper.println
+    // TODO change System.out.println to OutputHelper.println
 
-	@Test
-	public void testCalculateForce() {
-		println("Calculate Force");
-		MassAmount m = new MassAmount(1000, SI.GRAM);
-		AccelerationAmount a = new AccelerationAmount(2.5, SI.METRES_PER_SQUARE_SECOND);
-		ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
-		println("ForceAmount = " + force.doubleValue(SI.NEWTON));
-		assertEquals(2500000, force.doubleValue(SI.NEWTON), 0.0001);
-	}
+    @Test
+    public void testCalculateForce() {
+	logger.log(Level.INFO, "Calculate Force");
+	MassAmount m = new MassAmount(1000, SI.GRAM);
+	AccelerationAmount a = new AccelerationAmount(2.5,
+		SI.METRES_PER_SQUARE_SECOND);
+	ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
+	logger.log(Level.INFO, "ForceAmount = " + force.doubleValue(SI.NEWTON));
+	assertEquals(2500000, force.doubleValue(SI.NEWTON), 0.0001);
+    }
 
-	@Test
-	public void testCalculateForceKg() {
-		MassAmount m = new MassAmount(1, SI.KILOGRAM);
-		AccelerationAmount a = new AccelerationAmount(2.5, SI.METRES_PER_SQUARE_SECOND);
-		ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
-//		println("ForceAmount = " + force.doubleValue(SI.NEWTON));
-		assertEquals(2.5, force.doubleValue(SI.NEWTON), 0.0001);
-	}
+    @Test
+    public void testCalculateForceKg() {
+	MassAmount m = new MassAmount(1, SI.KILOGRAM);
+	AccelerationAmount a = new AccelerationAmount(2.5,
+		SI.METRES_PER_SQUARE_SECOND);
+	ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
+	// println("ForceAmount = " + force.doubleValue(SI.NEWTON));
+	assertEquals(2.5, force.doubleValue(SI.NEWTON), 0.0001);
+    }
 
-/*	
-	@Test
-	public void testWithOddUnits() {
-		println("Test with Odd Units");
-		final MassAmount m = new MassAmount(100, US.POUND);
-		@SuppressWarnings("unchecked") // we know this creates an acceleration!
-		Unit<Acceleration> inch_per_square_second = (Unit<Acceleration>)US.INCH.divide(SI.SECOND).divide(SI.SECOND);
-		println(inch_per_square_second);
-		AccelerationAmount a = new AccelerationAmount(100, inch_per_square_second);
-		ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
-		println(force);
-		assertEquals(867961.6621451874, force.doubleValue(SI.NEWTON), 0.0000000001);
-		// Pound-force (http://en.wikipedia.org/wiki/Pound-force) is a unit for Force in English engineering units and British gravitational units
-		Unit<Force> poundForce = SI.NEWTON.multiply(4.448222);
-		assertEquals(3860886.16071079, force.doubleValue(poundForce), 0.0000000001);
-		println(poundForce);
-	}
-*/
+    /*
+     * @Test public void testWithOddUnits() { println("Test with Odd Units");
+     * final MassAmount m = new MassAmount(100, US.POUND);
+     * 
+     * @SuppressWarnings("unchecked") // we know this creates an acceleration!
+     * Unit<Acceleration> inch_per_square_second =
+     * (Unit<Acceleration>)US.INCH.divide(SI.SECOND).divide(SI.SECOND);
+     * println(inch_per_square_second); AccelerationAmount a = new
+     * AccelerationAmount(100, inch_per_square_second); ForceAmount force =
+     * NewtonsSecondLaw.calculateForce(m, a); println(force);
+     * assertEquals(867961.6621451874, force.doubleValue(SI.NEWTON),
+     * 0.0000000001); // Pound-force (http://en.wikipedia.org/wiki/Pound-force)
+     * is a unit for Force in English engineering units and British
+     * gravitational units Unit<Force> poundForce =
+     * SI.NEWTON.multiply(4.448222); assertEquals(3860886.16071079,
+     * force.doubleValue(poundForce), 0.0000000001); println(poundForce); }
+     */
 }
