@@ -14,7 +14,7 @@
 	<url>http://github.com/unitsofmeasurement/uom-systems</url>
 	<organization>
 		<name>Units of Measurement project</name>
-		<url>http://www.unitsofmeasurement.org</url>
+		<url>http://uom.technology</url>
 	</organization>
 	<description>Parent POM for Unit Systems</description>
 	<licenses>
