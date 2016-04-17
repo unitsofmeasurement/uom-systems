@@ -60,7 +60,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.21, $Date: 2016-03-20 $
+ * @version 1.22, $Date: 2016-04-17 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
@@ -400,6 +400,12 @@ public final class US extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Volume> FLUID_OUNCE = addUnit(GALLON_LIQUID
 			.divide(128));
+	
+	/**
+	 * A unit of volume equal to 4 US oz_fl (standard name <code>liq.gi</code>).
+	 */
+	public static final Unit<Volume> GILL_LIQUID = addUnit(FLUID_OUNCE
+			.multiply(4));
 
 	/**
 	 * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
@@ -440,12 +446,19 @@ public final class US extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Volume> BARREL = addUnit(LITER
 			.multiply(238.4810d));
+	
+	/**
+	 * A unit of volume equal to <code>4 {@link #GILL_LIQUID}</code> (standard name
+	 * <code>pt</code>).
+	 */
+	public static final Unit<Volume> PINT = addUnit(GILL_LIQUID.multiply(4));
 
 	// //////////////////////////////////////////////////////////////////////////
 	// Label adjustments for US system
 	static {
 		SimpleUnitFormat.getInstance().label(POUND, "lb");
 		SimpleUnitFormat.getInstance().label(LITER, "L");
+		SimpleUnitFormat.getInstance().label(FLUID_OUNCE, "fl oz");
 	}
 	
 	/**
