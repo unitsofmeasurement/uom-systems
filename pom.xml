@@ -43,6 +43,7 @@
 		<module>common</module>
 		<module>common-java8</module>
 		<module>ucum-java8</module>
+		<module>unicode</module>
 	</modules>
 
 	<build>
