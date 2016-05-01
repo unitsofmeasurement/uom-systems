@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>systems-unicode-java8</artifactId>
 	<name>Units of Measurement Unicode CLDR System for Java SE 8</name>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.1</version>
 
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
