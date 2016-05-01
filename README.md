@@ -14,7 +14,7 @@ The project currently contains the following modules:
 - [Reusable Quantities](quantity)
 - [Common Unit Systems](common) like [US customary units](https://en.wikipedia.org/wiki/United_States_customary_units) or [Imperial units](https://en.wikipedia.org/wiki/Imperial_units)
 - [Common Unit Systems](common-java8) on **Java SE 8**
-- ISO/IEC 80000 Standard **Deprecated, to be removed, see [#32](../../issues/32)**
+- [Unicode CLDR Unit System](unicode)
 - [Unified Code for Units of Measure](ucum-java8) on **Java SE 8**
 
 Modular Unit Systems

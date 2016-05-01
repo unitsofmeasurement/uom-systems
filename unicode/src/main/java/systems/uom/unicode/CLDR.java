@@ -68,7 +68,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.2, $Date: 2016-04-30 $
+ * @version 0.3, $Date: 2016-05-01 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -134,6 +134,13 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Length> MILE = addUnit(METER.multiply(1609344)
 	    .divide(1000));
 
+    /**
+     * A unit of length equal to the average distance from the center of the
+     * Earth to the center of the Sun (standard name <code>ua</code>).
+     */
+    public static final Unit<Length> ASTRONOMICAL_UNIT = addUnit(METRE
+	    .multiply(149597870691.0));
+
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Time> SECOND = addUnit(Units.SECOND);
 
@@ -141,8 +148,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Angle> RADIAN = addUnit(Units.RADIAN);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Temperature> KELVIN = addUnit(Units.KELVIN);
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<ElectricCharge> COULOMB = addUnit(Units.COULOMB);
+
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<LuminousIntensity> CANDELA = addUnit(Units.CANDELA);
 
@@ -153,7 +159,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Dimensionless> PERCENT = addUnit(ONE.divide(100));
 
     // //////////////////////////
-    // SI UNITS: CLDR          //
+    // SI UNITS: CLDR //
     // //////////////////////////
     /**
      * We deviate slightly from the standard here, to maintain compatibility
@@ -208,47 +214,11 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<LuminousFlux> LUMEN = addUnit(Units.LUMEN);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Illuminance> LUX = addUnit(Units.LUX);
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Radioactivity> BECQUEREL = addUnit(Units.BECQUEREL);
+
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<RadiationDoseAbsorbed> GRAY = addUnit(Units.GRAY);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<RadiationDoseEffective> SIEVERT = addUnit(Units.SIEVERT);
-
-    /**
-     * Holds the Avogadro constant.
-     */
-    private static final double AVOGADRO_CONSTANT = 6.02214199e23; // (1/mol).
-
-    /**
-     * Holds the electric charge of one electron.
-     */
-    private static final double ELEMENTARY_CHARGE_CONSTANT = 1.602176462e-19; // (C).
-
-    // ///////////////////
-    // Electric charge //
-    // ///////////////////
-    /**
-     * A unit of electric charge equal to the charge on one electron (standard
-     * name <code>e</code>).
-     */
-    static final Unit<ElectricCharge> E = addUnit(COULOMB
-	    .multiply(ELEMENTARY_CHARGE_CONSTANT));
-
-    /**
-     * A unit of electric charge equal to equal to the product of Avogadro's
-     * number (see {@link SI#MOLE}) and the charge (1 e) on a single electron
-     * (standard name <code>Fd</code>).
-     */
-    static final Unit<ElectricCharge> FARADAY = addUnit(COULOMB
-	    .multiply(ELEMENTARY_CHARGE_CONSTANT * AVOGADRO_CONSTANT)); // e/mol
-
-    /**
-     * A unit of electric charge which exerts a force of one dyne on an equal
-     * charge at a distance of one centimeter (standard name <code>Fr</code>).
-     */
-    static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB
-	    .multiply(3.3356e-10));
 
     /**
      * We deviate slightly from the standard here, to maintain compatibility
@@ -260,9 +230,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     /**
      * As per CLDR standard.
      */
-    public static final Unit<Angle> MINUTE_ANGLE = addUnit(SI.MINUTE_ANGLE);
+    public static final Unit<Angle> ARC_MINUTE = addUnit(SI.MINUTE_ANGLE);
 
-    public static final Unit<Angle> SECOND_ANGLE = addUnit(SI.SECOND_ANGLE);
+    public static final Unit<Angle> ARC_SECOND = addUnit(SI.SECOND_ANGLE);
 
     // ////////
     // Area //
@@ -277,7 +247,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
      * ).
      */
-    public static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
+    private static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
 
     /**
      * A unit of area equal to <code>100 {@link #ARE}</code> (standard name
@@ -306,6 +276,39 @@ public final class CLDR extends AbstractSystemOfUnits {
 	    CUBIC_METRE, new RationalConverter(1, 1000));
     // private static final Unit<Volume> LITRE = addUnit(Units.LITRE);
 
+    /**
+     * A unit of volume equal to one cubic inch (<code>in³</code>).
+     */
+    public static final Unit<Volume> CUBIC_INCH = addUnit(INCH.pow(3).asType(
+	    Volume.class));
+
+    /**
+     * The cubic foot is an imperial and US customary (non-metric) unit of
+     * volume, used in the United States, Canada, and the United Kingdom. It is
+     * defined as the volume of a cube with sides of one foot (0.3048 m) in
+     * length. Its volume is 28.3168 liters or about 1⁄35 of a cubic meter. (
+     * <code>ft³</code>).
+     */
+    public static final Unit<Volume> CUBIC_FOOT = addUnit(CUBIC_INCH.multiply(
+	    1728).asType(Volume.class));
+
+    /**
+     * An acre-foot is a unit of volume commonly used in the United States in
+     * reference to large-scale water resources, such as reservoirs, aqueducts,
+     * canals, sewer flow capacity, irrigation water, and river flows.
+     */
+    public static final Unit<Volume> ACRE_FOOT = addUnit(CUBIC_FOOT
+	    .multiply(43560));
+
+    /**
+     * Constant for unit of volume: bushel
+     */
+    public static final Unit<Volume> BUSHEL = addUnit(CUBIC_INCH.multiply(
+	    215042).divide(100));
+
+    // //////////
+    // Time    //
+    // //////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Time> MINUTE = addUnit(Units.MINUTE);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
@@ -314,9 +317,8 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Time> DAY = addUnit(Units.DAY);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    static final Unit<Time> YEAR_JULIAN = addUnit(Units.DAY
-	    .multiply(365.25));
- 
+    static final Unit<Time> YEAR_JULIAN = addUnit(Units.DAY.multiply(365.25));
+
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Time> YEAR = addUnit(Units.DAY.multiply(365.25));
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
@@ -324,6 +326,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Time> MONTH = addUnit(YEAR_JULIAN.divide(12));
 
+    /** Constant for unit of time: century */
+    public static final Unit<Time> CENTURY = addUnit(YEAR.multiply(100));
+    
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     private static final Unit<Pressure> BAR = addUnit(Units.PASCAL
 	    .multiply(100000));
@@ -334,7 +339,7 @@ public final class CLDR extends AbstractSystemOfUnits {
 	    .multiply(1000));
 
     // ///////////////////////////////
-    // NATURAL UNITS                //
+    // NATURAL UNITS //
     // ///////////////////////////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     static final Unit<Speed> C = addUnit(Units.METRES_PER_SECOND
@@ -343,15 +348,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
 	    .multiply(6.6260755E-24)); // FIXME get rid of JXQ import (where
 				       // from??) */
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<?> BOLTZMAN = addUnit(JOULE.divide(KELVIN)
-	    .multiply(1.380658E-23));
- 
+
     private static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(Units.METRES_PER_SQUARE_SECOND
 	    .multiply(9.80665));
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Pressure> ATMOSPHERE = addUnit(Units.PASCAL
-	    .multiply(101325));
 
     // //////////
     // Length //
@@ -425,11 +424,10 @@ public final class CLDR extends AbstractSystemOfUnits {
     static final Unit<Length> COMPUTER_POINT = PIXEL;
 
     // ///////////////////////////////////////////
-    // TYPESETTER'S LENGTH UNITS                //
+    // TYPESETTER'S LENGTH UNITS //
     // ///////////////////////////////////////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    static final Unit<Length> LINE = addUnit(INCH_INTERNATIONAL
-	    .divide(12));
+    static final Unit<Length> LINE = addUnit(INCH_INTERNATIONAL.divide(12));
     /**
      * A unit of length equal to <code>0.013837 {@link #INCH}</code> exactly
      * (standard name <code>pt</code>).
@@ -450,7 +448,7 @@ public final class CLDR extends AbstractSystemOfUnits {
 	    .multiply(12));
 
     // ////////////////////////////////////
-    // OTHER LEGACY UNITS: CLDR         //
+    // OTHER LEGACY UNITS: CLDR //
     // ////////////////////////////////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Temperature> FAHRENHEIT = addUnit(KELVIN
@@ -492,10 +490,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Information> BYTE = addUnit(BIT.multiply(8));
 
     /**
-     * The unit for binary information rate (standard name
-     * <code>bit/s</code>).
+     * The unit for binary information rate (standard name <code>bit/s</code>).
      */
-    public static final ProductUnit<InformationRate> BITS_PER_SECOND = addUnit(
+    static final ProductUnit<InformationRate> BITS_PER_SECOND = addUnit(
 	    new ProductUnit<InformationRate>(BIT.divide(SECOND)),
 	    InformationRate.class);
 
