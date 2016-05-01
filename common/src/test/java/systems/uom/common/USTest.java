@@ -31,7 +31,7 @@ package systems.uom.common;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static systems.uom.common.US.POUND; 
+import static systems.uom.common.USCustomary.POUND; 
 import static tec.units.ri.unit.MetricPrefix.*;
 import static tec.units.ri.unit.Units.GRAM;
 import static tec.units.ri.unit.Units.KILOGRAM;

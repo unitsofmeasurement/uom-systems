@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Units of Measurement Systems for Java
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -60,19 +60,19 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.23, $Date: 2016-05-07 $
+ * @version 1.23, $Date: 2016-05-01 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
  */
-public final class US extends AbstractSystemOfUnits {
+public final class USCustomary extends AbstractSystemOfUnits {
 
-    private static final String SYSTEM_NAME = "US";
+    private static final String SYSTEM_NAME = "United State Customary Units";
 
     /**
      * Default constructor (prevents this class from being instantiated).
      */
-    private US() {
+    private USCustomary() {
     }
 
     /**
@@ -84,7 +84,7 @@ public final class US extends AbstractSystemOfUnits {
 	return INSTANCE;
     }
 
-    private static final US INSTANCE = new US();
+    private static final USCustomary INSTANCE = new USCustomary();
 
     // //////////
     // Length //

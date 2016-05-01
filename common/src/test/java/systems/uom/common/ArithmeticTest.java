@@ -61,7 +61,7 @@ public class ArithmeticTest {
 	@Test
 	public void testAdd() {
 		Quantity<Length> km = Quantities.getQuantity(1000, Units.METRE);
-		Quantity<Length> mile = Quantities.getQuantity(1, US.MILE);
+		Quantity<Length> mile = Quantities.getQuantity(1, USCustomary.MILE);
 		Quantity<Length> result = km.add(mile);
 		assertEquals(2609, result.getValue());
 		assertEquals(Units.METRE, result.getUnit());
@@ -70,7 +70,7 @@ public class ArithmeticTest {
 	@Test
 	public void testAdd2() {
 		Quantity<Mass> kg = Quantities.getQuantity(50d, Units.KILOGRAM);
-		Quantity<Mass> p = Quantities.getQuantity(10d, US.POUND);
+		Quantity<Mass> p = Quantities.getQuantity(10d, USCustomary.POUND);
 		Quantity<Mass> result = kg.add(p);
 		assertEquals(54.5359237d, result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
@@ -79,7 +79,7 @@ public class ArithmeticTest {
 	@Test
 	public void testSubtract() {
 		Quantity<Length> km = Quantities.getQuantity(2000, Units.METRE);
-		Quantity<Length> mile = Quantities.getQuantity(1, US.MILE);
+		Quantity<Length> mile = Quantities.getQuantity(1, USCustomary.MILE);
 		Quantity<Length> result = km.subtract(mile);
 		assertEquals(391, result.getValue());
 		assertEquals(Units.METRE, result.getUnit());
@@ -88,7 +88,7 @@ public class ArithmeticTest {
 	@Test
 	public void testSubtract2() {
 		Quantity<Mass> kg = Quantities.getQuantity(50d, Units.KILOGRAM);
-		Quantity<Mass> p = Quantities.getQuantity(10d, US.POUND);
+		Quantity<Mass> p = Quantities.getQuantity(10d, USCustomary.POUND);
 		Quantity<Mass> result = kg.subtract(p);
 		assertEquals(45.4640763d, result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());

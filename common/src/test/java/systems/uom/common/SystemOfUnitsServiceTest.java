@@ -53,10 +53,26 @@ public class SystemOfUnitsServiceTest {
 		defaultService.getClass().getName());
 	SystemOfUnits system = defaultService.getSystemOfUnits();
 	assertNotNull(system);
-	assertEquals("systems.uom.common.US", system.getClass().getName());
-	assertEquals("US", system.getName());
+	assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
+	assertEquals("United State Customary Units", system.getName());
 	assertNotNull(system.getUnits());
-	assertEquals(43, system.getUnits().size());
+	assertEquals(47, system.getUnits().size());
+    }
+    
+    @Test
+    // TODO consolidate asserts
+    public void testUnitSystemServiceAlias() {
+	assertNotNull(defaultService);
+	assertEquals("systems.uom.common.internal.CommonSystemService",
+		defaultService.getClass().getName());
+	SystemOfUnits system = defaultService.getSystemOfUnits("USCustomary");
+	assertNotNull(system);
+	assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
+	assertEquals("United State Customary Units", system.getName());
+	assertNotNull(system.getUnits());
+	assertEquals(47, system.getUnits().size());
+	SystemOfUnits system2 = defaultService.getSystemOfUnits("US");
+	assertEquals(system, system2);
     }
 
     @Test
