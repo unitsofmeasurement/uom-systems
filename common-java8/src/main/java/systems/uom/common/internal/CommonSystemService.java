@@ -36,23 +36,26 @@ import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
 import systems.uom.common.Imperial;
-import systems.uom.common.US;
+import systems.uom.common.USCustomary;
 import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2, March 23, 2016
+ * @version 0.3, May 1, 2016
  */
 @Priority(PRIO)
 public class CommonSystemService implements SystemOfUnitsService,
 	IntPrioritySupplier {
     static final int PRIO = 100;
+    private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
 
-    final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+    private final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+    private final Map<String, String> aliases = new HashMap<String, String>();
 
     public CommonSystemService() {
 	souMap.put("Imperial", Imperial.getInstance());
-	souMap.put("US", US.getInstance());
+	souMap.put(DEFAULT_SYSTEM_NAME, USCustomary.getInstance());
+	aliases.put("US", DEFAULT_SYSTEM_NAME);
     }
 
     public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
@@ -61,12 +64,17 @@ public class CommonSystemService implements SystemOfUnitsService,
 
     @Override
     public SystemOfUnits getSystemOfUnits() {
-	return getSystemOfUnits("US"); // We assume US Customary as the more
-				       // common system here
+	return getSystemOfUnits(DEFAULT_SYSTEM_NAME); // We assume US Customary
+						      // as the more
+	// common system here
     }
 
     @Override
     public SystemOfUnits getSystemOfUnits(String name) {
+	String alias = aliases.get(name);
+	if (alias != null && alias.length() > 0) {
+	    return souMap.get(alias);
+	}
 	return souMap.get(name);
     }
 

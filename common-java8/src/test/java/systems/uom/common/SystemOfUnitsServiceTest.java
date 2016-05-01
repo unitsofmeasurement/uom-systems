@@ -38,7 +38,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-
+    private static final String EXPECTED_SYSTEM_NAME = "United State Customary Units";
+    
     private static SystemOfUnitsService defaultService;
 
     @BeforeClass
@@ -53,12 +54,28 @@ public class SystemOfUnitsServiceTest {
 		defaultService.getClass().getName());
 	SystemOfUnits system = defaultService.getSystemOfUnits();
 	assertNotNull(system);
-	assertEquals("systems.uom.common.US", system.getClass().getName());
-	assertEquals("US", system.getName());
+	assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
+	assertEquals(EXPECTED_SYSTEM_NAME, system.getName());
 	assertNotNull(system.getUnits());
 	assertEquals(43, system.getUnits().size());
     }
 
+    @Test
+    // TODO consolidate asserts
+    public void testUnitSystemServiceAlias() {
+	assertNotNull(defaultService);
+	assertEquals("systems.uom.common.internal.CommonSystemService",
+		defaultService.getClass().getName());
+	SystemOfUnits system = defaultService.getSystemOfUnits("USCustomary");
+	assertNotNull(system);
+	assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
+	assertEquals(EXPECTED_SYSTEM_NAME, system.getName());
+	assertNotNull(system.getUnits());
+	assertEquals(43, system.getUnits().size());
+	SystemOfUnits system2 = defaultService.getSystemOfUnits("US");
+	assertEquals(system, system2);
+    }
+    
     @Test
     public void testOtherUnitSystemServices() {
 	ServiceProvider[] services = ServiceProvider.available();

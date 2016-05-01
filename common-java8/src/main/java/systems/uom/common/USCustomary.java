@@ -1,6 +1,6 @@
 /*
- *  Units of Measurement Systems for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Unit-API - Units of Measurement API for Java
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -25,14 +25,14 @@
  */
 package systems.uom.common;
 
-import static tec.units.ri.unit.MetricPrefix.MICRO;
+import static tec.uom.se.unit.MetricPrefix.MICRO;
 import static si.uom.SI.*;
-import tec.units.ri.AbstractSystemOfUnits;
-import tec.units.ri.AbstractUnit;
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.RationalConverter;
-import tec.units.ri.unit.ProductUnit;
-import tec.units.ri.unit.TransformedUnit;
+import tec.uom.se.AbstractSystemOfUnits;
+import tec.uom.se.AbstractUnit;
+import tec.uom.se.format.SimpleUnitFormat;
+import tec.uom.se.function.RationalConverter;
+import tec.uom.se.unit.ProductUnit;
+import tec.uom.se.unit.TransformedUnit;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Angle;
@@ -60,7 +60,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.23, $Date: 2016-05-01 $
+ * @version 1.21, $Date: 2016-05-01 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
@@ -380,21 +380,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> CUBIC_INCH = addUnit(INCH.pow(3).asType(
 	    Volume.class));
-    
-    /**
-     * The cubic foot is an imperial and US customary (non-metric) unit of volume, 
-     * used in the United States, Canada, and the United Kingdom. 
-     * It is defined as the volume of a cube with sides of one foot (0.3048 m) in length. 
-     * Its volume is 28.3168 liters or about 1⁄35 of a cubic meter. (<code>ft³</code>).
-     */
-    public static final Unit<Volume> CUBIC_FOOT = addUnit(CUBIC_INCH.multiply(1728));
-    
-    /**
-     * An acre-foot is a unit of volume commonly used in the United States in reference to
-     * large-scale water resources, such as reservoirs, aqueducts, canals, sewer flow capacity, 
-     * irrigation water, and river flows.
-     */
-    public static final Unit<Volume> ACRE_FOOT = addUnit(CUBIC_FOOT.multiply(43560));
 
     /**
      * A unit of volume equal to one US dry gallon. (standard name
@@ -417,12 +402,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> FLUID_OUNCE = addUnit(GALLON_LIQUID
 	    .divide(128));
-
-    /**
-     * A unit of volume equal to 4 US oz_fl (standard name <code>liq.gi</code>).
-     */
-    public static final Unit<Volume> GILL_LIQUID = addUnit(FLUID_OUNCE
-	    .multiply(4));
 
     /**
      * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
@@ -463,18 +442,11 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> BARREL = addUnit(LITER.multiply(238.4810d));
 
-    /**
-     * A unit of volume equal to <code>4 {@link #GILL_LIQUID}</code> (standard
-     * name <code>pt</code>).
-     */
-    public static final Unit<Volume> PINT = addUnit(GILL_LIQUID.multiply(4));
-
     // //////////////////////////////////////////////////////////////////////////
     // Label adjustments for US system
     static {
 	SimpleUnitFormat.getInstance().label(POUND, "lb");
-	SimpleUnitFormat.getInstance().label(LITER, "L");
-	SimpleUnitFormat.getInstance().label(FLUID_OUNCE, "fl oz");
+	SimpleUnitFormat.getInstance().label(MILES_PER_HOUR, "mph");
     }
 
     /**

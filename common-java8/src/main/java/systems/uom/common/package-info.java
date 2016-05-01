@@ -29,7 +29,7 @@
  *
  * <h3> Common / Non Standard Units</h3>
  * <ul>
- *    <li> The class {@link US} contains units 
+ *    <li> The class {@link USCustomary} contains units 
  *      as defined in the <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
  *      "United States customary system"</a>.</li>
  *    <li> The class {@link NonSI} contains other commonly used non-standard units.</li>
