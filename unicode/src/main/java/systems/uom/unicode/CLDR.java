@@ -387,8 +387,15 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     static final Unit<Mass> POUND = addUnit(GRAIN.multiply(7000));
 
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
+    /**
+     * Carat (mass) is a unit of {@link Mass} for gems. It is equal to 0.2 gram (standard name <code>ct</code>).</br>
+     * In the United States, carat almost exclusively means the unit of mass. 
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/Carat_(mass)">Wikipedia: Carat (mass)</a>
+     */
     public static final Unit<Mass> CARAT = addUnit(GRAM.divide(5));
+    //public static final Unit<Mass> CARAT = addUnit((KILOGRAM.divide(5000)));
+    
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     private static final Unit<Dimensionless> CARAT_GOLD = addUnit(ONE
 	    .divide(24));
