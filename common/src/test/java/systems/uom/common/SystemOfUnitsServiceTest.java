@@ -77,14 +77,14 @@ public class SystemOfUnitsServiceTest {
 
     @Test
     public void testOtherUnitSystemServices() {
-	ServiceProvider[] services = ServiceProvider.available();
+	Collection<ServiceProvider> services = ServiceProvider.available();
 	assertNotNull(services);
-	assertEquals(3, services.length);
+	assertEquals(3, services.size());
 //	for (SystemOfUnitsService service : services) {
 //	    checkService(service);
 //	}
     }
-
+/*
     private void checkService(SystemOfUnitsService service) {
 	SystemOfUnits system;
 	switch (service.getClass().getName()) {
@@ -134,4 +134,5 @@ public class SystemOfUnitsServiceTest {
 	    break;
 	}
     }
+    */
 }

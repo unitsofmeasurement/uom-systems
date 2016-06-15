@@ -28,6 +28,8 @@ package systems.uom.unicode;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Collection;
+
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
@@ -59,15 +61,16 @@ public class SystemOfUnitsServiceTest {
 
     @Test
     public void testOtherUnitSystemServices() {
-	ServiceProvider[] services = ServiceProvider.available();
+	Collection<ServiceProvider> services = ServiceProvider.available();
 	assertNotNull(services);
-	assertEquals(3, services.length);
-//	for (SystemOfUnitsService service : services) {
+	assertEquals(3, services.size());
+//	for (ServiceProvider service : services) {
 //	    checkService(service);
 //	}
     }
 
-    private void checkService(SystemOfUnitsService service) {
+    /*
+    private void checkService(ServiceProvider service) {
 	SystemOfUnits system;
 	switch (service.getClass().getName()) {
 	case "systems.uom.iso80k.internal.ISO80kSystemService":
@@ -104,4 +107,5 @@ public class SystemOfUnitsServiceTest {
 	    break;
 	}
     }
+    */
 }
