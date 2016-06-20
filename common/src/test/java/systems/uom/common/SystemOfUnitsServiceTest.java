@@ -73,6 +73,12 @@ public class SystemOfUnitsServiceTest {
 	assertEquals(47, system.getUnits().size());
 	SystemOfUnits system2 = defaultService.getSystemOfUnits("US");
 	assertEquals(system, system2);
+	
+	system = defaultService.getSystemOfUnits("NonSI");
+	assertNotNull(system);
+	assertEquals("Non-SI Units", system.getName());
+	system2 = defaultService.getSystemOfUnits("Non-SI");
+	assertEquals(system, system2);
     }
 
     @Test

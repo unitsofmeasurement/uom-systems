@@ -36,12 +36,13 @@ import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
 import systems.uom.common.Imperial;
+import systems.uom.common.NonSI;
 import systems.uom.common.USCustomary;
 import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.3, May 1, 2016
+ * @version 0.4, June 21, 2016
  */
 @Priority(PRIO)
 public class CommonSystemService implements SystemOfUnitsService,
@@ -55,7 +56,9 @@ public class CommonSystemService implements SystemOfUnitsService,
     public CommonSystemService() {
 	souMap.put("Imperial", Imperial.getInstance());
 	souMap.put(DEFAULT_SYSTEM_NAME, USCustomary.getInstance());
+	souMap.put("NonSI", NonSI.getInstance());
 	aliases.put("US", DEFAULT_SYSTEM_NAME);
+	aliases.put("Non-SI", "NonSI");
     }
 
     public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
