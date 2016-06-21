@@ -78,7 +78,6 @@ import javax.measure.quantity.Speed;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
 
-import si.uom.SI;
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;

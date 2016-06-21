@@ -26,7 +26,6 @@
 package systems.uom.common;
 
 import static tec.units.ri.AbstractUnit.ONE;
-import static tec.units.ri.unit.MetricPrefix.CENTI;
 import static tec.units.ri.unit.Units.AMPERE;
 import static tec.units.ri.unit.Units.BECQUEREL;
 import static tec.units.ri.unit.Units.COULOMB;
@@ -78,10 +77,12 @@ import javax.measure.quantity.Speed;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
 
-import si.uom.SI;
-import si.uom.quantity.DynamicViscosity;
+
+
+//import si.uom.SI;
+//import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
-import si.uom.quantity.KinematicViscosity;
+//import si.uom.quantity.KinematicViscosity;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import systems.uom.quantity.Resolution;
@@ -624,17 +625,18 @@ public class NonSI extends AbstractSystemOfUnits {
     /**
      * A unit of dynamic viscosity equal to <code>1 g/(cmÂ·s)</code> (cgs unit).
      */
-    static final Unit<DynamicViscosity> POISE = addUnit(
-	    GRAM.divide(CENTI(METRE).multiply(SECOND))).asType(
-	    DynamicViscosity.class);
-
+//    static final Unit<DynamicViscosity> POISE = addUnit(
+//	    GRAM.divide(CENTI(METRE).multiply(SECOND))).asType(
+//	    DynamicViscosity.class);
+// FIXME move to CGS module, see https://de.wikipedia.org/wiki/Poise
     /**
      * A unit of kinematic viscosity equal to <code>1 cm²/s</code> (cgs unit).
      */
-    static final Unit<KinematicViscosity> STOKE = addUnit(
-	    CENTI(METRE).pow(2).divide(SECOND))
-	    .asType(KinematicViscosity.class);
-
+//    static final Unit<KinematicViscosity> STOKES = addUnit(
+//	    CENTI(METRE).pow(2).divide(SECOND))
+//	    .asType(KinematicViscosity.class);
+// FIXME move to CGS module
+    
     // /////////////
     // Frequency //
     // /////////////
