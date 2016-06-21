@@ -34,10 +34,8 @@ import static tec.units.ri.unit.Units.CUBIC_METRE;
 import static tec.units.ri.unit.Units.METRE;
 import static tec.units.ri.unit.Units.SQUARE_METRE;
 import static tec.units.ri.AbstractUnit.ONE;
-import si.uom.quantity.Action;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
-import si.uom.SI;
 import tec.units.ri.*;
 import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.PiMultiplierConverter;
@@ -68,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.3, $Date: 2016-05-01 $
+ * @version 0.4, $Date: 2016-06-21 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -220,19 +218,42 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<RadiationDoseEffective> SIEVERT = addUnit(Units.SIEVERT);
 
+    /////////////////////////////////////////////////////////////////
+    // Units outside the SI that are accepted for use with the SI. //
+    /////////////////////////////////////////////////////////////////
+
+    /**
+     * An angle unit accepted for use with SI units (standard name <code>deg/code>).
+     */
+    static final Unit<Angle> DEGREE_ANGLE
+        = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180)));
+
+    /**
+     * An angle unit accepted for use with SI units (standard name <code>'/code>).
+     */
+    static final Unit<Angle> MINUTE_ANGLE
+        = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60)));
+
+    /**
+     * An angle unit accepted for use with SI units (standard name <code>''</code>).
+     */
+    static final Unit<Angle> SECOND_ANGLE
+        = new TransformedUnit<Angle>(RADIAN,  new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
+
+    
     /**
      * We deviate slightly from the standard here, to maintain compatibility
      * with the existing NonSI units. In CLDR, the degree is defined as
      * <code>PI.multiply(RADIAN.divide(180))</code>.
      */
-    public static final Unit<Angle> DEGREE = addUnit(SI.DEGREE_ANGLE);
+    public static final Unit<Angle> DEGREE = addUnit(DEGREE_ANGLE);
 
     /**
      * As per CLDR standard.
      */
-    public static final Unit<Angle> ARC_MINUTE = addUnit(SI.MINUTE_ANGLE);
+    public static final Unit<Angle> ARC_MINUTE = addUnit(MINUTE_ANGLE);
 
-    public static final Unit<Angle> ARC_SECOND = addUnit(SI.SECOND_ANGLE);
+    public static final Unit<Angle> ARC_SECOND = addUnit(SECOND_ANGLE);
 
     // ////////
     // Area //
@@ -345,8 +366,8 @@ public final class CLDR extends AbstractSystemOfUnits {
     static final Unit<Speed> C = addUnit(Units.METRES_PER_SECOND
 	    .multiply(299792458));
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
-	    .multiply(6.6260755E-24)); // FIXME get rid of JXQ import (where
+//    public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
+//	    .multiply(6.6260755E-24)); // FIXME get rid of JXQ import (where
 				       // from??) */
 
     private static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(Units.METRES_PER_SQUARE_SECOND

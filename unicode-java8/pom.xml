@@ -45,10 +45,12 @@
 			<groupId>si.uom</groupId>
 			<artifactId>si-quantity</artifactId>
 		</dependency>
+		<!--  
 		<dependency>
 			<groupId>si.uom</groupId>
 			<artifactId>si-units-java8</artifactId>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>systems.uom</groupId>
 			<artifactId>systems-quantity</artifactId>
