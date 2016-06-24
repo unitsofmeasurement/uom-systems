@@ -195,9 +195,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	String mapSymbol = symbolMap.getSymbol(unit);
 	if (mapSymbol != null) {
 	    symbol = mapSymbol;
-	} else if (unit.getProductUnits() != null) {
+	} else if (unit.getBaseUnits() != null) {
 	    Map<? extends AbstractUnit<?>, Integer> productUnits = unit
-		    .getProductUnits();
+		    .getBaseUnits();
 	    StringBuffer app = new StringBuffer();
 	    for (AbstractUnit<?> u : productUnits.keySet()) {
 		StringBuffer temp = new StringBuffer();
