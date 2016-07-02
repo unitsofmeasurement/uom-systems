@@ -41,11 +41,11 @@
 			<groupId>tec.units</groupId>
 			<artifactId>unit-ri</artifactId>
 		</dependency>
-		<dependency>
+		<!-- >dependency>
 			<groupId>si.uom</groupId>
 			<artifactId>si-quantity</artifactId>
 		</dependency>
-		<!-- 
+		
 		<dependency>
 			<groupId>si.uom</groupId>
 			<artifactId>si-units</artifactId>
