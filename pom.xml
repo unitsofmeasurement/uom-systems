@@ -39,12 +39,12 @@
 	</properties>
 
 	<modules>
-		<module>quantity</module>
+		<module>quantity</module><!-- 
 		<module>common</module>
 		<module>common-java8</module>
 		<module>ucum-java8</module>
 		<module>unicode</module>
-		<module>unicode-java8</module>
+		<module>unicode-java8</module>  -->
 	</modules>
 
 	<build>
@@ -130,6 +130,11 @@
 	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
 	<repositories>
 		<repository>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+		<repository>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -149,11 +154,6 @@
 			<id>geotoolkit</id>
 			<name>Geotoolkit.org project</name>
 			<url>http://maven.geotoolkit.org</url>
-		</repository>
-		<repository>
-			<id>jcenter</id>
-			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
 		</repository>
 	</repositories>
 
