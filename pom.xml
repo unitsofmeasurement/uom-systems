@@ -84,6 +84,30 @@
 						</archive>
 					</configuration>
 				</plugin>
+
+				<!-- ======================================================= -->
+				<!-- JavaDoc Attachment -->
+				<!-- ======================================================= -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<detectLinks>true</detectLinks>
+						<keywords>true</keywords>
+						<linksource>true</linksource>
+						<failOnError>false</failOnError>
+						<source>${maven.compile.sourceLevel}</source>
+						<verbose>true</verbose>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -156,48 +180,4 @@
 			<url>http://maven.geotoolkit.org</url>
 		</repository>
 	</repositories>
-
-	<profiles>
-		<profile>
-			<id>license</id>
-			<activation>
-				<property>
-					<name>license</name>
-					<value>true</value>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.google.code.maven-license-plugin</groupId>
-						<artifactId>maven-license-plugin</artifactId>
-						<configuration>
-							<basedir>${basedir}</basedir>
-							<header>src/etc/header.txt</header>
-							<quiet>false</quiet>
-							<failIfMissing>true</failIfMissing>
-							<aggregate>false</aggregate>
-							<encoding>UTF-8</encoding>
-							<excludes>
-								<exclude>target/**</exclude>
-								<exclude>nbproject/**</exclude>
-								<exclude>LICENSE*.txt</exclude>
-								<exclude>README.*</exclude>
-								<exclude>checkstyle*.*</exclude>
-								<exclude>*.css</exclude>
-							</excludes>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>compile</phase>
-								<goals>
-									<goal>format</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
