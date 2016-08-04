@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.4, $Date: 2016-06-21 $
+ * @version 0.4.1, $Date: 2016-08-04 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -96,7 +96,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     /**
      * US name for {@link SI#METRE}.
      */
-    public static final Unit<Length> METER = METRE;
+    public static final Unit<Length> METER = addUnit(METRE);
 
     /**
      * A unit of length equal to <code>0.3048 m</code> (standard name
@@ -218,29 +218,34 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<RadiationDoseEffective> SIEVERT = addUnit(Units.SIEVERT);
 
-    /////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////
     // Units outside the SI that are accepted for use with the SI. //
-    /////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>deg/code>).
+     * An angle unit accepted for use with SI units (standard name
+     * <code>deg/code>).
      */
-    static final Unit<Angle> DEGREE_ANGLE
-        = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180)));
+    static final Unit<Angle> DEGREE_ANGLE = new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1,
+		    180)));
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>'/code>).
+     * An angle unit accepted for use with SI units (standard name
+     * <code>'/code>).
      */
-    static final Unit<Angle> MINUTE_ANGLE
-        = new TransformedUnit<Angle>(RADIAN, new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60)));
+    static final Unit<Angle> MINUTE_ANGLE = new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1,
+		    180 * 60)));
 
     /**
-     * An angle unit accepted for use with SI units (standard name <code>''</code>).
+     * An angle unit accepted for use with SI units (standard name
+     * <code>''</code>).
      */
-    static final Unit<Angle> SECOND_ANGLE
-        = new TransformedUnit<Angle>(RADIAN,  new PiMultiplierConverter().concatenate(new RationalConverter(1, 180 * 60 * 60)));
+    static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
+	    new PiMultiplierConverter().concatenate(new RationalConverter(1,
+		    180 * 60 * 60)));
 
-    
     /**
      * We deviate slightly from the standard here, to maintain compatibility
      * with the existing NonSI units. In CLDR, the degree is defined as
@@ -304,6 +309,13 @@ public final class CLDR extends AbstractSystemOfUnits {
 	    Volume.class));
 
     /**
+     * A unit of volume equal to one US gallon, Liquid Unit. The U.S. liquid
+     * gallon is based on the Queen Anne or Wine gallon occupying 231 cubic
+     * inches (standard name <code>gal</code>).
+     */
+    public static final Unit<Volume> GALLON = addUnit(CUBIC_INCH.multiply(231));
+
+    /**
      * The cubic foot is an imperial and US customary (non-metric) unit of
      * volume, used in the United States, Canada, and the United Kingdom. It is
      * defined as the volume of a cube with sides of one foot (0.3048 m) in
@@ -312,6 +324,12 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> CUBIC_FOOT = addUnit(CUBIC_INCH.multiply(
 	    1728).asType(Volume.class));
+
+    /**
+     * A unit of volume equal to <code>1 / 128 {@link #GALLON_LIQUID}</code>
+     * (standard name <code>oz_fl</code>).
+     */
+    public static final Unit<Volume> FLUID_OUNCE = addUnit(GALLON.divide(128));
 
     /**
      * An acre-foot is a unit of volume commonly used in the United States in
@@ -327,8 +345,16 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Volume> BUSHEL = addUnit(CUBIC_INCH.multiply(
 	    215042).divide(100));
 
+    /**
+     * The cup is a unit of measurement for volume, used in cooking to measure
+     * liquids (fluid measurement) and bulk foods such as granulated sugar (dry
+     * measurement). A cup is equal to <code>8 {@link #FLUID_OUNCE}</code>
+     * (standard name <code>cup</code>).
+     */
+    public static final Unit<Volume> CUP = addUnit(FLUID_OUNCE.multiply(8));
+
     // //////////
-    // Time    //
+    // Time //
     // //////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Time> MINUTE = addUnit(Units.MINUTE);
@@ -349,7 +375,7 @@ public final class CLDR extends AbstractSystemOfUnits {
 
     /** Constant for unit of time: century */
     public static final Unit<Time> CENTURY = addUnit(YEAR.multiply(100));
-    
+
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     private static final Unit<Pressure> BAR = addUnit(Units.PASCAL
 	    .multiply(100000));
@@ -366,9 +392,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     static final Unit<Speed> C = addUnit(Units.METRES_PER_SECOND
 	    .multiply(299792458));
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-//    public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
-//	    .multiply(6.6260755E-24)); // FIXME get rid of JXQ import (where
-				       // from??) */
+    // public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
+    // .multiply(6.6260755E-24)); // FIXME get rid of JXQ import (where
+    // from??) */
 
     private static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(Units.METRES_PER_SQUARE_SECOND
 	    .multiply(9.80665));
@@ -409,14 +435,16 @@ public final class CLDR extends AbstractSystemOfUnits {
     static final Unit<Mass> POUND = addUnit(GRAIN.multiply(7000));
 
     /**
-     * Carat (mass) is a unit of {@link Mass} for gems. It is equal to 0.2 gram (standard name <code>ct</code>).</br>
-     * In the United States, carat almost exclusively means the unit of mass. 
+     * Carat (mass) is a unit of {@link Mass} for gems. It is equal to 0.2 gram
+     * (standard name <code>ct</code>).</br> In the United States, carat almost
+     * exclusively means the unit of mass.
      * 
-     * @see <a href="https://en.wikipedia.org/wiki/Carat_(mass)">Wikipedia: Carat (mass)</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Carat_(mass)">Wikipedia:
+     *      Carat (mass)</a>
      */
     public static final Unit<Mass> CARAT = addUnit(GRAM.divide(5));
-    //public static final Unit<Mass> CARAT = addUnit((KILOGRAM.divide(5000)));
-    
+    // public static final Unit<Mass> CARAT = addUnit((KILOGRAM.divide(5000)));
+
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     private static final Unit<Dimensionless> CARAT_GOLD = addUnit(ONE
 	    .divide(24));
@@ -507,6 +535,7 @@ public final class CLDR extends AbstractSystemOfUnits {
 
     /**
      * The unit for binary information (standard name <code>bit</code>).
+     * @stable ICU 54
      */
     public static final Unit<Information> BIT = addUnit(
 	    new AlternateUnit<Information>(ONE, "bit"), Information.class);
@@ -519,8 +548,9 @@ public final class CLDR extends AbstractSystemOfUnits {
 
     /**
      * The unit for binary information rate (standard name <code>bit/s</code>).
+     * @draft Non-ICU
      */
-    static final ProductUnit<InformationRate> BITS_PER_SECOND = addUnit(
+    public static final Unit<InformationRate> BIT_PER_SECOND = addUnit(
 	    new ProductUnit<InformationRate>(BIT.divide(SECOND)),
 	    InformationRate.class);
 
@@ -528,6 +558,15 @@ public final class CLDR extends AbstractSystemOfUnits {
      * Equivalent {@link #BYTE}
      */
     static final Unit<Information> OCTET = BYTE;
+
+    /**
+     * A unit used to measure the frequency (rate) at which an imaging device
+     * produces unique consecutive images (standard name <code>fps</code>).
+     * 
+     * @draft Non-ICU
+     */
+    public static final Unit<Frequency> FRAME_PER_SECOND = addUnit(
+	    ONE.divide(SECOND)).asType(Frequency.class);
 
     // ///////////////////
     // Collection View //

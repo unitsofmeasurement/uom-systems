@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Units of Measurement Unicode Library for Java
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -56,7 +56,7 @@ public class SystemOfUnitsServiceTest {
 	assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
 	assertEquals("CLDR", system.getName());
 	assertNotNull(system.getUnits());
-	assertEquals(78, system.getUnits().size());
+	assertEquals(83, system.getUnits().size());
     }
 
     @Test
