@@ -56,14 +56,14 @@ public class SystemOfUnitsServiceTest {
 	assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
 	assertEquals("CLDR", system.getName());
 	assertNotNull(system.getUnits());
-	assertEquals(79, system.getUnits().size());
+	assertEquals(78, system.getUnits().size());
     }
 
     @Test
     public void testOtherUnitSystemServices() {
 	Collection<ServiceProvider> services = ServiceProvider.available();
 	assertNotNull(services);
-	assertEquals(3, services.size());
+	assertEquals(2, services.size());
 //	for (ServiceProvider service : services) {
 //	    checkService(service);
 //	}
