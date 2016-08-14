@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.4.1, $Date: 2016-08-04 $
+ * @version 0.4.2, $Date: 2016-08-05 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -94,7 +94,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     // Length //
     // //////////
     /**
-     * US name for {@link SI#METRE}.
+     * US name for {@link Units#METRE}.
      */
     public static final Unit<Length> METER = addUnit(METRE);
 
@@ -550,7 +550,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * The unit for binary information rate (standard name <code>bit/s</code>).
      * @draft Non-ICU
      */
-    public static final Unit<InformationRate> BIT_PER_SECOND = addUnit(
+    static final Unit<InformationRate> BIT_PER_SECOND = addUnit(
 	    new ProductUnit<InformationRate>(BIT.divide(SECOND)),
 	    InformationRate.class);
 
@@ -565,7 +565,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @draft Non-ICU
      */
-    public static final Unit<Frequency> FRAME_PER_SECOND = addUnit(
+    static final Unit<Frequency> FRAME_PER_SECOND = addUnit(
 	    ONE.divide(SECOND)).asType(Frequency.class);
 
     // ///////////////////
