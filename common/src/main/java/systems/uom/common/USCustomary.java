@@ -60,7 +60,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.23, $Date: 2016-05-01 $
+ * @version 1.24, August 14, 2016
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
@@ -475,6 +475,8 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	SimpleUnitFormat.getInstance().label(POUND, "lb");
 	SimpleUnitFormat.getInstance().label(LITER, "L");
 	SimpleUnitFormat.getInstance().label(FLUID_OUNCE, "fl oz");
+	SimpleUnitFormat.getInstance().label(KNOT, "kn");
+	SimpleUnitFormat.getInstance().label(MILES_PER_HOUR, "mph");
     }
 
     /**
