@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.4.2, $Date: 2016-08-05 $
+ * @version 0.4.3, $Date: 2016-08-026 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -458,8 +458,9 @@ public final class CLDR extends AbstractSystemOfUnits {
      * months) in which the Earth moves a distance of {@link #ASTRONOMICAL_UNIT}
      * in the direction perpendicular to the direction to the star (standard
      * name <code>pc</code>).
+     * @stable ICU 54.
      */
-    private static final Unit<Length> PARSEC = addUnit(METRE
+    public static final Unit<Length> PARSEC = addUnit(METRE
 	    .multiply(30856770e9));
 
     /**
@@ -613,5 +614,7 @@ public final class CLDR extends AbstractSystemOfUnits {
 	SimpleUnitFormat.getInstance().label(CARAT, "ct");
 	SimpleUnitFormat.getInstance().label(POUND, "lb");
 	SimpleUnitFormat.getInstance().label(BAR, "b");
+	SimpleUnitFormat.getInstance().label(PARSEC, "pc");
+	SimpleUnitFormat.getInstance().label(SQUARE_FOOT, "sft");
     }
 }
