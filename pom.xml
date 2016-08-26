@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>0.4-SNAPSHOT</version>
+	<version>0.4</version>
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -29,8 +29,8 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.6</jdkVersion>
-		<jsr.version>1.0-SNAPSHOT</jsr.version>
-		<ri.version>1.0-SNAPSHOT</ri.version>
+		<jsr.version>1.0</jsr.version>
+		<ri.version>1.0</ri.version>
 		<se.version>1.0-SNAPSHOT</se.version>
 		<si.version>0.5</si.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
