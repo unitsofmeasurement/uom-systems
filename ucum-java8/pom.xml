@@ -28,7 +28,7 @@
 			<dependency>
 				<groupId>systems.uom</groupId>
 				<artifactId>systems-quantity</artifactId>
-				<version>${project.version}</version>
+				<version>${quantity.version}</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
