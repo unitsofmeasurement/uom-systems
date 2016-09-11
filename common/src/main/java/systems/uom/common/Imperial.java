@@ -25,6 +25,7 @@
  */
 package systems.uom.common;
 
+import static tec.units.ri.format.UnitStyle.LABEL;
 import static tec.units.ri.unit.MetricPrefix.MICRO;
 import static tec.units.ri.unit.Units.*;
 import static systems.uom.common.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
@@ -52,7 +53,7 @@ import tec.units.ri.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.1, $Date: 2016-09-09 $
+ * @version 0.7, $Date: 2016-09-11 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
@@ -85,7 +86,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of length equal to <code>0.0254 m</code> (standard name
      * <code>in</code>).
      */
-    public static final Unit<Length> INCH = INSTANCE.addUnit(USCustomary.INCH, "Inch", "in");
+    public static final Unit<Length> INCH = addUnit(USCustomary.INCH, "in", true); //"Inch", "in", LABEL);
 
     // ////////
     // Mass //
@@ -95,14 +96,14 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
      * standard name <code>lb</code>).
      */
-    static final Unit<Mass> POUND = INSTANCE.addUnit(KILOGRAM.multiply(
-	    AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR), "Pound", "lb");
+    static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(
+	    AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR), "lb", true); // "Pound", "lb", LABEL);
     /**
      * An English and imperial unit of weight or mass now equal to 14
      * avoirdupois pounds or 6.35029318 kg (<code>st</code>).
      */
-    public static final Unit<Mass> STONE = INSTANCE.addUnit(KILOGRAM
-	    .multiply(6.35029318), "Stone", "st");
+    public static final Unit<Mass> STONE = addUnit(KILOGRAM
+	    .multiply(6.35029318), "st", true);
 
     /**
      * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
@@ -177,8 +178,8 @@ public final class Imperial extends AbstractSystemOfUnits {
      * One acre is 43,560 <code>square feet</code> (standard name <code>a</code>
      * ).
      */
-    public static final Unit<Area> ACRE = addUnit(USCustomary.SQUARE_FOOT
-	    .multiply(43560));
+    public static final Unit<Area> ACRE = INSTANCE.addUnit(USCustomary.SQUARE_FOOT
+	    .multiply(43560), "a", LABEL);
 
     // //////////
     // Energy //
@@ -196,8 +197,8 @@ public final class Imperial extends AbstractSystemOfUnits {
     /**
      * A unit of volume equal to one cubic inch (<code>in³</code>).
      */
-    static final Unit<Volume> CUBIC_INCH = addUnit(new ProductUnit<Volume>(
-	    USCustomary.INCH.pow(3))); // , "in³"));
+    public static final Unit<Volume> CUBIC_INCH = INSTANCE.addUnit(new ProductUnit<Volume>(
+	    USCustomary.INCH.pow(3)), "in³", LABEL);
 
     /**
      * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
@@ -271,6 +272,21 @@ public final class Imperial extends AbstractSystemOfUnits {
      */
     private static <U extends Unit<?>> U addUnit(U unit) {
 	INSTANCE.units.add(unit);
+	return unit;
+    }
+    
+    /**
+     * Adds a new unit not mapped to any specified quantity type.
+     *
+     * @param unit
+     *            the unit being added.
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String s, boolean isLabel) {
+	INSTANCE.units.add(unit);
+	if (isLabel) {
+	    SimpleUnitFormat.getInstance().label(unit, s);
+	}
 	return unit;
     }
 

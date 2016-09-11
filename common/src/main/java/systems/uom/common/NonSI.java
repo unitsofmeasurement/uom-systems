@@ -29,7 +29,6 @@ import static tec.units.ri.AbstractUnit.ONE;
 import static tec.units.ri.unit.Units.AMPERE;
 import static tec.units.ri.unit.Units.BECQUEREL;
 import static tec.units.ri.unit.Units.COULOMB;
-import static tec.units.ri.unit.Units.GRAM;
 import static tec.units.ri.unit.Units.GRAY;
 import static tec.units.ri.unit.Units.JOULE;
 import static tec.units.ri.unit.Units.KELVIN;
@@ -79,6 +78,7 @@ import javax.measure.quantity.Time;
 
 
 
+
 //import si.uom.SI;
 //import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
@@ -88,6 +88,7 @@ import systems.uom.quantity.InformationRate;
 import systems.uom.quantity.Resolution;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
+import tec.units.ri.format.UnitStyle;
 import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.RationalConverter;
 import tec.units.ri.unit.AlternateUnit;
@@ -423,9 +424,9 @@ public class NonSI extends AbstractSystemOfUnits {
      * 
      * @deprecated see https://java.net/jira/browse/UNITSOFMEASUREMENT-100
      */
-    private static final ProductUnit<InformationRate> BITS_PER_SECOND = addUnit(
-	    new ProductUnit<InformationRate>(BIT.divide(SECOND)),
-	    InformationRate.class);
+//    private static final ProductUnit<InformationRate> BITS_PER_SECOND = addUnit(
+//	    new ProductUnit<InformationRate>(BIT.divide(SECOND)),
+//	    InformationRate.class);
 
     /**
      * Equivalent {@link #BYTE}
@@ -662,7 +663,7 @@ public class NonSI extends AbstractSystemOfUnits {
      */
     @SuppressWarnings("unchecked")
     public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) INSTANCE
-	    .addUnit(COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", null);
+	    .addUnit(COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", UnitStyle.NAME);
 
     public String getName() {
 	return SYSTEM_NAME;

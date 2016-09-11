@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>0.4</version>
+		<version>0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>systems-unicode-java8</artifactId>
 	<name>Units of Measurement Unicode CLDR System for Java SE 8</name>
@@ -17,7 +17,7 @@
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<systems.version>0.4</systems.version>
+		<systems.version>0.5-SNAPSHOT</systems.version>
 	</properties>
 
 	<dependencyManagement>
