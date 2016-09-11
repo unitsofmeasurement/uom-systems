@@ -41,6 +41,7 @@ import javax.measure.quantity.Volume;
 import javax.measure.spi.SystemOfUnits;
 
 import tec.units.ri.AbstractSystemOfUnits;
+import tec.units.ri.AbstractUnit;
 import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.unit.ProductUnit;
 
@@ -53,9 +54,9 @@ import tec.units.ri.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, $Date: 2016-09-11 $
+ * @version 0.7.1, $Date: 2016-09-12 $
  * @see <a
- *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
+ *      href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
  */
 public final class Imperial extends AbstractSystemOfUnits {
@@ -86,8 +87,8 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of length equal to <code>0.0254 m</code> (standard name
      * <code>in</code>).
      */
-    public static final Unit<Length> INCH = addUnit(USCustomary.INCH, "in",
-	    true); // "Inch", "in", LABEL);
+    public static final Unit<Length> INCH = addUnit(USCustomary.INCH, "Inch",
+	    "in", true);
 
     // ////////
     // Mass //
@@ -99,8 +100,8 @@ public final class Imperial extends AbstractSystemOfUnits {
      */
     static final Unit<Mass> POUND = addUnit(
 	    KILOGRAM.multiply(AVOIRDUPOIS_POUND_DIVIDEND).divide(
-		    AVOIRDUPOIS_POUND_DIVISOR), "lb", true); // "Pound", "lb",
-							     // LABEL);
+		    AVOIRDUPOIS_POUND_DIVISOR), "Pound", "lb", true);
+    // LABEL);
     /**
      * An English and imperial unit of weight or mass now equal to 14
      * avoirdupois pounds or 6.35029318 kg (<code>st</code>).
@@ -134,8 +135,8 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of temperature equal to <code>5/9 °K</code> (standard name
      * <code>°R</code>).
      */
-    static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(
-	    9), "°R", true);
+    static final Unit<Temperature> RANKINE = addUnit(
+	    KELVIN.multiply(5).divide(9), "°R", true);
 
     /**
      * A unit of temperature equal to degree Rankine minus
@@ -143,7 +144,8 @@ public final class Imperial extends AbstractSystemOfUnits {
      * 
      * @see #RANKINE
      */
-    static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67), "°F", true);
+    static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67),
+	    "°F", true);
 
     // /////////
     // Angle //
@@ -175,14 +177,15 @@ public final class Imperial extends AbstractSystemOfUnits {
     /**
      * A unit of area (standard name <code>sft</code> ).
      */
-    public static final Unit<Area> SQUARE_FOOT = addUnit(USCustomary.SQUARE_FOOT, "sft", true);
+    public static final Unit<Area> SQUARE_FOOT = addUnit(
+	    USCustomary.SQUARE_FOOT, "sft", true);
 
     /**
      * One acre is 43,560 <code>square feet</code> (standard name <code>a</code>
      * ).
      */
     public static final Unit<Area> ACRE = INSTANCE.addUnit(
-	    USCustomary.SQUARE_FOOT.multiply(43560), "a", LABEL);
+	    USCustomary.SQUARE_FOOT.multiply(43560), "Acre", "a", LABEL);
 
     // //////////
     // Energy //
@@ -195,20 +198,22 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of volume equal to one cubic decimeter (default label
      * <code>L</code>, also recognized <code>ÂµL, mL, cL, dL</code>).
      */
-    static final Unit<Volume> LITRE = addUnit(CUBIC_METRE.divide(1000));
+    public static final Unit<Volume> LITRE = addUnit(CUBIC_METRE.divide(1000),
+	    "L", true);
 
     /**
      * A unit of volume equal to one cubic inch (<code>in³</code>).
      */
     public static final Unit<Volume> CUBIC_INCH = INSTANCE.addUnit(
-	    new ProductUnit<Volume>(USCustomary.INCH.pow(3)), "in³", LABEL);
+	    new ProductUnit<Volume>(USCustomary.INCH.pow(3)), "Square Inch",
+	    "in³", LABEL);
 
     /**
      * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
      * name <code>gal_uk</code>).
      */
     public static final Unit<Volume> GALLON_UK = addUnit(LITRE.multiply(454609)
-	    .divide(100000));
+	    .divide(100000), "gal_uk", true);
 
     /**
      * A unit of volume equal to one UK gallon, Liquid Unit.
@@ -238,7 +243,8 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of volume equal to <code>20 {@link #OUNCE_LIQUID}</code> (standard
      * name <code>pt</code>).
      */
-    public static final Unit<Volume> PINT = addUnit(OUNCE_LIQUID.multiply(20), "pt", true);
+    public static final Unit<Volume> PINT = addUnit(OUNCE_LIQUID.multiply(20),
+	    "pt", true);
 
     /**
      * A unit of volume equal to <code>40 {@link #OUNCE_LIQUID}</code> (standard
@@ -257,14 +263,15 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of volume equal to <code>20 {@link #MINIM}</code> (standard name
      * <code>fl scr</code>).
      */
-    public static final Unit<Volume> FLUID_SCRUPLE = addUnit(MINIM.multiply(60));
+    public static final Unit<Volume> FLUID_SCRUPLE = addUnit(
+	    MINIM.multiply(60), "fl scr", true);
 
     /**
      * A unit of volume equal to <code>3 {@link #FLUID_SCRUPLE}</code> (standard
      * name <code>fl drc</code>).
      */
-    public static final Unit<Volume> FLUID_DRACHM = addUnit(FLUID_SCRUPLE
-	    .multiply(3));
+    public static final Unit<Volume> FLUID_DRACHM = addUnit(
+	    FLUID_SCRUPLE.multiply(3), "fl drc", true);
 
     /**
      * Adds a new unit not mapped to any specified quantity type.
@@ -279,7 +286,35 @@ public final class Imperial extends AbstractSystemOfUnits {
     }
 
     /**
-     * Adds a new unit not mapped to any specified quantity type and puts a text as symbol or label.
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param text
+     *            the string to use as label or symbol
+     * @param isLabel
+     *            if the string should be used as a label or not
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name,
+	    String text, boolean isLabel) {
+	if (isLabel) {
+	    SimpleUnitFormat.getInstance().label(unit, text);
+	}
+	if (name != null && unit instanceof AbstractUnit) {
+	    return Helper.addUnit(INSTANCE.units, unit, name);
+	} else {
+	    INSTANCE.units.add(unit);
+	}
+	return unit;
+    }
+
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
      *
      * @param unit
      *            the unit being added.
@@ -291,20 +326,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      */
     private static <U extends Unit<?>> U addUnit(U unit, String text,
 	    boolean isLabel) {
-	INSTANCE.units.add(unit);
-	if (isLabel) {
-	    SimpleUnitFormat.getInstance().label(unit, text);
-	}
-	return unit;
-    }
-
-    // //////////////////////////////////////////////////////////////////////////
-    // Label adjustments for Imperial system
-    static {
-	SimpleUnitFormat.getInstance().label(LITRE, "L");
-	SimpleUnitFormat.getInstance().label(FLUID_DRACHM, "fl drc");
-	SimpleUnitFormat.getInstance().label(FLUID_SCRUPLE, "fl scr");
-	SimpleUnitFormat.getInstance().label(PINT, "pt");
+	return addUnit(unit, null, text, isLabel);
     }
 
     // ///////////////////
