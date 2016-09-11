@@ -32,6 +32,7 @@ import static systems.uom.common.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Area;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
@@ -51,244 +52,244 @@ import tec.units.ri.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, $Date: 2016-04-17 $
+ * @version 0.6.1, $Date: 2016-09-09 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
  */
-public final class Imperial extends AbstractSystemOfUnits  {
-	private static final String SYSTEM_NAME = "Imperial";
-	
-	/**
-	 * Default constructor (prevents this class from being instantiated).
-	 */
-	private Imperial() {
-	}
+public final class Imperial extends AbstractSystemOfUnits {
+    private static final String SYSTEM_NAME = "Imperial";
 
-	/**
-	 * Returns the unique instance of this class.
-	 * 
-	 * @return the Imperial instance.
-	 */
-	public static SystemOfUnits getInstance() {
-		return INSTANCE;
-	}
+    /**
+     * Default constructor (prevents this class from being instantiated).
+     */
+    private Imperial() {
+    }
 
-	private static final Imperial INSTANCE = new Imperial();
+    /**
+     * Returns the unique instance of this class.
+     * 
+     * @return the Imperial instance.
+     */
+    public static SystemOfUnits getInstance() {
+	return INSTANCE;
+    }
 
-	// //////////
-	// Length //
-	// //////////
+    private static final Imperial INSTANCE = new Imperial();
 
-	/**
-	 * A unit of length equal to <code>0.0254 m</code> (standard name
-	 * <code>in</code>).
-	 */
-//	public static final Unit<Length> INCH = tec.uom.se.util.US.INCH;
-	
-	// ////////
-	// Mass //
-	// ////////
+    // //////////
+    // Length //
+    // //////////
 
-	/**
-	 * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
-	 * standard name <code>lb</code>).
-	 */
-	static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(
-			AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR));
-	/**
-	 * An English and imperial unit of weight or mass now equal to 14 avoirdupois pounds or 6.35029318 kg (<code>st</code>).
-	 */
-	public static final Unit<Mass> STONE = addUnit(KILOGRAM.multiply(6.35029318));
+    /**
+     * A unit of length equal to <code>0.0254 m</code> (standard name
+     * <code>in</code>).
+     */
+    public static final Unit<Length> INCH = INSTANCE.addUnit(USCustomary.INCH, "Inch", "in");
 
-	/**
-	 * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
-	 * <code>oz</code>).
-	 */
-	public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16));
-	
-	/**
-	 * A unit of mass equal to <code>2240 {@link #POUND}</code> (long ton,
-	 * standard name <code>ton_uk</code>).
-	 */
-	public static final Unit<Mass> TON_UK = addUnit(POUND.multiply(2240));
+    // ////////
+    // Mass //
+    // ////////
 
-	/**
-	 * A unit of mass equal to <code>1000 kg</code> (metric ton, standard name
-	 * <code>t</code>).
-	 */
-	public static final Unit<Mass> METRIC_TON = addUnit(KILOGRAM.multiply(1000));
+    /**
+     * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
+     * standard name <code>lb</code>).
+     */
+    static final Unit<Mass> POUND = INSTANCE.addUnit(KILOGRAM.multiply(
+	    AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR), "Pound", "lb");
+    /**
+     * An English and imperial unit of weight or mass now equal to 14
+     * avoirdupois pounds or 6.35029318 kg (<code>st</code>).
+     */
+    public static final Unit<Mass> STONE = INSTANCE.addUnit(KILOGRAM
+	    .multiply(6.35029318), "Stone", "st");
 
-	// ///////////////
-	// Temperature //
-	// ///////////////
+    /**
+     * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
+     * <code>oz</code>).
+     */
+    public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16));
 
-	/**
-	 * A unit of temperature equal to <code>5/9 °K</code> (standard name
-	 * <code>°R</code>).
-	 */
-	static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5)
-			.divide(9));
+    /**
+     * A unit of mass equal to <code>2240 {@link #POUND}</code> (long ton,
+     * standard name <code>ton_uk</code>).
+     */
+    public static final Unit<Mass> TON_UK = addUnit(POUND.multiply(2240));
 
-	/**
-	 * A unit of temperature equal to degree Rankine minus
-	 * <code>459.67 °R</code> (standard name <code>°F</code>).
-	 * 
-	 * @see #RANKINE
-	 */
-	static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE
-			.shift(459.67));
+    /**
+     * A unit of mass equal to <code>1000 kg</code> (metric ton, standard name
+     * <code>t</code>).
+     */
+    public static final Unit<Mass> METRIC_TON = addUnit(KILOGRAM.multiply(1000));
 
-	// /////////
-	// Angle //
-	// /////////
+    // ///////////////
+    // Temperature //
+    // ///////////////
 
-	
-	// ////////////
-	// TimeUnit //
-	// ////////////
-	/**
-	 * A unit of time equal to <code>60 s</code> (standard name <code>min</code>
-	 * ).
-	 */
-	static final Unit<Time> MINUTE = addUnit(SECOND.multiply(60));
+    /**
+     * A unit of temperature equal to <code>5/9 °K</code> (standard name
+     * <code>°R</code>).
+     */
+    static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(
+	    9));
 
-	/**
-	 * A unit of duration equal to <code>60 {@link #MINUTE}</code> (standard
-	 * name <code>h</code>).
-	 */
-	static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
+    /**
+     * A unit of temperature equal to degree Rankine minus
+     * <code>459.67 °R</code> (standard name <code>°F</code>).
+     * 
+     * @see #RANKINE
+     */
+    static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67));
 
-	// ////////////
-	// Velocity //
-	// ////////////
+    // /////////
+    // Angle //
+    // /////////
 
+    // ////////////
+    // TimeUnit //
+    // ////////////
+    /**
+     * A unit of time equal to <code>60 s</code> (standard name <code>min</code>
+     * ).
+     */
+    static final Unit<Time> MINUTE = addUnit(SECOND.multiply(60));
 
-	// ////////
-	// Area //
-	// ////////
+    /**
+     * A unit of duration equal to <code>60 {@link #MINUTE}</code> (standard
+     * name <code>h</code>).
+     */
+    static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
 
-	/**
-	 * A unit of area (standard name <code>sft</code>
-	 * ).
-	 */
-	public static final Unit<Area> SQUARE_FOOT = USCustomary.SQUARE_FOOT;
-	
-	/**
-	 * One acre is 43,560 <code>square feet</code> (standard name <code>a</code>
-	 * ).
-	 */
-	public static final Unit<Area> ACRE = addUnit(USCustomary.SQUARE_FOOT.multiply(43560));
+    // ////////////
+    // Velocity //
+    // ////////////
 
-	// //////////
-	// Energy //
-	// //////////
+    // ////////
+    // Area //
+    // ////////
 
+    /**
+     * A unit of area (standard name <code>sft</code> ).
+     */
+    public static final Unit<Area> SQUARE_FOOT = USCustomary.SQUARE_FOOT;
 
-	// //////////
-	// Volume //
-	// //////////
-	/**
-	 * A unit of volume equal to one cubic decimeter (default label
-	 * <code>L</code>, also recognized <code>ÂµL, mL, cL, dL</code>).
-	 */
-	static final Unit<Volume> LITRE = addUnit(CUBIC_METRE.divide(1000));
+    /**
+     * One acre is 43,560 <code>square feet</code> (standard name <code>a</code>
+     * ).
+     */
+    public static final Unit<Area> ACRE = addUnit(USCustomary.SQUARE_FOOT
+	    .multiply(43560));
 
-	/**
-	 * A unit of volume equal to one cubic inch (<code>in³</code>).
-	 */
-	static final Unit<Volume> CUBIC_INCH = addUnit(new ProductUnit<Volume>(USCustomary.INCH.pow(3))); //, "in³"));
+    // //////////
+    // Energy //
+    // //////////
 
-	/**
-	 * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
-	 * name <code>gal_uk</code>).
-	 */
-	public static final Unit<Volume> GALLON_UK = addUnit(LITRE.multiply(454609)
-			.divide(100000));
+    // //////////
+    // Volume //
+    // //////////
+    /**
+     * A unit of volume equal to one cubic decimeter (default label
+     * <code>L</code>, also recognized <code>ÂµL, mL, cL, dL</code>).
+     */
+    static final Unit<Volume> LITRE = addUnit(CUBIC_METRE.divide(1000));
 
-	/**
-	 * A unit of volume equal to one UK gallon, Liquid Unit.
-	 */
-	public static final Unit<Volume> GALLON_LIQUID = addUnit(CUBIC_INCH
-			.multiply(277.42));
-	
-	/**
-	 * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
-	 * (standard name <code>oz_fl_uk</code>).
-	 */
-	static final Unit<Volume> OUNCE_LIQUID_UK = addUnit(GALLON_UK
-			.divide(160));
-	
-	/**
-	 * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
-	 * (standard name <code>oz_fl</code>).
-	 */
-	public static final Unit<Volume> OUNCE_LIQUID = OUNCE_LIQUID_UK;
+    /**
+     * A unit of volume equal to one cubic inch (<code>in³</code>).
+     */
+    static final Unit<Volume> CUBIC_INCH = addUnit(new ProductUnit<Volume>(
+	    USCustomary.INCH.pow(3))); // , "in³"));
 
-	/**
-	 * A unit of volume equal to <code>5 {@link #OUNCE_LIQUID}</code> (standard name
-	 * <code>gi</code>).
-	 */
-	public static final Unit<Volume> GILL = addUnit(OUNCE_LIQUID.multiply(5));
+    /**
+     * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
+     * name <code>gal_uk</code>).
+     */
+    public static final Unit<Volume> GALLON_UK = addUnit(LITRE.multiply(454609)
+	    .divide(100000));
 
-	/**
-	 * A unit of volume equal to <code>20 {@link #OUNCE_LIQUID}</code> (standard name
-	 * <code>pt</code>).
-	 */
-	public static final Unit<Volume> PINT = addUnit(OUNCE_LIQUID.multiply(20));
+    /**
+     * A unit of volume equal to one UK gallon, Liquid Unit.
+     */
+    public static final Unit<Volume> GALLON_LIQUID = addUnit(CUBIC_INCH
+	    .multiply(277.42));
 
-	/**
-	 * A unit of volume equal to <code>40 {@link #OUNCE_LIQUID}</code> (standard name
-	 * <code>qt</code>).
-	 */
-	public static final Unit<Volume> QUART = addUnit(OUNCE_LIQUID.multiply(40));
-	
-	/**
-	 * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
-	 * name <code>min</code>).
-	 */
-	public static final Unit<Volume> MINIM = addUnit(MICRO(LITRE).multiply(
-			59.1938802d));
+    /**
+     * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
+     * (standard name <code>oz_fl_uk</code>).
+     */
+    static final Unit<Volume> OUNCE_LIQUID_UK = addUnit(GALLON_UK.divide(160));
 
-	/**
-	 * A unit of volume equal to <code>20 {@link #MINIM}</code> (standard name
-	 * <code>fl scr</code>).
-	 */
-	public static final Unit<Volume> FLUID_SCRUPLE = addUnit(MINIM.multiply(60));
+    /**
+     * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
+     * (standard name <code>oz_fl</code>).
+     */
+    public static final Unit<Volume> OUNCE_LIQUID = OUNCE_LIQUID_UK;
 
-	/**
-	 * A unit of volume equal to <code>3 {@link #FLUID_SCRUPLE}</code> (standard name
-	 * <code>fl drc</code>).
-	 */
-	public static final Unit<Volume> FLUID_DRACHM = addUnit(FLUID_SCRUPLE.multiply(3));
+    /**
+     * A unit of volume equal to <code>5 {@link #OUNCE_LIQUID}</code> (standard
+     * name <code>gi</code>).
+     */
+    public static final Unit<Volume> GILL = addUnit(OUNCE_LIQUID.multiply(5));
 
-	/**
+    /**
+     * A unit of volume equal to <code>20 {@link #OUNCE_LIQUID}</code> (standard
+     * name <code>pt</code>).
+     */
+    public static final Unit<Volume> PINT = addUnit(OUNCE_LIQUID.multiply(20));
+
+    /**
+     * A unit of volume equal to <code>40 {@link #OUNCE_LIQUID}</code> (standard
+     * name <code>qt</code>).
+     */
+    public static final Unit<Volume> QUART = addUnit(OUNCE_LIQUID.multiply(40));
+
+    /**
+     * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
+     * name <code>min</code>).
+     */
+    public static final Unit<Volume> MINIM = addUnit(MICRO(LITRE).multiply(
+	    59.1938802d));
+
+    /**
+     * A unit of volume equal to <code>20 {@link #MINIM}</code> (standard name
+     * <code>fl scr</code>).
+     */
+    public static final Unit<Volume> FLUID_SCRUPLE = addUnit(MINIM.multiply(60));
+
+    /**
+     * A unit of volume equal to <code>3 {@link #FLUID_SCRUPLE}</code> (standard
+     * name <code>fl drc</code>).
+     */
+    public static final Unit<Volume> FLUID_DRACHM = addUnit(FLUID_SCRUPLE
+	    .multiply(3));
+
+    /**
      * Adds a new unit not mapped to any specified quantity type.
      *
-     * @param  unit the unit being added.
+     * @param unit
+     *            the unit being added.
      * @return <code>unit</code>.
      */
-    private static <U extends Unit<?>>  U addUnit(U unit) {
-        INSTANCE.units.add(unit);
-        return unit;
+    private static <U extends Unit<?>> U addUnit(U unit) {
+	INSTANCE.units.add(unit);
+	return unit;
     }
-    
-	// //////////////////////////////////////////////////////////////////////////
-	// Label adjustments for Imperial system
-	static {
-		SimpleUnitFormat.getInstance().label(POUND, "lb");
-		SimpleUnitFormat.getInstance().label(LITRE, "L");
-		SimpleUnitFormat.getInstance().label(FLUID_DRACHM, "fl drc");
-		SimpleUnitFormat.getInstance().label(FLUID_SCRUPLE, "fl scr");
-		SimpleUnitFormat.getInstance().label(PINT, "pt");
-	}
-    
-	// ///////////////////
-	// Collection View //
-	// ///////////////////
 
-	@Override
-	public String getName() {
-		return SYSTEM_NAME;
-	}
+    // //////////////////////////////////////////////////////////////////////////
+    // Label adjustments for Imperial system
+    static {
+	SimpleUnitFormat.getInstance().label(POUND, "lb");
+	SimpleUnitFormat.getInstance().label(LITRE, "L");
+	SimpleUnitFormat.getInstance().label(FLUID_DRACHM, "fl drc");
+	SimpleUnitFormat.getInstance().label(FLUID_SCRUPLE, "fl scr");
+	SimpleUnitFormat.getInstance().label(PINT, "pt");
+    }
+
+    // ///////////////////
+    // Collection View //
+    // ///////////////////
+
+    @Override
+    public String getName() {
+	return SYSTEM_NAME;
+    }
 }
