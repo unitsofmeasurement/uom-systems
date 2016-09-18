@@ -53,7 +53,7 @@ import tec.units.ri.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.1, $Date: 2016-09-12 $
+ * @version 0.7.2, $Date: 2016-09-17 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
@@ -204,7 +204,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of volume equal to one cubic inch (<code>in³</code>).
      */
     public static final Unit<Volume> CUBIC_INCH = addUnit(
-	    new ProductUnit<Volume>(USCustomary.INCH.pow(3)), "Square Inch",
+	    new ProductUnit<Volume>(USCustomary.INCH.pow(3)), "Cubic Inch",
 	    "in³", true);
 
     /**
@@ -224,19 +224,19 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
      * (standard name <code>oz_fl_uk</code>).
      */
-    static final Unit<Volume> OUNCE_LIQUID_UK = addUnit(GALLON_UK.divide(160));
+    static final Unit<Volume> OUNCE_LIQUID_UK = addUnit(GALLON_UK.divide(160), "oz_fl_uk", true);
 
     /**
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
      * (standard name <code>oz_fl</code>).
      */
-    public static final Unit<Volume> OUNCE_LIQUID = OUNCE_LIQUID_UK;
+    public static final Unit<Volume> OUNCE_LIQUID = addUnit(OUNCE_LIQUID_UK, "oz_fl", true);
 
     /**
      * A unit of volume equal to <code>5 {@link #OUNCE_LIQUID}</code> (standard
      * name <code>gi</code>).
      */
-    public static final Unit<Volume> GILL = addUnit(OUNCE_LIQUID.multiply(5));
+    public static final Unit<Volume> GILL = addUnit(OUNCE_LIQUID.multiply(5), "gi", true);
 
     /**
      * A unit of volume equal to <code>20 {@link #OUNCE_LIQUID}</code> (standard
