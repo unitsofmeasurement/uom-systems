@@ -76,23 +76,18 @@ import javax.measure.quantity.Speed;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
 
-
-
-
 //import si.uom.SI;
 //import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.IonizingRadiation;
 //import si.uom.quantity.KinematicViscosity;
 import systems.uom.quantity.Information;
-import systems.uom.quantity.InformationRate;
 import systems.uom.quantity.Resolution;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
-import tec.units.ri.format.UnitStyle;
+import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.RationalConverter;
 import tec.units.ri.unit.AlternateUnit;
-import tec.units.ri.unit.ProductUnit;
 
 /**
  * <p>
@@ -113,7 +108,7 @@ import tec.units.ri.unit.ProductUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.21, $Date: 2016-06-21$
+ * @version 1.22, $Date: 2016-09-17$
  */
 public class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
@@ -662,8 +657,8 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>Roentgen</code>).
      */
     @SuppressWarnings("unchecked")
-    public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) INSTANCE
-	    .addUnit(COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", UnitStyle.NAME);
+    public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>)
+	    addUnit(COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "r", true);
 
     public String getName() {
 	return SYSTEM_NAME;
@@ -698,16 +693,29 @@ public class NonSI extends AbstractSystemOfUnits {
     }
 
     /**
-     * Adds a new named unit to the collection.
-     * 
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
      * @param unit
      *            the unit being added.
      * @param name
-     *            the name of the unit.
+     *            the string to use as name
+     * @param text
+     *            the string to use as label or symbol
+     * @param isLabel
+     *            if the string should be used as a label or not
      * @return <code>unit</code>.
      */
-    // @SuppressWarnings("unchecked")
-    // protected static <U extends Unit<?>> U addUnit(U unit, String name) {
-    //
-    // }
+    private static <U extends Unit<?>> U addUnit(U unit, String name,
+	    String text, boolean isLabel) {
+	if (isLabel && text != null) {
+	    SimpleUnitFormat.getInstance().label(unit, text);
+	}
+	if (name != null && unit instanceof AbstractUnit) {
+	    return Helper.addUnit(INSTANCE.units, unit, name);
+	} else {
+	    INSTANCE.units.add(unit);
+	}
+	return unit;
+    }
 }

@@ -25,7 +25,6 @@
  */
 package systems.uom.common;
 
-import static tec.units.ri.format.UnitStyle.LABEL;
 import static tec.units.ri.unit.MetricPrefix.MICRO;
 import static tec.units.ri.unit.Units.*;
 import static systems.uom.common.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
@@ -184,8 +183,8 @@ public final class Imperial extends AbstractSystemOfUnits {
      * One acre is 43,560 <code>square feet</code> (standard name <code>a</code>
      * ).
      */
-    public static final Unit<Area> ACRE = INSTANCE.addUnit(
-	    USCustomary.SQUARE_FOOT.multiply(43560), "Acre", "a", LABEL);
+    public static final Unit<Area> ACRE = addUnit(
+	    USCustomary.SQUARE_FOOT.multiply(43560), "Acre", "a", true);
 
     // //////////
     // Energy //
@@ -204,9 +203,9 @@ public final class Imperial extends AbstractSystemOfUnits {
     /**
      * A unit of volume equal to one cubic inch (<code>in³</code>).
      */
-    public static final Unit<Volume> CUBIC_INCH = INSTANCE.addUnit(
+    public static final Unit<Volume> CUBIC_INCH = addUnit(
 	    new ProductUnit<Volume>(USCustomary.INCH.pow(3)), "Square Inch",
-	    "in³", LABEL);
+	    "in³", true);
 
     /**
      * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
