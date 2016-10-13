@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>0.5</version>
+	<version>0.6-SNAPSHOT</version>
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -30,7 +30,7 @@
 	<properties>
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
-		<ri.version>1.0</ri.version>
+		<ri.version>1.0.1</ri.version>
 		<se.version>1.0</se.version>
 		<si.version>0.6</si.version>
 		<quantity.version>0.5</quantity.version>
