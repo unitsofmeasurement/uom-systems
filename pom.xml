@@ -3,15 +3,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>0.5-SNAPSHOT</version>
+	<version>0.5</version>
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>1.0.1</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
-	<url>http://uom.systems</url>
+	<url>http://www.uom.systems</url>
 	<organization>
 		<name>Units of Measurement project</name>
 		<url>http://uom.technology</url>
@@ -28,12 +28,12 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jdkVersion>1.6</jdkVersion>
+		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
 		<ri.version>1.0</ri.version>
 		<se.version>1.0</se.version>
-		<si.version>0.5</si.version>
-		<quantity.version>0.4</quantity.version>
+		<si.version>0.6</si.version>
+		<quantity.version>0.5</quantity.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -173,11 +173,6 @@
 			<id>bintray-snapshot</id>
 			<name>libs-snapshot</name>
 			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
-		</repository>
-		<repository>
-			<id>geotoolkit</id>
-			<name>Geotoolkit.org project</name>
-			<url>http://maven.geotoolkit.org</url>
 		</repository>
 	</repositories>
 </project>
