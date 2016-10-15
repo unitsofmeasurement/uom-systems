@@ -61,7 +61,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.22, $Date: 2016-10-15 $
+ * @version 1.23, $Date: 2016-10-15 $
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
  *      Wikipedia: United State Customary Units</a>
  */
@@ -433,38 +433,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	// private static final int INTERNATIONAL_FOOT_DIVIDEND = 3048;
 
 	// private static final int INTERNATIONAL_FOOT_DIViSOR = 10000;
-
-	// /**
-	// * Adds a new unit and maps it to the specified quantity type.
-	// *
-	// * @param unit the unit being added.
-	// * @param type the quantity type.
-	// * @return <code>unit</code>.
-	// */
-	// private static <U extends Unit<?>> U addUnit(U unit, Class<? extends
-	// Quantity<?>> type) {
-	// INSTANCE.units.add(unit);
-	// return unit;
-	// }
-
-	// /**
-	// * Adds a new named unit to the collection.
-	// *
-	// * @param unit the unit being added.
-	// * @param name the name of the unit.
-	// * @return <code>unit</code>.
-	// */
-	// @SuppressWarnings("unchecked")
-	// private static <U extends Unit<?>> U addUnit(U unit, String name) {
-	// if (name != null && unit instanceof Unit) {
-	// Unit<?> aUnit = (Unit<?>)unit;
-	// //aUnit.setName(name);
-	// INSTANCE.units.add(aUnit);
-	// return (U) aUnit;
-	// }
-	// INSTANCE.units.add(unit);
-	// return unit;
-	// }
 
 	/**
 	 * Adds a new unit to the collection.
