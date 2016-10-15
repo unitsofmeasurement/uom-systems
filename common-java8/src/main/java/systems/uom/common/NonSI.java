@@ -40,7 +40,7 @@ import static tec.uom.se.unit.Units.METRES_PER_SECOND;
 import static tec.uom.se.unit.Units.METRES_PER_SQUARE_SECOND;
 import static tec.uom.se.unit.Units.MOLE;
 import static tec.uom.se.unit.Units.NEWTON;
-import static tec.uom.se.unit.Units.ONE;
+import static tec.uom.se.AbstractUnit.ONE;
 import static tec.uom.se.unit.Units.PASCAL;
 import static tec.uom.se.unit.Units.RADIAN;
 import static tec.uom.se.unit.Units.SECOND;
@@ -86,6 +86,7 @@ import systems.uom.quantity.InformationRate;
 import systems.uom.quantity.Resolution;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
+import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.LogConverter;
 import tec.uom.se.function.RationalConverter;
 import tec.uom.se.unit.AlternateUnit;
@@ -110,7 +111,7 @@ import tec.uom.se.unit.ProductUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.22, $Date: 2016-06-21$
+ * @version 1.23, $Date: 2016-10-15$
  */
 public class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
@@ -655,8 +656,7 @@ public class NonSI extends AbstractSystemOfUnits {
      * <code>Roentgen</code>).
      */
     @SuppressWarnings("unchecked")
-    public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) INSTANCE
-	    .addUnit(COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen");
+    public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "r", true);
 
     public String getName() {
 	return SYSTEM_NAME;
@@ -691,16 +691,28 @@ public class NonSI extends AbstractSystemOfUnits {
     }
 
     /**
-     * Adds a new named unit to the collection.
-     * 
-     * @param unit
-     *            the unit being added.
-     * @param name
-     *            the name of the unit.
-     * @return <code>unit</code>.
-     */
-    // @SuppressWarnings("unchecked")
-    // protected static <U extends Unit<?>> U addUnit(U unit, String name) {
-    //
-    // }
+	 * Adds a new unit not mapped to any specified quantity type and puts a text
+	 * as symbol or label.
+	 *
+	 * @param unit
+	 *            the unit being added.
+	 * @param name
+	 *            the string to use as name
+	 * @param text
+	 *            the string to use as label or symbol
+	 * @param isLabel
+	 *            if the string should be used as a label or not
+	 * @return <code>unit</code>.
+	 */
+	private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
+		if (isLabel) {
+			SimpleUnitFormat.getInstance().label(unit, text);
+		}
+		if (name != null && unit instanceof AbstractUnit) {
+			return Helper.addUnit(INSTANCE.units, unit, name);
+		} else {
+			INSTANCE.units.add(unit);
+		}
+		return unit;
+	}
 }
