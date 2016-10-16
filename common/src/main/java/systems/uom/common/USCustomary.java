@@ -38,8 +38,6 @@ import javax.measure.Unit;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
 
-import systems.uom.quantity.*;
-
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -60,7 +58,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.25, October 15, 2016
+ * @version 1.26, October 16, 2016
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
  *      Wikipedia: United State Customary Units</a>
  */
@@ -96,7 +94,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * A unit of length equal to <code>0.3048 m</code> (standard name
 	 * <code>ft</code>).
 	 */
-	public static final Unit<Length> FOOT = addUnit(METER.multiply(3048).divide(10000));
+	public static final Unit<Length> FOOT = addUnit(METER.multiply(3048).divide(10000), "Foot", "ft");
 
 	/**
 	 * A unit of length equal to <code>1200/3937 m</code> (standard name
@@ -160,7 +158,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
 	 * standard name <code>lb</code>).
 	 */
-	public static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(45359237).divide(100000000)); // ,
+	public static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(45359237).divide(100000000), "Pound", "lb"); // ,
 																									// Messages.US_lb_name);
 
 	/**
@@ -191,7 +189,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * 
 	 * @see #RANKINE
 	 */
-	public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67));
+	public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67), "°F");
 
 	// /////////
 	// Angle //
@@ -254,20 +252,34 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	/**
 	 * A unit of velocity expressing the number of {@link #FOOT feet} per
 	 * {@link SI#SECOND second}.
+	 * @since 0.5.1
 	 */
-	public static final Unit<Speed> FEET_PER_SECOND = addUnit(FOOT.divide(SECOND)).asType(Speed.class);
+	public static final Unit<Speed> FOOT_PER_SECOND = addUnit(FOOT.divide(SECOND)).asType(Speed.class);
+
+	/**
+	 * Alias for {@link FOOT_PER_SECOND}
+	 * @deprecated use FOOT_PER_SECOND.
+	 */
+	public static final Unit<Speed> FEET_PER_SECOND = FOOT_PER_SECOND;
 
 	/**
 	 * A unit of velocity expressing the number of international {@link #MILE
 	 * miles} per {@link #HOUR hour} (abbreviation <code>mph</code>).
 	 */
-	public static final Unit<Speed> MILES_PER_HOUR = addUnit(MILE.divide(HOUR)).asType(Speed.class);
+	public static final Unit<Speed> MILE_PER_HOUR = addUnit(MILE.divide(HOUR).asType(Speed.class), "Mile per Hour",
+			"mph");
+	
+	/**
+	 * Alias for {@link MILE_PER_HOUR}
+	 * @deprecated use MILE_PER_HOUR.
+	 */
+	public static final Unit<Speed> MILES_PER_HOUR = MILE_PER_HOUR; 
 
 	/**
 	 * A unit of velocity expressing the number of {@link #NAUTICAL_MILE
 	 * nautical miles} per {@link #HOUR hour} (abbreviation <code>kn</code>).
 	 */
-	public static final Unit<Speed> KNOT = addUnit(NAUTICAL_MILE.divide(HOUR)).asType(Speed.class);
+	public static final Unit<Speed> KNOT = addUnit(NAUTICAL_MILE.divide(HOUR).asType(Speed.class), "Knot", "kn");
 
 	// ////////
 	// Area //
@@ -282,13 +294,13 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
 	 * ).
 	 */
-	public static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
+	public static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100), "Are", "a");
 
 	/**
 	 * A unit of area equal to <code>100 {@link #ARE}</code> (standard name
 	 * <code>ha</code>).
 	 */
-	public static final Unit<Area> HECTARE = addUnit(ARE.multiply(100)); // Exact.
+	public static final Unit<Area> HECTARE = addUnit(ARE.multiply(100), "Hectare", "ha"); // Exact.
 
 	/**
 	 * The acre is a unit of area used in the imperial and U.S. customary
@@ -299,26 +311,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * @see <a href="http://en.wikipedia.org/wiki/Acre">Wikipedia: Acre</a>
 	 */
 	public static final Unit<Area> ACRE = addUnit(SQUARE_FOOT.multiply(43560));
-
-	// ///////////////
-	// Data Amount //
-	// ///////////////
-
-	/**
-	 * The unit for binary information (standard name <code>bit</code>).
-	 */
-	public static final Unit<Information> BIT = addUnit(NonSI.BIT);
-
-	/**
-	 * A unit of data amount equal to <code>8 {@link SI#BIT}</code> (BinarY
-	 * TErm, standard name <code>byte</code>).
-	 */
-	public static final Unit<Information> BYTE = addUnit(BIT.multiply(8));
-
-	/**
-	 * Equivalent {@link #BYTE}
-	 */
-	public static final Unit<Information> OCTET = BYTE;
 
 	// //////////
 	// Energy //
@@ -450,15 +442,12 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	public String getName() {
 		return SYSTEM_NAME;
 	}
-	
+
 	// //////////////////////////////////////////////////////////////////////////
 	// Label adjustments for US system
 	static {
-		SimpleUnitFormat.getInstance().label(POUND, "lb");
 		SimpleUnitFormat.getInstance().label(LITER, "L");
 		SimpleUnitFormat.getInstance().label(FLUID_OUNCE, "fl oz");
-		SimpleUnitFormat.getInstance().label(KNOT, "kn");
-		SimpleUnitFormat.getInstance().label(MILES_PER_HOUR, "mph");
 	}
 
 	/**
@@ -520,22 +509,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 */
 	private static <U extends Unit<?>> U addUnit(U unit, String name, String label) {
 		return addUnit(unit, name, label, true);
-	}
-
-	/**
-	 * Adds a new unit not mapped to any specified quantity type and puts a text
-	 * as symbol or label.
-	 *
-	 * @param unit
-	 *            the unit being added.
-	 * @param text
-	 *            the string to use as label or symbol
-	 * @param isLabel
-	 *            if the string should be used as a label or not
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
-		return addUnit(unit, null, text, isLabel);
 	}
 
 	/**
