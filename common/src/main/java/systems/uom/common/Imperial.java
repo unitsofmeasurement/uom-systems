@@ -155,10 +155,6 @@ public final class Imperial extends AbstractSystemOfUnits {
 	 */
 	static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
 
-	// ////////////
-	// Velocity //
-	// ////////////
-
 	// ////////
 	// Area //
 	// ////////
@@ -169,10 +165,10 @@ public final class Imperial extends AbstractSystemOfUnits {
 	public static final Unit<Area> SQUARE_FOOT = addUnit(USCustomary.SQUARE_FOOT, "sft", true);
 
 	/**
-	 * One acre is 43,560 <code>square feet</code> (standard name <code>a</code>
+	 * One acre is 43,560 <code>square feet</code> (standard name <code>ac</code>
 	 * ).
 	 */
-	public static final Unit<Area> ACRE = addUnit(USCustomary.SQUARE_FOOT.multiply(43560), "Acre", "a", true);
+	public static final Unit<Area> ACRE = addUnit(USCustomary.SQUARE_FOOT.multiply(43560), "Acre", "ac", true);
 
 	// //////////
 	// Volume //
@@ -187,7 +183,7 @@ public final class Imperial extends AbstractSystemOfUnits {
 	 * A unit of volume equal to one cubic inch (<code>in³</code>).
 	 */
 	public static final Unit<Volume> CUBIC_INCH = addUnit(new ProductUnit<Volume>(USCustomary.INCH.pow(3)),
-			"Cubic Inch", "in³", true);
+			"Cubic Inch", "in³");
 
 	/**
 	 * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
@@ -234,7 +230,7 @@ public final class Imperial extends AbstractSystemOfUnits {
 	 * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
 	 * name <code>min</code>).
 	 */
-	public static final Unit<Volume> MINIM = addUnit(MICRO(LITRE).multiply(59.1938802d));
+	public static final Unit<Volume> MINIM = addUnit(MICRO(LITRE).multiply(59.1938802d), "Minim", "min_br");
 
 	/**
 	 * A unit of volume equal to <code>20 {@link #MINIM}</code> (standard name

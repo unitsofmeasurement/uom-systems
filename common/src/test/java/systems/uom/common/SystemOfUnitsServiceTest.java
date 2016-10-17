@@ -38,7 +38,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-
+	private static final int NUM_OF_UNITS = 44;
+	
     private static SystemOfUnitsService defaultService;
 
     @BeforeClass
@@ -54,9 +55,9 @@ public class SystemOfUnitsServiceTest {
 	SystemOfUnits system = defaultService.getSystemOfUnits();
 	assertNotNull(system);
 	assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
-	assertEquals("United State Customary Units", system.getName());
+	assertEquals("United States Customary Units", system.getName());
 	assertNotNull(system.getUnits());
-	assertEquals(47, system.getUnits().size());
+	assertEquals(NUM_OF_UNITS, system.getUnits().size());
     }
     
     @Test
@@ -68,9 +69,9 @@ public class SystemOfUnitsServiceTest {
 	SystemOfUnits system = defaultService.getSystemOfUnits("USCustomary");
 	assertNotNull(system);
 	assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
-	assertEquals("United State Customary Units", system.getName());
+	assertEquals("United States Customary Units", system.getName());
 	assertNotNull(system.getUnits());
-	assertEquals(47, system.getUnits().size());
+	assertEquals(NUM_OF_UNITS, system.getUnits().size());
 	SystemOfUnits system2 = defaultService.getSystemOfUnits("US");
 	assertEquals(system, system2);
 	
