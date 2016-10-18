@@ -61,6 +61,7 @@ import javax.measure.spi.SystemOfUnits;
  * @version 1.26, October 16, 2016
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
  *      Wikipedia: United State Customary Units</a>
+ * @since 0.3
  */
 public final class USCustomary extends AbstractSystemOfUnits {
 	private static final String SYSTEM_NAME = "United States Customary Units";

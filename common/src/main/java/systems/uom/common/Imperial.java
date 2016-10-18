@@ -53,9 +53,10 @@ import tec.units.ri.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8, $Date: 2016-10-14 $
+ * @version 1.0, $Date: 2016-10-18 $
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia: Imperial
  *      Units</a>
+ * @since 0.2
  */
 public final class Imperial extends AbstractSystemOfUnits {
 	private static final String SYSTEM_NAME = "Imperial";
