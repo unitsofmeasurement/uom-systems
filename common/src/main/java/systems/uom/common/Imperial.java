@@ -156,9 +156,9 @@ public final class Imperial extends AbstractSystemOfUnits {
 	 */
 	static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
 
-	// ////////
+	//////////
 	// Area //
-	// ////////
+	//////////
 
 	/**
 	 * A unit of area (standard name <code>sft</code> ).
@@ -201,19 +201,19 @@ public final class Imperial extends AbstractSystemOfUnits {
 	 * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
 	 * (standard name <code>oz_fl_uk</code>).
 	 */
-	static final Unit<Volume> OUNCE_LIQUID_UK = addUnit(GALLON_UK.divide(160), "oz_fl_uk", true);
+	static final Unit<Volume> OUNCE_LIQUID_UK = GALLON_UK.divide(160); //, "oz_fl_uk", true);
 
 	/**
 	 * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
 	 * (standard name <code>oz_fl</code>).
 	 */
-	public static final Unit<Volume> OUNCE_LIQUID = addUnit(OUNCE_LIQUID_UK, "oz_fl", true);
+	public static final Unit<Volume> OUNCE_LIQUID = addUnit(OUNCE_LIQUID_UK, "oz_fl", true); // TODO possible ambiguity if US and Imperial are registered (try parse)
 
 	/**
 	 * A unit of volume equal to <code>5 {@link #OUNCE_LIQUID}</code> (standard
 	 * name <code>gi</code>).
 	 */
-	public static final Unit<Volume> GILL = addUnit(OUNCE_LIQUID.multiply(5), "gi", true);
+	public static final Unit<Volume> GILL = addUnit(OUNCE_LIQUID.multiply(5), "Gill", "gi");
 
 	/**
 	 * A unit of volume equal to <code>20 {@link #OUNCE_LIQUID}</code> (standard
