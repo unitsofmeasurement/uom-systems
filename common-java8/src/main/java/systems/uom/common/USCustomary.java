@@ -39,8 +39,6 @@ import javax.measure.Unit;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
 
-import systems.uom.quantity.*;
-
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -61,9 +59,11 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.23, $Date: 2016-10-15 $
+ * @version 1.24, $Date: 2016-10-20 $
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
  *      Wikipedia: United State Customary Units</a>
+ * @see <a href=
+ *      "https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems">
  * @since 0.3
  */
 public final class USCustomary extends AbstractSystemOfUnits {
@@ -86,32 +86,33 @@ public final class USCustomary extends AbstractSystemOfUnits {
 
 	private static final USCustomary INSTANCE = new USCustomary();
 
-	// //////////
+	////////////
 	// Length //
-	// //////////
+	////////////
 	/**
 	 * US name for {@link SI#METRE}.
 	 */
-	public static final Unit<Length> METER = METRE;
+	public static final Unit<Length> METER = addUnit(METRE);
 
 	/**
 	 * A unit of length equal to <code>0.3048 m</code> (standard name
 	 * <code>ft</code>).
 	 */
-	public static final Unit<Length> FOOT = addUnit(METER.multiply(3048).divide(10000));
+	public static final Unit<Length> FOOT = addUnit(METER.multiply(3048).divide(10000), "Foot", "ft");
 
 	/**
 	 * A unit of length equal to <code>1200/3937 m</code> (standard name
 	 * <code>foot_survey_us</code>). See also:
 	 * <a href="http://www.sizes.com/units/foot.htm">foot</a>
 	 */
-	public static final Unit<Length> FOOT_SURVEY = addUnit(METER.multiply(1200).divide(3937));
+	public static final Unit<Length> FOOT_SURVEY = addUnit(METER.multiply(1200).divide(3937), "US Survey foot",
+			"ft_survey_us");
 
 	/**
 	 * A unit of length equal to <code>0.9144 m</code> (standard name
 	 * <code>yd</code>).
 	 */
-	public static final Unit<Length> YARD = addUnit(FOOT.multiply(3));
+	public static final Unit<Length> YARD = addUnit(FOOT.multiply(3), "Yard", "yd");
 
 	/**
 	 * A unit of length equal to <code>0.0254 m</code> (standard name
@@ -123,63 +124,46 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * A unit of length equal to <code>1609.344 m</code> (standard name
 	 * <code>mi</code>).
 	 */
-	public static final Unit<Length> MILE = addUnit(METER.multiply(1609344).divide(1000));
+	public static final Unit<Length> MILE = addUnit(METER.multiply(1609344).divide(1000), "Mile", "mi");
 
 	/**
 	 * A unit of length equal to the distance that light travels in one year
 	 * through a vacuum (standard name <code>ly</code>).
 	 */
-	public static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15));
+	public static final Unit<Length> LIGHT_YEAR = addUnit(METRE.multiply(9.460528405e15), "Light year", "ly");
 
 	/**
 	 * A unit of length equal to <code>1852.0 m</code> (standard name
 	 * <code>nmi</code>).
 	 */
-	public static final Unit<Length> NAUTICAL_MILE = addUnit(METER.multiply(1852));
+	public static final Unit<Length> NAUTICAL_MILE = addUnit(METER.multiply(1852), "Nautical mile", "nmi");
 
-	/**
-	 * A unit of length equal to <code>0.013837 {@link #INCH}</code> exactly
-	 * (standard name <code>pt</code>).
-	 * 
-	 * @see #PIXEL
-	 */
-	static final Unit<Length> POINT = addUnit(INCH.multiply(13837).divide(1000000));
-
-	/**
-	 * A unit of length equal to <code>1/72 {@link #INCH}</code> (standard name
-	 * <code>pixel</code>). It is the American point rounded to an even 1/72
-	 * inch.
-	 * 
-	 * @see #POINT
-	 */
-	static final Unit<Length> PIXEL = addUnit(INCH.divide(72));
-
-	// ////////
+	//////////
 	// Mass //
-	// ////////
+	//////////
 
 	/**
 	 * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
 	 * standard name <code>lb</code>).
 	 */
-	public static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(45359237).divide(100000000)); // ,
-																									// Messages.US_lb_name);
+	public static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(45359237).divide(100000000), "Pound", "lb");
+	// Messages.US_lb_name);
 
 	/**
 	 * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
 	 * <code>oz</code>).
 	 */
-	public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16));
+	public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16), "oz", true);
 
 	/**
 	 * A unit of mass equal to <code>2000 {@link #POUND}</code> (short ton,
 	 * standard name <code>ton</code>).
 	 */
-	public static final Unit<Mass> TON = addUnit(POUND.multiply(2000));
+	public static final Unit<Mass> TON = addUnit(POUND.multiply(2000), "ton_us");
 
-	// ///////////////
+	/////////////////
 	// Temperature //
-	// ///////////////
+	/////////////////
 
 	/**
 	 * A unit of temperature equal to <code>5/9 °K</code> (standard name
@@ -193,17 +177,18 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * 
 	 * @see #RANKINE
 	 */
-	public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67));
+	public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67), "°F");
 
-	// /////////
+	///////////
 	// Angle //
-	// /////////
+	///////////
 
 	/**
 	 * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
 	 * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
 	 */
-	public static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
+	public static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class),
+			"rev", true);
 
 	/**
 	 * A unit of angle equal to <code>1/360 {@link #REVOLUTION}</code> (standard
@@ -235,9 +220,9 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Angle> GRADE = addUnit(REVOLUTION.divide(400));
 
-	// ////////////
-	// TimeUnit //
-	// ////////////
+	//////////////
+	// Time //
+	//////////////
 	/**
 	 * A unit of time equal to <code>60 s</code> (standard name <code>min</code>
 	 * ).
@@ -250,30 +235,45 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
 
-	// ////////////
+	//////////////
 	// Speed //
-	// ////////////
+	//////////////
 	/**
 	 * A unit of velocity expressing the number of {@link #FOOT feet} per
-	 * {@link SI#SECOND second}.
+	 * {@link Units#SECOND second}.
 	 */
-	public static final Unit<Speed> FEET_PER_SECOND = addUnit(FOOT.divide(SECOND)).asType(Speed.class);
+	public static final Unit<Speed> FOOT_PER_SECOND = addUnit(FOOT.divide(SECOND)).asType(Speed.class);
+
+	/**
+	 * Alias for {@link FOOT_PER_SECOND}
+	 * 
+	 * @deprecated use FOOT_PER_SECOND.
+	 */
+	public static final Unit<Speed> FEET_PER_SECOND = FOOT_PER_SECOND;
 
 	/**
 	 * A unit of velocity expressing the number of international {@link #MILE
 	 * miles} per {@link #HOUR hour} (abbreviation <code>mph</code>).
 	 */
-	public static final Unit<Speed> MILES_PER_HOUR = addUnit(MILE.divide(HOUR)).asType(Speed.class);
+	public static final Unit<Speed> MILE_PER_HOUR = addUnit(MILE.divide(HOUR).asType(Speed.class), "Mile per hour",
+			"mph");
+
+	/**
+	 * Alias for {@link MILE_PER_HOUR}
+	 * 
+	 * @deprecated use MILE_PER_HOUR.
+	 */
+	public static final Unit<Speed> MILES_PER_HOUR = MILE_PER_HOUR;
 
 	/**
 	 * A unit of velocity expressing the number of {@link #NAUTICAL_MILE
 	 * nautical miles} per {@link #HOUR hour} (abbreviation <code>kn</code>).
 	 */
-	public static final Unit<Speed> KNOT = addUnit(NAUTICAL_MILE.divide(HOUR)).asType(Speed.class);
+	public static final Unit<Speed> KNOT = addUnit(NAUTICAL_MILE.divide(HOUR).asType(Speed.class), "Knot", "kn");
 
-	// ////////
+	//////////
 	// Area //
-	// ////////
+	//////////
 
 	/**
 	 * A unit of area (standard name <code>sft</code> ).
@@ -302,39 +302,19 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Area> ACRE = addUnit(SQUARE_FOOT.multiply(43560));
 
-	// ///////////////
-	// Data Amount //
-	// ///////////////
-
-	/**
-	 * The unit for binary information (standard name <code>bit</code>).
-	 */
-	public static final Unit<Information> BIT = addUnit(NonSI.BIT);
-
-	/**
-	 * A unit of data amount equal to <code>8 {@link SI#BIT}</code> (BinarY
-	 * TErm, standard name <code>byte</code>).
-	 */
-	public static final Unit<Information> BYTE = addUnit(BIT.multiply(8));
-
-	/**
-	 * Equivalent {@link #BYTE}
-	 */
-	public static final Unit<Information> OCTET = BYTE;
-
-	// //////////
+	////////////
 	// Energy //
-	// //////////
+	////////////
 
 	/**
 	 * A unit of energy equal to one electron-volt (standard name
 	 * <code>eV</code>, also recognized <code>keV, MeV, GeV</code>).
 	 */
-	public static final Unit<Energy> ELECTRON_VOLT = addUnit(JOULE.multiply(1.602176462e-19));
+	public static final Unit<Energy> ELECTRON_VOLT = addUnit(JOULE.multiply(1.602176462e-19), "Electron Volt", "eV");
 
-	// //////////
+	////////////
 	// Power //
-	// //////////
+	////////////
 
 	/**
 	 * Horsepower (HP) is the name of several units of measurement of power. The
@@ -347,17 +327,17 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * implementation of the EU Directive 80/181/EEC on January 1, 2010, the use
 	 * of horsepower in the EU is only permitted as supplementary unit.
 	 */
-	public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
+	public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499), "Horsepower", "HP");
 
-	// //////////
+	////////////
 	// Volume //
-	// //////////
+	////////////
 	/**
 	 * A unit of volume equal to one cubic decimeter (default label
 	 * <code>L</code>, also recognized <code>µL, mL, cL, dL</code>).
 	 */
-	public static final TransformedUnit<Volume> LITER = new TransformedUnit<Volume>(CUBIC_METRE,
-			new RationalConverter(1, 1000));
+	public static final TransformedUnit<Volume> LITER = addUnit(
+			new TransformedUnit<Volume>(CUBIC_METRE, new RationalConverter(1, 1000)));
 
 	/**
 	 * A unit of volume equal to one cubic inch (<code>in³</code>).
@@ -371,6 +351,22 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	public static final Unit<Volume> GALLON_DRY = addUnit(CUBIC_INCH.multiply(2688025).divide(10000));
 
 	/**
+	 * The cubic foot is an imperial and US customary (non-metric) unit of
+	 * volume, used in the United States, Canada, and the United Kingdom. It is
+	 * defined as the volume of a cube with sides of one foot (0.3048 m) in
+	 * length. Its volume is 28.3168 liters or about 1⁄35 of a cubic meter. (
+	 * <code>ft³</code>).
+	 */
+	public static final Unit<Volume> CUBIC_FOOT = addUnit(CUBIC_INCH.multiply(1728), "ft³", true);
+
+	/**
+	 * An acre-foot is a unit of volume commonly used in the United States in
+	 * reference to large-scale water resources, such as reservoirs, aqueducts,
+	 * canals, sewer flow capacity, irrigation water, and river flows.
+	 */
+	public static final Unit<Volume> ACRE_FOOT = addUnit(CUBIC_FOOT.multiply(43560), "Acre-foot", "ac ft");
+
+	/**
 	 * A unit of volume equal to one US gallon, Liquid Unit. The U.S. liquid
 	 * gallon is based on the Queen Anne or Wine gallon occupying 231 cubic
 	 * inches (standard name <code>gal</code>).
@@ -382,6 +378,11 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * (standard name <code>oz_fl</code>).
 	 */
 	public static final Unit<Volume> FLUID_OUNCE = addUnit(GALLON_LIQUID.divide(128));
+
+	/**
+	 * A unit of volume equal to 4 US oz_fl (standard name <code>liq.gi</code>).
+	 */
+	public static final Unit<Volume> GILL_LIQUID = addUnit(FLUID_OUNCE.multiply(4), "Liquid Gill", "liq.gi");
 
 	/**
 	 * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
@@ -419,14 +420,13 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * A unit of volume equal to <code>238.4810 {@link #LITER}</code> (standard
 	 * name <code>bbl</code>).
 	 */
-	public static final Unit<Volume> BARREL = addUnit(LITER.multiply(238.4810d));
+	public static final Unit<Volume> BARREL = addUnit(LITER.multiply(238.4810d), "Barrel", "bbl");
 
-	// //////////////////////////////////////////////////////////////////////////
-	// Label adjustments for US system
-	static {
-		SimpleUnitFormat.getInstance().label(POUND, "lb");
-		SimpleUnitFormat.getInstance().label(MILES_PER_HOUR, "mph");
-	}
+	/**
+	 * A unit of volume equal to <code>4 {@link #GILL_LIQUID}</code> (standard
+	 * name <code>pt</code>).
+	 */
+	public static final Unit<Volume> PINT = addUnit(GILL_LIQUID.multiply(4), "Pint", "pt");
 
 	/**
 	 * Holds the international foot: 0.3048 m exact.
@@ -508,5 +508,19 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 */
 	private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
 		return addUnit(unit, null, text, isLabel);
+	}
+	
+	/**
+	 * Adds a new unit not mapped to any specified quantity type and puts a text
+	 * as label.
+	 *
+	 * @param unit
+	 *            the unit being added.
+	 * @param text
+	 *            the string to use as label or symbol
+	 * @return <code>unit</code>.
+	 */
+	private static <U extends Unit<?>> U addUnit(U unit, String text) {
+		return addUnit(unit, null, text, true);
 	}
 }

@@ -71,7 +71,7 @@ public class NewtonsSecondLawTest {
 		@SuppressWarnings("unchecked") // we know this creates an acceleration!
 		Unit<Acceleration> inch_per_square_second = (Unit<Acceleration>)USCustomary.INCH.divide(SI.SECOND).divide(SI.SECOND);
 //		logger.log(Level.FINER, "Acceleration = " + inch_per_square_second);
-		System.out.println(inch_per_square_second);
+		logger.log(Level.FINE, String.valueOf(inch_per_square_second));
 		AccelerationAmount a = new AccelerationAmount(100, inch_per_square_second);
 		ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
 //		assertEquals(867961.6621451874, force.doubleValue(SI.NEWTON), 0.0000000001);

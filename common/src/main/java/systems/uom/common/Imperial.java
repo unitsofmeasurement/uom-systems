@@ -53,9 +53,10 @@ import tec.units.ri.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, $Date: 2016-10-18 $
+ * @version 1.0.1, $Date: 2016-10-20 $
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia: Imperial
- *      Units</a>
+ *      Units</a> 
+ * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems">
  * @since 0.2
  */
 public final class Imperial extends AbstractSystemOfUnits {

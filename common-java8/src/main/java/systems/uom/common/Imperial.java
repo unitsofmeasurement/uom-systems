@@ -57,6 +57,7 @@ import tec.uom.se.unit.ProductUnit;
  * @see <a href=
  *      "http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">
  *      Wikipedia: Imperial Units</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems">
  * @since 0.2
  */
 public final class Imperial extends AbstractSystemOfUnits {

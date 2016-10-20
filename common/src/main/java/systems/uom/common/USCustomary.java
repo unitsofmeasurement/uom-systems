@@ -58,8 +58,10 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.26, October 16, 2016
+ * @version 1.27, October 20, 2016
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
+ *      Wikipedia: United State Customary Units</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems">
  *      Wikipedia: United State Customary Units</a>
  * @since 0.3
  */
@@ -89,7 +91,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	/**
 	 * US name for {@link SI#METRE}.
 	 */
-	public static final Unit<Length> METER = METRE;
+	public static final Unit<Length> METER = addUnit(METRE);
 
 	/**
 	 * A unit of length equal to <code>0.3048 m</code> (standard name
@@ -150,7 +152,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
 	 * <code>oz</code>).
 	 */
-	public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16));
+	public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16), "oz");
 
 	/**
 	 * A unit of mass equal to <code>2000 {@link #POUND}</code> (short ton,
@@ -270,9 +272,9 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Speed> KNOT = addUnit(NAUTICAL_MILE.divide(HOUR).asType(Speed.class), "Knot", "kn");
 
-	// ////////
+	//////////
 	// Area //
-	// ////////
+	//////////
 
 	/**
 	 * A unit of area (standard name <code>sft</code> ).
