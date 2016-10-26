@@ -32,7 +32,7 @@
 		<jsr.version>1.0</jsr.version>
 		<ri.version>1.0.1</ri.version>
 		<se.version>1.0.1</se.version>
-		<si.version>0.6.1</si.version>
+		<si.version>0.6.2</si.version>
 		<quantity.version>0.5</quantity.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
