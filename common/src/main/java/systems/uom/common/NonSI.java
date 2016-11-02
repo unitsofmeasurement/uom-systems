@@ -45,7 +45,6 @@ import static tec.units.ri.unit.Units.SECOND;
 import static tec.units.ri.unit.Units.SIEVERT;
 import static tec.units.ri.unit.Units.STERADIAN;
 import static tec.units.ri.unit.Units.TESLA;
-import static tec.units.ri.unit.Units.WATT;
 import static tec.units.ri.unit.Units.WEBER;
 
 import javax.measure.Unit;
@@ -63,7 +62,6 @@ import javax.measure.quantity.Length;
 import javax.measure.quantity.MagneticFlux;
 import javax.measure.quantity.MagneticFluxDensity;
 import javax.measure.quantity.Mass;
-import javax.measure.quantity.Power;
 import javax.measure.quantity.Pressure;
 import javax.measure.quantity.RadiationDoseAbsorbed;
 import javax.measure.quantity.RadiationDoseEffective;
@@ -156,18 +154,11 @@ public class NonSI extends AbstractSystemOfUnits {
 	static final Unit<Dimensionless> PI = addUnit(ONE.multiply(StrictMath.PI));
 
 	/**
-	 * A dimensionless unit equals to <code>0.01</code> (standard name
-	 * <code>%</code>).
-	 */
-	// static final Unit<Dimensionless> PERCENT = addUnit(ONE
-	// .divide(100));
-
-	/**
 	 * A logarithmic unit used to describe a ratio (standard name
 	 * <code>dB</code>).
 	 */
-	static final Unit<Dimensionless> DECIBEL = addUnit(
-			ONE.transform(new LogConverter(10).inverse().concatenate(new RationalConverter(1d, 10d))));
+	static final Unit<Dimensionless> DECIBEL = 
+			ONE.transform(new LogConverter(10).inverse().concatenate(new RationalConverter(1d, 10d)));
 
 	// ///////////////////////
 	// Amount of substance //
@@ -176,7 +167,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of amount of substance equals to one atom (standard name
 	 * <code>atom</code>).
 	 */
-	static final Unit<AmountOfSubstance> ATOM = addUnit(MOLE.divide(AVOGADRO_CONSTANT));
+	static final Unit<AmountOfSubstance> ATOM = MOLE.divide(AVOGADRO_CONSTANT);
 
 	// //////////
 	// Length //
@@ -224,12 +215,6 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * <code>day_sidereal</code>).
 	 */
 	static final Unit<Time> DAY_SIDEREAL = addUnit(SECOND.multiply(86164.09));
-
-	/**
-	 * A unit of duration equal to 365 {@link #DAY} (standard name
-	 * <code>year</code>).
-	 */
-//	static final Unit<Time> YEAR_CALENDAR = addUnit(DAY.multiply(365));
 
 	/**
 	 * A unit of duration equal to one complete revolution of the earth about
@@ -290,7 +275,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of temperature equal to <code>5/9 Â°K</code> (standard name
 	 * <code>Â°R</code>).
 	 */
-	static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9));
+	static final Unit<Temperature> RANKINE = KELVIN.multiply(5).divide(9);
 
 	// /////////
 	// Angle //
@@ -309,7 +294,7 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of velocity relative to the speed of light (standard name
 	 * <code>c</code>).
 	 */
-	static final Unit<Speed> C = addUnit(METRES_PER_SECOND.multiply(299792458));
+	static final Unit<Speed> C = METRES_PER_SECOND.multiply(299792458);
 
 	// ////////////////
 	// Acceleration //
@@ -318,8 +303,8 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of acceleration equal to the gravity at the earth's surface
 	 * (standard name <code>grav</code>).
 	 */
-	static final Unit<Acceleration> G = addUnit(
-			METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+	static final Unit<Acceleration> G = 
+			METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR);
 
 	// ///////////////
 	// Information //
@@ -381,8 +366,8 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * electromagnetic unit of magnetomotive force, equal to <code>10/4
 	 * &pi;ampere-turn</code> (standard name <code>Gi</code>).
 	 */
-	static final Unit<ElectricCurrent> GILBERT = addUnit(
-			AMPERE.multiply(10).divide(4).multiply(PI).asType(ElectricCurrent.class));
+	static final Unit<ElectricCurrent> GILBERT = 
+			AMPERE.multiply(10).divide(4).multiply(PI).asType(ElectricCurrent.class);
 
 	// //////////
 	// Energy //
@@ -391,13 +376,13 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of energy equal to <code>1E-7 J</code> (standard name
 	 * <code>erg</code>).
 	 */
-	static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000));
+	static final Unit<Energy> ERG = JOULE.divide(10000000);
 
 	/**
 	 * A unit of energy equal to one electron-volt (standard name
 	 * <code>eV</code>, also recognized <code>keV, MeV, GeV</code>).
 	 */
-	static final Unit<Energy> ELECTRON_VOLT = addUnit(JOULE.multiply(ELEMENTARY_CHARGE));
+	static final Unit<Energy> ELECTRON_VOLT = JOULE.multiply(ELEMENTARY_CHARGE);
 
 	// ///////////////
 	// Illuminance //
@@ -439,26 +424,16 @@ public class NonSI extends AbstractSystemOfUnits {
 	 * A unit of force equal to <code>9.80665 N</code> (standard name
 	 * <code>kgf</code>).
 	 */
-	static final Unit<Force> KILOGRAM_FORCE = addUnit(
-			NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+	static final Unit<Force> KILOGRAM_FORCE = 
+			NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR);
 
 	/**
 	 * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code>
 	 * (standard name <code>lbf</code>).
 	 */
-	static final Unit<Force> POUND_FORCE = addUnit(
+	static final Unit<Force> POUND_FORCE = 
 			NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
-					.divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR));
-
-	// /////////
-	// Power //
-	// /////////
-	/**
-	 * A unit of power equal to the power required to raise a mass of 75
-	 * kilograms at a velocity of 1 meter per second (metric, standard name
-	 * <code>hp</code>).
-	 */
-	static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
+					.divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR);
 
 	// ////////////
 	// Pressure //
