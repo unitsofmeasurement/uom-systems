@@ -4,13 +4,12 @@ uom-systems
 Units of Measurement Systems
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/systems.uom/systems-parent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/systems.uom/systems-parent)
-[![Circle CI](https://circleci.com/gh/unitsofmeasurement/uom-systems.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/uom-systems) 
-[![Stack Overflow](http://img.shields.io/badge/stack%20overflow-unit%20systems-4183C4.svg)](http://stackoverflow.com/search?q=unit+systems)
-[![License](http://img.shields.io/badge/license-BSD3-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
-<!--
+[![Circle CI](https://circleci.com/gh/unitsofmeasurement/uom-systems.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/uom-systems) 	
 [![Issue Stats](http://issuestats.com/github/unitsofmeasurement/uom-systems/badge/pr?style=flat)](http://issuestats.com/github/unitsofmeasurement/uom-systems)
 [![Issue Stats](http://issuestats.com/github/unitsofmeasurement/uom-systems/badge/issue?style=flat)](http://issuestats.com/github/unitsofmeasurement/uom-systems)
--->
+[![Stack Overflow](http://img.shields.io/badge/stack%20overflow-unit%20systems-4183C4.svg)](http://stackoverflow.com/search?q=unit+systems)
+[![License](http://img.shields.io/badge/license-BSD3-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
+
 The project currently contains the following modules:
 
 - [Reusable Quantities](quantity)
