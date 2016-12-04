@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -31,7 +31,7 @@
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
 		<ri.version>1.0.1</ri.version>
-		<se.version>1.0.1</se.version>
+		<se.version>1.0.2</se.version>
 		<si.version>0.6.2</si.version>
 		<quantity.version>0.5</quantity.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
