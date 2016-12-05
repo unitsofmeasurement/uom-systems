@@ -75,10 +75,10 @@ public class SystemOfUnitsServiceTest {
 	SystemOfUnits system2 = defaultService.getSystemOfUnits("US");
 	assertEquals(system, system2);
 	
-	system = defaultService.getSystemOfUnits("NonSI");
+	system = defaultService.getSystemOfUnits("CGS");
 	assertNotNull(system);
-	assertEquals("Non-SI Units", system.getName());
-	system2 = defaultService.getSystemOfUnits("Non-SI");
+	assertEquals("Centimetre–gram–second System of Units", system.getName());
+	system2 = defaultService.getSystemOfUnits("Centimetre–gram–second");
 	assertEquals(system, system2);
     }
 

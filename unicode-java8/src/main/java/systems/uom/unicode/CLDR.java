@@ -36,6 +36,7 @@ import static tec.uom.se.unit.Units.SQUARE_METRE;
 import static tec.uom.se.AbstractUnit.ONE;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
+import systems.uom.quantity.Resolution;
 import tec.uom.se.*;
 import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.PiMultiplierConverter;
@@ -440,6 +441,16 @@ public final class CLDR extends AbstractSystemOfUnits {
      * @deprecated Does not seem to be in CLDR
      */
     static final Unit<Length> COMPUTER_POINT = PIXEL;
+    
+    /**
+     * Pixel per inch describe the resolution for any output device (monitor,
+     * printer) that deals with outputting digital raster images.
+     * 
+     * @see #INCH
+     * @see #PIXEL
+     */
+    static final Unit<Resolution> PIXEL_PER_INCH = addUnit(PIXEL.divide(INCH).asType(Resolution.class));
+
 
     // ///////////////////////////////////////////
     // TYPESETTER'S LENGTH UNITS //

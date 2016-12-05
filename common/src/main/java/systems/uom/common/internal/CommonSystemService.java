@@ -32,14 +32,14 @@ import java.util.Map;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
+import systems.uom.common.CGS;
 import systems.uom.common.Imperial;
-import systems.uom.common.NonSI;
 import systems.uom.common.USCustomary;
 import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5, June 21, 2016
+ * @version 0.6, December 5, 2016
  */
 class CommonSystemService implements SystemOfUnitsService, IntPrioritySupplier {
     private static final int PRIO = 100;
@@ -51,9 +51,9 @@ class CommonSystemService implements SystemOfUnitsService, IntPrioritySupplier {
     public CommonSystemService() {
 	souMap.put("Imperial", Imperial.getInstance());
 	souMap.put(DEFAULT_SYSTEM_NAME, USCustomary.getInstance());
-	souMap.put("NonSI", NonSI.getInstance());
+	souMap.put("CGS", CGS.getInstance());
 	aliases.put("US", DEFAULT_SYSTEM_NAME);
-	aliases.put("Non-SI", "NonSI");
+	aliases.put("Centimetre–gram–second", "CGS");
     }
 
     public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {

@@ -32,12 +32,12 @@
  *    <li> The class {@link USCustomary} contains units 
  *      as defined in the <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
  *      "United States customary system"</a>.</li>
- *    <li> The class {@link NonSI} contains other commonly used non-standard units.</li>
+ *    <li> The class {@link CGS} contains other common units defined in the pre SI <a href="https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">
+ *      "Centimetre–gram–second" system</a>.</li>
  * </ul>
- *
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.1
+ * @version 0.2
  */
 package systems.uom.common;
