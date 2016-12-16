@@ -90,7 +90,6 @@ import tec.uom.se.unit.Units;
  * 
  * @noextend This class is not intended to be extended by clients.
  * 
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 0.2, $Date: 2016-12-16$
  * @see <a href=

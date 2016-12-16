@@ -102,7 +102,7 @@ import tec.units.ri.unit.AlternateUnit;
  *      Common Units not officially sanctioned</a>
  * @deprecated should be moved to si-units.
  */
-public class NonSI extends AbstractSystemOfUnits {
+final class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
 
     /**

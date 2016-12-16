@@ -114,7 +114,7 @@ import tec.uom.se.unit.ProductUnit;
  * @version 1.24, $Date: 2016-11-05$
  * @deprecated should be moved to si-units.
  */
-public class NonSI extends AbstractSystemOfUnits {
+final class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
 
     /**
