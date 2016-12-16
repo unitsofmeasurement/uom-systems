@@ -88,17 +88,17 @@ import tec.units.ri.unit.Units;
  * This class is not intended to be implemented by clients.
  * </p>
  * 
- * @noimplement This class is not intended to be implemented by clients.
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.1, $Date: 2016-12-05$
+ * @version 0.2, $Date: 2016-12-16$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">Wikipedia:
  *      Centimetre–gram–second system of units</a>
+ * @since 0.6
  */
-public class CGS extends AbstractSystemOfUnits {
+public final class CGS extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Centimetre–gram–second System of Units";
 
     /**
