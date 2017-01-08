@@ -56,7 +56,7 @@ public class SystemOfUnitsServiceTest {
 	assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
 	assertEquals("CLDR", system.getName());
 	assertNotNull(system.getUnits());
-	assertEquals(83, system.getUnits().size());
+	assertEquals(80, system.getUnits().size());
     }
 
     @Test

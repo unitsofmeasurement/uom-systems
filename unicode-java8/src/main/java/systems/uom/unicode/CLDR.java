@@ -256,7 +256,8 @@ public final class CLDR extends AbstractSystemOfUnits {
     /**
      * A unit of area (standard name <code>sft</code> ).
      */
-    public static final Unit<Area> SQUARE_FOOT = addUnit(new ProductUnit<Area>((AbstractUnit<?>) FOOT.multiply(FOOT)));
+    public static final Unit<Area> SQUARE_FOOT = addUnit(new ProductUnit<Area>((AbstractUnit<?>) FOOT.multiply(FOOT)),
+	    "Square Foot", "sft");
 
     /**
      * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
@@ -268,7 +269,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * A unit of area equal to <code>100 {@link #ARE}</code> (standard name
      * <code>ha</code>).
      */
-    public static final Unit<Area> HECTARE = addUnit(ARE.multiply(100)); // Exact.
+    public static final Unit<Area> HECTARE = addUnit(ARE.multiply(100), "Hectare", "ha");
 
     /**
      * The acre is a unit of area used in the imperial and U.S. customary
@@ -444,16 +445,16 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @see #PIXEL
      */
-    public static final Unit<Length> POINT = addUnit(LINE.divide(6));
+    static final Unit<Length> POINT = LINE.divide(6);
     // static final Unit<Length> POINT = addUnit(INCH.multiply(13837)
     // .divide(1000000));
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Length> PICA = addUnit(POINT.multiply(12));
+    static final Unit<Length> PICA = POINT.multiply(12);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Length> POINT_PRINTER = addUnit(INCH_INTERNATIONAL.multiply(13837).divide(1000000));
+    static final Unit<Length> POINT_PRINTER = INCH_INTERNATIONAL.multiply(13837).divide(1000000);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Length> PICA_PRINTER = addUnit(POINT_PRINTER.multiply(12));
+    static final Unit<Length> PICA_PRINTER = POINT_PRINTER.multiply(12);
 
     // ////////////////////////////////////
     // OTHER LEGACY UNITS: CLDR //

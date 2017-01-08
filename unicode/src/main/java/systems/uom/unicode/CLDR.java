@@ -467,17 +467,18 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @see #PIXEL
      */
+    /*
     public static final Unit<Length> POINT = addUnit(LINE.divide(6));
     // static final Unit<Length> POINT = addUnit(INCH.multiply(13837)
     // .divide(1000000));
 
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
+    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. 
     public static final Unit<Length> PICA = addUnit(POINT.multiply(12));
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
+    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. 
     public static final Unit<Length> POINT_PRINTER = addUnit(INCH_INTERNATIONAL.multiply(13837).divide(1000000));
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
+    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. 
     public static final Unit<Length> PICA_PRINTER = addUnit(POINT_PRINTER.multiply(12));
-
+*/
     // ////////////////////////////////////
     // OTHER LEGACY UNITS: CLDR //
     // ////////////////////////////////////
