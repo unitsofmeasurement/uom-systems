@@ -31,7 +31,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Priority;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
@@ -42,9 +41,9 @@ import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5, December 5, 2016
+ * @version 0.6, January 16, 2017
  */
-@Priority(PRIO)
+//@Priority(PRIO)
 public class CommonSystemService implements SystemOfUnitsService,
 	IntPrioritySupplier {
     static final int PRIO = 100;
