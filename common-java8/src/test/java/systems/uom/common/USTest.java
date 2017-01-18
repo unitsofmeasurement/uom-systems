@@ -50,6 +50,8 @@ public class USTest {
     public void testFormatEBNF() {
 	EBNFUnitFormat format = EBNFUnitFormat.getInstance();
 
+	format.label(POUND, "pd");
+	format.label(POUND, "2pd");
 	// assertEquals("lb", POUND.toString());
 	assertEquals("lb", format.format(POUND));
     }
