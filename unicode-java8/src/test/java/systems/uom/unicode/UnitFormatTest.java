@@ -75,13 +75,13 @@ public class UnitFormatTest {
 
 	@Test
 	public void testFormat2() {
-		Unit<Speed> kph = Units.KILOMETRES_PER_HOUR;
+		Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
 		assertEquals("km/h", kph.toString());
 	}
 	
 	@Test
 	public void testFormat4() {
-		Unit<Speed> kph = Units.KILOMETRES_PER_HOUR;
+		Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
 		assertEquals("km/h", kph.toString());  // TODO i18n vs. no i18n
 	}
 	

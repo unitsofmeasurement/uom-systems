@@ -61,7 +61,7 @@ public class CLDRTest {
 	
 	@Test
 	public void testConvert() {
-		Quantity<Speed> kph = Quantities.getQuantity(30, Units.KILOMETRES_PER_HOUR);
+		Quantity<Speed> kph = Quantities.getQuantity(30, Units.KILOMETRE_PER_HOUR);
 		Quantity<Speed> knots = kph.to(CLDR.KNOT);
 		assertEquals(16.19871706263499, knots.getValue());
 	}

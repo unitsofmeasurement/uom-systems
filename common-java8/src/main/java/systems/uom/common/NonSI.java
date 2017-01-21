@@ -36,8 +36,8 @@ import static tec.uom.se.unit.Units.KELVIN;
 import static tec.uom.se.unit.Units.KILOGRAM;
 import static tec.uom.se.unit.Units.LUX;
 import static tec.uom.se.unit.Units.METRE;
-import static tec.uom.se.unit.Units.METRES_PER_SECOND;
-import static tec.uom.se.unit.Units.METRES_PER_SQUARE_SECOND;
+import static tec.uom.se.unit.Units.METRE_PER_SECOND;
+import static tec.uom.se.unit.Units.METRE_PER_SQUARE_SECOND;
 import static tec.uom.se.unit.Units.MOLE;
 import static tec.uom.se.unit.Units.NEWTON;
 import static tec.uom.se.AbstractUnit.ONE;
@@ -111,7 +111,7 @@ import tec.uom.se.unit.ProductUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.25, $Date: 2017-01-21$
+ * @version 1.26, $Date: 2017-01-21$
  * @deprecated should be moved to si-units.
  */
 final class NonSI extends AbstractSystemOfUnits {
@@ -447,7 +447,7 @@ final class NonSI extends AbstractSystemOfUnits {
      * A unit of velocity relative to the speed of light (standard name
      * <code>c</code>).
      */
-    static final Unit<Speed> C = addUnit(METRES_PER_SECOND.multiply(299792458));
+    static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
 
     // ////////////////
     // Acceleration //
@@ -457,7 +457,7 @@ final class NonSI extends AbstractSystemOfUnits {
      * (standard name <code>grav</code>).
      */
     static final Unit<Acceleration> G = addUnit(
-	    METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+	    METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
 
     // ////////
     // Area //
