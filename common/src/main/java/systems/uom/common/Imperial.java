@@ -1,5 +1,5 @@
 /*
- *  Units of Measurement Systems for Java
+ *  Unit Systems for Java
  *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
@@ -29,7 +29,6 @@ import static tec.units.ri.unit.MetricPrefix.MICRO;
 import static tec.units.ri.unit.Units.*;
 
 import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -62,13 +61,6 @@ import tec.units.ri.unit.ProductUnit;
 public final class Imperial extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Imperial";
     
-    /**
-     * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
-     */
-    private static final int STANDARD_GRAVITY_DIVIDEND = 980665;
-
-    private static final int STANDARD_GRAVITY_DIVISOR = 100000;
-
     /**
      * Holds the avoirdupois pound: 0.45359237 kg exact
      */
@@ -171,16 +163,6 @@ public final class Imperial extends AbstractSystemOfUnits {
      */
     static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
     
-    //////////////////
-    // Acceleration //
-    //////////////////
-    /**
-     * A unit of acceleration equal to the gravity at the earth's surface
-     * (standard name <code>grav</code>).
-     */
-    static final Unit<Acceleration> G = METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
-	    .divide(STANDARD_GRAVITY_DIVISOR);
-
     //////////
     // Area //
     //////////

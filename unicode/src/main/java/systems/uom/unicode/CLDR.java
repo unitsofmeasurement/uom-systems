@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.4.4, $Date: 2017-01-08 $
+ * @version 0.5, $Date: 2017-03-03 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -373,14 +373,14 @@ public final class CLDR extends AbstractSystemOfUnits {
     // NATURAL UNITS //
     // ///////////////////////////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    static final Unit<Speed> C = addUnit(Units.METRES_PER_SECOND.multiply(299792458));
+    static final Unit<Speed> C = addUnit(Units.METRE_PER_SECOND.multiply(299792458));
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     // public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND
     // .multiply(6.6260755E-24)); // FIXME get rid of JXQ import (where
     // from??) */
 
     private static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(
-	    Units.METRES_PER_SQUARE_SECOND.multiply(9.80665));
+	    Units.METRE_PER_SQUARE_SECOND.multiply(9.80665));
 
     // //////////
     // Length //

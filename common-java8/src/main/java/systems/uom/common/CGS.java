@@ -1,6 +1,6 @@
 /*
- *  SI Units of Measurement for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Units of Measurement Systems for Java
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -10,7 +10,7 @@
  *
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -35,8 +35,6 @@ import static tec.uom.se.unit.Units.KELVIN;
 import static tec.uom.se.unit.Units.KILOGRAM;
 import static tec.uom.se.unit.Units.LUX;
 import static tec.uom.se.unit.Units.METRE;
-import static tec.uom.se.unit.Units.METRE_PER_SECOND;
-import static tec.uom.se.unit.Units.METRE_PER_SQUARE_SECOND;
 import static tec.uom.se.unit.Units.MOLE;
 import static tec.uom.se.unit.Units.NEWTON;
 import static tec.uom.se.unit.Units.PASCAL;
@@ -48,7 +46,6 @@ import static tec.uom.se.unit.Units.TESLA;
 import static tec.uom.se.unit.Units.WEBER;
 
 import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.AmountOfSubstance;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Dimensionless;
@@ -66,17 +63,13 @@ import javax.measure.quantity.Pressure;
 import javax.measure.quantity.RadiationDoseEffective;
 import javax.measure.quantity.Radioactivity;
 import javax.measure.quantity.SolidAngle;
-import javax.measure.quantity.Speed;
 import javax.measure.quantity.Temperature;
 import si.uom.quantity.IonizingRadiation;
-import systems.uom.quantity.Information;
-import systems.uom.quantity.Resolution;
 import tec.uom.se.AbstractSystemOfUnits;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.LogConverter;
 import tec.uom.se.function.RationalConverter;
-import tec.uom.se.unit.AlternateUnit;
 import tec.uom.se.unit.Units;
 
 /**
@@ -91,7 +84,7 @@ import tec.uom.se.unit.Units;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2, $Date: 2016-12-16$
+ * @version 0.3, $Date: 2017-03-03$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">Wikipedia:
  *      Centimetre–gram–second system of units</a>

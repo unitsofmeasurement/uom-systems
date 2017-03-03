@@ -35,10 +35,8 @@ import static tec.units.ri.unit.Units.KELVIN;
 import static tec.units.ri.unit.Units.KILOGRAM;
 import static tec.units.ri.unit.Units.LUX;
 import static tec.units.ri.unit.Units.METRE;
-import static tec.units.ri.unit.Units.METRES_PER_SECOND;
-import static tec.units.ri.unit.Units.METRES_PER_SQUARE_SECOND;
+import static tec.units.ri.unit.Units.METRE_PER_SECOND;
 import static tec.units.ri.unit.Units.MOLE;
-import static tec.units.ri.unit.Units.NEWTON;
 import static tec.units.ri.unit.Units.PASCAL;
 import static tec.units.ri.unit.Units.RADIAN;
 import static tec.units.ri.unit.Units.SECOND;
@@ -48,14 +46,12 @@ import static tec.units.ri.unit.Units.TESLA;
 import static tec.units.ri.unit.Units.WEBER;
 
 import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.AmountOfSubstance;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.ElectricCurrent;
 import javax.measure.quantity.Energy;
-import javax.measure.quantity.Force;
 import javax.measure.quantity.Frequency;
 import javax.measure.quantity.Illuminance;
 import javax.measure.quantity.Length;
@@ -71,7 +67,6 @@ import javax.measure.quantity.Speed;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
 
-import si.uom.quantity.IonizingRadiation;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.Resolution;
 import tec.units.ri.AbstractSystemOfUnits;
@@ -283,7 +278,7 @@ final class NonSI extends AbstractSystemOfUnits {
      * A unit of velocity relative to the speed of light (standard name
      * <code>c</code>).
      */
-    static final Unit<Speed> C = METRES_PER_SECOND.multiply(299792458);
+    static final Unit<Speed> C = METRE_PER_SECOND.multiply(299792458);
 
   
     // ///////////////

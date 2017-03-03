@@ -1,6 +1,6 @@
 /*
- *  SI Units of Measurement for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Units of Measurement Systems for Java
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -10,7 +10,7 @@
  *
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -35,8 +35,8 @@ import static tec.units.ri.unit.Units.KELVIN;
 import static tec.units.ri.unit.Units.KILOGRAM;
 import static tec.units.ri.unit.Units.LUX;
 import static tec.units.ri.unit.Units.METRE;
-import static tec.units.ri.unit.Units.METRES_PER_SECOND;
-import static tec.units.ri.unit.Units.METRES_PER_SQUARE_SECOND;
+import static tec.units.ri.unit.Units.METRE_PER_SECOND;
+import static tec.units.ri.unit.Units.METRE_PER_SQUARE_SECOND;
 import static tec.units.ri.unit.Units.MOLE;
 import static tec.units.ri.unit.Units.NEWTON;
 import static tec.units.ri.unit.Units.PASCAL;
@@ -69,14 +69,11 @@ import javax.measure.quantity.SolidAngle;
 import javax.measure.quantity.Speed;
 import javax.measure.quantity.Temperature;
 import si.uom.quantity.IonizingRadiation;
-import systems.uom.quantity.Information;
-import systems.uom.quantity.Resolution;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.LogConverter;
 import tec.units.ri.function.RationalConverter;
-import tec.units.ri.unit.AlternateUnit;
 import tec.units.ri.unit.Units;
 
 /**
@@ -91,7 +88,7 @@ import tec.units.ri.unit.Units;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2, $Date: 2016-12-16$
+ * @version 0.3, $Date: 2017-03-03$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">Wikipedia:
  *      Centimetre–gram–second system of units</a>
@@ -239,7 +236,7 @@ public final class CGS extends AbstractSystemOfUnits {
      * A unit of velocity relative to the speed of light (standard name
      * <code>c</code>).
      */
-    static final Unit<Speed> C = METRES_PER_SECOND.multiply(299792458);
+    static final Unit<Speed> C = METRE_PER_SECOND.multiply(299792458);
 
     // ////////////////
     // Acceleration //
@@ -248,60 +245,8 @@ public final class CGS extends AbstractSystemOfUnits {
      * A unit of acceleration equal to the gravity at the earth's surface
      * (standard name <code>grav</code>).
      */
-    static final Unit<Acceleration> G = METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
-	    .divide(STANDARD_GRAVITY_DIVISOR);
-
-    // ///////////////
-    // Information //
-    // ///////////////
-    /**
-     * The unit for binary information (standard name <code>bit</code>).
-     */
-    static final Unit<Information> BIT = new AlternateUnit<Information>(ONE, "bit");
-
-    /**
-     * A unit of data amount equal to <code>8 {@link SI#BIT}</code> (BinarY
-     * TErm, standard name <code>byte</code>).
-     */
-    private static final Unit<Information> BYTE = BIT.multiply(8);
-
-    /**
-     * The SI unit for binary information rate (standard name <code>bit/s</code>
-     * ).
-     * 
-     * @deprecated see https://java.net/jira/browse/UNITSOFMEASUREMENT-100
-     */
-    // private static final ProductUnit<InformationRate> BITS_PER_SECOND =
-    // addUnit(
-    // new ProductUnit<InformationRate>(BIT.divide(SECOND)),
-    // InformationRate.class);
-
-    /**
-     * Equivalent {@link #BYTE}
-     */
-    static final Unit<Information> OCTET = BYTE;
-
-    /**
-     * A pixel has 4 channels which define transparency (alpha), red, green and
-     * blue color values. Each channel is one byte wide.
-     * 
-     * @see #BYTE
-     */
-    static final Unit<Information> PIXEL = addUnit(BYTE.multiply(4.0));
-
-    /**
-     * Pixel per inch describe the resolution for any output device (monitor,
-     * printer) that deals with outputting digital raster images.
-     * 
-     * @see #INCH
-     * @see #PIXEL
-     */
-    static final Unit<Resolution> PIXEL_PER_INCH = addUnit(PIXEL.divide(USCustomary.INCH).asType(Resolution.class));
-
-    /**
-     * Equivalent {@link #PIXEL}
-     */
-    static final Unit<Information> COMPUTER_POINT = PIXEL;
+    public static final Unit<Acceleration> G = addUnit(METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
+	    .divide(STANDARD_GRAVITY_DIVISOR));
 
     // ////////////////////
     // Electric current //
