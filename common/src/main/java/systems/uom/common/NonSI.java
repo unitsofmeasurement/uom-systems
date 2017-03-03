@@ -543,14 +543,6 @@ final class NonSI extends AbstractSystemOfUnits {
      */
     // static final Unit<IonizingRadiation> ROENTGEN = SI.ROENTGEN;
 
-    /**
-     * A unit used to measure the ionizing ability of radiation (standard name
-     * <code>Roentgen</code>).
-     */
-    @SuppressWarnings("unchecked")
-    public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(
-	    COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "r", true);
-
     public String getName() {
 	return SYSTEM_NAME;
     }
