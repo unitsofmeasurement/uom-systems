@@ -59,7 +59,7 @@ public class NewtonsSecondLawTest {
 	public void testCalculateForce() {
 		logger.log(Level.FINE, "Calculate Force");
 		MassAmount m = new MassAmount(1, SI.KILOGRAM);
-		AccelerationAmount a = new AccelerationAmount(2.5, SI.METRES_PER_SQUARE_SECOND);
+		AccelerationAmount a = new AccelerationAmount(2.5, SI.METRE_PER_SQUARE_SECOND);
 		ForceAmount force = NewtonsSecondLaw.calculateForce(m, a);
 		logger.log(Level.FINER, "ForceAmount = " + force.doubleValue(SI.NEWTON));
 		assertEquals(2.5, force.doubleValue(SI.NEWTON), 0.0001);
