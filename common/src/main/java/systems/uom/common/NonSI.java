@@ -105,20 +105,7 @@ import tec.units.ri.unit.AlternateUnit;
 final class NonSI extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Non-SI Units";
 
-    /**
-     * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
-     */
-    private static final int STANDARD_GRAVITY_DIVIDEND = 980665;
-
-    private static final int STANDARD_GRAVITY_DIVISOR = 100000;
-
-    /**
-     * Holds the avoirdupois pound: 0.45359237 kg exact
-     */
-    static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
-
-    static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
-
+ 
     /**
      * Holds the Avogadro constant.
      */
@@ -298,16 +285,7 @@ final class NonSI extends AbstractSystemOfUnits {
      */
     static final Unit<Speed> C = METRES_PER_SECOND.multiply(299792458);
 
-    // ////////////////
-    // Acceleration //
-    // ////////////////
-    /**
-     * A unit of acceleration equal to the gravity at the earth's surface
-     * (standard name <code>grav</code>).
-     */
-    static final Unit<Acceleration> G = METRES_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
-	    .divide(STANDARD_GRAVITY_DIVISOR);
-
+  
     // ///////////////
     // Information //
     // ///////////////
@@ -412,29 +390,6 @@ final class NonSI extends AbstractSystemOfUnits {
      * name <code>G</code>).
      */
     static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
-
-    // /////////
-    // Force //
-    // /////////
-    /**
-     * A unit of force equal to <code>1E-5 N</code> (standard name
-     * <code>dyn</code>).
-     */
-    static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000));
-
-    /**
-     * A unit of force equal to <code>9.80665 N</code> (standard name
-     * <code>kgf</code>).
-     */
-    static final Unit<Force> KILOGRAM_FORCE = NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND)
-	    .divide(STANDARD_GRAVITY_DIVISOR);
-
-    /**
-     * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code>
-     * (standard name <code>lbf</code>).
-     */
-    static final Unit<Force> POUND_FORCE = NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
-	    .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR);
 
     // ////////////
     // Pressure //

@@ -197,19 +197,6 @@ final class NonSI extends AbstractSystemOfUnits {
     // DEFAULT.label(NonUnits.GALLON_UK, "gal");
     // DEFAULT.label(NonUnits.OUNCE_LIQUID_UK, "oz");
     
-    /**
-     * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
-     */
-    private static final int STANDARD_GRAVITY_DIVIDEND = 980665;
-
-    private static final int STANDARD_GRAVITY_DIVISOR = 100000;
-
-    /**
-     * Holds the avoirdupois pound: 0.45359237 kg exact
-     */
-    static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
-
-    static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
 
     /**
      * Holds the Avogadro constant.
@@ -392,13 +379,7 @@ final class NonSI extends AbstractSystemOfUnits {
      */
     static final Unit<Mass> ELECTRON_MASS = addUnit(KILOGRAM.multiply(9.10938188e-31));
 
-    /**
-     * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
-     * standard name <code>lb</code>).
-     */
-    static final Unit<Mass> POUND = addUnit(
-	    KILOGRAM.multiply(AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR));
-
+ 
     // ///////////////////
     // Electric charge //
     // ///////////////////
@@ -448,16 +429,6 @@ final class NonSI extends AbstractSystemOfUnits {
      * <code>c</code>).
      */
     static final Unit<Speed> C = addUnit(METRE_PER_SECOND.multiply(299792458));
-
-    // ////////////////
-    // Acceleration //
-    // ////////////////
-    /**
-     * A unit of acceleration equal to the gravity at the earth's surface
-     * (standard name <code>grav</code>).
-     */
-    static final Unit<Acceleration> G = addUnit(
-	    METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
 
     // ////////
     // Area //
@@ -577,20 +548,6 @@ final class NonSI extends AbstractSystemOfUnits {
      */
     static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000));
 
-    /**
-     * A unit of force equal to <code>9.80665 N</code> (standard name
-     * <code>kgf</code>).
-     */
-    static final Unit<Force> KILOGRAM_FORCE = addUnit(
-	    NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
-
-    /**
-     * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code>
-     * (standard name <code>lbf</code>).
-     */
-    static final Unit<Force> POUND_FORCE = addUnit(
-	    NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
-		    .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR));
 
     // /////////
     // Power //
