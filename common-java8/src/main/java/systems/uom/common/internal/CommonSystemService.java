@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Unit Systems
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -25,8 +25,6 @@
  */
 package systems.uom.common.internal;
 
-import static systems.uom.common.internal.CommonSystemService.PRIO;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,16 +39,15 @@ import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, January 16, 2017
+ * @version 0.7, March 4, 2017
  */
-//@Priority(PRIO)
 public class CommonSystemService implements SystemOfUnitsService,
 	IntPrioritySupplier {
     static final int PRIO = 100;
     private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
 
-    private final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
-    private final Map<String, String> aliases = new HashMap<String, String>();
+    private final Map<String, SystemOfUnits> souMap = new HashMap<>();
+    private final Map<String, String> aliases = new HashMap<>();
 
     public CommonSystemService() {
 	souMap.put("Imperial", Imperial.getInstance());

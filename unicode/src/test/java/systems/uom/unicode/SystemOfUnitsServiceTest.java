@@ -38,7 +38,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-
+    private static final int NUM_OF_UNITS = 80;
+    
     private static SystemOfUnitsService defaultService;
 
     @BeforeClass
@@ -54,9 +55,9 @@ public class SystemOfUnitsServiceTest {
 	SystemOfUnits system = defaultService.getSystemOfUnits();
 	assertNotNull(system);
 	assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
-	assertEquals("CLDR", system.getName());
+	assertEquals("Unicode CLDR", system.getName());
 	assertNotNull(system.getUnits());
-	assertEquals(80, system.getUnits().size());
+	assertEquals(NUM_OF_UNITS, system.getUnits().size());
     }
 
     @Test
@@ -67,6 +68,22 @@ public class SystemOfUnitsServiceTest {
 //	for (ServiceProvider service : services) {
 //	    checkService(service);
 //	}
+    }
+    
+    @Test
+    // TODO consolidate asserts
+    public void testUnitSystemServiceAlias() {
+	assertNotNull(defaultService);
+	assertEquals("systems.uom.unicode.internal.CLDRSystemService",
+		defaultService.getClass().getName());
+	SystemOfUnits system = defaultService.getSystemOfUnits("CLDR");
+	assertNotNull(system);
+	assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
+	assertEquals("Unicode CLDR", system.getName());
+	assertNotNull(system.getUnits());
+	assertEquals(NUM_OF_UNITS, system.getUnits().size());
+	SystemOfUnits system2 = defaultService.getSystemOfUnits("Unicode");
+	assertEquals(system, system2);
     }
 
     /*

@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Units of Measurement Systems for Java
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -37,15 +37,17 @@ import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.1, May 1, 2016
+ * @version 0.2, March 4, 2017
  */
 class CLDRSystemService implements SystemOfUnitsService, IntPrioritySupplier {
     private static final int PRIO = 20;
 
-    final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+    private final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+    private final Map<String, String> aliases = new HashMap<String, String>();
 
     public CLDRSystemService() {
 	souMap.put("CLDR", CLDR.getInstance());
+	aliases.put("Unicode", "CLDR");
     }
 
     public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
@@ -59,6 +61,10 @@ class CLDRSystemService implements SystemOfUnitsService, IntPrioritySupplier {
 
     @Override
     public SystemOfUnits getSystemOfUnits(String name) {
+	String alias = aliases.get(name);
+	if (alias != null && alias.length() > 0) {
+	    return souMap.get(alias);
+	}
 	return souMap.get(name);
     }
 

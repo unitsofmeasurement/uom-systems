@@ -1,6 +1,6 @@
 /*
- *  Unit Systems
- *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Unit Systems
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -67,7 +67,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.5.1, $Date: 2017-03-03 $
+ * @version 0.5.2, $Date: 2017-03-04 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -512,7 +512,7 @@ public final class CLDR extends AbstractSystemOfUnits {
 
     @Override
     public String getName() {
-	return "CLDR";
+	return "Unicode CLDR";
     }
 
     /**
