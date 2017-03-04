@@ -40,7 +40,7 @@ import org.junit.Test;
 public class SystemOfUnitsServiceTest {
     private static final String EXPECTED_SYSTEM_NAME = "United States Customary Units";
     private static final int NUM_OF_UNITS_US = 45;
-    private static final int NUM_OF_UNITS_CGS = 22;
+    private static final int NUM_OF_UNITS_CGS = 24;
 
     private static SystemOfUnitsService defaultService;
 

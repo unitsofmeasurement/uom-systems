@@ -59,15 +59,15 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.25, $Date: 2017-03-03 $
+ * @version 1.26, $Date: 2017-03-04 $
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
- *      Wikipedia: United State Customary Units</a>
+ *      Wikipedia: United States Customary Units</a>
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems">
  * @since 0.3
  */
 public final class USCustomary extends AbstractSystemOfUnits {
-	private static final String SYSTEM_NAME = "United State Customary Units";
+	private static final String SYSTEM_NAME = "United States Customary Units";
 
 	/**
 	 * Default constructor (prevents this class from being instantiated).

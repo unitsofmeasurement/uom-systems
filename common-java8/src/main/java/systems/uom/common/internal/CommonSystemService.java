@@ -63,9 +63,8 @@ public class CommonSystemService implements SystemOfUnitsService,
 
     @Override
     public SystemOfUnits getSystemOfUnits() {
-	return getSystemOfUnits(DEFAULT_SYSTEM_NAME); // We assume US Customary
-						      // as the more
-	// common system here
+	return getSystemOfUnits(DEFAULT_SYSTEM_NAME); 
+	// We assume US Customary as the more common system here
     }
 
     @Override

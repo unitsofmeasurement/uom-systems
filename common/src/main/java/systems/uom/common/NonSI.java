@@ -482,7 +482,7 @@ final class NonSI extends AbstractSystemOfUnits {
      * A unit used to measure the frequency (rate) at which an imaging device
      * produces unique consecutive images (standard name <code>fps</code>).
      */
-    static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(ONE.divide(SECOND)).asType(Frequency.class);
+    static final Unit<Frequency> FRAME_PER_SECOND = addUnit(ONE.divide(SECOND)).asType(Frequency.class);
 
     // //////////
     // Others //
