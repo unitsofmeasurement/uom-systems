@@ -25,11 +25,9 @@
  */
 package systems.uom.common;
 
-import static tec.uom.se.unit.MetricPrefix.CENTI;
 import static tec.uom.se.unit.Units.AMPERE;
 import static tec.uom.se.unit.Units.BECQUEREL;
 import static tec.uom.se.unit.Units.COULOMB;
-import static tec.uom.se.unit.Units.GRAM;
 import static tec.uom.se.unit.Units.GRAY;
 import static tec.uom.se.unit.Units.JOULE;
 import static tec.uom.se.unit.Units.KELVIN;
@@ -37,7 +35,6 @@ import static tec.uom.se.unit.Units.KILOGRAM;
 import static tec.uom.se.unit.Units.LUX;
 import static tec.uom.se.unit.Units.METRE;
 import static tec.uom.se.unit.Units.METRE_PER_SECOND;
-import static tec.uom.se.unit.Units.METRE_PER_SQUARE_SECOND;
 import static tec.uom.se.unit.Units.MOLE;
 import static tec.uom.se.unit.Units.NEWTON;
 import static tec.uom.se.AbstractUnit.ONE;
@@ -53,7 +50,6 @@ import static tec.uom.se.unit.Units.WEBER;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.AmountOfSubstance;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
@@ -78,9 +74,6 @@ import javax.measure.quantity.Speed;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
 
-import si.uom.quantity.DynamicViscosity;
-import si.uom.quantity.IonizingRadiation;
-import si.uom.quantity.KinematicViscosity;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import systems.uom.quantity.Resolution;
@@ -469,8 +462,17 @@ final class NonSI extends AbstractSystemOfUnits {
      * blue color values. Each channel is one byte wide.
      * 
      * @see #BYTE
+     * @see <a href="http://www.convert-me.com/en/convert/length/pixel.html?u=pixel&v=177">Pixel Converter</a>
      */
-    static final Unit<Information> PIXEL = addUnit(BYTE.multiply(4.0));
+    static final Unit<Information> PIXEL_BYTE = addUnit(BYTE.multiply(4.0));
+
+    
+    /**
+     * A pixel is equivalent to 0.0002636 metre.
+     * 
+     * @see <a href="http://www.convert-me.com/en/convert/length/pixel.html?u=pixel&v=177">Pixel Converter</a>
+     */
+    static final Unit<Length> PIXEL = addUnit(METRE.multiply(0.0002636));
 
     /**
      * Pixel per inch describe the resolution for any output device (monitor,
@@ -484,7 +486,7 @@ final class NonSI extends AbstractSystemOfUnits {
     /**
      * Equivalent {@link #PIXEL}
      */
-    static final Unit<Information> COMPUTER_POINT = PIXEL;
+    static final Unit<Length> COMPUTER_POINT = PIXEL;
 
     // ////////////////////
     // Electric current //
@@ -625,25 +627,6 @@ final class NonSI extends AbstractSystemOfUnits {
      * (standard name <code>sphere</code>).
      */
     static final Unit<SolidAngle> SPHERE = addUnit(STERADIAN.multiply(4).multiply(PI).asType(SolidAngle.class));
-
-    // //////////
-    // Volume //
-    // //////////
-
-    // /////////////
-    // Viscosity //
-    // /////////////
-    /**
-     * A unit of dynamic viscosity equal to <code>1 g/(cmÂ·s)</code> (cgs unit).
-     */
-    static final Unit<DynamicViscosity> POISE = addUnit(GRAM.divide(CENTI(METRE).multiply(SECOND)))
-	    .asType(DynamicViscosity.class);
-
-    /**
-     * A unit of kinematic viscosity equal to <code>1 cm²/s</code> (cgs unit).
-     */
-    static final Unit<KinematicViscosity> STOKE = addUnit(CENTI(METRE).pow(2).divide(SECOND))
-	    .asType(KinematicViscosity.class);
 
     // /////////////
     // Frequency //

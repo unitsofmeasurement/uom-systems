@@ -1,6 +1,6 @@
 /*
- *  Units of Measurement Systems for Java
- *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Units of Measurement Systems for Java
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *

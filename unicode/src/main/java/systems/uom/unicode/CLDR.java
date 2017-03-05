@@ -51,12 +51,12 @@ import javax.measure.quantity.*;
 
 /**
  * <p>
- * This class contains {@link SI} and Non-SI units as defined in the
+ * This class contains {@linkplain SI} and Non-SI units as defined in the
  * <a href="http//cldr.unicode.org/">Unicode CLDR Project</a>.
  * </p>
  *
  * <p>
- * Compatibility with {@link SI} units has been given priority over strict
+ * Compatibility with {@linkplain SI} units has been given priority over strict
  * adherence to the standard. We have attempted to note every place where the
  * definitions in this class deviate from the CLDR standard, but such notes are
  * likely to be incomplete.
@@ -438,23 +438,6 @@ public final class CLDR extends AbstractSystemOfUnits {
      * @stable ICU 54.
      */
     public static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9));
-
-    /**
-     * A unit of length equal to <code>1/72 {@link #INCH}</code> (standard name
-     * <code>pixel</code>). It is the American point rounded to an even 1/72
-     * inch.
-     * 
-     * @see #POINT
-     * @deprecated Does not seem to be in CLDR
-     */
-    static final Unit<Length> PIXEL = addUnit(INCH.divide(72));
-
-    /**
-     * Equivalent {@link #PIXEL}
-     * 
-     * @deprecated Does not seem to be in CLDR
-     */
-    static final Unit<Length> COMPUTER_POINT = PIXEL;
 
     ///////////////////////////////
     // TYPESETTER'S LENGTH UNITS //

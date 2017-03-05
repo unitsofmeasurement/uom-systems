@@ -36,7 +36,6 @@ import static tec.uom.se.unit.Units.SQUARE_METRE;
 import static tec.uom.se.AbstractUnit.ONE;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
-import systems.uom.quantity.Resolution;
 import tec.uom.se.*;
 import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.PiMultiplierConverter;
@@ -57,7 +56,7 @@ import javax.measure.quantity.*;
  * </p>
  *
  * <p>
- * Compatibility with {@link SI} units has been given priority over strict
+ * Compatibility with {@linkplain SI} units has been given priority over strict
  * adherence to the standard. We have attempted to note every place where the
  * definitions in this class deviate from the CLDR standard, but such notes are
  * likely to be incomplete.
@@ -407,32 +406,6 @@ public final class CLDR extends AbstractSystemOfUnits {
      * @stable ICU 54.
      */
     public static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9));
-
-    /**
-     * A unit of length equal to <code>1/72 {@link #INCH}</code> (standard name
-     * <code>pixel</code>). It is the American point rounded to an even 1/72
-     * inch.
-     * 
-     * @see #POINT
-     * @deprecated Does not seem to be in CLDR
-     */
-    static final Unit<Length> PIXEL = addUnit(INCH.divide(72));
-
-    /**
-     * Equivalent {@link #PIXEL}
-     * 
-     * @deprecated Does not seem to be in CLDR
-     */
-    static final Unit<Length> COMPUTER_POINT = PIXEL;
-
-    /**
-     * Pixel per inch describe the resolution for any output device (monitor,
-     * printer) that deals with outputting digital raster images.
-     * 
-     * @see #INCH
-     * @see #PIXEL
-     */
-    static final Unit<Resolution> PIXEL_PER_INCH = addUnit(PIXEL.divide(INCH).asType(Resolution.class));
 
     ///////////////////////////////
     // TYPESETTER'S LENGTH UNITS //

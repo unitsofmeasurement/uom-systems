@@ -316,8 +316,9 @@ final class NonSI extends AbstractSystemOfUnits {
      * blue color values. Each channel is one byte wide.
      * 
      * @see #BYTE
+     * @see <a href="http://www.convert-me.com/en/convert/length/pixel.html?u=pixel&v=177">Pixel Converter</a>
      */
-    static final Unit<Information> PIXEL = addUnit(BYTE.multiply(4.0));
+    static final Unit<Length> PIXEL = addUnit(BYTE.multiply(4.0).asType(Length.class));
 
     /**
      * Pixel per inch describe the resolution for any output device (monitor,
@@ -331,7 +332,7 @@ final class NonSI extends AbstractSystemOfUnits {
     /**
      * Equivalent {@link #PIXEL}
      */
-    static final Unit<Information> COMPUTER_POINT = PIXEL;
+    static final Unit<Length> COMPUTER_POINT = PIXEL;
 
     // ////////////////////
     // Electric current //
