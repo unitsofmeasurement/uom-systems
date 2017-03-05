@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.5.1, $Date: 2017-03-04 $
+ * @version 0.5.2, $Date: 2017-03-05 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -90,9 +90,9 @@ public final class CLDR extends AbstractSystemOfUnits {
 	return INSTANCE;
     }
 
-    // //////////
+    ////////////
     // Length //
-    // //////////
+    ////////////
     /**
      * US name for {@link Units#METRE}.
      */
@@ -151,9 +151,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Dimensionless> PERCENT = addUnit(ONE.divide(100), "Percent", "%");
 
-    // //////////////////////////
+    ////////////////////
     // SI UNITS: CLDR //
-    // //////////////////////////
+    ////////////////////
     /**
      * We deviate slightly from the standard here, to maintain compatibility
      * with the existing SI units. In CLDR, the mole is no longer a base unit,
@@ -213,9 +213,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<RadiationDoseEffective> SIEVERT = addUnit(Units.SIEVERT);
 
-    // ///////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
     // Units outside the SI that are accepted for use with the SI. //
-    // ///////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
 
     /**
      * An angle unit accepted for use with SI units (standard name
@@ -252,9 +252,9 @@ public final class CLDR extends AbstractSystemOfUnits {
 
     public static final Unit<Angle> ARC_SECOND = addUnit(SECOND_ANGLE);
 
-    // ////////
+    //////////
     // Area //
-    // ////////
+    //////////
     /**
      * A unit of area (standard name <code>sft</code> ).
      */
@@ -282,9 +282,9 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     public static final Unit<Area> ACRE = addUnit(SQUARE_FOOT.multiply(43560));
 
-    // //////////
+    ////////////
     // Volume //
-    // //////////
+    ////////////
     /**
      * A unit of volume equal to one cubic decimeter (default label
      * <code>L</code>, also recognized <code>µL, mL, cL, dL</code>).
@@ -339,9 +339,9 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> CUP = addUnit(FLUID_OUNCE.multiply(8));
 
-    // //////////
+    //////////
     // Time //
-    // //////////
+    //////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Time> MINUTE = addUnit(Units.MINUTE);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
@@ -369,9 +369,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Mass> TONNE = addUnit(Units.KILOGRAM.multiply(1000));
 
-    // ///////////////////////////////
+    ///////////////////
     // NATURAL UNITS //
-    // ///////////////////////////////
+    ///////////////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     static final Unit<Speed> C = addUnit(Units.METRE_PER_SECOND.multiply(299792458));
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
@@ -382,9 +382,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     private static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(
 	    Units.METRE_PER_SQUARE_SECOND.multiply(9.80665));
 
-    // //////////
+    ////////////
     // Length //
-    // //////////
+    ////////////
     /**
      * A unit of length equal to the distance that light travels in one year
      * through a vacuum (standard name <code>ly</code>).
@@ -456,9 +456,9 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     static final Unit<Length> COMPUTER_POINT = PIXEL;
 
-    // ///////////////////////////////////////////
+    ///////////////////////////////
     // TYPESETTER'S LENGTH UNITS //
-    // ///////////////////////////////////////////
+    ///////////////////////////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     static final Unit<Length> LINE = addUnit(INCH_INTERNATIONAL.divide(12));
     /**
@@ -479,9 +479,9 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. 
     public static final Unit<Length> PICA_PRINTER = addUnit(POINT_PRINTER.multiply(12));
 */
-    // ////////////////////////////////////
+    //////////////////////////////
     // OTHER LEGACY UNITS: CLDR //
-    // ////////////////////////////////////
+    //////////////////////////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Temperature> FAHRENHEIT = addUnit(KELVIN.multiply(5).divide(9).shift(459.67));
 
@@ -490,7 +490,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Energy> CALORIE = addUnit(CALORIE_THERMOCHEMICAL);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    private static final Unit<Energy> CALORIE_FOOD = addUnit(KILO(CALORIE_THERMOCHEMICAL));
+//    private static final Unit<Energy> CALORIE_FOOD = addUnit(KILO(CALORIE_THERMOCHEMICAL));
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Power> HORSEPOWER = addUnit(
@@ -515,7 +515,7 @@ public final class CLDR extends AbstractSystemOfUnits {
 	    Information.class);
 
     /**
-     * A unit of data amount equal to <code>8 {@link SI#BIT}</code> (BinarY
+     * A unit of data amount equal to <code>8 {@link #BIT}</code> (BinarY
      * TErm, standard name <code>byte</code>).
      */
     public static final Unit<Information> BYTE = addUnit(BIT.multiply(8), "Byte", "byte");
@@ -541,9 +541,9 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     static final Unit<Frequency> FRAME_PER_SECOND = addUnit(ONE.divide(SECOND)).asType(Frequency.class);
 
-    // ///////////////////
+    /////////////////////
     // Collection View //
-    // ///////////////////
+    /////////////////////
 
     @Override
     public String getName() {

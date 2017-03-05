@@ -38,7 +38,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-    private static final int NUM_OF_UNITS = 76;
+    private static final int NUM_OF_UNITS = 75;
     
     private static SystemOfUnitsService defaultService;
 
@@ -56,7 +56,7 @@ public class SystemOfUnitsServiceTest {
 	assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
 	assertEquals("Unicode CLDR", system.getName());
 	assertNotNull(system.getUnits());
-	assertEquals(76, system.getUnits().size());
+	assertEquals(NUM_OF_UNITS, system.getUnits().size());
     }
 
     @Test

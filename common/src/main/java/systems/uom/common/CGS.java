@@ -25,49 +25,30 @@
  */
 package systems.uom.common;
 
+import static tec.units.ri.AbstractUnit.ONE;
 import static tec.units.ri.unit.MetricPrefix.CENTI;
-import static tec.units.ri.unit.Units.BECQUEREL;
-import static tec.units.ri.unit.Units.COULOMB;
 import static tec.units.ri.unit.Units.JOULE;
-import static tec.units.ri.unit.Units.KELVIN;
-import static tec.units.ri.unit.Units.KILOGRAM;
-import static tec.units.ri.unit.Units.LUX;
 import static tec.units.ri.unit.Units.METRE;
-import static tec.units.ri.unit.Units.METRE_PER_SECOND;
-import static tec.units.ri.unit.Units.METRE_PER_SQUARE_SECOND;
-import static tec.units.ri.unit.Units.MOLE;
 import static tec.units.ri.unit.Units.NEWTON;
 import static tec.units.ri.unit.Units.PASCAL;
-import static tec.units.ri.unit.Units.RADIAN;
-import static tec.units.ri.unit.Units.SIEVERT;
-import static tec.units.ri.unit.Units.TESLA;
-import static tec.units.ri.unit.Units.WEBER;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
-import javax.measure.quantity.AmountOfSubstance;
-import javax.measure.quantity.Angle;
-import javax.measure.quantity.ElectricCharge;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Force;
-import javax.measure.quantity.Illuminance;
 import javax.measure.quantity.Length;
-import javax.measure.quantity.MagneticFlux;
-import javax.measure.quantity.MagneticFluxDensity;
 import javax.measure.quantity.Mass;
+import javax.measure.quantity.Power;
 import javax.measure.quantity.Pressure;
-import javax.measure.quantity.RadiationDoseEffective;
-import javax.measure.quantity.Radioactivity;
 import javax.measure.quantity.Speed;
-import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
 
 import si.uom.quantity.DynamicViscosity;
-import si.uom.quantity.IonizingRadiation;
 import si.uom.quantity.KinematicViscosity;
 import tec.units.ri.AbstractSystemOfUnits;
 import tec.units.ri.AbstractUnit;
 import tec.units.ri.format.SimpleUnitFormat;
+import tec.units.ri.unit.ProductUnit;
 import tec.units.ri.unit.Units;
 
 /**
@@ -82,7 +63,7 @@ import tec.units.ri.unit.Units;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, $Date: 2017-03-04$
+ * @version 0.5, $Date: 2017-03-05$
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">Wikipedia:
  *      Centimetre–gram–second system of units</a>
@@ -92,28 +73,11 @@ public final class CGS extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Centimetre–gram–second System of Units";
 
     /**
-     * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
-     */
-    private static final int STANDARD_GRAVITY_DIVIDEND = 980665;
-
-    private static final int STANDARD_GRAVITY_DIVISOR = 100000;
-
-    /**
      * Holds the avoirdupois pound: 0.45359237 kg exact
      */
     static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
 
     static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
-
-    /**
-     * Holds the Avogadro constant.
-     */
-    private static final double AVOGADRO_CONSTANT = 6.02214199e23; // (1/mol).
-
-    /**
-     * Holds the electric charge of one electron.
-     */
-    private static final double ELEMENTARY_CHARGE = 1.602176462e-19; // (C).
 
     /**
      * Default constructor (prevents this class from being instantiated).
@@ -132,18 +96,9 @@ public final class CGS extends AbstractSystemOfUnits {
 
     private static final CGS INSTANCE = new CGS();
 
-    // ///////////////////////
-    // Amount of substance //
-    // ///////////////////////
-    /**
-     * A unit of amount of substance equals to one atom (standard name
-     * <code>atom</code>).
-     */
-    static final Unit<AmountOfSubstance> ATOM = MOLE.divide(AVOGADRO_CONSTANT);
-
-    // //////////
+    ////////////
     // Length //
-    // //////////
+    ////////////
 
     /**
      * A unit of length equal to <code>1/100 of metre</code> (standard name
@@ -160,46 +115,9 @@ public final class CGS extends AbstractSystemOfUnits {
      */
     public static final Unit<Mass> GRAM = addUnit(Units.GRAM);
 
-    /**
-     * A unit of mass equal to the mass of the electron (standard name
-     * <code>me</code>).
-     */
-    static final Unit<Mass> ELECTRON_MASS = addUnit(KILOGRAM.multiply(9.10938188e-31));
-
-    // ///////////////////
-    // Electric charge //
-    // ///////////////////
-    /**
-     * A unit of electric charge equal to the charge on one electron (standard
-     * name <code>e</code>).
-     */
-    static final Unit<ElectricCharge> E = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE));
-
-    /**
-     * A unit of electric charge equal to equal to the product of Avogadro's
-     * number (see {@link SI#MOLE}) and the charge (1 e) on a single electron
-     * (standard name <code>Fd</code>).
-     */
-    static final Unit<ElectricCharge> FARADAY = addUnit(COULOMB.multiply(ELEMENTARY_CHARGE * AVOGADRO_CONSTANT)); // e/mol
-
-    /**
-     * A unit of electric charge which exerts a force of one dyne on an equal
-     * charge at a distance of one centimeter (standard name <code>Fr</code>).
-     */
-    static final Unit<ElectricCharge> FRANKLIN = addUnit(COULOMB.multiply(3.3356e-10));
-
-    // ///////////////
-    // Temperature //
-    // ///////////////
-    /**
-     * A unit of temperature equal to <code>5/9 Â°K</code> (standard name
-     * <code>Â°R</code>).
-     */
-    static final Unit<Temperature> RANKINE = KELVIN.multiply(5).divide(9);
-
-    //////////////
+    //////////
     // Time //
-    //////////////
+    //////////
     /**
      * The SI base unit for duration quantities (standard name <code>s</code>).
      * It is defined as the duration of 9,192,631,770 cycles of radiation
@@ -208,16 +126,6 @@ public final class CGS extends AbstractSystemOfUnits {
      * 
      */
     public static final Unit<Time> SECOND = addUnit(Units.SECOND);
-
-    // /////////
-    // Angle //
-    // /////////
-
-    /**
-     * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
-     * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
-     */
-    static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class));
 
     //////////////
     // Velocity //
@@ -228,89 +136,51 @@ public final class CGS extends AbstractSystemOfUnits {
     public static final Unit<Speed> CENTIMETRE_PER_SECOND = addUnit(CENTIMETRE.divide(SECOND).asType(Speed.class),
 	    "centimetre per second", "cm/s");
 
-    // ////////////////
+    //////////////////
     // Acceleration //
-    // ////////////////
-    /**
-     * A unit of acceleration equal to the gravity at the earth's surface
-     * (standard name <code>grav</code>).
-     */
-    public static final Unit<Acceleration> G = addUnit(
-	    METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+    //////////////////
 
-    // //////////
+    /**
+     * A unit of acceleration (cgs unit, standard name <code>Gal</code>).
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/Gal_(unit)">Wikipedia:
+     *      Gal</a>
+     */
+    public static final Unit<Acceleration> GAL = addUnit(
+	    new ProductUnit<Acceleration>(CENTIMETRE_PER_SECOND.divide(SECOND)).asType(Acceleration.class), "Gal",
+	    "Gal");
+
+    ////////////
     // Energy //
-    // //////////
+    ////////////
     /**
      * A unit of energy equal to <code>1E-7 J</code> (standard name
      * <code>erg</code>).
      */
-    static final Unit<Energy> ERG = JOULE.divide(10000000);
+    public static final Unit<Energy> ERG = addUnit(JOULE.divide(10000000), "Erg", "erg");
 
-    /**
-     * A unit of energy equal to one electron-volt (standard name
-     * <code>eV</code>, also recognized <code>keV, MeV, GeV</code>).
-     */
-    static final Unit<Energy> ELECTRON_VOLT = JOULE.multiply(ELEMENTARY_CHARGE);
-
-    // ///////////////
-    // Illuminance //
-    // ///////////////
-    /**
-     * A unit of illuminance equal to <code>1E4 Lx</code> (standard name
-     * <code>La</code>).
-     */
-    static final Unit<Illuminance> LAMBERT = addUnit(LUX.multiply(10000));
-
-    // /////////////////
-    // Magnetic Flux //
-    // /////////////////
-    /**
-     * A unit of magnetic flux equal <code>1E-8 Wb</code> (standard name
-     * <code>Mx</code>).
-     */
-    static final Unit<MagneticFlux> MAXWELL = addUnit(WEBER.divide(100000000));
-
-    // /////////////////////////
-    // Magnetic Flux Density //
-    // /////////////////////////
-    /**
-     * A unit of magnetic flux density equal <code>1000 A/m</code> (standard
-     * name <code>G</code>).
-     */
-    static final Unit<MagneticFluxDensity> GAUSS = addUnit(TESLA.divide(10000));
-
-    // /////////
+    ///////////
     // Force //
-    // /////////
+    ///////////
     /**
      * A unit of force equal to <code>1E-5 N</code> (standard name
      * <code>dyn</code>).
      */
-    static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000));
+    public static final Unit<Force> DYNE = addUnit(NEWTON.divide(100000), "Dyne", "dyn");
+
+    ///////////
+    // Power //
+    ///////////
 
     /**
-     * A unit of force equal to <code>9.80665 N</code> (standard name
-     * <code>kgf</code>).
+     * A unit of power (cgs unit, standard name <code>erg/s</code>).
      */
-    static final Unit<Force> KILOGRAM_FORCE = NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND)
-	    .divide(STANDARD_GRAVITY_DIVISOR);
+    public static final Unit<Power> ERG_PER_SECOND = addUnit(ERG.divide(SECOND).asType(Power.class), "Erg per second",
+	    "erg/s");
 
-    /**
-     * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code>
-     * (standard name <code>lbf</code>).
-     */
-    static final Unit<Force> POUND_FORCE = NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
-	    .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR);
-
-    // ////////////
+    //////////////
     // Pressure //
-    // ////////////
-    /**
-     * A unit of pressure equal to the average pressure of the Earth's
-     * atmosphere at sea level (standard name <code>atm</code>).
-     */
-    static final Unit<Pressure> ATMOSPHERE = addUnit(PASCAL.multiply(101325));
+    //////////////
 
     /**
      * The barye (symbol: <code>Ba</code>), or sometimes barad, barrie, bary,
@@ -321,50 +191,10 @@ public final class CGS extends AbstractSystemOfUnits {
      */
     public static final Unit<Pressure> BARYE = addUnit(PASCAL.divide(10), "Barye", "Ba");
 
-    /**
-     * A unit of pressure equal to the pressure exerted at the Earth's surface
-     * by a column of mercury 1 millimeter high (standard name <code>mmHg</code>
-     * ).
-     */
-    static final Unit<Pressure> MILLIMETRE_OF_MERCURY = addUnit(PASCAL.multiply(133.322));
-
-    /**
-     * A unit of pressure equal to the pressure exerted at the Earth's surface
-     * by a column of mercury 1 inch high (standard name <code>inHg</code>).
-     */
-    static final Unit<Pressure> INCH_OF_MERCURY = addUnit(PASCAL.multiply(3386.388));
-
-    // ///////////////////////////
-    // Radiation dose absorbed //
-    // ///////////////////////////
-    /**
-     * A unit of radiation dose effective equal to <code>0.01 Sv</code>
-     * (standard name <code>rem</code>).
-     */
-    static final Unit<RadiationDoseEffective> REM = addUnit(SIEVERT.divide(100));
-
-    // ////////////////////////
-    // Radioactive activity //
-    // ////////////////////////
-    /**
-     * A unit of radioctive activity equal to the activity of a gram of radium
-     * (standard name <code>Ci</code>).
-     */
-    static final Unit<Radioactivity> CURIE = addUnit(BECQUEREL.multiply(37000000000L));
-
-    /**
-     * A unit of radioctive activity equal to 1 million radioactive
-     * disintegrations per second (standard name <code>Rd</code>).
-     */
-    static final Unit<Radioactivity> RUTHERFORD = addUnit(BECQUEREL.multiply(1000000));
-
-    // //////////
-    // Volume //
-    // //////////
-
-    // /////////////
+    ///////////////
     // Viscosity //
-    // /////////////
+    ///////////////
+    
     /**
      * A unit of dynamic viscosity equal to <code>1 g/(cmÂ·s)</code> (cgs unit
      * standard name <code>P</code>.
@@ -381,22 +211,20 @@ public final class CGS extends AbstractSystemOfUnits {
     public static final Unit<KinematicViscosity> STOKES = addUnit(
 	    CENTI(METRE).pow(2).divide(SECOND).asType(KinematicViscosity.class), "Stokes", "St");
 
-    ////////////
-    // Others //
-    ////////////
+    ////////////////
+    // Wavenumber //
+    ////////////////
+    
     /**
-     * A unit used to measure the ionizing ability of radiation (standard name
-     * <code>Roentgen</code>).
+     * A unit of wavenumber equal to <code>1/cm</code> (cgs unit,
+     * standard name <code>cm&#8315;&#185;</code>).
      */
-    // static final Unit<IonizingRadiation> ROENTGEN = SI.ROENTGEN;
-
-    /**
-     * A unit used to measure the ionizing ability of radiation (standard name
-     * <code>Roentgen</code>).
-     */
-    @SuppressWarnings("unchecked")
-    public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(
-	    COULOMB.divide(KILOGRAM).multiply(2.58e-4), "Roentgen", "r", true);
+    public static final Unit<KinematicViscosity> KAYSER = addUnit(
+	    ONE.divide(CENTIMETRE).asType(KinematicViscosity.class), "Kayser", "cm\u207B\u00B9");
+    
+    /////////////////////
+    // Collection View //
+    /////////////////////
 
     public String getName() {
 	return SYSTEM_NAME;
