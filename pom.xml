@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>0.6.1-SNAPSHOT</version>
+	<version>0.7-SNAPSHOT</version>
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -45,6 +45,7 @@
 		<module>common-java8</module>
 		<module>unicode</module>
 		<module>unicode-java8</module>
+		<module>ucum-java8</module>
 	</modules>
 
 	<build>
