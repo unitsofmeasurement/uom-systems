@@ -370,7 +370,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 			.divide(1E4));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<MagneticFieldStrength> OERSTED = addUnit(new ProductUnit<MagneticFieldStrength>(
-			SI.AMPERES_PER_METRE.multiply(250).divide(PI)));
+			SI.AMPERE_PER_METRE.multiply(250).divide(PI)));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<MagnetomotiveForce> GILBERT = addUnit(new ProductUnit<MagnetomotiveForce>(
 			OERSTED.multiply(CENTI(Units.METRE))));
