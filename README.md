@@ -15,6 +15,7 @@ The project currently contains the following modules:
 - [Common Unit Systems](common-java8) on **Java SE 8**
 - [Unicode CLDR Unit System](unicode)
 - [Unicode CLDR Unit System](unicode-java8) on **Java SE 8**
+- [Unified Code for Units of Measure](ucum-java8) on **Java SE 8**
 
 Modular Unit Systems
 -------------------------------------
@@ -33,6 +34,6 @@ Planning
 
 ## Waffle.io
 [![Stories in Ready](https://badge.waffle.io/unitsofmeasurement/uom-systems.png?label=ready&title=Ready)](https://waffle.io/unitsofmeasurement/uom-systems)
-[![Stories in Progress](https://badge.waffle.io/unitsofmeasurement/uom-systems.png?label=in%20progress&title=In Progress)](https://waffle.io/unitsofmeasurement/uom-systems)
+[![Stories in Progress](https://badge.waffle.io/unitsofmeasurement/uom-systems.svg?label=in%20progress&title=In Progress)](https://waffle.io/unitsofmeasurement/uom-systems)
 
 [![Throughput Graph](https://graphs.waffle.io/unitsofmeasurement/uom-systems/throughput.svg)](https://waffle.io/unitsofmeasurement/uom-systems/metrics)
