@@ -67,7 +67,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.7.2, $Date: 2017-03-14 $
+ * @version 0.7.3, $Date: 2017-03-16 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -842,7 +842,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 
 	@Override
 	public String getName() {
-		return "UCUM";
+		return "Unified Code for Units of Measure";
 	}
 	
     	private static <U extends Unit<Q>, Q extends Quantity<Q>> U addUnit(U unit) {
