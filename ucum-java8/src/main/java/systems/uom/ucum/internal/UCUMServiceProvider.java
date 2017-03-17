@@ -27,6 +27,7 @@ package systems.uom.ucum.internal;
 
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
+import javax.measure.spi.UnitFormatService;
 
 import tec.uom.se.spi.DefaultServiceProvider;
 
@@ -35,9 +36,9 @@ import tec.uom.se.spi.DefaultServiceProvider;
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.2
+ * @version 0.3
  */
-public class UCUMServiceProvider extends DefaultServiceProvider {
+public final class UCUMServiceProvider extends DefaultServiceProvider {
 
     public int getPriority() {
 	return 1000;
@@ -47,4 +48,9 @@ public class UCUMServiceProvider extends DefaultServiceProvider {
     public SystemOfUnitsService getSystemOfUnitsService() {
 	return new UCUMSystemService();
     }
+    
+//    @Override
+//    public UnitFormatService getUnitFormatService() {
+//	return new UCUMFormatService();
+//    }
 }

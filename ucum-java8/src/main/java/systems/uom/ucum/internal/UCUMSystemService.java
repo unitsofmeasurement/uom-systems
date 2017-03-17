@@ -37,9 +37,9 @@ import tec.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8, March 15, 2017
+ * @version 0.8.1, March 16, 2017
  */
-public class UCUMSystemService implements SystemOfUnitsService,
+final class UCUMSystemService implements SystemOfUnitsService,
 	IntPrioritySupplier {
     static final int PRIO = 100;
     private static final String DEFAULT_SYSTEM_NAME = "UCUM";
@@ -47,7 +47,7 @@ public class UCUMSystemService implements SystemOfUnitsService,
     private final Map<String, SystemOfUnits> souMap = new HashMap<>();
     private final Map<String, String> aliases = new HashMap<>();
 
-    public UCUMSystemService() {
+    UCUMSystemService() {
 	souMap.put(DEFAULT_SYSTEM_NAME, UCUM.getInstance());
 	aliases.put("Unified Code for Units of Measure", DEFAULT_SYSTEM_NAME);
     }
