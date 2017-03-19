@@ -43,14 +43,13 @@ import org.junit.Test;
 
 import tec.uom.se.AbstractConverter;
 import tec.uom.se.quantity.Quantities;
-import tec.uom.se.unit.MetricPrefix;
 import tec.uom.se.unit.TransformedUnit;
 import tec.uom.se.unit.Units;
 import systems.uom.ucum.UCUM;
 import tec.uom.se.AbstractUnit;
 import static org.junit.Assert.*;
 import static tec.uom.se.AbstractUnit.ONE;
-import static tec.uom.se.unit.MetricPrefix.KILO;
+import static tec.uom.se.unit.MetricPrefix.*;
 import static tec.uom.se.unit.Units.GRAM;
 import static tec.uom.se.unit.Units.METRE;
 import static tec.uom.se.unit.Units.WATT;
@@ -272,13 +271,13 @@ public class UnitsTest {
     public void testKiloIsAThousand() {
 	// FIXME: Need to find the org.hamcrest assertion libs
 	Quantity<Power> w2000 = Quantities.getQuantity(2000, WATT);
-	Quantity<Power> kW2 = Quantities.getQuantity(2, MetricPrefix.KILO(WATT));
+	Quantity<Power> kW2 = Quantities.getQuantity(2, KILO(WATT));
 	// assertThat(w2000, is(kW2));
     }
 
     @Test
     public void testOf() {
-	assertEquals(MetricPrefix.KILO(Units.GRAM), AbstractUnit.parse("kg"));
+	assertEquals(KILO(Units.GRAM), AbstractUnit.parse("kg"));
     }
 
     @Test
@@ -305,7 +304,7 @@ public class UnitsTest {
 
     @Test
     public void testToString() {
-	assertEquals("kg", MetricPrefix.KILO(UCUM.GRAM).toString());
+	assertEquals("kg", KILO(UCUM.GRAM).toString());
 	assertEquals("lb", UCUM.POUND.toString());
 	assertEquals("oz", UCUM.OUNCE.toString());
 	assertEquals("g", UCUM.GRAM.toString());
@@ -324,7 +323,7 @@ public class UnitsTest {
 	// assertEquals("kg", SI.GRAM.getSymbol()); //"g"
 	// assertEquals("kg", UCUM.POUND.getSymbol()); //"lb"
 	// assertEquals("kg", UCUM.OUNCE.getSymbol());//"oz"
-	assertEquals("kg", MetricPrefix.KILO(UCUM.GRAM).getSymbol());
+	assertEquals("kg", KILO(UCUM.GRAM).getSymbol());
 	// assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
 	// assertEquals("kg", US.POUND.getSymbol()); //"lb"
 	assertEquals("kg", Units.GRAM.getSymbol());
