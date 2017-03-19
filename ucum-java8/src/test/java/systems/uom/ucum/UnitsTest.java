@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Units of Measurement Systems for Java
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -39,7 +39,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import tec.uom.se.AbstractConverter;
@@ -133,15 +132,16 @@ public class UnitsTest {
      * Test method for {@link javax.measure.Unit#asType(java.lang.Class)}.
      */
     @Test
-    @Ignore
-    public void testAsType() {
+    public void testAsTypeValid() {
 	one.asType(Dimensionless.class);
-	try {
-	    METRE.asType(Dimensionless.class);
-	    fail("Should have raised ClassCastException");
-	} catch (ClassCastException e) {
-	    assertTrue(true);
-	}
+    }
+    
+    /**
+     * Test method for {@link javax.measure.Unit#asType(java.lang.Class)}.
+     */
+    @Test(expected = ClassCastException.class)
+    public void testAsTypeFails() {
+	METRE.asType(Dimensionless.class);
     }
 
     /**
@@ -272,8 +272,7 @@ public class UnitsTest {
     public void testKiloIsAThousand() {
 	// FIXME: Need to find the org.hamcrest assertion libs
 	Quantity<Power> w2000 = Quantities.getQuantity(2000, WATT);
-	Quantity<Power> kW2 = Quantities
-		.getQuantity(2, MetricPrefix.KILO(WATT));
+	Quantity<Power> kW2 = Quantities.getQuantity(2, MetricPrefix.KILO(WATT));
 	// assertThat(w2000, is(kW2));
     }
 
@@ -336,8 +335,7 @@ public class UnitsTest {
     @Test
     public void testGetParentUnit() {
 	assertEquals("TransformedUnit", Units.GRAM.getClass().getSimpleName());
-	assertEquals("kg", ((TransformedUnit<Mass>) Units.GRAM).getParentUnit()
-		.getSymbol());
+	assertEquals("kg", ((TransformedUnit<Mass>) Units.GRAM).getParentUnit().getSymbol());
 	// assertEquals("kg", UCUM.POUND.getSymbol()); //"lb"
 	// assertEquals("kg", UCUM.OUNCE.getSymbol());//"oz"
 	// assertEquals("kg", MetricPrefix.KILO(UCUM.GRAM).getSymbol());
