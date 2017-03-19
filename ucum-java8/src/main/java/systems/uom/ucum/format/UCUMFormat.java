@@ -207,24 +207,48 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 		    temp.append(')');
 		}
 		int pow = productUnits.get(u);
-		if (app.length() > 0) { // Not the first unit.
-		    if (pow >= 0) {
-			app.append('.');
-		    } else {
-			app.append('/');
-			pow = -pow;
-		    }
+				int indexToAppend;
+				if(app.length() > 0) { // Not the first unit.
+
+					if(pow >= 0) {
+
+						if(app.indexOf("1/") >= 0) {
+							indexToAppend = app.indexOf("1/");
+							app.replace(app.indexOf("1/"), app.indexOf("1/") + 2, "/");
+
+						} else if(app.indexOf("/") >= 0) {
+							indexToAppend = app.indexOf("/");
+							app.insert(indexToAppend, ".");
+							indexToAppend++;
+
+						} else {
+							app.append('.');
+							indexToAppend = app.length();
+						}
+
+					} else {
+						app.append('/');
+						pow = -pow;
+
+						indexToAppend = app.length();
+					}
+
 		} else { // First unit.
-		    if (pow < 0) {
-			app.append("1/");
-			pow = -pow;
-		    }
+
+					if(pow < 0) {
+						app.append("1/");
+						pow = -pow;
+					}
+
+					indexToAppend = app.length();
 		}
-		app.append(temp);
-		if (pow != 1) {
-		    app.append(Integer.toString(pow));
+
+				app.insert(indexToAppend, temp);
+
+				if(pow != 1) {
+					app.append(Integer.toString(pow));
 		}
-	    }
+			}
 	    symbol = app;
 	} else if (!unit.isSystemUnit() || unit.equals(SI.KILOGRAM)) {
 	    final StringBuilder temp = new StringBuilder();
