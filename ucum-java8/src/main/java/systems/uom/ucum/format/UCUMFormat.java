@@ -207,24 +207,54 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 		    temp.append(')');
 		}
 		int pow = productUnits.get(u);
-		if (app.length() > 0) { // Not the first unit.
-		    if (pow >= 0) {
-			app.append('.');
-		    } else {
-			app.append('/');
-			pow = -pow;
-		    }
+				int indexToAppend;
+				if(app.length() > 0) { // Not the first unit.
+
+					if(pow >= 0) {
+
+						if(app.indexOf("1/") >= 0) {
+							indexToAppend = app.indexOf("1/");
+							app.replace(indexToAppend, indexToAppend + 2, "/");
+							//this statement make sure that (1/y).x will be (x/y)
+
+						} else if(app.indexOf("/") >= 0) {
+							indexToAppend = app.indexOf("/");
+							app.insert(indexToAppend, ".");
+							indexToAppend++;
+							//this statement make sure that (x/z).y will be (x.y/z)
+
+						} else {
+							app.append('.');
+							indexToAppend = app.length();
+							//this statement make sure that (x).y will be (x.y)
+						}
+
+					} else {
+						app.append('/');
+						pow = -pow;
+
+						indexToAppend = app.length();
+						//this statement make sure that (x).y^-z will be (x/y^z), where z would be added if it has a value different than 1.
+					}
+
 		} else { // First unit.
-		    if (pow < 0) {
-			app.append("1/");
-			pow = -pow;
-		    }
+
+					if(pow < 0) {
+						app.append("1/");
+						pow = -pow;
+						//this statement make sure that x^-y will be (1/x^y), where z would be added if it has a value different than 1.
+					}
+
+					indexToAppend = app.length();
 		}
-		app.append(temp);
-		if (pow != 1) {
-		    app.append(Integer.toString(pow));
-		}
-	    }
+
+				app.insert(indexToAppend, temp);
+
+				if(pow != 1) {
+					app.append(Integer.toString(pow));
+					//this statement make sure that the power will be added if it's different than 1.
+				}
+			}
 	    symbol = app;
 	} else if (!unit.isSystemUnit() || unit.equals(SI.KILOGRAM)) {
 	    final StringBuilder temp = new StringBuilder();
@@ -232,7 +262,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	    boolean printSeparator;
 	    if (unit.equals(SI.KILOGRAM)) {
 		// A special case because KILOGRAM is a BaseUnit instead of
-		// a transformed unit, for compatability with existing SI
+				// a transformed unit, for compatibility with existing SI
 		// unit system.
 		format(SI.GRAM, temp);
 		converter = MetricPrefix.KILO.getConverter();
@@ -242,7 +272,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 		converter = unit.getConverterTo(parentUnit);
 		if (parentUnit.equals(SI.KILOGRAM)) {
 		    // More special-case hackery to work around gram/kilogram
-		    // incosistency
+					// inconsistency
 		    parentUnit = SI.GRAM;
 		    converter = converter.concatenate(MetricPrefix.KILO
 			    .getConverter());
