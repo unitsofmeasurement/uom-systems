@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems for Java
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -67,7 +67,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.7.3, $Date: 2017-03-16 $
+ * @version 0.7.4, $Date: 2017-03-19 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -822,18 +822,6 @@ public final class UCUM extends AbstractSystemOfUnits {
 	public static final Unit<Information> BYTE = addUnit(NonSI.BIT.multiply(8));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<InformationRate> BAUD = addUnit(NonSI.BITS_PER_SECOND);
-
-	// /////////////////////
-	// MISSING FROM UCUM //
-	// /////////////////////
-
-	/**
-	 * To be added to the <a href="http://unitsofmeasure.org/">UCUM</a>
-	 * standard.
-	 * @deprecated so far not in UCUM
-	 */
-	public static final Unit<Frequency> FRAMES_PER_SECOND = addUnit(
-			ONE.divide(SECOND)).asType(Frequency.class);
 
 	// ///////////////////
 	// Collection View //

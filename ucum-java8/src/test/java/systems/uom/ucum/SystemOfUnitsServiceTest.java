@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems for Java
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -39,7 +39,7 @@ import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
     private static final String EXPECTED_SYSTEM_NAME = "Unified Code for Units of Measure";
-    private static final int NUM_OF_UNITS = 213;
+    private static final int NUM_OF_UNITS = 212;
 
     private static SystemOfUnitsService defaultService;
 
