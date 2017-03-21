@@ -211,7 +211,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     // The order of GON and DEGREE has been inverted because GON is defined in
     // terms of DEGREE
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Angle> DEGREE = addUnit(new ProductUnit<Angle>(PI.multiply(RADIAN.divide(360))));
+    public static final Unit<Angle> DEGREE = addUnit(new ProductUnit<Angle>(PI.multiply(RADIAN.divide(180))));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Angle> GRADE = addUnit(DEGREE.multiply(0.9));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
