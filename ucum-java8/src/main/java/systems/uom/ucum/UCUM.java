@@ -39,10 +39,12 @@ import si.uom.quantity.MagnetomotiveForce;
 import si.uom.quantity.WaveNumber;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
+import systems.uom.quantity.Level;
 import si.uom.SI;
 import tec.uom.se.*;
 import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.PiMultiplierConverter;
+import tec.uom.se.quantity.Quantities;
 import tec.uom.se.unit.AlternateUnit;
 import tec.uom.se.unit.ProductUnit;
 import tec.uom.se.unit.Units;
@@ -253,6 +255,8 @@ public final class UCUM extends AbstractSystemOfUnits {
 			.multiply(365.2425));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Time> YEAR = addUnit(Units.DAY.multiply(365.25));
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Time> WEEK = addUnit(Units.DAY.multiply(7));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Time> MONTH_SYNODAL = addUnit(Units.DAY
 			.multiply(29.53059));
@@ -600,6 +604,14 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Volume> CUP_US = addUnit(TABLESPOON_US
 			.multiply(16));
+		/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+		public static final Unit<Volume> METRIC_FLUID_OUNCE_US = addUnit(MILLI(LITER).multiply(30));
+		/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+		public static final Unit<Volume> METRIC_CUP_US = addUnit(MILLI(LITER).multiply(240));
+		/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+		public static final Unit<Volume> METRIC_TEASPOON_CUP_US = addUnit(MILLI(LITER).multiply(5));
+		/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+		public static final Unit<Volume> METRIC_TABLESPOON_CUP_US = addUnit(MILLI(LITER).multiply(15));
 	// ///////////////////////////////////////////////
 	// BRITISH IMPERIAL VOLUME UNITS: UCUM 4.4 §38 //
 	// ///////////////////////////////////////////////
@@ -692,6 +704,9 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Mass> POUND_APOTHECARY = addUnit(OUNCE_APOTHECARY
 			.multiply(12));
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Mass> METRIC_OUNCE = addUnit(GRAM.multiply(28));
+	
 	// ///////////////////////////////////////////
 	// TYPESETTER'S LENGTH UNITS: UCUM 4.4 §42 //
 	// ///////////////////////////////////////////
@@ -723,8 +738,11 @@ public final class UCUM extends AbstractSystemOfUnits {
 	// OTHER LEGACY UNITS: UCUM 4.5 §43 //
 	// ////////////////////////////////////
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-	public static final Unit<Temperature> FAHRENHEIT = addUnit(KELVIN
-			.multiply(5).divide(9).shift(459.67));
+	public static final Unit<Temperature> FAHRENHEIT = addUnit(KELVIN.multiply(9).divide(5).shift(459.67));
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Temperature> RANKINE = addUnit(KELVIN.divide(9).multiply(5));
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Temperature> REAUMUR = addUnit(KELVIN.multiply(4).divide(5).shift(218.52));
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Energy> CALORIE_AT_15C = addUnit(JOULE.multiply(
 			41858).divide(10000));
@@ -768,9 +786,116 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Power> HORSEPOWER = addUnit(new ProductUnit<Power>(
 			FOOT_INTERNATIONAL.multiply(POUND_FORCE).divide(SECOND)));
-	// ///////////////////////////////////////////////////////
-	// SECTIONS §44-§46 skipped; implement later if needed //
-	// ///////////////////////////////////////////////////////
+	
+	////////////////////////////////////////////
+	// CLINICAL MEDICINE UNITS: UCUM 4.5 §44 //
+	// /////////////////////////////////////////
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Pressure> METER_OF_WATER_COLUMN = addUnit(KILO(PASCAL).multiply(980665).divide(100000));
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Pressure> METER_OF_MERCURY_COLUMN = addUnit(KILO(PASCAL).multiply(1333220).divide(10000));
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Pressure> INCH_OF_WATER_COLUMN = addUnit(
+			new ProductUnit<Pressure>(METER_OF_WATER_COLUMN.multiply(INCH_INTERNATIONAL).divide(METER)));
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Pressure> INCH_OF_MERCURY_COLUMN = addUnit(
+			new ProductUnit<Pressure>(METER_OF_MERCURY_COLUMN.multiply(INCH_INTERNATIONAL).divide(METER)));
+
+	//	public static final Unit PERIPHERAL_VASCULAR_RESISTANCE = addUnit(MILLI(METER_OF_MERCURY_COLUMN).multiply(SECOND).divide(MILLI(LITER)));
+	//	public static final Unit WOOD = addUnit(MILLI(METER_OF_MERCURY_COLUMN).multiply(MINUTE).divide(LITER));
+	//	public static final Unit DIOPTER = addUnit(ONE.divide(METER));
+	//	public static final Unit PRISM_DIOPTER = addUnit(ONE.multiply(100).multiply(Math.tan(1)));
+	//	public static final Unit PERCENT_OF_SLOPE = addUnit(ONE.multiply(100).multiply(Math.tan(1)));
+	//	public static final Unit MESH = addUnit(ONE.divide(INCH_INTERNATIONAL));
+	//	public static final Unit CHARRIERE = addUnit(MILLI(METER).divide(3));
+
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Volume> DROP = addUnit(MILLI(LITER).divide(20));
+
+	//	public static final Unit HOUNSFIELD = addUnit(ONE);
+	//	public static final Unit METABOLIC_EQUIVALENT = addUnit(MILLI(LITER).divide(MINUTE).divide(KILO(GRAM)));
+
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_DECIMAL = addUnit(ONE.multiply(-1).multiply(Math.log10(1)));
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_CENTESIMAL = addUnit(ONE.multiply(-1).multiply(Math.log(1)).divide(Math.log(100)));
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_MILLESIMAL = addUnit(ONE.multiply(-1).multiply(Math.log(1)).divide(Math.log(1000)));
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_QUINTALLESIMAL = addUnit(ONE.multiply(-1).multiply(Math.log(1)).divide(Math.log(50000)));
+
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_DECIMAL_HAHNEMANNIAN = UNDEFINED;
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_CENTESIMAL_HAHNEMANNIAN = UNDEFINED;
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_MILLESIMAL_HAHNEMANNIAN = UNDEFINED;
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_QUINTAMILLESIMAL_HAHNEMANNIAN = UNDEFINED;
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_DECIMAL_KORSAKOVIAN = UNDEFINED;
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_CENTESIMAL_KORSAKOVIAN = UNDEFINED;
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_MILLESIMAL_KORSAKOVIAN = UNDEFINED;
+	//	public static final Unit HOMEOPATHIC_POTENCY_OF_QUINTAMILLESIMAL_KORSAKOVIAN = UNDEFINED;
+
+	// ////////////////////////////////////////////////
+	// CHEMICAL AND BIOCHEMICAL UNITS: UCUM 4.5 §45 //
+	// ////////////////////////////////////////////////
+	//	public static final Unit EQUIVALENTS = addUnit(MOLE);
+	//	public static final Unit OSMOLE = addUnit(MOLE);
+	//	public static final Unit PH = addUnit(ONE.multiply(-1).multiply(Math.log10(Quantities.getQuantity(1, MOLE).divide(Quantities.getQuantity(1, LITER)).getValue().doubleValue()))); is this okay?
+	//	public static final Unit GRAM_PERCENT = addUnit(GRAM.divide(DECI(LITER)));
+	//	public static final Unit SVEDBERG = addUnit(SECOND.multiply(1E-13));
+	//	public static final Unit HIGH_POWER_FIELD = addUnit(ONE);
+	//	public static final Unit LOW_POWER_FIELD = addUnit(ONE);
+	//	public static final Unit KATAL = addUnit(MOLE.divide(SECOND));
+	//	public static final Unit UNIT = addUnit(MICRO(MOLE).divide(MINUTE));
+
+	//	public static final Unit INTERNATIONAL_UNIT = UNDEFINED;
+	//	public static final Unit ARBITRARY_UNIT = UNDEFINED;
+	//	public static final Unit US_PHARMACOPEIA = UNDEFINED;
+	//	public static final Unit GPL = UNDEFINED;
+	//	public static final Unit MPL = UNDEFINED;
+	//	public static final Unit APL = UNDEFINED;
+	//	public static final Unit BETHESDA = UNDEFINED;
+	//	public static final Unit ANTI_FACTOR_XA = UNDEFINED;
+	//	public static final Unit TODD = UNDEFINED;
+	//	public static final Unit DYE = UNDEFINED;
+	//	public static final Unit SOMOGYI = UNDEFINED;
+	//	public static final Unit BODANSKY = UNDEFINED;
+	//	public static final Unit KING_ARMSTRONG = UNDEFINED;
+	//	public static final Unit KUNKEL = UNDEFINED;
+	//	public static final Unit MAC_LAGAN = UNDEFINED;
+	//	public static final Unit TUBERCULIN = UNDEFINED;
+	//	public static final Unit CELL_CULTURE_INFECTIOUS_50_PERCENT_DOSE = UNDEFINED;
+	//	public static final Unit TISSUE_CULTURE_INFECTIOUS_50_PERCENT_DOSE = UNDEFINED;
+	//	public static final Unit EMBRYO_CULTURE_INFECTIOUS_50_PERCENT_DOSE = UNDEFINED;
+	//	public static final Unit PLAQUE_FORMING = UNDEFINED;
+	//	public static final Unit FOCUS_FORMING = UNDEFINED;
+	//	public static final Unit COLONY_FORMING = UNDEFINED;
+	//	public static final Unit INDEX_OF_REACTIVITY = UNDEFINED;
+	//	public static final Unit BIOEQUIVALENT_ALLERGEN = UNDEFINED;
+	//	public static final Unit ALLERGEN = UNDEFINED;
+	//	public static final Unit ALLERGEN_FOR_AMBROSIA_ARTEMISIIFOLIA = UNDEFINED;
+	//	public static final Unit PROTEIN_NITROGEN = UNDEFINED;
+	//	public static final Unit LIMIT_OF_FLOCCULATION = UNDEFINED;
+	//	public static final Unit D_ANTIGEN = UNDEFINED;
+	//	public static final Unit FIBRINOGEN_EQUIVALENT = UNDEFINED;
+	//	public static final Unit ELISA = UNDEFINED;
+	//	public static final Unit EHRLICH = UNDEFINED;
+	//	public static final Unit CHEMICAL = UNDEFINED;
+
+	// ///////////////////////////////
+	// LEVELS UNITS: UCUM 4.5 §45 //
+	// //////////////////////////////
+	//	public static final Unit<Level<?>> NEPER = addUnit(new ProductUnit<Level<?>>(ONE.multiply(Math.log(1))));
+	//	public static final Unit<Level<?>> BEL = addUnit(new ProductUnit<Level<?>>(ONE.multiply(Math.log10(1))));
+
+	//	public static final Unit<Level<Pressure>> BEL_SOUND = addUnit(
+	//			new ProductUnit<Level<Pressure>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(2, PASCAL.multiply(1E-5)).getValue().doubleValue()))));
+	//	public static final Unit<Level<ElectricPotential>> BEL_VOLT = addUnit(
+	//			new ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1, VOLT).getValue().doubleValue()))));
+	//	public static final Unit<Level<ElectricPotential>> BEL_MILIVOLT = addUnit(
+	//			new ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1, MILLI(VOLT)).getValue().doubleValue()))));
+	//	public static final Unit<Level<ElectricPotential>> BEL_MICROVOLT = addUnit(
+	//			new ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1, MICRO(VOLT)).getValue().doubleValue()))));
+	//	public static final Unit<Level<ElectricPotential>> BEL_10_NANOVOLT = addUnit(
+	//			new ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1, NANO(VOLT)).getValue().doubleValue()))));
+	//	public static final Unit<Level<Power>> BEL_WATT = addUnit(
+	//			new ProductUnit<Level<Power>>(ONE.multiply(Math.log(Quantities.getQuantity(1, WATT).getValue().doubleValue()))));
+	//	public static final Unit<Level<Power>> BEL_KILOWATT = addUnit(new ProductUnit<Level<Power>>(ONE.multiply(Math.log(Quantities.getQuantity(1, KILO(WATT)).getValue().doubleValue()))));
+
 	// /////////////////////////////////////
 	// MISCELLANEOUS UNITS: UCUM 4.5 §47 //
 	// /////////////////////////////////////
@@ -812,6 +937,8 @@ public final class UCUM extends AbstractSystemOfUnits {
 	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
 	public static final Unit<Dimensionless> CARAT_GOLD = addUnit(ONE
 			.divide(24));
+	/** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+	public static final Unit<Length> SMOOT = addUnit(INCH_INTERNATIONAL.multiply(67));
 	
 	// //////////////////////////////////////////////
 	// INFORMATION TECHNOLOGY UNITS: UCUM 4.6 §48 //
