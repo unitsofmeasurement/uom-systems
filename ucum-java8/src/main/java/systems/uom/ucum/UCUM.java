@@ -806,7 +806,14 @@ public final class UCUM extends AbstractSystemOfUnits {
     // TransformedUnit<Level<Dimensionless>>(ONE.multiply(Math.log(1))));
     @SuppressWarnings("unchecked")
     public static final Unit<Level<?>> NEPER = addUnit(ONE.transform(new LogConverter(1)).asType(Level.class));
-
+    /**
+     * A logarithmic unit used to describe a power {@link Level} ratio (standard name
+     * <code>dB</code>).
+     */
+//	public static final Unit<Level<Power>> DECIBEL = addUnit(NEPER
+//			.transform(new LogConverter(10).inverse().concatenate(
+//					RationalConverter.of(1d, 10d))));
+	
     // public static final Unit<Level<?>> BEL = addUnit(new
     // ProductUnit<Level<?>>(ONE.multiply(Math.log10(1))));
 
