@@ -43,10 +43,12 @@ import systems.uom.quantity.Level;
 import si.uom.SI;
 import tec.uom.se.*;
 import tec.uom.se.format.SimpleUnitFormat;
+import tec.uom.se.function.LogConverter;
 import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.quantity.Quantities;
 import tec.uom.se.unit.AlternateUnit;
 import tec.uom.se.unit.ProductUnit;
+import tec.uom.se.unit.TransformedUnit;
 import tec.uom.se.unit.Units;
 
 import javax.measure.Quantity;
@@ -876,14 +878,17 @@ public final class UCUM extends AbstractSystemOfUnits {
 	//	public static final Unit EHRLICH = UNDEFINED;
 	//	public static final Unit CHEMICAL = UNDEFINED;
 
-	// ///////////////////////////////
-	// LEVELS UNITS: UCUM 4.5 §45 //
-	// //////////////////////////////
-	//	public static final Unit<Level<?>> NEPER = addUnit(new ProductUnit<Level<?>>(ONE.multiply(Math.log(1))));
-	//	public static final Unit<Level<?>> BEL = addUnit(new ProductUnit<Level<?>>(ONE.multiply(Math.log10(1))));
+	/////////////////////////////////
+	// LEVELS UNITS: UCUM 4.5 §46 //
+	////////////////////////////////
+//	public static final Unit<Level<Dimensionless>> NEPER = addUnit(new TransformedUnit<Level<Dimensionless>>(ONE.multiply(Math.log(1))));
+	@SuppressWarnings("unchecked")
+	public static final Unit<Level<?>> NEPER = addUnit(ONE.transform(new LogConverter(1)).asType(Level.class));
+	
+//	public static final Unit<Level<?>> BEL = addUnit(new ProductUnit<Level<?>>(ONE.multiply(Math.log10(1))));
 
-	//	public static final Unit<Level<Pressure>> BEL_SOUND = addUnit(
-	//			new ProductUnit<Level<Pressure>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(2, PASCAL.multiply(1E-5)).getValue().doubleValue()))));
+//	public static final Unit<Level<Pressure>> BEL_SOUND = addUnit(
+//				new ProductUnit<Level<Pressure>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(2, PASCAL.multiply(1E-5)).getValue().doubleValue()))));
 	//	public static final Unit<Level<ElectricPotential>> BEL_VOLT = addUnit(
 	//			new ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1, VOLT).getValue().doubleValue()))));
 	//	public static final Unit<Level<ElectricPotential>> BEL_MILIVOLT = addUnit(
