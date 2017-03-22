@@ -210,20 +210,16 @@ public final class UCUM extends AbstractSystemOfUnits {
     // /////////////////////////////////////////////////////////////////////
     // The order of GON and DEGREE has been inverted because GON is defined in
     // terms of DEGREE
-    /**
-     * We deviate slightly from the standard here, to maintain compatibility
-     * with the existing NonSI units. In UCUM, the degree is defined as
-     * <code>PI.multiply(RADIAN.divide(180))</code>.
-     */
-    public static final Unit<Angle> DEGREE = addUnit(Units.DEGREE_ANGLE);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Angle> GRADE = addUnit(Units.DEGREE_ANGLE.multiply(0.9));
+    public static final Unit<Angle> DEGREE = addUnit(new ProductUnit<Angle>(PI.multiply(RADIAN.divide(180))));
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    public static final Unit<Angle> GRADE = addUnit(DEGREE.multiply(0.9));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Angle> GON = GRADE;
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Angle> MINUTE_ANGLE = addUnit(Units.MINUTE_ANGLE);
+    public static final Unit<Angle> MINUTE_ANGLE = addUnit(DEGREE.divide(60));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Angle> SECOND_ANGLE = addUnit(Units.SECOND_ANGLE);
+    public static final Unit<Angle> SECOND_ANGLE = addUnit(MINUTE_ANGLE.divide(60));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Volume> LITER = addUnit(Units.LITRE);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
