@@ -353,13 +353,8 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Radioactivity> CURIE = addUnit(Units.BECQUEREL.multiply(3.7E10));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<IonizingRadiation> ROENTGEN = addUnit(SI.COULOMBS_PER_KILOGRAM.multiply(2.58E-4)); // add
-														// later
-														// when
-														// JMQ
-														// issue
-														// fixed
-														// */
+    public static final Unit<IonizingRadiation> ROENTGEN = addUnit(SI.COULOMBS_PER_KILOGRAM.multiply(2.58E-4)); 
+    // add later when JMQ issue fixed
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<RadiationDoseAbsorbed> RAD = addUnit(
 	    new ProductUnit<RadiationDoseAbsorbed>(ERG.divide(Units.GRAM.multiply(100))));
@@ -745,15 +740,18 @@ public final class UCUM extends AbstractSystemOfUnits {
     // ////////////////////////////////////////////////
     // public static final Unit EQUIVALENTS = addUnit(MOLE);
     // public static final Unit OSMOLE = addUnit(MOLE);
-    // public static final Unit PH =
-    // addUnit(ONE.multiply(-1).multiply(Math.log10(Quantities.getQuantity(1,
-    // MOLE).divide(Quantities.getQuantity(1,
-    // LITER)).getValue().doubleValue()))); is this okay?
+
+    // public static final Unit<Dimensionless> PH = addUnit(MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Dimensionless.class));
+
+    //TODO create the unit (MassConcentration) for GRAM_PERCENT
     // public static final Unit GRAM_PERCENT =
     // addUnit(GRAM.divide(DECI(LITER)));
+    
     // public static final Unit SVEDBERG = addUnit(SECOND.multiply(1E-13));
-    // public static final Unit HIGH_POWER_FIELD = addUnit(ONE);
-    // public static final Unit LOW_POWER_FIELD = addUnit(ONE);
+
+    public static final Unit<Dimensionless> HIGH_POWER_FIELD = addUnit(ONE);
+    public static final Unit<Dimensionless> LOW_POWER_FIELD = addUnit(ONE.multiply(100));
+
     // public static final Unit KATAL = addUnit(MOLE.divide(SECOND));
     // public static final Unit UNIT = addUnit(MICRO(MOLE).divide(MINUTE));
 
@@ -798,51 +796,43 @@ public final class UCUM extends AbstractSystemOfUnits {
     /////////////////////////////////
     // LEVELS UNITS: UCUM 4.5 §46 //
     ////////////////////////////////
-    // public static final Unit<Level<Dimensionless>> NEPER = addUnit(new
-    // TransformedUnit<Level<Dimensionless>>(ONE.multiply(Math.log(1))));
     @SuppressWarnings("unchecked")
-    public static final Unit<Level<Dimensionless>> NEPER = addUnit(ONE.transform(new LogConverter(1)).asType(Level.class));
+    public static final Unit<Level<Dimensionless>> NEPER = addUnit(ONE.transform(new LogConverter(Math.E)).asType(Level.class));
     /**
      * A logarithmic unit used to describe a power {@link Level} ratio (standard name
      * <code>dB</code>).
      */
-//	public static final Unit<Level<Power>> DECIBEL = addUnit(NEPER
-//			.transform(new LogConverter(10).inverse().concatenate(
-//					RationalConverter.of(1d, 10d))));
-	
-    // public static final Unit<Level<?>> BEL = addUnit(new
-    // ProductUnit<Level<?>>(ONE.multiply(Math.log10(1))));
+    // public static final Unit<Level<Power>> DECIBEL = addUnit(NEPER
+    // .transform(new LogConverter(10).inverse().concatenate(
+    // RationalConverter.of(1d, 10d))));
 
-    // public static final Unit<Level<Pressure>> BEL_SOUND = addUnit(
-    // new
-    // ProductUnit<Level<Pressure>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(2,
-    // PASCAL.multiply(1E-5)).getValue().doubleValue()))));
-    // public static final Unit<Level<ElectricPotential>> BEL_VOLT = addUnit(
-    // new
-    // ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1,
-    // VOLT).getValue().doubleValue()))));
-    // public static final Unit<Level<ElectricPotential>> BEL_MILIVOLT =
-    // addUnit(
-    // new
-    // ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1,
-    // MILLI(VOLT)).getValue().doubleValue()))));
-    // public static final Unit<Level<ElectricPotential>> BEL_MICROVOLT =
-    // addUnit(
-    // new
-    // ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1,
-    // MICRO(VOLT)).getValue().doubleValue()))));
-    // public static final Unit<Level<ElectricPotential>> BEL_10_NANOVOLT =
-    // addUnit(
-    // new
-    // ProductUnit<Level<ElectricPotential>>(ONE.multiply(2).multiply(Math.log10(Quantities.getQuantity(1,
-    // NANO(VOLT)).getValue().doubleValue()))));
-    // public static final Unit<Level<Power>> BEL_WATT = addUnit(
-    // new
-    // ProductUnit<Level<Power>>(ONE.multiply(Math.log(Quantities.getQuantity(1,
-    // WATT).getValue().doubleValue()))));
-    // public static final Unit<Level<Power>> BEL_KILOWATT = addUnit(new
-    // ProductUnit<Level<Power>>(ONE.multiply(Math.log(Quantities.getQuantity(1,
-    // KILO(WATT)).getValue().doubleValue()))));
+    @SuppressWarnings("unchecked")
+    public static final Unit<Level<Dimensionless>> BEL = addUnit(ONE.transform(new LogConverter(10)).asType(Level.class));
+
+    @SuppressWarnings("unchecked")
+    public static final Unit<Level<Pressure>> BEL_SOUND = addUnit(
+            PASCAL.divide(1E5).multiply(2).transform(new LogConverter(10)).multiply(2).asType(Level.class));
+
+    @SuppressWarnings("unchecked")
+    public static final Unit<Level<ElectricPotential>> BEL_VOLT = addUnit(VOLT.transform(new LogConverter(10)).multiply(2).asType(Level.class));
+
+    @SuppressWarnings("unchecked")
+    public static final Unit<Level<ElectricPotential>> BEL_MILLIVOLT = addUnit(
+            MILLI(VOLT).transform(new LogConverter(10)).multiply(2).asType(Level.class));
+
+    @SuppressWarnings("unchecked")
+    public static final Unit<Level<ElectricPotential>> BEL_MICROVOLT = addUnit(
+            MICRO(VOLT).transform(new LogConverter(10)).multiply(2).asType(Level.class));
+
+    @SuppressWarnings("unchecked")
+    public static final Unit<Level<ElectricPotential>> BEL_10_NANOVOLT = addUnit(
+            NANO(VOLT).multiply(10).transform(new LogConverter(10)).multiply(2).asType(Level.class));
+
+    @SuppressWarnings("unchecked")
+    public static final Unit<Level<ElectricPotential>> BEL_WATT = addUnit(WATT.transform(new LogConverter(10)).asType(Level.class));
+
+    @SuppressWarnings("unchecked")
+    public static final Unit<Level<ElectricPotential>> BEL_KILOWATT = addUnit(KILO(WATT).transform(new LogConverter(10)).asType(Level.class));
 
     // /////////////////////////////////////
     // MISCELLANEOUS UNITS: UCUM 4.5 §47 //
