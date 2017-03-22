@@ -922,5 +922,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 	SimpleUnitFormat.getInstance().label(LITER, "l");
 	SimpleUnitFormat.getInstance().label(OUNCE, "oz");
 	SimpleUnitFormat.getInstance().label(POUND, "lb");
+	SimpleUnitFormat.getInstance().label(PLANCK, "h");
+	// TODO maybe we can find a better solution, but it would require to "harvest" the entire UCUMFormat ResourceBundle and label every matching UCUM unit in a loop.
     }
 }
