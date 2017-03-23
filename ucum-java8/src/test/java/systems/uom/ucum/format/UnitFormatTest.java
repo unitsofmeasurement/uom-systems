@@ -25,37 +25,22 @@
  */
 package systems.uom.ucum.format;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-import static systems.uom.ucum.UCUM.METER;
-import static systems.uom.ucum.format.UCUMFormat.Variant.CASE_INSENSITIVE;
-import static systems.uom.ucum.format.UCUMFormat.Variant.CASE_SENSITIVE;
-import static systems.uom.ucum.format.UCUMFormat.Variant.PRINT;
-import static tec.uom.se.unit.MetricPrefix.KILO;
-import static tec.uom.se.unit.MetricPrefix.MEGA;
-import static tec.uom.se.unit.Units.HERTZ;
-import static tec.uom.se.unit.Units.KILOGRAM;
-import static tec.uom.se.unit.Units.METRE;
-import static tec.uom.se.unit.Units.MINUTE;
-import static tec.uom.se.unit.Units.SECOND;
+import static org.junit.Assert.*;
+import static systems.uom.ucum.UCUM.*;
+import static systems.uom.ucum.format.UCUMFormat.Variant.*;
+import static tec.uom.se.unit.MetricPrefix.*;
 
-import java.io.IOException;
-
-import javax.measure.Quantity;
-import javax.measure.Unit;
-import javax.measure.format.ParserException;
-import javax.measure.format.UnitFormat;
-import javax.measure.quantity.Frequency;
-import javax.measure.quantity.Length;
-import javax.measure.quantity.Speed;
+import javax.measure.*;
+import javax.measure.format.*;
+import javax.measure.quantity.*;
 
 import systems.uom.ucum.format.UCUMFormat;
+import systems.uom.ucum.internal.format.TokenException;
 import tec.uom.se.format.LocalUnitFormat;
 import tec.uom.se.quantity.Quantities;
-import tec.uom.se.unit.Units;
+import tec.uom.se.unit.ProductUnit;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
@@ -66,181 +51,353 @@ public class UnitFormatTest {
 
 	@Before
 	public void init() {
-		//sut = QuantityFactoryProvider.getQuantityFactory(Length.class).create(10, METRE);
-		sut = Quantities.getQuantity(10, METRE);
+		//sut = QuantityFactoryProvider.getQuantityFactory(Length.class).create(10, METER);
+		sut = Quantities.getQuantity(10, METER);
 	}
 
-	@Test
-	public void testFormat() {
-		Unit<Frequency> hz = HERTZ;
-		assertEquals("Hz", hz.toString());
-	}
-	
-	@Test
-	public void testFormat2() {
-		Unit<Frequency> mhz = MEGA(HERTZ);
-		assertEquals("MHz", mhz.toString());
-	}
+    @Ignore
+    @Test
+    public void testFormatUCUMCSWithNegativePrefix() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+        Unit<Frequency> hertzSubmultiple;
 
-	@Test
-	public void testFormat3() {
-		Unit<Frequency> khz = KILO(HERTZ);
-		assertEquals("kHz", khz.toString());
-	}
-	
-	@Test
-	public void testFormat4() {
-		Unit<Speed> kph = Units.KILOMETRE_PER_HOUR;
-		assertEquals("km/h", kph.toString());
-	}
-	
+        hertzSubmultiple = DECI(HERTZ);
+        assertEquals("The DECI prefix didn't work", "dHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = CENTI(HERTZ);
+        assertEquals("The CENTI prefix didn't work", "cHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = MILLI(HERTZ);
+        assertEquals("The MILLI prefix didn't work", "mHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = MICRO(HERTZ);
+        assertEquals("The MICRO prefix didn't work", "µHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = NANO(HERTZ);
+        assertEquals("The NANO prefix didn't work", "nHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = PICO(HERTZ);
+        assertEquals("The PICO prefix didn't work", "pHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = FEMTO(HERTZ);
+        assertEquals("The FEMTO prefix didn't work", "fHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = ATTO(HERTZ);
+        assertEquals("The ATTO prefix didn't work", "aHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = ZEPTO(HERTZ);
+        assertEquals("The ZEPTO prefix didn't work", "zHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = YOCTO(HERTZ);
+        assertEquals("The YOCTO prefix didn't work", "yHz", format.format(hertzSubmultiple));
+    }
+
+    @Ignore
+    @Test
+    public void testFormatUCUMCSWithPositivePrefix() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+        Unit<Frequency> hertzMultiple;
+
+        hertzMultiple = DEKA(HERTZ);
+        assertEquals("The DEKA prefix didn't work", "daHz", format.format(hertzMultiple));
+
+        hertzMultiple = HECTO(HERTZ);
+        assertEquals("The HECTO prefix didn't work", "hHz", format.format(hertzMultiple));
+
+        hertzMultiple = KILO(HERTZ);
+        assertEquals("The KILO prefix didn't work", "kHz", format.format(hertzMultiple));
+
+        hertzMultiple = MEGA(HERTZ);
+        assertEquals("The MEGA prefix didn't work", "MHz", format.format(hertzMultiple));
+
+        hertzMultiple = GIGA(HERTZ);
+        assertEquals("The GIGA prefix didn't work", "GHz", format.format(hertzMultiple));
+
+        hertzMultiple = TERA(HERTZ);
+        assertEquals("The TERA prefix didn't work", "THz", format.format(hertzMultiple));
+
+        hertzMultiple = PETA(HERTZ);
+        assertEquals("The PETA prefix didn't work", "PHz", format.format(hertzMultiple));
+
+        hertzMultiple = EXA(HERTZ);
+        assertEquals("The EXA prefix didn't work", "EHz", format.format(hertzMultiple));
+
+        hertzMultiple = ZETTA(HERTZ);
+        assertEquals("The ZETTA prefix didn't work", "ZHz", format.format(hertzMultiple));
+
+        hertzMultiple = YOTTA(HERTZ);
+        assertEquals("The YOTTA prefix didn't work", "YHz", format.format(hertzMultiple));
+    }
+
+    @Ignore
+    @Test
+    public void testFormatUCUMCIWithNegativePrefix() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+        Unit<Frequency> hertzSubmultiple;
+
+        hertzSubmultiple = DECI(HERTZ);
+        assertEquals("The DECI prefix didn't work", "DHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = CENTI(HERTZ);
+        assertEquals("The CENTI prefix didn't work", "CHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = MILLI(HERTZ);
+        assertEquals("The MILLI prefix didn't work", "MHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = MICRO(HERTZ);
+        assertEquals("The MICRO prefix didn't work", "UHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = NANO(HERTZ);
+        assertEquals("The NANO prefix didn't work", "NHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = PICO(HERTZ);
+        assertEquals("The PICO prefix didn't work", "PHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = FEMTO(HERTZ);
+        assertEquals("The FEMTO prefix didn't work", "FHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = ATTO(HERTZ);
+        assertEquals("The ATTO prefix didn't work", "AHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = ZEPTO(HERTZ);
+        assertEquals("The ZEPTO prefix didn't work", "ZOHz", format.format(hertzSubmultiple));
+
+        hertzSubmultiple = YOCTO(HERTZ);
+        assertEquals("The YOCTO prefix didn't work", "YOHz", format.format(hertzSubmultiple));
+    }
+
+    @Ignore
+    @Test
+    public void testFormatUCUMCIWithPositivePrefix() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+        Unit<Frequency> hertzMultiple;
+
+        hertzMultiple = DEKA(HERTZ);
+        assertEquals("The DEKA prefix didn't work", "DAHz", format.format(hertzMultiple));
+
+        hertzMultiple = HECTO(HERTZ);
+        assertEquals("The HECTO prefix didn't work", "HHz", format.format(hertzMultiple));
+
+        hertzMultiple = KILO(HERTZ);
+        assertEquals("The KILO prefix didn't work", "KHz", format.format(hertzMultiple));
+
+        hertzMultiple = MEGA(HERTZ);
+        assertEquals("The MEGA prefix didn't work", "MAHz", format.format(hertzMultiple));
+
+        hertzMultiple = GIGA(HERTZ);
+        assertEquals("The GIGA prefix didn't work", "GAHz", format.format(hertzMultiple));
+
+        hertzMultiple = TERA(HERTZ);
+        assertEquals("The TERA prefix didn't work", "TRHz", format.format(hertzMultiple));
+
+        hertzMultiple = PETA(HERTZ);
+        assertEquals("The PETA prefix didn't work", "PTHz", format.format(hertzMultiple));
+
+        hertzMultiple = EXA(HERTZ);
+        assertEquals("The EXA prefix didn't work", "EXHz", format.format(hertzMultiple));
+
+        hertzMultiple = ZETTA(HERTZ);
+        assertEquals("The ZETTA prefix didn't work", "ZAHz", format.format(hertzMultiple));
+
+        hertzMultiple = YOTTA(HERTZ);
+        assertEquals("The YOTTA prefix didn't work", "YAHz", format.format(hertzMultiple));
+    }
+
+
+    @Ignore
+    @Test
+    public void testParseUCUMCSWithNegativePrefix() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals("The DECI prefix didn't work", DECI(HERTZ), format.parse("dHz"));
+
+        assertEquals("The CENTI prefix didn't work", CENTI(HERTZ), format.parse("cHz"));
+
+        assertEquals("The MILLI prefix didn't work", MILLI(HERTZ), format.parse("mHz"));
+
+        assertEquals("The MICRO prefix didn't work", MICRO(HERTZ), format.parse("µHz"));
+
+        assertEquals("The NANO prefix didn't work", NANO(HERTZ), format.parse("nHz"));
+
+        assertEquals("The PICO prefix didn't work", PICO(HERTZ), format.parse("pHz"));
+
+        assertEquals("The FEMTO prefix didn't work", FEMTO(HERTZ), format.parse("fHz"));
+
+        assertEquals("The ATTO prefix didn't work", ATTO(HERTZ), format.parse("aHz"));
+
+        assertEquals("The ZEPTO prefix didn't work", ZEPTO(HERTZ), format.parse("zHz"));
+
+        assertEquals("The YOCTO prefix didn't work", YOCTO(HERTZ), format.parse("yHz"));
+    }
+
+    @Ignore
+    @Test
+    public void testParseUCUMCSWithPositivePrefix() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals("The DEKA prefix didn't work", DEKA(HERTZ), format.parse("daHz"));
+
+        assertEquals("The HECTO prefix didn't work", HECTO(HERTZ), format.parse("hHz"));
+
+        assertEquals("The KILO prefix didn't work", KILO(HERTZ), format.parse("kHz"));
+
+        assertEquals("The MEGA prefix didn't work", MEGA(HERTZ), format.parse("MHz"));
+
+        assertEquals("The GIGA prefix didn't work", GIGA(HERTZ), format.parse("GHz"));
+
+        assertEquals("The TERA prefix didn't work", TERA(HERTZ), format.parse("THz"));
+
+        assertEquals("The PETA prefix didn't work", PETA(HERTZ), format.parse("PHz"));
+
+        assertEquals("The EXA prefix didn't work", EXA(HERTZ), format.parse("EHz"));
+
+        assertEquals("The ZETTA prefix didn't work", ZETTA(HERTZ), format.parse("ZHz"));
+
+        assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YHz"));
+    }
+
+    @Ignore
+    @Test
+    public void testParseUCUMCIWithNegativePrefix() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals("The DECI prefix didn't work", DECI(HERTZ), format.parse("DHz"));
+
+        assertEquals("The CENTI prefix didn't work", CENTI(HERTZ), format.parse("CHz"));
+
+        assertEquals("The MILLI prefix didn't work", MILLI(HERTZ), format.parse("MHz"));
+
+        assertEquals("The MICRO prefix didn't work", MICRO(HERTZ), format.parse("UHz"));
+
+        assertEquals("The NANO prefix didn't work", NANO(HERTZ), format.parse("NHz"));
+
+        assertEquals("The PICO prefix didn't work", PICO(HERTZ), format.parse("PHz"));
+
+        assertEquals("The FEMTO prefix didn't work", FEMTO(HERTZ), format.parse("FHz"));
+
+        assertEquals("The ATTO prefix didn't work", ATTO(HERTZ), format.parse("AHz"));
+
+        assertEquals("The ZEPTO prefix didn't work", ZEPTO(HERTZ), format.parse("ZOHz"));
+
+        assertEquals("The YOCTO prefix didn't work", YOCTO(HERTZ), format.parse("YOHz"));
+    }
+
+    @Ignore
+    @Test
+    public void testParseUCUMCIWithPositivePrefix() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals("The DEKA prefix didn't work", DEKA(HERTZ), format.parse("DAHz"));
+
+        assertEquals("The HECTO prefix didn't work", HECTO(HERTZ), format.parse("HHz"));
+
+        assertEquals("The KILO prefix didn't work", KILO(HERTZ), format.parse("KHz"));
+
+        assertEquals("The MEGA prefix didn't work", MEGA(HERTZ), format.parse("MAHz"));
+
+        assertEquals("The GIGA prefix didn't work", GIGA(HERTZ), format.parse("GAHz"));
+
+        assertEquals("The TERA prefix didn't work", TERA(HERTZ), format.parse("TRHz"));
+
+        assertEquals("The PETA prefix didn't work", PETA(HERTZ), format.parse("PTHz"));
+
+        assertEquals("The EXA prefix didn't work", EXA(HERTZ), format.parse("EXHz"));
+
+        assertEquals("The ZETTA prefix didn't work", ZETTA(HERTZ), format.parse("ZAHz"));
+
+        assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YAHz"));
+    }
+
 	@Test
 	public void testFormatLocal() {
 		final UnitFormat format = LocalUnitFormat.getInstance();
-		final Appendable a = new StringBuilder();
-		try {
-			format.format(METRE, a);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals(METRE, sut.getUnit());
-		assertEquals("m", a.toString());
 
-		final Appendable a2 = new StringBuilder();
-		@SuppressWarnings("unchecked")
-		Unit<Speed> v = (Unit<Speed>) METER.divide(SECOND);
-		try {
-			format.format(v, a2);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals("m/s", a2.toString());
+		assertEquals(METER, sut.getUnit());
+		assertEquals("m", format.format(METER));
+
+		Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
+
+		assertEquals("m/s", format.format(v));
 	}
 
 	@Test
 	public void testFormatUCUMPrint() {
 		final UnitFormat format = UCUMFormat.getInstance(PRINT);
-		final Appendable a = new StringBuilder();
-		try {
-			format.format(METRE, a);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals(METRE, sut.getUnit());
-		assertEquals("m", a.toString());
 
-		final Appendable a2 = new StringBuilder();
-		@SuppressWarnings("unchecked")
-		Unit<Speed> v = (Unit<Speed>) sut.getUnit().divide(SECOND);
-		
-		try {
-			format.format(v, a2);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals("m/s", a2.toString());
+		assertEquals(METER, sut.getUnit());
+		assertEquals("m", format.format(METER));
+
+		Unit<Speed> v = new ProductUnit<Speed>(sut.getUnit().divide(SECOND));
+
+		assertEquals("m/s", format.format(v));
 	}
 
 	@Test
 	public void testFormatUCUMCS() {
 		final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
-		final Appendable a = new StringBuilder();
-		try {
-			format.format(METRE, a);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals(METRE, sut.getUnit());
-		assertEquals("m", a.toString());
 
-		final Appendable a2 = new StringBuilder();
-		@SuppressWarnings("unchecked")
-		Unit<Speed> v = (Unit<Speed>) METER.divide(SECOND);
-		try {
-			format.format(v, a2);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals("m/s", a2.toString());
-	}
-	
-	@Test
-	public void testFormatUCUMCSfromQuantity() {
-		final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
-		final Appendable a = new StringBuilder();
-		try {
-			format.format(METRE, a);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals(METRE, sut.getUnit());
-		assertEquals("m", a.toString());
+		assertEquals(METER, sut.getUnit());
+		assertEquals("m", format.format(METER));
 
-		final Appendable a2 = new StringBuilder();
-		@SuppressWarnings("unchecked")
-		Unit<Speed> v = (Unit<Speed>) sut.getUnit().divide(SECOND);
-		try {
-			format.format(v, a2);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals("m/s", a2.toString());
+		Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
+
+		assertEquals("m/s", format.format(v));
 	}
 
 	@Test
 	public void testFormatUCUMCI() {
 		final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
-		final Appendable a = new StringBuilder();
-		try {
-			format.format(METRE, a);
-		} catch (IOException e) {
-			fail(e.getMessage());
-		}
-		assertEquals(METRE, sut.getUnit());
-		assertEquals("M", a.toString());
+
+		assertEquals(METER, sut.getUnit());
+		assertEquals("M", format.format(METER));
 	}
 
 	@Test(expected=UnsupportedOperationException.class)
 	public void testParseLocal() {
 		final UnitFormat format = LocalUnitFormat.getInstance();
-		try {
-			Unit<?> u = format.parse("min");
-			assertEquals("min", u.getSymbol());
-		} catch (ParserException e) {
-			fail(e.getMessage());
-		}
+
+		assertEquals("min", format.parse("min").getSymbol());
 	}
 
 	@Test
 	public void testParseUCUMCS() {
 		final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
-		try {
-			Unit<?> u = format.parse("min");
-			assertEquals(MINUTE, u);
-		} catch (ParserException e) {
-			fail(e.getMessage());
-		}
+
+		assertEquals(MINUTE, format.parse("min"));
 	}
+
+    @Test(expected=TokenException.class)
+    public void testParseUCUMCSError() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(MINUTE, format.parse("MIN"));
+    }
+
+    @Test
+    public void testParseUCUMCSLowercaseLiter() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(LITER, format.parse("l"));
+    }
+
+    @Test
+    public void testParseUCUMCSUppercaseLiter() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(LITER, format.parse("L"));
+    }
 
 	@Test
 	public void testParseUCUMCI() {
 		final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
-		try {
-			Unit<?> u = format.parse("M");
-			assertEquals(METRE, u);
-		} catch (ParserException e) {
-			fail(e.getMessage());
-		}
+
+		assertEquals(METER, format.parse("M"));
 	}
 
 	@Test(expected = UnsupportedOperationException.class)
 	public void testParseUCUMPrint() {
 		final UnitFormat format = UCUMFormat.getInstance(PRINT);
-		try {
-			Unit<?> u = format.parse("kg");
-			assertEquals(KILOGRAM, u);
-		} catch (ParserException e) {
-			fail(e.getMessage());
-		}
+
+		assertEquals(KILO(GRAM), format.parse("kg"));
 	}
 }
