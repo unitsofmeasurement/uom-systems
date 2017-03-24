@@ -57,33 +57,33 @@ import java.util.*;
 /**
  * <p>
  * This class provides the interface for formatting and parsing
- * {@link AbstractUnit units} according to the <a
- * href="http://unitsofmeasure.org/">Uniform Code for CommonUnits of Measure</a>
- * (UCUM).
+ * {@link AbstractUnit units} according to the
+ * <a href="http://unitsofmeasure.org/">Uniform Code for CommonUnits of
+ * Measure</a> (UCUM).
  * </p>
  *
  * <p>
- * For a technical/historical overview of this format please read <a
- * href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=61354">
+ * For a technical/historical overview of this format please read
+ * <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=61354">
  * CommonUnits of Measure in Clinical Information Systems</a>.
  * </p>
  *
  * <p>
- * As of revision 1.16, the BNF in the UCUM standard contains an <a
- * href="http://unitsofmeasure.org/ticket/4">error</a>. I've attempted to work
- * around the problem by modifying the BNF productions for &lt;Term&gt;. Once
- * the error in the standard is corrected, it may be necessary to modify the
- * productions in the UCUMFormatParser.jj file to conform to the standard.
+ * As of revision 1.16, the BNF in the UCUM standard contains an
+ * <a href="http://unitsofmeasure.org/ticket/4">error</a>. I've attempted to
+ * work around the problem by modifying the BNF productions for &lt;Term&gt;.
+ * Once the error in the standard is corrected, it may be necessary to modify
+ * the productions in the UCUMFormatParser.jj file to conform to the standard.
  * </p>
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.1, 14 March 2017
+ * @version 0.7.2, 24 March 2017
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
-	 * 
-	 */
+     * 
+     */
     // private static final long serialVersionUID = 8586656823290135155L;
 
     // A helper to declare bundle names for all instances
@@ -163,23 +163,20 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     // ///////////
     // Parsing //
     // ///////////
-    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq,
-	    ParsePosition cursor) throws ParserException;
+    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws ParserException;
 
     protected Unit<?> parse(CharSequence csq, int index) throws ParserException {
 	return parse(csq, new ParsePosition(index));
     }
 
     @Override
-    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq)
-	    throws ParserException;
+    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException;
 
     // //////////////
     // Formatting //
     // //////////////
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public Appendable format(Unit<?> unknownUnit, Appendable appendable)
-	    throws IOException {
+    public Appendable format(Unit<?> unknownUnit, Appendable appendable) throws IOException {
 	if (!(unknownUnit instanceof AbstractUnit)) {
 	    throw new UnsupportedOperationException(
 		    "The UCUM format supports only known units (AbstractUnit instances)");
@@ -196,8 +193,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	if (mapSymbol != null) {
 	    symbol = mapSymbol;
 	} else if (unit.getBaseUnits() != null) {
-	    Map<? extends AbstractUnit<?>, Integer> productUnits = unit
-		    .getBaseUnits();
+	    Map<? extends AbstractUnit<?>, Integer> productUnits = unit.getBaseUnits();
 	    StringBuffer app = new StringBuffer();
 	    for (AbstractUnit<?> u : productUnits.keySet()) {
 		StringBuffer temp = new StringBuffer();
@@ -207,54 +203,61 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 		    temp.append(')');
 		}
 		int pow = productUnits.get(u);
-				int indexToAppend;
-				if(app.length() > 0) { // Not the first unit.
+		int indexToAppend;
+		if (app.length() > 0) { // Not the first unit.
 
-					if(pow >= 0) {
+		    if (pow >= 0) {
 
-						if(app.indexOf("1/") >= 0) {
-							indexToAppend = app.indexOf("1/");
-							app.replace(indexToAppend, indexToAppend + 2, "/");
-							//this statement make sure that (1/y).x will be (x/y)
+			if (app.indexOf("1/") >= 0) {
+			    indexToAppend = app.indexOf("1/");
+			    app.replace(indexToAppend, indexToAppend + 2, "/");
+			    // this statement make sure that (1/y).x will be
+			    // (x/y)
 
-						} else if(app.indexOf("/") >= 0) {
-							indexToAppend = app.indexOf("/");
-							app.insert(indexToAppend, ".");
-							indexToAppend++;
-							//this statement make sure that (x/z).y will be (x.y/z)
+			} else if (app.indexOf("/") >= 0) {
+			    indexToAppend = app.indexOf("/");
+			    app.insert(indexToAppend, ".");
+			    indexToAppend++;
+			    // this statement make sure that (x/z).y will be
+			    // (x.y/z)
 
-						} else {
-							app.append('.');
-							indexToAppend = app.length();
-							//this statement make sure that (x).y will be (x.y)
-						}
+			} else {
+			    app.append('.');
+			    indexToAppend = app.length();
+			    // this statement make sure that (x).y will be (x.y)
+			}
 
-					} else {
-						app.append('/');
-						pow = -pow;
+		    } else {
+			app.append('/');
+			pow = -pow;
 
-						indexToAppend = app.length();
-						//this statement make sure that (x).y^-z will be (x/y^z), where z would be added if it has a value different than 1.
-					}
+			indexToAppend = app.length();
+			// this statement make sure that (x).y^-z will be
+			// (x/y^z), where z would be added if it has a value
+			// different than 1.
+		    }
 
 		} else { // First unit.
 
-					if(pow < 0) {
-						app.append("1/");
-						pow = -pow;
-						//this statement make sure that x^-y will be (1/x^y), where z would be added if it has a value different than 1.
-					}
+		    if (pow < 0) {
+			app.append("1/");
+			pow = -pow;
+			// this statement make sure that x^-y will be (1/x^y),
+			// where z would be added if it has a value different
+			// than 1.
+		    }
 
-					indexToAppend = app.length();
+		    indexToAppend = app.length();
 		}
 
-				app.insert(indexToAppend, temp);
+		app.insert(indexToAppend, temp);
 
-				if(pow != 1) {
-					app.append(Integer.toString(pow));
-					//this statement make sure that the power will be added if it's different than 1.
-				}
-			}
+		if (pow != 1) {
+		    app.append(Integer.toString(pow));
+		    // this statement make sure that the power will be added if
+		    // it's different than 1.
+		}
+	    }
 	    symbol = app;
 	} else if (!unit.isSystemUnit() || unit.equals(SI.KILOGRAM)) {
 	    final StringBuilder temp = new StringBuilder();
@@ -262,7 +265,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	    boolean printSeparator;
 	    if (unit.equals(SI.KILOGRAM)) {
 		// A special case because KILOGRAM is a BaseUnit instead of
-				// a transformed unit, for compatibility with existing SI
+		// a transformed unit, for compatibility with existing SI
 		// unit system.
 		format(SI.GRAM, temp);
 		converter = MetricPrefix.KILO.getConverter();
@@ -272,10 +275,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 		converter = unit.getConverterTo(parentUnit);
 		if (parentUnit.equals(SI.KILOGRAM)) {
 		    // More special-case hackery to work around gram/kilogram
-					// inconsistency
+		    // inconsistency
 		    parentUnit = SI.GRAM;
-		    converter = converter.concatenate(MetricPrefix.KILO
-			    .getConverter());
+		    converter = converter.concatenate(MetricPrefix.KILO.getConverter());
 		}
 		format(parentUnit, temp);
 		printSeparator = !parentUnit.equals(ONE);
@@ -285,11 +287,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	} else if (unit.getSymbol() != null) {
 	    symbol = unit.getSymbol();
 	} else {
-	    throw new IllegalArgumentException(
-		    "Cannot format the given Object as UCUM units (unsupported unit "
-			    + unit.getClass().getName()
-			    + "). "
-			    + "Custom units types should override the toString() method as the default implementation uses the UCUM format.");
+	    throw new IllegalArgumentException("Cannot format the given Object as UCUM units (unsupported unit "
+		    + unit.getClass().getName() + "). "
+		    + "Custom units types should override the toString() method as the default implementation uses the UCUM format.");
 	}
 
 	appendable.append(symbol);
@@ -307,8 +307,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	return false;
     }
 
-    void appendAnnotation(CharSequence symbol, CharSequence annotation,
-	    Appendable appendable) throws IOException {
+    void appendAnnotation(CharSequence symbol, CharSequence annotation, Appendable appendable) throws IOException {
 	appendable.append('{');
 	appendable.append(annotation);
 	appendable.append('}');
@@ -332,10 +331,8 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
      *            the <code>StringBuffer</code> to append to. Contains the
      *            already-formatted unit being modified by the given converter.
      */
-    void formatConverter(UnitConverter converter, boolean continued,
-	    StringBuilder buffer) {
-	boolean unitIsExpression = ((buffer.indexOf(".") >= 0) || (buffer
-		.indexOf("/") >= 0));
+    void formatConverter(UnitConverter converter, boolean continued, StringBuilder buffer) {
+	boolean unitIsExpression = ((buffer.indexOf(".") >= 0) || (buffer.indexOf("/") >= 0));
 	MetricPrefix prefix = symbolMap.getPrefix(converter);
 	if ((prefix != null) && (!unitIsExpression)) {
 	    buffer.insert(0, symbolMap.getSymbol(prefix));
@@ -349,10 +346,8 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	    MultiplyConverter multiplyConverter = (MultiplyConverter) converter;
 	    double factor = multiplyConverter.getFactor();
 	    long lFactor = (long) factor;
-	    if ((lFactor != factor) || (lFactor < -9007199254740992L)
-		    || (lFactor > 9007199254740992L)) {
-		throw new IllegalArgumentException(
-			"Only integer factors are supported in UCUM");
+	    if ((lFactor != factor) || (lFactor < -9007199254740992L) || (lFactor > 9007199254740992L)) {
+		throw new IllegalArgumentException("Only integer factors are supported in UCUM");
 	    }
 	    if (continued) {
 		buffer.append('.');
@@ -411,8 +406,8 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
      * Variant of unit representation in the UCUM standard
      * 
-     * @see <a
-     *      href="http://unitsofmeasure.org/ucum.html#section-Character-Set-and-Lexical-Rules">
+     * @see <a href=
+     *      "http://unitsofmeasure.org/ucum.html#section-Character-Set-and-Lexical-Rules">
      *      UCUM - Character Set and Lexical Rules</a>
      */
     public static enum Variant {
@@ -428,11 +423,10 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     private static final class Print extends UCUMFormat {
 
 	/**
-         *
-         */
+	 *
+	 */
 	// private static final long serialVersionUID = 2990875526976721414L;
-	private static final SymbolMap PRINT_SYMBOLS = SymbolMap
-		.of(ResourceBundle.getBundle(BUNDLE_BASE + "_Print"));
+	private static final SymbolMap PRINT_SYMBOLS = SymbolMap.of(ResourceBundle.getBundle(BUNDLE_BASE + "_Print"));
 	private static final Print DEFAULT = new Print(PRINT_SYMBOLS);
 
 	public Print(SymbolMap symbols) {
@@ -440,15 +434,13 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	}
 
 	@Override
-	public Unit<? extends Quantity<?>> parse(CharSequence csq,
-		ParsePosition pos) throws IllegalArgumentException {
+	public Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition pos) throws IllegalArgumentException {
 	    throw new UnsupportedOperationException(
 		    "The print format is for pretty-printing of units only. Parsing is not supported.");
 	}
 
 	@Override
-	void appendAnnotation(CharSequence symbol, CharSequence annotation,
-		Appendable appendable) throws IOException {
+	void appendAnnotation(CharSequence symbol, CharSequence annotation, Appendable appendable) throws IOException {
 	    if (symbol != null && symbol.length() > 0) {
 		appendable.append('(');
 		appendable.append(annotation);
@@ -459,8 +451,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	}
 
 	@Override
-	public Unit<? extends Quantity<?>> parse(CharSequence csq)
-		throws IllegalArgumentException {
+	public Unit<? extends Quantity<?>> parse(CharSequence csq) throws IllegalArgumentException {
 	    return parse(csq, new ParsePosition(0));
 
 	}
@@ -474,45 +465,37 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     private static final class Parsing extends UCUMFormat {
 	// private static final long serialVersionUID = -922531801940132715L;
 	private static final SymbolMap CASE_SENSITIVE_SYMBOLS = SymbolMap
-		.of(ResourceBundle.getBundle(BUNDLE_BASE + "_CS",
-			new ResourceBundle.Control() {
-			    @Override
-			    public List<Locale> getCandidateLocales(
-				    String baseName, Locale locale) {
-				if (baseName == null)
-				    throw new NullPointerException();
-				if (locale.equals(new Locale("", "CS"))) {
-				    return Arrays.asList(locale, Locale.ROOT);
-				}
-				return super.getCandidateLocales(baseName,
-					locale);
-			    }
-			}));
+		.of(ResourceBundle.getBundle(BUNDLE_BASE + "_CS", new ResourceBundle.Control() {
+		    @Override
+		    public List<Locale> getCandidateLocales(String baseName, Locale locale) {
+			if (baseName == null)
+			    throw new NullPointerException();
+			if (locale.equals(new Locale("", "CS"))) {
+			    return Arrays.asList(locale, Locale.ROOT);
+			}
+			return super.getCandidateLocales(baseName, locale);
+		    }
+		}));
 	private static final SymbolMap CASE_INSENSITIVE_SYMBOLS = SymbolMap
-		.of(ResourceBundle.getBundle(BUNDLE_BASE + "_CI",
-			new ResourceBundle.Control() {
-			    @Override
-			    public List<Locale> getCandidateLocales(
-				    String baseName, Locale locale) {
-				if (baseName == null)
-				    throw new NullPointerException();
-				if (locale.equals(new Locale("", "CI"))) {
-				    return Arrays.asList(locale, Locale.ROOT);
-				} else if (locale.equals(Locale.GERMANY)) { // TODO
-									    // why
-									    // GERMANY?
-				    return Arrays.asList(locale,
+		.of(ResourceBundle.getBundle(BUNDLE_BASE + "_CI", new ResourceBundle.Control() {
+		    @Override
+		    public List<Locale> getCandidateLocales(String baseName, Locale locale) {
+			if (baseName == null)
+			    throw new NullPointerException();
+			if (locale.equals(new Locale("", "CI"))) {
+			    return Arrays.asList(locale, Locale.ROOT);
+			} else if (locale.equals(Locale.GERMANY)) { // TODO
+								    // why
+								    // GERMANY?
+			    return Arrays.asList(locale,
 				    // no Locale.GERMAN here
-					    Locale.ROOT);
-				}
-				return super.getCandidateLocales(baseName,
-					locale);
-			    }
-			}));
-	private static final Parsing DEFAULT_CS = new Parsing(
-		CASE_SENSITIVE_SYMBOLS, true);
-	private static final Parsing DEFAULT_CI = new Parsing(
-		CASE_INSENSITIVE_SYMBOLS, false);
+				    Locale.ROOT);
+			}
+			return super.getCandidateLocales(baseName, locale);
+		    }
+		}));
+	private static final Parsing DEFAULT_CS = new Parsing(CASE_SENSITIVE_SYMBOLS, true);
+	private static final Parsing DEFAULT_CI = new Parsing(CASE_INSENSITIVE_SYMBOLS, false);
 	private final boolean caseSensitive;
 
 	public Parsing(SymbolMap symbols, boolean caseSensitive) {
@@ -521,8 +504,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	}
 
 	@Override
-	public Unit<? extends Quantity<?>> parse(CharSequence csq,
-		ParsePosition cursor) throws ParserException {
+	public Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws ParserException {
 	    // Parsing reads the whole character sequence from the parse
 	    // position.
 	    int start = cursor.getIndex();
@@ -537,8 +519,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	    if (!caseSensitive) {
 		source = source.toUpperCase();
 	    }
-	    UCUMFormatParser parser = new UCUMFormatParser(symbolMap,
-		    new ByteArrayInputStream(source.getBytes()));
+	    UCUMFormatParser parser = new UCUMFormatParser(symbolMap, new ByteArrayInputStream(source.getBytes()));
 	    try {
 		Unit<?> result = parser.parseUnit();
 		cursor.setIndex(end);
@@ -557,8 +538,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	}
 
 	@Override
-	public Unit<? extends Quantity<?>> parse(CharSequence csq)
-		throws ParserException {
+	public Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException {
 	    return parse(csq, new ParsePosition(0));
 	}
     }
