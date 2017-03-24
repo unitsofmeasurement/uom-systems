@@ -222,7 +222,9 @@ public final class UCUM extends AbstractSystemOfUnits {
     public static final Unit<Angle> SECOND_ANGLE = addUnit(MINUTE_ANGLE.divide(60));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Volume> LITER = addUnit(Units.LITRE);
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. Liter is defined <b>twice</b> */
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. Liter has <b>two</b> definitions. 
+     * 
+     * @see <a href="http://unitsofmeasure.org/ucum.html#iso1000">UCUM Table 5</a>*/
     public static final Unit<Volume> LITER_DM3 = addUnit(DECI(Units.CUBIC_METRE));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Area> ARE = addUnit(Units.SQUARE_METRE.multiply(100));
