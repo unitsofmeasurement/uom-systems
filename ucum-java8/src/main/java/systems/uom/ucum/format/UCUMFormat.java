@@ -42,6 +42,7 @@ import tec.uom.se.internal.format.TokenException;
 import tec.uom.se.internal.format.TokenMgrError;
 import tec.uom.se.unit.AnnotatedUnit;
 import tec.uom.se.unit.MetricPrefix;
+import tec.uom.se.unit.TransformedUnit;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -286,12 +287,26 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	    symbol = temp;
 	} else if (unit.getSymbol() != null) {
 	    symbol = unit.getSymbol();
-	} else {
+	} else if (unknownUnit instanceof TransformedUnit) {
+            final StringBuilder temp = new StringBuilder();
+
+            Unit<?> parentUnit = ((TransformedUnit) unit).getParentUnit();
+            UnitConverter converter;
+            boolean printSeparator;
+
+            converter = unit.getConverterTo(parentUnit);
+
+            format(parentUnit, temp);
+            printSeparator = !parentUnit.equals(ONE);
+
+            formatConverter(converter, printSeparator, temp); //TODO make it compatible with prefixes variants
+            symbol = temp;
+    } else {
 	    throw new IllegalArgumentException("Cannot format the given Object as UCUM units (unsupported unit "
 		    + unit.getClass().getName() + "). "
 		    + "Custom units types should override the toString() method as the default implementation uses the UCUM format.");
 	}
-
+	
 	appendable.append(symbol);
 	if (annotation != null && annotation.length() > 0) {
 	    appendAnnotation(symbol, annotation, appendable);

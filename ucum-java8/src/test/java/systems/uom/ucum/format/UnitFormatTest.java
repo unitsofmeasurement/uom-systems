@@ -57,7 +57,6 @@ public class UnitFormatTest {
 	sut = Quantities.getQuantity(10, METER);
     }
 
-    @Ignore
     @Test
     public void testFormatUCUMCSWithNegativePrefix() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
@@ -94,7 +93,6 @@ public class UnitFormatTest {
 	assertEquals("The YOCTO prefix didn't work", "yHz", format.format(hertzSubmultiple));
     }
 
-    @Ignore
     @Test
     public void testFormatUCUMCSWithPositivePrefix() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
@@ -231,7 +229,6 @@ public class UnitFormatTest {
 	assertEquals("The YOCTO prefix didn't work", YOCTO(HERTZ), format.parse("yHz"));
     }
 
-    @Ignore
     @Test
     public void testParseUCUMCSWithPositivePrefix() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
