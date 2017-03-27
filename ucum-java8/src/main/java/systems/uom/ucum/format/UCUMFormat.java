@@ -193,6 +193,16 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	String mapSymbol = symbolMap.getSymbol(unit);
 	if (mapSymbol != null) {
 	    symbol = mapSymbol;
+	} else if (unknownUnit instanceof TransformedUnit) {
+        final StringBuilder temp = new StringBuilder();
+        final Unit<?> parentUnit = ((TransformedUnit) unit).getParentUnit();
+        final UnitConverter converter = unit.getConverterTo(parentUnit);
+        final boolean printSeparator = !parentUnit.equals(ONE);
+
+        format(parentUnit, temp);
+        formatConverter(converter, printSeparator, temp); // TODO make it compatible with prefixes variants
+
+        symbol = temp;
 	} else if (unit.getBaseUnits() != null) {
 	    Map<? extends AbstractUnit<?>, Integer> productUnits = unit.getBaseUnits();
 	    StringBuffer app = new StringBuffer();
@@ -287,21 +297,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	    symbol = temp;
 	} else if (unit.getSymbol() != null) {
 	    symbol = unit.getSymbol();
-	} else if (unknownUnit instanceof TransformedUnit) {
-            final StringBuilder temp = new StringBuilder();
-
-            Unit<?> parentUnit = ((TransformedUnit) unit).getParentUnit();
-            UnitConverter converter;
-            boolean printSeparator;
-
-            converter = unit.getConverterTo(parentUnit);
-
-            format(parentUnit, temp);
-            printSeparator = !parentUnit.equals(ONE);
-
-            formatConverter(converter, printSeparator, temp); //TODO make it compatible with prefixes variants
-            symbol = temp;
-    } else {
+	} else {
 	    throw new IllegalArgumentException("Cannot format the given Object as UCUM units (unsupported unit "
 		    + unit.getClass().getName() + "). "
 		    + "Custom units types should override the toString() method as the default implementation uses the UCUM format.");
