@@ -272,7 +272,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     // NATURAL UNITS: UCUM 4.3 §32 //
     // ///////////////////////////////
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Speed> C = addUnit(Units.METRE_PER_SECOND.multiply(299792458));
+    public static final Unit<Speed> VELOCITY_OF_LIGHT = addUnit(Units.METRE_PER_SECOND.multiply(299792458));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Action> PLANCK = addUnit(SI.JOULE_SECOND.multiply(6.6260755E-34));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
@@ -305,7 +305,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Pressure> ATMOSPHERE = addUnit(Units.PASCAL.multiply(101325));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Length> LIGHT_YEAR = addUnit(new ProductUnit<Length>(C.multiply(YEAR_JULIAN)));
+    public static final Unit<Length> LIGHT_YEAR = addUnit(new ProductUnit<Length>(VELOCITY_OF_LIGHT.multiply(YEAR_JULIAN)));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Force> GRAM_FORCE = addUnit(
 	    new ProductUnit<Force>(GRAM.multiply(ACCELLERATION_OF_FREEFALL)));
