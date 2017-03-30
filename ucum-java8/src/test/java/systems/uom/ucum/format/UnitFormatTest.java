@@ -72,7 +72,7 @@ public class UnitFormatTest {
 	assertEquals("The MILLI prefix didn't work", "mHz", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = MICRO(HERTZ);
-	assertEquals("The MICRO prefix didn't work", "µHz", format.format(hertzSubmultiple));
+	assertEquals("The MICRO prefix didn't work", "uHz", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = NANO(HERTZ);
 	assertEquals("The NANO prefix didn't work", "nHz", format.format(hertzSubmultiple));
@@ -129,81 +129,78 @@ public class UnitFormatTest {
 	assertEquals("The YOTTA prefix didn't work", "YHz", format.format(hertzMultiple));
     }
 
-    @Ignore
     @Test
     public void testFormatUCUMCIWithNegativePrefix() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 	Unit<Frequency> hertzSubmultiple;
 
 	hertzSubmultiple = DECI(HERTZ);
-	assertEquals("The DECI prefix didn't work", "DHz", format.format(hertzSubmultiple));
+	assertEquals("The DECI prefix didn't work", "DHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = CENTI(HERTZ);
-	assertEquals("The CENTI prefix didn't work", "CHz", format.format(hertzSubmultiple));
+	assertEquals("The CENTI prefix didn't work", "CHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = MILLI(HERTZ);
-	assertEquals("The MILLI prefix didn't work", "MHz", format.format(hertzSubmultiple));
+	assertEquals("The MILLI prefix didn't work", "MHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = MICRO(HERTZ);
-	assertEquals("The MICRO prefix didn't work", "UHz", format.format(hertzSubmultiple));
+	assertEquals("The MICRO prefix didn't work", "UHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = NANO(HERTZ);
-	assertEquals("The NANO prefix didn't work", "NHz", format.format(hertzSubmultiple));
+	assertEquals("The NANO prefix didn't work", "NHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = PICO(HERTZ);
-	assertEquals("The PICO prefix didn't work", "PHz", format.format(hertzSubmultiple));
+	assertEquals("The PICO prefix didn't work", "PHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = FEMTO(HERTZ);
-	assertEquals("The FEMTO prefix didn't work", "FHz", format.format(hertzSubmultiple));
+	assertEquals("The FEMTO prefix didn't work", "FHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = ATTO(HERTZ);
-	assertEquals("The ATTO prefix didn't work", "AHz", format.format(hertzSubmultiple));
+	assertEquals("The ATTO prefix didn't work", "AHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = ZEPTO(HERTZ);
-	assertEquals("The ZEPTO prefix didn't work", "ZOHz", format.format(hertzSubmultiple));
+	assertEquals("The ZEPTO prefix didn't work", "ZOHZ", format.format(hertzSubmultiple));
 
 	hertzSubmultiple = YOCTO(HERTZ);
-	assertEquals("The YOCTO prefix didn't work", "YOHz", format.format(hertzSubmultiple));
+	assertEquals("The YOCTO prefix didn't work", "YOHZ", format.format(hertzSubmultiple));
     }
 
-    @Ignore
     @Test
     public void testFormatUCUMCIWithPositivePrefix() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 	Unit<Frequency> hertzMultiple;
 
 	hertzMultiple = DEKA(HERTZ);
-	assertEquals("The DEKA prefix didn't work", "DAHz", format.format(hertzMultiple));
+	assertEquals("The DEKA prefix didn't work", "DAHZ", format.format(hertzMultiple));
 
 	hertzMultiple = HECTO(HERTZ);
-	assertEquals("The HECTO prefix didn't work", "HHz", format.format(hertzMultiple));
+	assertEquals("The HECTO prefix didn't work", "HHZ", format.format(hertzMultiple));
 
 	hertzMultiple = KILO(HERTZ);
-	assertEquals("The KILO prefix didn't work", "KHz", format.format(hertzMultiple));
+	assertEquals("The KILO prefix didn't work", "KHZ", format.format(hertzMultiple));
 
 	hertzMultiple = MEGA(HERTZ);
-	assertEquals("The MEGA prefix didn't work", "MAHz", format.format(hertzMultiple));
+	assertEquals("The MEGA prefix didn't work", "MAHZ", format.format(hertzMultiple));
 
 	hertzMultiple = GIGA(HERTZ);
-	assertEquals("The GIGA prefix didn't work", "GAHz", format.format(hertzMultiple));
+	assertEquals("The GIGA prefix didn't work", "GAHZ", format.format(hertzMultiple));
 
 	hertzMultiple = TERA(HERTZ);
-	assertEquals("The TERA prefix didn't work", "TRHz", format.format(hertzMultiple));
+	assertEquals("The TERA prefix didn't work", "TRHZ", format.format(hertzMultiple));
 
 	hertzMultiple = PETA(HERTZ);
-	assertEquals("The PETA prefix didn't work", "PTHz", format.format(hertzMultiple));
+	assertEquals("The PETA prefix didn't work", "PTHZ", format.format(hertzMultiple));
 
 	hertzMultiple = EXA(HERTZ);
-	assertEquals("The EXA prefix didn't work", "EXHz", format.format(hertzMultiple));
+	assertEquals("The EXA prefix didn't work", "EXHZ", format.format(hertzMultiple));
 
 	hertzMultiple = ZETTA(HERTZ);
-	assertEquals("The ZETTA prefix didn't work", "ZAHz", format.format(hertzMultiple));
+	assertEquals("The ZETTA prefix didn't work", "ZAHZ", format.format(hertzMultiple));
 
 	hertzMultiple = YOTTA(HERTZ);
-	assertEquals("The YOTTA prefix didn't work", "YAHz", format.format(hertzMultiple));
+	assertEquals("The YOTTA prefix didn't work", "YAHZ", format.format(hertzMultiple));
     }
 
-    @Ignore
     @Test
     public void testParseUCUMCSWithNegativePrefix() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
@@ -214,7 +211,7 @@ public class UnitFormatTest {
 
 	assertEquals("The MILLI prefix didn't work", MILLI(HERTZ), format.parse("mHz"));
 
-	assertEquals("The MICRO prefix didn't work", MICRO(HERTZ), format.parse("µHz"));
+	assertEquals("The MICRO prefix didn't work", MICRO(HERTZ), format.parse("uHz"));
 
 	assertEquals("The NANO prefix didn't work", NANO(HERTZ), format.parse("nHz"));
 
@@ -254,7 +251,6 @@ public class UnitFormatTest {
 	assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YHz"));
     }
 
-    @Ignore
     @Test
     public void testParseUCUMCIWithNegativePrefix() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
@@ -280,7 +276,6 @@ public class UnitFormatTest {
 	assertEquals("The YOCTO prefix didn't work", YOCTO(HERTZ), format.parse("YOHz"));
     }
 
-    @Ignore
     @Test
     public void testParseUCUMCIWithPositivePrefix() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
@@ -306,6 +301,78 @@ public class UnitFormatTest {
 	assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YAHz"));
     }
 
+    @Test
+    public void testFormatUCUMPrintWithNegativePrefix() {
+	final UnitFormat format = UCUMFormat.getInstance(PRINT);
+	Unit<Frequency> hertzSubmultiple;
+
+	hertzSubmultiple = DECI(HERTZ);
+	assertEquals("The DECI prefix didn't work", "dHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = CENTI(HERTZ);
+	assertEquals("The CENTI prefix didn't work", "cHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = MILLI(HERTZ);
+	assertEquals("The MILLI prefix didn't work", "mHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = MICRO(HERTZ);
+	assertEquals("The MICRO prefix didn't work", "µHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = NANO(HERTZ);
+	assertEquals("The NANO prefix didn't work", "nHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = PICO(HERTZ);
+	assertEquals("The PICO prefix didn't work", "pHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = FEMTO(HERTZ);
+	assertEquals("The FEMTO prefix didn't work", "fHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = ATTO(HERTZ);
+	assertEquals("The ATTO prefix didn't work", "aHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = ZEPTO(HERTZ);
+	assertEquals("The ZEPTO prefix didn't work", "zHz", format.format(hertzSubmultiple));
+
+	hertzSubmultiple = YOCTO(HERTZ);
+	assertEquals("The YOCTO prefix didn't work", "yHz", format.format(hertzSubmultiple));
+    }
+
+    @Test
+    public void testFormatUCUMPrintWithPositivePrefix() {
+	final UnitFormat format = UCUMFormat.getInstance(PRINT);
+	Unit<Frequency> hertzMultiple;
+
+	hertzMultiple = DEKA(HERTZ);
+	assertEquals("The DEKA prefix didn't work", "daHz", format.format(hertzMultiple));
+
+	hertzMultiple = HECTO(HERTZ);
+	assertEquals("The HECTO prefix didn't work", "hHz", format.format(hertzMultiple));
+
+	hertzMultiple = KILO(HERTZ);
+	assertEquals("The KILO prefix didn't work", "kHz", format.format(hertzMultiple));
+
+	hertzMultiple = MEGA(HERTZ);
+	assertEquals("The MEGA prefix didn't work", "MHz", format.format(hertzMultiple));
+
+	hertzMultiple = GIGA(HERTZ);
+	assertEquals("The GIGA prefix didn't work", "GHz", format.format(hertzMultiple));
+
+	hertzMultiple = TERA(HERTZ);
+	assertEquals("The TERA prefix didn't work", "THz", format.format(hertzMultiple));
+
+	hertzMultiple = PETA(HERTZ);
+	assertEquals("The PETA prefix didn't work", "PHz", format.format(hertzMultiple));
+
+	hertzMultiple = EXA(HERTZ);
+	assertEquals("The EXA prefix didn't work", "EHz", format.format(hertzMultiple));
+
+	hertzMultiple = ZETTA(HERTZ);
+	assertEquals("The ZETTA prefix didn't work", "ZHz", format.format(hertzMultiple));
+
+	hertzMultiple = YOTTA(HERTZ);
+	assertEquals("The YOTTA prefix didn't work", "YHz", format.format(hertzMultiple));
+    }    
+    
     @Test
     public void testFormatLocal() {
 	final UnitFormat format = LocalUnitFormat.getInstance();
