@@ -91,6 +91,8 @@ public class UnitFormatTest {
 
 	hertzSubmultiple = YOCTO(HERTZ);
 	assertEquals("The YOCTO prefix didn't work", "yHz", format.format(hertzSubmultiple));
+
+    assertEquals("The MILLI prefix didn't work with a product unit", "mm/s", format.format(MILLI(METER).divide(SECOND)));
     }
 
     @Test
@@ -127,6 +129,8 @@ public class UnitFormatTest {
 
 	hertzMultiple = YOTTA(HERTZ);
 	assertEquals("The YOTTA prefix didn't work", "YHz", format.format(hertzMultiple));
+
+    assertEquals("The KILO prefix didn't work with a product unit", "km/s", format.format(KILO(METER).divide(SECOND)));
     }
 
     @Test
@@ -163,6 +167,8 @@ public class UnitFormatTest {
 
 	hertzSubmultiple = YOCTO(HERTZ);
 	assertEquals("The YOCTO prefix didn't work", "YOHZ", format.format(hertzSubmultiple));
+
+    assertEquals("The MILLI prefix didn't work with a product unit", "MM/S", format.format(MILLI(METER).divide(SECOND)));
     }
 
     @Test
@@ -199,6 +205,8 @@ public class UnitFormatTest {
 
 	hertzMultiple = YOTTA(HERTZ);
 	assertEquals("The YOTTA prefix didn't work", "YAHZ", format.format(hertzMultiple));
+
+    assertEquals("The KILO prefix didn't work with a product unit", "KM/S", format.format(KILO(METER).divide(SECOND)));
     }
 
     @Test
@@ -224,6 +232,8 @@ public class UnitFormatTest {
 	assertEquals("The ZEPTO prefix didn't work", ZEPTO(HERTZ), format.parse("zHz"));
 
 	assertEquals("The YOCTO prefix didn't work", YOCTO(HERTZ), format.parse("yHz"));
+
+    assertEquals("The MILLI prefix didn't work with a product unit", MILLI(METER).divide(SECOND), format.parse("mm/s"));
     }
 
     @Test
@@ -249,6 +259,8 @@ public class UnitFormatTest {
 	assertEquals("The ZETTA prefix didn't work", ZETTA(HERTZ), format.parse("ZHz"));
 
 	assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YHz"));
+
+    assertEquals("The KILO prefix didn't work with a product unit", KILO(METER).divide(SECOND), format.parse("km/s"));
     }
 
     @Test
@@ -274,6 +286,8 @@ public class UnitFormatTest {
 	assertEquals("The ZEPTO prefix didn't work", ZEPTO(HERTZ), format.parse("ZOHz"));
 
 	assertEquals("The YOCTO prefix didn't work", YOCTO(HERTZ), format.parse("YOHz"));
+
+    assertEquals("The MILLI prefix didn't work with a product unit", MILLI(METER).divide(SECOND), format.parse("MM/S"));
     }
 
     @Test
@@ -299,6 +313,8 @@ public class UnitFormatTest {
 	assertEquals("The ZETTA prefix didn't work", ZETTA(HERTZ), format.parse("ZAHz"));
 
 	assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YAHz"));
+
+    assertEquals("The KILO prefix didn't work with a product unit", KILO(METER).divide(SECOND), format.parse("KM/S"));
     }
 
     @Test
@@ -335,6 +351,8 @@ public class UnitFormatTest {
 
 	hertzSubmultiple = YOCTO(HERTZ);
 	assertEquals("The YOCTO prefix didn't work", "yHz", format.format(hertzSubmultiple));
+
+    assertEquals("The MILLI prefix didn't work with a product unit", "mm/s", format.format(MILLI(METER).divide(SECOND)));
     }
 
     @Test
@@ -371,6 +389,8 @@ public class UnitFormatTest {
 
 	hertzMultiple = YOTTA(HERTZ);
 	assertEquals("The YOTTA prefix didn't work", "YHz", format.format(hertzMultiple));
+
+    assertEquals("The KILO prefix didn't work with a product unit", "km/s", format.format(KILO(METER).divide(SECOND)));
     }    
     
     @Test
@@ -390,11 +410,10 @@ public class UnitFormatTest {
 	final UnitFormat format = UCUMFormat.getInstance(PRINT);
 
 	assertEquals(METER, sut.getUnit());
-	assertEquals("m", format.format(METER));
+	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "m", format.format(METER));
 
 	Unit<Speed> v = new ProductUnit<Speed>(sut.getUnit().divide(SECOND));
-
-	assertEquals("m/s", format.format(v));
+	assertEquals("the formatter isn't working with a product unit", "m/s", format.format(v));
     }
 
     @Test
@@ -402,11 +421,11 @@ public class UnitFormatTest {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
 
 	assertEquals(METER, sut.getUnit());
-	assertEquals("m", format.format(METER));
+	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "m", format.format(METER));
 
 	Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
 
-	assertEquals("m/s", format.format(v));
+	assertEquals("the formatter isn't working with a product unit", "m/s", format.format(v));
     }
 
     @Test
@@ -414,14 +433,17 @@ public class UnitFormatTest {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 
 	assertEquals(METER, sut.getUnit());
-	assertEquals("M", format.format(METER));
+	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "M", format.format(METER));
+
+    Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
+    assertEquals("the formatter isn't working with a product unit", "M/S", format.format(v));
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void testParseLocal() {
 	final UnitFormat format = LocalUnitFormat.getInstance();
 
-	assertEquals("min", format.parse("min").getSymbol());
+	format.parse("min").getSymbol();
     }
 
     @Test
@@ -431,11 +453,18 @@ public class UnitFormatTest {
 	assertEquals(MINUTE, format.parse("min"));
     }
 
+    @Test
+    public void testParseUCUMCI() {
+    final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+    assertEquals(METER, format.parse("M"));
+    }
+
     @Test(expected = TokenException.class)
     public void testParseUCUMCSError() {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
 
-	assertEquals(MINUTE, format.parse("MIN"));
+	format.parse("MIN");
     }
 
     @Test
@@ -452,17 +481,10 @@ public class UnitFormatTest {
 	assertEquals(LITER, format.parse("L"));
     }
 
-    @Test
-    public void testParseUCUMCI() {
-	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
-
-	assertEquals(METER, format.parse("M"));
-    }
-
     @Test(expected = UnsupportedOperationException.class)
     public void testParseUCUMPrint() {
 	final UnitFormat format = UCUMFormat.getInstance(PRINT);
 
-	assertEquals(KILO(GRAM), format.parse("kg"));
+	format.parse("g");
     }
 }
