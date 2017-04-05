@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -51,8 +51,8 @@ public class USTest {
 	EBNFUnitFormat format = EBNFUnitFormat.getInstance();
 
 	format.label(POUND, "pd");
-	format.label(POUND, "2pd");
-	// assertEquals("lb", POUND.toString());
+	format.label(POUND, "2pd"); // label currently ignored for EBNFUnitFormat
+	assertEquals("lb", POUND.toString());
 	assertEquals("lb", format.format(POUND));
     }
 
