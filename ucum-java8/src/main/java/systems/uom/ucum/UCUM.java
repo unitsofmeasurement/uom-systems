@@ -739,10 +739,10 @@ public final class UCUM extends AbstractSystemOfUnits {
     // public static final Unit EQUIVALENTS = addUnit(MOLE);
     // public static final Unit OSMOLE = addUnit(MOLE);
 
-    // public static final Unit<Acidity> PH = addUnit(MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Acidity.class));
+    public static final Unit<Acidity> PH = addUnit(MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Acidity.class));
 
     // @SuppressWarnings("unchecked")
-    // public static final Unit<Concentration<Mass>> GRAM_PERCENT = addUnit(GRAM.divide(DECI(LITER)).asType(Concentration.class));
+    public static final Unit<Concentration<Mass>> GRAM_PERCENT = addUnit(GRAM.divide(DECI(LITER)).asType(Concentration.class));
 
     // public static final Unit SVEDBERG = addUnit(SECOND.multiply(1E-13));
 

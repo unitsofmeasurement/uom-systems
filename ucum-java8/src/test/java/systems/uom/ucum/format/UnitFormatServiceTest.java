@@ -32,7 +32,6 @@ import java.util.List;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.UnitFormatService;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -49,7 +48,6 @@ public class UnitFormatServiceTest {
   }
 
   @Test
-  @Ignore
   public void testGetService() throws Exception {
     UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
     assertNotNull(ufs);
@@ -58,13 +56,26 @@ public class UnitFormatServiceTest {
   }
 
   @Test
-  @Ignore
-  public void testGetFormatFound() throws Exception {
+  public void testGetCIFound() throws Exception {
     UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
     assertNotNull(ufs);
     assertNotNull(ufs.getUnitFormat("CI"));
   }
+  
+  @Test
+  public void testGetCSFound() throws Exception {
+    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    assertNotNull(ufs);
+    assertNotNull(ufs.getUnitFormat("CS"));
+  }
 
+  @Test
+  public void testGetPrintFound() throws Exception {
+    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    assertNotNull(ufs);
+    assertNotNull(ufs.getUnitFormat("Print"));
+  }
+  
   @Test
   public void testGetFormatNotFound() throws Exception {
     UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();

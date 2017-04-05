@@ -36,7 +36,7 @@ import tec.uom.se.spi.DefaultServiceProvider;
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.3
+ * @version 0.4
  */
 public final class UCUMServiceProvider extends DefaultServiceProvider {
 
@@ -49,8 +49,8 @@ public final class UCUMServiceProvider extends DefaultServiceProvider {
 	return new UCUMSystemService();
     }
     
-//    @Override
-//    public UnitFormatService getUnitFormatService() {
-//	return new UCUMFormatService();
-//    }
+    @Override
+    public UnitFormatService getUnitFormatService() {
+	return new UCUMFormatService();
+    }
 }
