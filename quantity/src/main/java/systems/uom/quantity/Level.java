@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -32,10 +32,11 @@ import javax.measure.Quantity;
  * In the International System of Quantities, the level of a quantity is the logarithm of the ratio of the value of that quantity to a reference value of the same quantity.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2, Aug 25, 2015
+ * @version 0.3, Apr 6, 2017
  *
  * @see <a href="https://en.wikipedia.org/wiki/Level_(logarithmic_quantity)">Wikipedia: Level (logarithmic quantity)</a>
  * @see <a href="https://en.wikipedia.org/wiki/International_System_of_Quantities">Wikipedia: International System of Quantities (ISQ)</a>
+ * @since 0.2
  */
 public interface Level<Q extends Quantity<Q>> extends Quantity<Level<Q>> {
 }

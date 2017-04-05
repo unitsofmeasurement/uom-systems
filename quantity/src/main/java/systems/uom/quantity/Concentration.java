@@ -35,6 +35,7 @@ import javax.measure.Quantity;
  * @see <a href="https://en.wikipedia.org/wiki/Concentration">Wikipedia: Concentration</a>
  * @see <a href="http://goldbook.iupac.org/maps/C01222.3.map.html">IUPAC Gold Book: Interactive Link Map - Concentration</a>
  * @see <a href="https://iupac.org">IUPAC</a>
+ * @since 0.7
  */
 public interface Concentration<Q extends Quantity<Q>> extends Quantity<Concentration<Q>> {
 }

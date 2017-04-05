@@ -33,6 +33,7 @@ import javax.measure.Quantity;
  * 
  * @author Magno N. A. Cruz
  * @version 0.7, Apr 04, 2017
+ * @since 0.7
  */
 public interface Acidity extends Quantity<Acidity> {
 }

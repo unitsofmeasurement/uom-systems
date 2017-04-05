@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -33,9 +33,10 @@ import javax.measure.Quantity;
  *
  * @author <a href="mailto:oliver+uom.bugabinga.net">Oliver Krylow</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2
+ * @version 0.3
  *
  * @see <a href="https://en.wikipedia.org/wiki/Display_resolution">Wikipedia: Display Resolution</a>
+ * @since 0.2
  */
 public interface Resolution extends Quantity<Resolution> {
 }

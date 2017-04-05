@@ -58,7 +58,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.7.6, $Date: 2017-03-29 $
+ * @version 0.7.7, $Date: 2017-04-06 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
