@@ -200,7 +200,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         final boolean printSeparator = !parentUnit.equals(ONE);
 
         format(parentUnit, temp);
-        formatConverter(converter, printSeparator, temp); // TODO make it compatible with prefixes variants
+        formatConverter(converter, printSeparator, temp);
 
         symbol = temp;
 	} else if (unit.getBaseUnits() != null) {
