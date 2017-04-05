@@ -27,19 +27,8 @@ package systems.uom.ucum;
 
 import static tec.uom.se.unit.MetricPrefix.*;
 import static tec.uom.se.AbstractUnit.ONE;
-import si.uom.quantity.Action;
-import si.uom.quantity.DynamicViscosity;
-import si.uom.quantity.ElectricPermittivity;
-import si.uom.quantity.IonizingRadiation;
-import si.uom.quantity.KinematicViscosity;
-import si.uom.quantity.Luminance;
-import si.uom.quantity.MagneticFieldStrength;
-import si.uom.quantity.MagneticPermeability;
-import si.uom.quantity.MagnetomotiveForce;
-import si.uom.quantity.WaveNumber;
-import systems.uom.quantity.Information;
-import systems.uom.quantity.InformationRate;
-import systems.uom.quantity.Level;
+import si.uom.quantity.*;
+import systems.uom.quantity.*;
 import si.uom.SI;
 import tec.uom.se.*;
 import tec.uom.se.format.SimpleUnitFormat;
@@ -750,13 +739,10 @@ public final class UCUM extends AbstractSystemOfUnits {
     // public static final Unit EQUIVALENTS = addUnit(MOLE);
     // public static final Unit OSMOLE = addUnit(MOLE);
 
-    // public static final Unit<Dimensionless> PH =
-    // addUnit(MOLE.divide(LITER).transform(new
-    // LogConverter(10)).multiply(-1).asType(Dimensionless.class));
+    // public static final Unit<Acidity> PH = addUnit(MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Acidity.class));
 
-    // TODO create the unit (MassConcentration) for GRAM_PERCENT
-    // public static final Unit GRAM_PERCENT =
-    // addUnit(GRAM.divide(DECI(LITER)));
+    // @SuppressWarnings("unchecked")
+    // public static final Unit<Concentration<Mass>> GRAM_PERCENT = addUnit(GRAM.divide(DECI(LITER)).asType(Concentration.class));
 
     // public static final Unit SVEDBERG = addUnit(SECOND.multiply(1E-13));
 
