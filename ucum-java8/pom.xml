@@ -9,6 +9,16 @@
 	<artifactId>systems-ucum-java8</artifactId>
 	<name>Units of Measurement UCUM System</name>
 	<description>Unit System supporting the Unified Code for Units of Measure (UCUM) on Java SE 8</description>
+	<licenses>
+		<license>
+			<name>BSD</name>
+			<url>LICENSE</url>
+		</license>
+		<license>
+			<name>UCUM</name>
+			<url>http://unitsofmeasure.org/trac/wiki/TermsOfUse</url>
+		</license>
+	</licenses>
 	<developers>
 		<developer>
 			<name>Werner Keilw</name>
