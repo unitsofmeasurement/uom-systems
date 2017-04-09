@@ -39,7 +39,7 @@ import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
     private static final String EXPECTED_SYSTEM_NAME = "Unified Code for Units of Measure";
-    private static final int NUM_OF_UNITS = 239;
+    private static final int NUM_OF_UNITS = 241;
 
     private static SystemOfUnitsService defaultService;
 

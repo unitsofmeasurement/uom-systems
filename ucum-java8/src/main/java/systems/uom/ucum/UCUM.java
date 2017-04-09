@@ -688,10 +688,9 @@ public final class UCUM extends AbstractSystemOfUnits {
     public static final Unit<Pressure> INCH_OF_MERCURY_COLUMN = addUnit(
 	    new ProductUnit<Pressure>(METER_OF_MERCURY_COLUMN.multiply(INCH_INTERNATIONAL).divide(METER)));
 
-    // public static final Unit PERIPHERAL_VASCULAR_RESISTANCE =
-    // addUnit(MILLI(METER_OF_MERCURY_COLUMN).multiply(SECOND).divide(MILLI(LITER)));
-    // public static final Unit WOOD =
-    // addUnit(MILLI(METER_OF_MERCURY_COLUMN).multiply(MINUTE).divide(LITER));
+    public static final Unit<Drag> PERIPHERAL_VASCULAR_RESISTANCE = addUnit(
+	    MILLI(METER_OF_MERCURY_COLUMN).multiply(SECOND).divide(MILLI(LITER)).asType(Drag.class));
+    public static final Unit<Drag> WOOD = addUnit(MILLI(METER_OF_MERCURY_COLUMN).multiply(MINUTE).divide(LITER).asType(Drag.class));
     // public static final Unit DIOPTER = addUnit(ONE.divide(METER));
     // public static final Unit PRISM_DIOPTER =
     // addUnit(ONE.multiply(100).multiply(Math.tan(1)));
@@ -739,10 +738,12 @@ public final class UCUM extends AbstractSystemOfUnits {
     // public static final Unit EQUIVALENTS = addUnit(MOLE);
     // public static final Unit OSMOLE = addUnit(MOLE);
 
-    public static final Unit<Acidity> PH = addUnit(MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Acidity.class));
+    public static final Unit<Acidity> PH = addUnit(
+	    MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Acidity.class));
 
     // @SuppressWarnings("unchecked")
-    public static final Unit<Concentration<Mass>> GRAM_PERCENT = addUnit(GRAM.divide(DECI(LITER)).asType(Concentration.class));
+    public static final Unit<Concentration<Mass>> GRAM_PERCENT = addUnit(
+	    GRAM.divide(DECI(LITER)).asType(Concentration.class));
 
     // public static final Unit SVEDBERG = addUnit(SECOND.multiply(1E-13));
 
