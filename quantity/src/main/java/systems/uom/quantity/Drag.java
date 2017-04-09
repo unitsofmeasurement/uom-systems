@@ -28,15 +28,17 @@ package systems.uom.quantity;
 import javax.measure.Quantity;
 
 /**
- * Level of a {@link Quantity}.
- * In the International System of Quantities, the level of a quantity is the logarithm of the ratio of the value of that quantity to a reference value of the same quantity.
+ * In fluid dynamics, drag (sometimes called air resistance, a type of friction,
+ * or fluid resistance, another type of friction or fluid friction) is a force
+ * acting opposite to the relative motion of any object moving with respect to a
+ * surrounding fluid.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, Apr 9, 2017
+ * @version 0.1
  *
- * @see <a href="https://en.wikipedia.org/wiki/Level_(logarithmic_quantity)">Wikipedia: Level (logarithmic quantity)</a>
- * @see <a href="https://en.wikipedia.org/wiki/International_System_of_Quantities">Wikipedia: International System of Quantities (ISQ)</a>
- * @since 0.2
+ * @see <a href="https://en.wikipedia.org/wiki/Drag_(physics)">Wikipedia: Drag
+ *      (physics)</a>
+ * @since 0.7.1
  */
-public interface Level<Q extends Quantity<Q>> extends Quantity<Level<Q>> {
+public interface Drag extends Quantity<Drag> {
 }
