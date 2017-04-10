@@ -51,13 +51,11 @@
 				<groupId>systems.uom</groupId>
 				<artifactId>systems-quantity</artifactId>
 				<version>${quantity.version}</version>
-				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>systems.uom</groupId>
 				<artifactId>systems-common</artifactId>
 				<version>${project.version}</version>
-				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
