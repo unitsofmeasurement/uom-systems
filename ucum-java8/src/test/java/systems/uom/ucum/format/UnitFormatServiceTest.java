@@ -82,4 +82,11 @@ public class UnitFormatServiceTest {
     assertNotNull(ufs);
     assertNull(ufs.getUnitFormat("XYZ"));
   }
+  
+  @Test
+  public void testGetFormatNotFoundEither() throws Exception {
+    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    assertNotNull(ufs);
+    assertNull(ufs.getUnitFormat("UCUM"));
+  }
 }
