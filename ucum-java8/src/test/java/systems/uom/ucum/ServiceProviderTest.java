@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems for Java
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -23,62 +23,32 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.ucum.format;
+package systems.uom.ucum;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
 import javax.measure.spi.ServiceProvider;
-import javax.measure.spi.UnitFormatService;
-
 import org.junit.Test;
 
-/**
- * Tests for services provided via {@link ServiceProvider}.
- */
-public class UnitFormatServiceTest {
+public class ServiceProviderTest {
 
-  @Test
-  public void testGetService() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat());
-    assertEquals("Parsing", ufs.getUnitFormat().getClass().getSimpleName());
-  }
+    @Test
+    public void testAvailable() throws Exception {
+	List<ServiceProvider> providers = ServiceProvider.available();
+	assertNotNull(providers);
+	assertFalse(providers.isEmpty());
+	assertEquals(3, providers.size());
+	assertEquals("UCUMServiceProvider", providers.get(0).toString());
+    }
 
-  @Test
-  public void testGetCIFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat("CI"));
-  }
-  
-  @Test
-  public void testGetCSFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat("CS"));
-  }
-
-  @Test
-  public void testGetPrintFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat("Print"));
-  }
-  
-  @Test
-  public void testGetFormatNotFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
-    assertNotNull(ufs);
-    assertNull(ufs.getUnitFormat("XYZ"));
-  }
-  
-  @Test
-  public void testGetFormatNotFoundEither() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat("UCUM"));
-  }
+    @Test
+    public void testCurrent() throws Exception {
+	ServiceProvider provider = ServiceProvider.current();
+	assertNotNull(provider);
+	assertEquals("UCUMServiceProvider", provider.toString());
+    }
 }
