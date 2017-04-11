@@ -40,7 +40,7 @@ import systems.uom.ucum.format.UCUMFormat.Variant;
  * UCUM format service.
  *
  * @author Werner Keil
- * @version 0.5, March 16, 2017
+ * @version 0.6, April 11, 2017
  */
 final class UCUMFormatService implements UnitFormatService {
 
@@ -53,7 +53,8 @@ final class UCUMFormatService implements UnitFormatService {
 	formats.put(DEFAULT_FORMAT, UCUMFormat.getInstance(Variant.CASE_SENSITIVE));
 	formats.put(Variant.CASE_INSENSITIVE.name(), UCUMFormat.getInstance(Variant.CASE_INSENSITIVE));
 	formats.put(Variant.PRINT.name(), UCUMFormat.getInstance(Variant.PRINT));
-
+	
+	aliases.put("UCUM", DEFAULT_FORMAT);
 	aliases.put("CS", DEFAULT_FORMAT);
 	aliases.put("C/S", DEFAULT_FORMAT);
 	aliases.put("CASE SENSITIVE", DEFAULT_FORMAT);
@@ -68,13 +69,13 @@ final class UCUMFormatService implements UnitFormatService {
      * @see UnitFormatService#getUnitFormat(String)
      */
     @Override
-    public UnitFormat getUnitFormat(String name) {
-	Objects.requireNonNull(name, "Format name or alias required");
-	String alias = aliases.get(name.toUpperCase());
+    public UnitFormat getUnitFormat(String key) {
+	Objects.requireNonNull(key, "Format name or alias required");
+	String alias = aliases.get(key.toUpperCase());
 	if (alias != null && alias.length() > 0) {
 	    return formats.get(alias);
 	}
-	return formats.get(name.toUpperCase());
+	return formats.get(key.toUpperCase());
     }
 
     /*
