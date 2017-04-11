@@ -45,6 +45,7 @@ public class UnitFormatServiceTest {
     assertNotNull(services);
     assertFalse(services.isEmpty());
     assertEquals(3, services.size());
+    assertEquals("UCUMServiceProvider", services.get(0).toString());
   }
 
   @Test
@@ -87,6 +88,6 @@ public class UnitFormatServiceTest {
   public void testGetFormatNotFoundEither() throws Exception {
     UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
     assertNotNull(ufs);
-    assertNull(ufs.getUnitFormat("UCUM"));
+    assertNotNull(ufs.getUnitFormat("UCUM"));
   }
 }
