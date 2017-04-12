@@ -922,7 +922,8 @@ public final class UCUM extends AbstractSystemOfUnits {
     // Label adjustments for UCUM system
     static {
 	SimpleUnitFormat.getInstance().label(ATOMIC_MASS_UNIT, "AMU");
-	SimpleUnitFormat.getInstance().label(LITER, "l");
+	SimpleUnitFormat.getInstance().label(LITER, "L");
+	SimpleUnitFormat.getInstance().label(LITER_DM3, "l");
 	SimpleUnitFormat.getInstance().label(OUNCE, "oz");
 	SimpleUnitFormat.getInstance().label(POUND, "lb");
 	SimpleUnitFormat.getInstance().label(PLANCK, "h");

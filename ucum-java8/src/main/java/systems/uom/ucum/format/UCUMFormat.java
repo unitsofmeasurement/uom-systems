@@ -31,10 +31,12 @@ package systems.uom.ucum.format;
 
 import static tec.uom.se.AbstractUnit.ONE;
 import si.uom.SI;
+import systems.uom.ucum.UCUM;
 import systems.uom.ucum.internal.format.UCUMFormatParser;
 import tec.uom.se.AbstractConverter;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.AbstractUnitFormat;
+import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.format.SymbolMap;
 import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.RationalConverter;
@@ -79,7 +81,7 @@ import java.util.*;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.2, 24 March 2017
+ * @version 0.7.3, 13 April 2017
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -99,6 +101,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
      * 
      * @param variant
      *            the <strong>UCUM</strong> variant to use
+     * @return a {@link UCUMFormat} instance
      */
     public static UCUMFormat getInstance(Variant variant) {
 	switch (variant) {
@@ -120,6 +123,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
      *            the <strong>UCUM</strong> variant to use
      * @param symbolMap
      *            the map of user defined symbols to use
+     * @return a {@link UCUMFormat} instance
      */
     public static UCUMFormat getInstance(Variant variant, SymbolMap symbolMap) {
 	switch (variant) {
