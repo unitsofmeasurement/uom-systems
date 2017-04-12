@@ -66,7 +66,6 @@ public class UCUMFormatVolumeTest {
 	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
 	final Unit<?> deciliter2 = unitFormat.parse("dl");
 	assertEquals(DECI(UCUM.LITER_DM3), deciliter2);
-//	assertEquals("dl", unitFormat.format(deciliter2)); // prints "nst"!
     }
 
     @Test
