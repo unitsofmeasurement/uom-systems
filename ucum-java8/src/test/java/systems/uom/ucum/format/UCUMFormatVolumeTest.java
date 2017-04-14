@@ -27,7 +27,6 @@ package systems.uom.ucum.format;
 
 import static org.junit.Assert.*;
 import static tec.uom.se.unit.MetricPrefix.*;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.measure.*;
@@ -37,7 +36,6 @@ import javax.measure.spi.ServiceProvider;
 import org.junit.*;
 
 import systems.uom.ucum.UCUM;
-import systems.uom.ucum.format.UCUMFormat.Variant;
 import systems.uom.ucum.internal.format.TokenException;
 
 /**
@@ -45,8 +43,20 @@ import systems.uom.ucum.internal.format.TokenException;
  *
  */
 public class UCUMFormatVolumeTest {
-    private static final Logger logger = Logger.getLogger(UCUMFormatVolumeTest.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UCUMFormatVolumeTest.class.getName());
 
+    @Test
+    public void testFormatUCUMCI() {
+	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
+	assertEquals("L", unitFormat.format(UCUM.LITER_DM3)); // prints "CSTR"!
+    }
+    
+    @Test
+    public void testFormatUCUMCS() {
+	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
+	assertEquals("l", unitFormat.format(UCUM.LITER_DM3));
+    }
+    
     @Test
     public void testFormatUCUMCIDeciDm3() {
 	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
@@ -129,22 +139,5 @@ public class UCUMFormatVolumeTest {
 	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
 	final Unit<?> ust = unitFormat.parse("ust");
 	assertEquals(MICRO(UCUM.STERE), ust);
-    }
-    
-    @Test
-    @Ignore
-    public void testUnits() {
-	final UnitFormat cs = UCUMFormat.getInstance(Variant.CASE_SENSITIVE);
-	final UnitFormat ci = UCUMFormat.getInstance(Variant.CASE_INSENSITIVE);
-
-	for (Unit<?> u : UCUM.getInstance().getUnits()) {
-	    // try {
-	    // Unit<?> v = format.parse("1/" + u.toString());
-	    logger.log(Level.INFO, String.format("%s @ %s @ %s", cs.format(u), ci.format(u), u));
-	    // } catch (ParserException pex) {
-	    // logger.log(Level.WARNING, String.format(" %s parsing %s", pex,
-	    // u));
-	    // }
-	}
     }
 }

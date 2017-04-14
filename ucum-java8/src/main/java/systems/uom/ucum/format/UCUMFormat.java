@@ -31,12 +31,10 @@ package systems.uom.ucum.format;
 
 import static tec.uom.se.AbstractUnit.ONE;
 import si.uom.SI;
-import systems.uom.ucum.UCUM;
 import systems.uom.ucum.internal.format.UCUMFormatParser;
 import tec.uom.se.AbstractConverter;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.AbstractUnitFormat;
-import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.format.SymbolMap;
 import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.RationalConverter;

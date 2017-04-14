@@ -36,7 +36,7 @@ import org.junit.*;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  *
  */
-public class UnitFormatTable18Test {
+public class UCUMFormatTable18Test {
 
     @Test
     public void testParsePRUCS() {

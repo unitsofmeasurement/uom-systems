@@ -30,10 +30,14 @@ import static systems.uom.ucum.UCUM.*;
 import static systems.uom.ucum.format.UCUMFormat.Variant.*;
 import static tec.uom.se.unit.MetricPrefix.*;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.measure.*;
 import javax.measure.format.*;
 import javax.measure.quantity.*;
 
+import systems.uom.ucum.UCUM;
 import systems.uom.ucum.format.UCUMFormat;
 import systems.uom.ucum.internal.format.TokenException;
 import tec.uom.se.format.LocalUnitFormat;
@@ -47,6 +51,9 @@ import org.junit.*;
  *
  */
 public class UnitFormatTest {
+    private static final Level LOG_LEVEL = Level.INFO;
+    private static final Logger LOGGER = Logger.getLogger(UnitFormatTest.class.getName());
+
     private Quantity<Length> sut;
 
     @Before
@@ -92,7 +99,8 @@ public class UnitFormatTest {
 	hertzSubmultiple = YOCTO(HERTZ);
 	assertEquals("The YOCTO prefix didn't work", "yHz", format.format(hertzSubmultiple));
 
-    assertEquals("The MILLI prefix didn't work with a product unit", "mm/s", format.format(MILLI(METER).divide(SECOND)));
+	assertEquals("The MILLI prefix didn't work with a product unit", "mm/s",
+		format.format(MILLI(METER).divide(SECOND)));
     }
 
     @Test
@@ -130,7 +138,8 @@ public class UnitFormatTest {
 	hertzMultiple = YOTTA(HERTZ);
 	assertEquals("The YOTTA prefix didn't work", "YHz", format.format(hertzMultiple));
 
-    assertEquals("The KILO prefix didn't work with a product unit", "km/s", format.format(KILO(METER).divide(SECOND)));
+	assertEquals("The KILO prefix didn't work with a product unit", "km/s",
+		format.format(KILO(METER).divide(SECOND)));
     }
 
     @Test
@@ -168,7 +177,8 @@ public class UnitFormatTest {
 	hertzSubmultiple = YOCTO(HERTZ);
 	assertEquals("The YOCTO prefix didn't work", "YOHZ", format.format(hertzSubmultiple));
 
-    assertEquals("The MILLI prefix didn't work with a product unit", "MM/S", format.format(MILLI(METER).divide(SECOND)));
+	assertEquals("The MILLI prefix didn't work with a product unit", "MM/S",
+		format.format(MILLI(METER).divide(SECOND)));
     }
 
     @Test
@@ -206,7 +216,8 @@ public class UnitFormatTest {
 	hertzMultiple = YOTTA(HERTZ);
 	assertEquals("The YOTTA prefix didn't work", "YAHZ", format.format(hertzMultiple));
 
-    assertEquals("The KILO prefix didn't work with a product unit", "KM/S", format.format(KILO(METER).divide(SECOND)));
+	assertEquals("The KILO prefix didn't work with a product unit", "KM/S",
+		format.format(KILO(METER).divide(SECOND)));
     }
 
     @Test
@@ -233,7 +244,8 @@ public class UnitFormatTest {
 
 	assertEquals("The YOCTO prefix didn't work", YOCTO(HERTZ), format.parse("yHz"));
 
-    assertEquals("The MILLI prefix didn't work with a product unit", MILLI(METER).divide(SECOND), format.parse("mm/s"));
+	assertEquals("The MILLI prefix didn't work with a product unit", MILLI(METER).divide(SECOND),
+		format.parse("mm/s"));
     }
 
     @Test
@@ -260,7 +272,8 @@ public class UnitFormatTest {
 
 	assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YHz"));
 
-    assertEquals("The KILO prefix didn't work with a product unit", KILO(METER).divide(SECOND), format.parse("km/s"));
+	assertEquals("The KILO prefix didn't work with a product unit", KILO(METER).divide(SECOND),
+		format.parse("km/s"));
     }
 
     @Test
@@ -287,7 +300,8 @@ public class UnitFormatTest {
 
 	assertEquals("The YOCTO prefix didn't work", YOCTO(HERTZ), format.parse("YOHz"));
 
-    assertEquals("The MILLI prefix didn't work with a product unit", MILLI(METER).divide(SECOND), format.parse("MM/S"));
+	assertEquals("The MILLI prefix didn't work with a product unit", MILLI(METER).divide(SECOND),
+		format.parse("MM/S"));
     }
 
     @Test
@@ -314,7 +328,8 @@ public class UnitFormatTest {
 
 	assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YAHz"));
 
-    assertEquals("The KILO prefix didn't work with a product unit", KILO(METER).divide(SECOND), format.parse("KM/S"));
+	assertEquals("The KILO prefix didn't work with a product unit", KILO(METER).divide(SECOND),
+		format.parse("KM/S"));
     }
 
     @Test
@@ -352,7 +367,8 @@ public class UnitFormatTest {
 	hertzSubmultiple = YOCTO(HERTZ);
 	assertEquals("The YOCTO prefix didn't work", "yHz", format.format(hertzSubmultiple));
 
-    assertEquals("The MILLI prefix didn't work with a product unit", "mm/s", format.format(MILLI(METER).divide(SECOND)));
+	assertEquals("The MILLI prefix didn't work with a product unit", "mm/s",
+		format.format(MILLI(METER).divide(SECOND)));
     }
 
     @Test
@@ -390,9 +406,10 @@ public class UnitFormatTest {
 	hertzMultiple = YOTTA(HERTZ);
 	assertEquals("The YOTTA prefix didn't work", "YHz", format.format(hertzMultiple));
 
-    assertEquals("The KILO prefix didn't work with a product unit", "km/s", format.format(KILO(METER).divide(SECOND)));
-    }    
-    
+	assertEquals("The KILO prefix didn't work with a product unit", "km/s",
+		format.format(KILO(METER).divide(SECOND)));
+    }
+
     @Test
     public void testFormatLocal() {
 	final UnitFormat format = LocalUnitFormat.getInstance();
@@ -410,7 +427,8 @@ public class UnitFormatTest {
 	final UnitFormat format = UCUMFormat.getInstance(PRINT);
 
 	assertEquals(METER, sut.getUnit());
-	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "m", format.format(METER));
+	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it",
+		"m", format.format(METER));
 
 	Unit<Speed> v = new ProductUnit<Speed>(sut.getUnit().divide(SECOND));
 	assertEquals("the formatter isn't working with a product unit", "m/s", format.format(v));
@@ -421,7 +439,8 @@ public class UnitFormatTest {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
 
 	assertEquals(METER, sut.getUnit());
-	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "m", format.format(METER));
+	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it",
+		"m", format.format(METER));
 
 	Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
 
@@ -433,10 +452,11 @@ public class UnitFormatTest {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 
 	assertEquals(METER, sut.getUnit());
-	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "M", format.format(METER));
+	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it",
+		"M", format.format(METER));
 
-    Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
-    assertEquals("the formatter isn't working with a product unit", "M/S", format.format(v));
+	Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
+	assertEquals("the formatter isn't working with a product unit", "M/S", format.format(v));
     }
 
     @Test(expected = UnsupportedOperationException.class)
@@ -455,9 +475,9 @@ public class UnitFormatTest {
 
     @Test
     public void testParseUCUMCI() {
-    final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 
-    assertEquals(METER, format.parse("M"));
+	assertEquals(METER, format.parse("M"));
     }
 
     @Test(expected = TokenException.class)
@@ -486,5 +506,22 @@ public class UnitFormatTest {
 	final UnitFormat format = UCUMFormat.getInstance(PRINT);
 
 	format.parse("g");
+    }
+
+    @Test
+    public void testUnitsUCUM() {
+	final UnitFormat cs = UCUMFormat.getInstance(CASE_SENSITIVE);
+	final UnitFormat ci = UCUMFormat.getInstance(CASE_INSENSITIVE);
+	final UnitFormat pr = UCUMFormat.getInstance(PRINT);
+
+	for (Unit<?> u : UCUM.getInstance().getUnits()) {
+	    // try {
+	    // Unit<?> v = format.parse("1/" + u.toString());
+	    LOGGER.log(LOG_LEVEL, String.format("%s @ %s @ %s @ %s", cs.format(u), ci.format(u), pr.format(u), u));
+	    // } catch (ParserException pex) {
+	    // logger.log(Level.WARNING, String.format(" %s parsing %s", pex,
+	    // u));
+	    // }
+	}
     }
 }
