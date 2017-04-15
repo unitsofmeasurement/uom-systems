@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.ucum;
+package systems.uom.ucum.format;
 
 import static org.junit.Assert.assertEquals;
 import static tec.uom.se.unit.MetricPrefix.*;
@@ -42,22 +42,23 @@ import javax.measure.quantity.Mass;
 import org.junit.Test;
 
 import systems.uom.ucum.format.UCUMFormat;
+import tec.uom.se.format.EBNFUnitFormat;
 import tec.uom.se.function.RationalConverter;
 
-public class PrefixTest {
-    private static final UnitFormat PRINT_FORMAT = UCUMFormat.getInstance(PRINT);
-
+public class PrefixTest extends UCUMFormatTestBase {
+    
     @Test
     public void testMega() {
 	Unit<Mass> m1 = MEGA(GRAM);
 	assertEquals(TONNE, m1);
-	assertEquals("t", PRINT_FORMAT.format(m1));
+	assertEquals("t", FORMAT_PRINT.format(m1));
     }
 
     @Test
     public void testNano() {
 	Unit<Mass> m1 = NANO(GRAM);
-	assertEquals("ng", PRINT_FORMAT.format(m1));
+//	assertEquals("ng", FORMAT_PRINT.format(m1));
+	assertEquals("ng", FORMAT_EBNF.format(m1));
     }
 
     @Test
@@ -74,15 +75,13 @@ public class PrefixTest {
     
     @Test
     public void testFormatKayser() {
-	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
-
-	assertEquals("KY", format.format(KAYSER));
+	assertEquals("KY", FORMAT_CI.format(KAYSER));
+//	assertEquals("ky", FORMAT_EBNF.format(KILO(KAYSER)));
     }
     
     @Test
     public void testFormatkKayser() {
-	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
-
-	assertEquals("KKY", format.format(KILO(KAYSER)));
+	assertEquals("KKY", FORMAT_CI.format(KILO(KAYSER)));
+	assertEquals("kky", FORMAT_EBNF.format(KILO(KAYSER)));
     }
 }

@@ -42,8 +42,7 @@ import systems.uom.ucum.internal.format.TokenException;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  *
  */
-public class UCUMFormatVolumeTest {
-    private static final Logger LOGGER = Logger.getLogger(UCUMFormatVolumeTest.class.getName());
+public class UCUMFormatVolumeTest extends UCUMFormatTestBase {
 
     @Test
     public void testFormatUCUMCI() {
@@ -143,13 +142,11 @@ public class UCUMFormatVolumeTest {
     
     @Test
     public void testFormatUCUMCSGill() {
-	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
-	assertEquals("[gil_br]", unitFormat.format(UCUM.GILL_BRITISH));
+	assertEquals("[gil_br]", FORMAT_CS.format(UCUM.GILL_BRITISH));
     }
     
     @Test
     public void testFormatUCUMCSmGill() {
-	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
-	assertEquals("[gil_br]", unitFormat.format(MILLI(UCUM.GILL_BRITISH)));
+	assertEquals("[gil_br]", FORMAT_CS.format(MILLI(UCUM.GILL_BRITISH)));
     }
 }
