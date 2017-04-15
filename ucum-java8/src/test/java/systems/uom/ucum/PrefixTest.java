@@ -31,28 +31,33 @@ package systems.uom.ucum;
 
 import static org.junit.Assert.assertEquals;
 import static tec.uom.se.unit.MetricPrefix.*;
-import static systems.uom.ucum.UCUM.GRAM;
-import static systems.uom.ucum.UCUM.METER;
+import static systems.uom.ucum.UCUM.*;
+import static systems.uom.ucum.format.UCUMFormat.Variant.*;
 
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Mass;
 
 import org.junit.Test;
 
+import systems.uom.ucum.format.UCUMFormat;
 import tec.uom.se.function.RationalConverter;
 
 public class PrefixTest {
+    private static final UnitFormat PRINT_FORMAT = UCUMFormat.getInstance(PRINT);
+
     @Test
     public void testMega() {
 	Unit<Mass> m1 = MEGA(GRAM);
-	assertEquals("t", m1.toString());
+	assertEquals(TONNE, m1);
+	assertEquals("t", PRINT_FORMAT.format(m1));
     }
 
     @Test
     public void testNano() {
 	Unit<Mass> m1 = NANO(GRAM);
-	assertEquals("ng", m1.toString());
+	assertEquals("ng", PRINT_FORMAT.format(m1));
     }
 
     @Test
@@ -65,5 +70,19 @@ public class PrefixTest {
     public void testBetweenPrefixes2() {
 	UnitConverter conv = KILO(METER).getConverterTo(GIGA(METER));
 	assertEquals(RationalConverter.of(1d, 1000000d), conv);
+    }
+    
+    @Test
+    public void testFormatKayser() {
+	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+	assertEquals("KY", format.format(KAYSER));
+    }
+    
+    @Test
+    public void testFormatkKayser() {
+	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+	assertEquals("KKY", format.format(KILO(KAYSER)));
     }
 }

@@ -140,4 +140,16 @@ public class UCUMFormatVolumeTest {
 	final Unit<?> ust = unitFormat.parse("ust");
 	assertEquals(MICRO(UCUM.STERE), ust);
     }
+    
+    @Test
+    public void testFormatUCUMCSGill() {
+	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
+	assertEquals("[gil_br]", unitFormat.format(UCUM.GILL_BRITISH));
+    }
+    
+    @Test
+    public void testFormatUCUMCSmGill() {
+	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
+	assertEquals("[gil_br]", unitFormat.format(MILLI(UCUM.GILL_BRITISH)));
+    }
 }

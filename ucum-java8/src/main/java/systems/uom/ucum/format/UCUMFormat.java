@@ -79,7 +79,7 @@ import java.util.*;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.3, 13 April 2017
+ * @version 0.7.4, 15 April 2017
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -314,6 +314,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     }
 
     public void label(Unit<?> unit, String label) {
+	throw new UnsupportedOperationException("label() not supported by this implementation");
     }
 
     public boolean isLocaleSensitive() {
