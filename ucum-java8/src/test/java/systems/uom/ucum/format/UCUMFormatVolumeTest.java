@@ -27,8 +27,6 @@ package systems.uom.ucum.format;
 
 import static org.junit.Assert.*;
 import static tec.uom.se.unit.MetricPrefix.*;
-import java.util.logging.Logger;
-
 import javax.measure.*;
 import javax.measure.format.*;
 import javax.measure.spi.ServiceProvider;

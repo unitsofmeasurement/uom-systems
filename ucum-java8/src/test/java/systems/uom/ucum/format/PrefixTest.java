@@ -72,16 +72,4 @@ public class PrefixTest extends UCUMFormatTestBase {
 	UnitConverter conv = KILO(METER).getConverterTo(GIGA(METER));
 	assertEquals(RationalConverter.of(1d, 1000000d), conv);
     }
-    
-    @Test
-    public void testFormatKayser() {
-	assertEquals("KY", FORMAT_CI.format(KAYSER));
-//	assertEquals("ky", FORMAT_EBNF.format(KILO(KAYSER)));
-    }
-    
-    @Test
-    public void testFormatkKayser() {
-	assertEquals("KKY", FORMAT_CI.format(KILO(KAYSER)));
-	assertEquals("kky", FORMAT_EBNF.format(KILO(KAYSER)));
-    }
 }
