@@ -32,20 +32,21 @@ package systems.uom.ucum.format;
 import static org.junit.Assert.assertEquals;
 import static tec.uom.se.unit.MetricPrefix.*;
 import static systems.uom.ucum.UCUM.*;
-import static systems.uom.ucum.format.UCUMFormat.Variant.*;
-
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
-import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Mass;
 
 import org.junit.Test;
 
-import systems.uom.ucum.format.UCUMFormat;
-import tec.uom.se.format.EBNFUnitFormat;
 import tec.uom.se.function.RationalConverter;
 
 public class PrefixTest extends UCUMFormatTestBase {
+    
+    @Test
+    public void testKilo() {
+	Unit<Mass> m1 = KILO(GRAM);
+	assertEquals("kg", FORMAT_PRINT.format(m1));
+    }
     
     @Test
     public void testMega() {
@@ -53,12 +54,18 @@ public class PrefixTest extends UCUMFormatTestBase {
 	assertEquals(TONNE, m1);
 	assertEquals("t", FORMAT_PRINT.format(m1));
     }
+    
+    @Test
+    public void testMega2() {
+	Unit<Mass> m1 = MEGA(TONNE);
+	assertEquals("mt", FORMAT_PRINT.format(m1));
+    }
 
     @Test
     public void testNano() {
 	Unit<Mass> m1 = NANO(GRAM);
-//	assertEquals("ng", FORMAT_PRINT.format(m1));
-	assertEquals("ng", FORMAT_EBNF.format(m1));
+	assertEquals("ng", FORMAT_PRINT.format(m1));
+//	assertEquals("ng", FORMAT_EBNF.format(m1));
     }
 
     @Test

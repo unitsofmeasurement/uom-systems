@@ -153,9 +153,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	return symbolMap;
     }
 
-    // ////////////////
+    //////////////////
     // Constructors //
-    // ////////////////
+    //////////////////
     /**
      * Base constructor.
      */
