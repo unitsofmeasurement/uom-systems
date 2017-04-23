@@ -58,14 +58,14 @@ public class UCUMFormatVolumeTest extends UCUMFormatTestBase {
     public void testFormatUCUMCIDeciDm3() {
 	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
 	final Unit<?> deciliter = DECI(UCUM.LITER_DM3);
-	assertEquals("dL", unitFormat.format(deciliter)); // prints "CSTR"!
+	assertEquals("dL", unitFormat.format(deciliter)); // prints "CM3"
     }
     
     @Test
     public void testFormatUCUMCSDeciDm3() {
 	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
 	final Unit<?> deciliter = DECI(UCUM.LITER_DM3);
-	assertEquals("dl", unitFormat.format(deciliter)); // prints "cst"!
+	assertEquals("dl", unitFormat.format(deciliter)); // prints "cm3"
     }
 
     @Test
