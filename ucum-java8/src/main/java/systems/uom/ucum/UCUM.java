@@ -33,9 +33,11 @@ import si.uom.SI;
 import tec.uom.se.*;
 import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.LogConverter;
+import tec.uom.se.function.MultiplyConverter;
 import tec.uom.se.function.PiMultiplierConverter;
 import tec.uom.se.unit.AlternateUnit;
 import tec.uom.se.unit.ProductUnit;
+import tec.uom.se.unit.TransformedUnit;
 import tec.uom.se.unit.Units;
 
 import javax.measure.Quantity;
@@ -844,7 +846,8 @@ public final class UCUM extends AbstractSystemOfUnits {
     private static final Unit<? extends Quantity<?>> TMP_MHO = SIEMENS.alternate("mho");
 
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Volume> STERE = addUnit(new ProductUnit<Volume>(METER.pow(3)));
+    //public static final Unit<Volume> STERE = addUnit(new ProductUnit<Volume>(METER.pow(3)));
+    public static final Unit<Volume> STERE = addUnit(new TransformedUnit<Volume>("st", Units.CUBIC_METRE, MultiplyConverter.IDENTITY));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Length> ANGSTROM = addUnit(NANO(METER).divide(10));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
