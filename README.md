@@ -31,7 +31,7 @@ Depending on the environment (Embedded, Desktop/Server or a particular Java vers
 Planning
 ------------
 [![Issue Stats](http://issuestats.com/github/unitsofmeasurement/uom-systems/badge/pr?style=flat)](http://issuestats.com/github/unitsofmeasurement/uom-systems)
-[![Issue Stats](http://issuestats.com/github/unitsofmeasurement/uom-systems/badge/issue?style=flat)](http://issuestats.com/github/unitsofmeasurement/uom-systems)
+[![Issue Stats](http://issuestats.com/github/unitsofmeasurement/uom-systems/badge/pr)](http://issuestats.com/github/unitsofmeasurement/uom-systems)
 
 ## Waffle.io
 [![Stories in Ready](https://badge.waffle.io/unitsofmeasurement/uom-systems.png?label=ready&title=Ready)](https://waffle.io/unitsofmeasurement/uom-systems)
