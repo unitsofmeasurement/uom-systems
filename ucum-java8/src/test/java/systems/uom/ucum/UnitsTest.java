@@ -50,9 +50,7 @@ import tec.uom.se.AbstractUnit;
 import static org.junit.Assert.*;
 import static tec.uom.se.AbstractUnit.ONE;
 import static tec.uom.se.unit.MetricPrefix.*;
-import static tec.uom.se.unit.Units.GRAM;
-import static tec.uom.se.unit.Units.METRE;
-import static tec.uom.se.unit.Units.WATT;
+import static systems.uom.ucum.UCUM.*;
 
 /**
  *
@@ -140,7 +138,7 @@ public class UnitsTest {
      */
     @Test(expected = ClassCastException.class)
     public void testAsTypeFails() {
-	METRE.asType(Dimensionless.class);
+	METER.asType(Dimensionless.class);
     }
 
     /**
@@ -326,8 +324,8 @@ public class UnitsTest {
 	assertEquals("kg", KILO(UCUM.GRAM).getSymbol());
 	// assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
 	// assertEquals("kg", US.POUND.getSymbol()); //"lb"
-	assertEquals("kg", Units.GRAM.getSymbol());
-	assertEquals("kg", UCUM.OUNCE.getSymbol());
+	assertNull(UCUM.GRAM.getSymbol());
+	assertNull(UCUM.OUNCE.getSymbol());
 	// assertNull(US.POUND.getSymbol());
     }
 
