@@ -274,7 +274,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     public static final Unit<?> BOLTZMAN = addUnit(JOULE.divide(KELVIN).multiply(1.380658E-23));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<ElectricPermittivity> PERMITTIVITY_OF_VACUUM = addUnit(
-	    SI.FARADS_PER_METRE.multiply(8.854187817E-12));
+	    SI.FARAD_PER_METRE.multiply(8.854187817E-12));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<MagneticPermeability> PERMEABILITY_OF_VACUUM = addUnit(
 	    new ProductUnit<MagneticPermeability>(SI.NEWTON_PER_SQUARE_AMPERE.multiply(PI.multiply(4).divide(1E7))),
@@ -353,7 +353,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Radioactivity> CURIE = addUnit(Units.BECQUEREL.multiply(3.7E10));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<IonizingRadiation> ROENTGEN = addUnit(SI.COULOMBS_PER_KILOGRAM.multiply(2.58E-4));
+    public static final Unit<IonizingRadiation> ROENTGEN = addUnit(SI.COULOMB_PER_KILOGRAM.multiply(2.58E-4));
     // add later when JMQ issue fixed
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<RadiationDoseAbsorbed> RAD = addUnit(

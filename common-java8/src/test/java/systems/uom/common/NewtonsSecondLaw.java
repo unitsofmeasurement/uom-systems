@@ -44,7 +44,7 @@ class NewtonsSecondLaw {
 
 	public static final ForceAmount calculateForce(MassAmount m, AccelerationAmount a) {
 		double m_kg = m.doubleValue(SI.KILOGRAM);
-		double a_si = a.doubleValue(SI.METRES_PER_SQUARE_SECOND);
+		double a_si = a.doubleValue(SI.METRE_PER_SQUARE_SECOND);
 
 		return new ForceAmount(m_kg * a_si, SI.NEWTON);
 	}

@@ -27,6 +27,7 @@ package systems.uom.ucum.format;
 
 import static systems.uom.ucum.format.UCUMFormat.Variant.*;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.measure.format.*;
@@ -42,7 +43,7 @@ import org.junit.*;
 abstract class UCUMFormatTestBase {
     
     protected static final Logger LOGGER = Logger.getLogger(UCUMFormatTestBase.class.getName());
-
+    protected static final Level LOG_LEVEL = Level.INFO;
     
     protected static final UnitFormat FORMAT_CI = UCUMFormat.getInstance(CASE_INSENSITIVE);
     

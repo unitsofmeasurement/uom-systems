@@ -195,16 +195,16 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	String mapSymbol = symbolMap.getSymbol(unit);
 	if (mapSymbol != null) {
 	    symbol = mapSymbol;
-	} else if (unknownUnit instanceof TransformedUnit) {
-        final StringBuilder temp = new StringBuilder();
-        final Unit<?> parentUnit = ((TransformedUnit) unit).getParentUnit();
-        final UnitConverter converter = unit.getConverterTo(parentUnit);
-        final boolean printSeparator = !parentUnit.equals(ONE);
+	} else if (unit instanceof TransformedUnit) {
+	    final StringBuilder temp = new StringBuilder();
+	    final Unit<?> parentUnit = ((TransformedUnit) unit).getParentUnit();
+	    final UnitConverter converter = unit.getConverterTo(parentUnit);
+	    final boolean printSeparator = !parentUnit.equals(ONE);
 
-        format(parentUnit, temp);
-        formatConverter(converter, printSeparator, temp);
+	    format(parentUnit, temp);
+	    formatConverter(converter, printSeparator, temp);
 
-        symbol = temp;
+	    symbol = temp;
 	} else if (unit.getBaseUnits() != null) {
 	    Map<? extends AbstractUnit<?>, Integer> productUnits = unit.getBaseUnits();
 	    StringBuffer app = new StringBuffer();

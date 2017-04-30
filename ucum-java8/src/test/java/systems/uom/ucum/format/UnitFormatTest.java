@@ -31,8 +31,6 @@ import static systems.uom.ucum.format.UCUMFormat.Variant.*;
 import static tec.uom.se.unit.MetricPrefix.*;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.measure.*;
 import javax.measure.format.*;
 import javax.measure.quantity.*;
@@ -50,10 +48,7 @@ import org.junit.*;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  *
  */
-public class UnitFormatTest {
-    private static final Level LOG_LEVEL = Level.INFO;
-    private static final Logger LOGGER = Logger.getLogger(UnitFormatTest.class.getName());
-
+public class UnitFormatTest extends UCUMFormatTestBase {
     private Quantity<Length> sut;
 
     @Before
@@ -522,6 +517,19 @@ public class UnitFormatTest {
 	    // logger.log(Level.WARNING, String.format(" %s parsing %s", pex,
 	    // u));
 	    // }
+	}
+    }
+    
+    @Test
+    public void testInvertUCUM() {
+	for (Unit<?> u : UCUM.getInstance().getUnits()) {
+	    try {
+		Unit<?> v = FORMAT_CS.parse("1/" + FORMAT_CS.format(u));
+		LOGGER.log(LOG_LEVEL, String.format("%s @ %s @ %s @ %s -> %s @ %s", FORMAT_CI.format(u), FORMAT_CI.format(u),
+			FORMAT_PRINT.format(u), u, FORMAT_PRINT.format(v), v));
+	    } catch (MeasurementException mex) {
+		LOGGER.log(Level.WARNING, String.format(" %s parsing %s", mex, u));
+	    }
 	}
     }
 }

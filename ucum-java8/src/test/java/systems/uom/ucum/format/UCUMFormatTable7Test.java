@@ -45,7 +45,8 @@ public class UCUMFormatTable7Test extends UCUMFormatTestBase {
     
     @Test
     public void testFormatkKayser() {
-	assertEquals("KKY", FORMAT_CI.format(KILO(KAYSER)));
+	assertEquals("kky", FORMAT_PRINT.format(KILO(KAYSER)));
+//	assertEquals("KKY", FORMAT_CI.format(KILO(KAYSER)));
 	assertEquals("kky", FORMAT_EBNF.format(KILO(KAYSER)));
     }
 }
