@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Units of Measurement Systems for Java
+ * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,15 +29,13 @@
  */
 package systems.uom.ucum.format;
 
+import static systems.uom.ucum.format.ConverterFormatter.formatConverter;
 import static tec.uom.se.AbstractUnit.ONE;
 import si.uom.SI;
 import systems.uom.ucum.internal.format.UCUMFormatParser;
-import tec.uom.se.AbstractConverter;
 import tec.uom.se.AbstractUnit;
 import tec.uom.se.format.AbstractUnitFormat;
 import tec.uom.se.format.SymbolMap;
-import tec.uom.se.function.MultiplyConverter;
-import tec.uom.se.function.RationalConverter;
 import tec.uom.se.internal.format.TokenException;
 import tec.uom.se.internal.format.TokenMgrError;
 import tec.uom.se.unit.AnnotatedUnit;
@@ -51,7 +49,6 @@ import javax.measure.format.ParserException;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.text.ParsePosition;
 import java.util.*;
 
@@ -79,7 +76,7 @@ import java.util.*;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.4, 15 April 2017
+ * @version 0.7.5, 30 April 2017
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -175,9 +172,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     @Override
     public abstract Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException;
 
-    // //////////////
+    ////////////////
     // Formatting //
-    // //////////////
+    ////////////////
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public Appendable format(Unit<?> unknownUnit, Appendable appendable) throws IOException {
 	if (!(unknownUnit instanceof AbstractUnit)) {
@@ -202,7 +199,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	    final boolean printSeparator = !parentUnit.equals(ONE);
 
 	    format(parentUnit, temp);
-	    formatConverter(converter, printSeparator, temp);
+	    formatConverter(converter, printSeparator, temp, symbolMap);
 
 	    symbol = temp;
 	} else if (unit.getBaseUnits() != null) {
@@ -295,7 +292,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 		format(parentUnit, temp);
 		printSeparator = !parentUnit.equals(ONE);
 	    }
-	    formatConverter(converter, printSeparator, temp);
+	    formatConverter(converter, printSeparator, temp, symbolMap);
 	    symbol = temp;
 	} else if (unit.getSymbol() != null) {
 	    symbol = unit.getSymbol();
@@ -325,69 +322,6 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	appendable.append('{');
 	appendable.append(annotation);
 	appendable.append('}');
-    }
-
-    /**
-     * Formats the given converter to the given StringBuffer. This is similar to
-     * what {@link ConverterFormat} does, but there's no need to worry about
-     * operator precedence here, since UCUM only supports multiplication,
-     * division, and exponentiation and expressions are always evaluated left-
-     * to-right.
-     * 
-     * @param converter
-     *            the converter to be formatted
-     * @param continued
-     *            <code>true</code> if the converter expression should begin
-     *            with an operator, otherwise <code>false</code>. This will
-     *            always be true unless the unit being modified is equal to
-     *            Unit.ONE.
-     * @param buffer
-     *            the <code>StringBuffer</code> to append to. Contains the
-     *            already-formatted unit being modified by the given converter.
-     */
-    void formatConverter(UnitConverter converter, boolean continued, StringBuilder buffer) {
-	boolean unitIsExpression = ((buffer.indexOf(".") >= 0) || (buffer.indexOf("/") >= 0));
-	MetricPrefix prefix = symbolMap.getPrefix(converter);
-	if ((prefix != null) && (!unitIsExpression)) {
-	    buffer.insert(0, symbolMap.getSymbol(prefix));
-	} else if (converter == AbstractConverter.IDENTITY) {
-	    // do nothing
-	} else if (converter instanceof MultiplyConverter) {
-	    if (unitIsExpression) {
-		buffer.insert(0, '(');
-		buffer.append(')');
-	    }
-	    MultiplyConverter multiplyConverter = (MultiplyConverter) converter;
-	    double factor = multiplyConverter.getFactor();
-	    long lFactor = (long) factor;
-	    if ((lFactor != factor) || (lFactor < -9007199254740992L) || (lFactor > 9007199254740992L)) {
-		throw new IllegalArgumentException("Only integer factors are supported in UCUM");
-	    }
-	    if (continued) {
-		buffer.append('.');
-	    }
-	    buffer.append(lFactor);
-	} else if (converter instanceof RationalConverter) {
-	    if (unitIsExpression) {
-		buffer.insert(0, '(');
-		buffer.append(')');
-	    }
-	    RationalConverter rationalConverter = (RationalConverter) converter;
-	    if (!rationalConverter.getDividend().equals(BigInteger.ONE)) {
-		if (continued) {
-		    buffer.append('.');
-		}
-		buffer.append(rationalConverter.getDividend());
-	    }
-	    if (!rationalConverter.getDivisor().equals(BigInteger.ONE)) {
-		buffer.append('/');
-		buffer.append(rationalConverter.getDivisor());
-	    }
-	} else { // All other converter type (e.g. exponential) we use the
-		 // string representation.
-	    buffer.insert(0, converter.toString() + "(");
-	    buffer.append(")");
-	}
     }
 
     // static final ResourceBundle.Control getControl(final String key) {
