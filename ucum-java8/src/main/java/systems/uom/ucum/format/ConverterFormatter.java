@@ -106,6 +106,10 @@ class ConverterFormatter {
     }
   }
 
+  static int formatConverter(UnitConverter converter, boolean continued, StringBuilder buffer, SymbolMap map) {
+      return formatConverter(converter, continued, 0, buffer, map);
+  }
+  
   private static int productPrecedence(RationalConverter converter, boolean continued, int unitPrecedence, StringBuilder buffer) {
     if (unitPrecedence < BNFConstants.PRODUCT_PRECEDENCE) {
       buffer.insert(0, '(');
