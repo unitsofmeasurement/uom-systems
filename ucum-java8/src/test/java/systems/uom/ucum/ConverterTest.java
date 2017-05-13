@@ -30,11 +30,12 @@
 package systems.uom.ucum;
 
 import static org.junit.Assert.*;
-import static systems.uom.ucum.UCUM.FAHRENHEIT;
+import static systems.uom.ucum.UCUM.*;
 
 import java.math.BigDecimal;
 
 import javax.measure.Quantity;
+import javax.measure.Unit;
 import javax.measure.quantity.Temperature;
 
 import org.junit.Test;
@@ -46,9 +47,25 @@ public class ConverterTest {
 
   @Test
   public void testKelvinToFahrenheit() {
-    Quantity<Temperature> sut = Quantities.getQuantity(273.15, Units.KELVIN).to(FAHRENHEIT);
+    Quantity<Temperature> sut = Quantities.getQuantity(273.15d, KELVIN).to(FAHRENHEIT);
     assertNotNull(sut);
     assertEquals(FAHRENHEIT, sut.getUnit());
-    assertEquals(new BigDecimal("32"), sut.getValue());
+    assertEquals(31.999999999999943d, sut.getValue());
+  }
+  
+  @Test
+  public void testKelvinToCelsius() {
+    Quantity<Temperature> sut = Quantities.getQuantity(273.15d, KELVIN).to(CELSIUS);
+    assertNotNull(sut);
+    assertEquals(CELSIUS, sut.getUnit());
+    assertEquals(0d, sut.getValue());
+  }
+  
+  @Test
+  public void testKelvinToReaumur() {
+    Quantity<Temperature> sut = Quantities.getQuantity(1d, KELVIN).to(REAUMUR);
+    assertNotNull(sut);
+    assertEquals(REAUMUR, sut.getUnit());
+    assertEquals(-217.27d, sut.getValue());
   }
 }

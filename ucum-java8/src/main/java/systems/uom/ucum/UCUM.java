@@ -60,7 +60,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.7.7, $Date: 2017-04-06 $
+ * @version 0.7.8, $Date: 2017-05-13 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -637,11 +637,11 @@ public final class UCUM extends AbstractSystemOfUnits {
     // OTHER LEGACY UNITS: UCUM 4.5 §43 //
     //////////////////////////////////////
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Temperature> FAHRENHEIT = addUnit(KELVIN.multiply(9).divide(5).shift(459.67));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Temperature> RANKINE = addUnit(KELVIN.divide(9).multiply(5));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Temperature> REAUMUR = addUnit(KELVIN.multiply(4).divide(5).shift(218.52));
+    public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67));
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    public static final Unit<Temperature> REAUMUR = addUnit((KELVIN.multiply(4).divide(5)).shift(218.52));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Energy> CALORIE_AT_15C = addUnit(JOULE.multiply(41858).divide(10000));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
