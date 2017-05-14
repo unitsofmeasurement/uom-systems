@@ -847,7 +847,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     //public static final Unit<Volume> STERE = addUnit(new ProductUnit<Volume>(METER.pow(3)));
-    public static final Unit<Volume> STERE = addUnit(new TransformedUnit<Volume>("st", Units.CUBIC_METRE, MultiplyConverter.IDENTITY));
+    public static final Unit<Volume> STERE = addUnit(new TransformedUnit<Volume>("st", Units.CUBIC_METRE, Units.CUBIC_METRE, MultiplyConverter.IDENTITY));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Length> ANGSTROM = addUnit(NANO(METER).divide(10));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */

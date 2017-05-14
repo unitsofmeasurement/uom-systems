@@ -54,7 +54,7 @@ public class CLDRTest {
 	public void testGetSymbol() {
 		// TODO see https://github.com/unitsofmeasurement/uom-se/issues/54 / https://java.net/jira/browse/UNITSOFMEASUREMENT-109
 		assertEquals("kg", KILOGRAM.getSymbol());
-		assertEquals("kg", KILO(GRAM).getSymbol());
+		assertNull(KILO(GRAM).getSymbol());
 //		assertNull(GRAM.getSymbol()); TODO fix this in SE port, too
 		assertEquals("g", GRAM.toString());
 	}

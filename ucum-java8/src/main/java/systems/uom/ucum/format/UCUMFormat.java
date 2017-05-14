@@ -29,7 +29,7 @@
  */
 package systems.uom.ucum.format;
 
-import static systems.uom.ucum.format.ConverterFormatter.formatConverter;
+import static systems.uom.ucum.format.UCUMConverterFormatter.formatConverter;
 import static tec.uom.se.AbstractUnit.ONE;
 import si.uom.SI;
 import systems.uom.ucum.internal.format.UCUMFormatParser;

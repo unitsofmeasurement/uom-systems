@@ -64,7 +64,7 @@ public class USTest {
 	// assertEquals("kg", SI.GRAM.getSymbol()); //"g"
 	// assertEquals("kg", UCUM.POUND.getSymbol()); //"lb"
 	// assertEquals("kg", UCUM.OUNCE.getSymbol());//"oz"
-	assertEquals("kg", KILO(GRAM).getSymbol());
+	assertNull(KILO(GRAM).getSymbol());
 	// assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
 	// assertEquals("kg", US.POUND.getSymbol()); //"lb"
 	assertEquals("g", GRAM.toString());

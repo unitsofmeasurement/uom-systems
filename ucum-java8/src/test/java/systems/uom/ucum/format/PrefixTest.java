@@ -62,14 +62,14 @@ public class PrefixTest extends UCUMFormatTestBase {
     @Test
     public void testMega() {
 	Unit<Mass> m1 = MEGA(GRAM);
-	assertEquals(TONNE, m1);
-	assertEquals("t", FORMAT_PRINT.format(m1));
+//	assertEquals(TONNE, m1);
+	assertEquals("Mg", FORMAT_PRINT.format(m1));
     }
 
     @Test
     public void testMega2() {
 	Unit<Mass> m1 = MEGA(TONNE);
-	assertEquals("mt", FORMAT_PRINT.format(m1));
+	assertEquals("Mt", FORMAT_PRINT.format(m1));
     }
 
     @Test
