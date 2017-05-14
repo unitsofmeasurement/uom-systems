@@ -45,7 +45,7 @@ import tec.uom.se.unit.MetricPrefix;
 class UCUMConverterFormatter {
     /**
      * Formats the given converter to the given StringBuilder. This is similar to
-     * what {@link ConverterFormatter} does, but there's no need to worry about
+     * what <type>ConverterFormatter</type> does, but there's no need to worry about
      * operator precedence here, since UCUM only supports multiplication,
      * division, and exponentiation and expressions are always evaluated left-
      * to-right.
