@@ -32,23 +32,13 @@ package systems.uom.ucum.format;
 import static org.junit.Assert.assertEquals;
 import static tec.uom.se.unit.MetricPrefix.*;
 
-import java.util.logging.Level;
-
 import static systems.uom.ucum.UCUM.*;
-import static systems.uom.ucum.format.UCUMFormat.Variant.CASE_INSENSITIVE;
-import static systems.uom.ucum.format.UCUMFormat.Variant.CASE_SENSITIVE;
-import static systems.uom.ucum.format.UCUMFormat.Variant.PRINT;
-
-import javax.measure.MeasurementException;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
-import javax.measure.format.ParserException;
-import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Mass;
 
 import org.junit.Test;
 
-import systems.uom.ucum.UCUM;
 import tec.uom.se.function.RationalConverter;
 
 public class PrefixTest extends UCUMFormatTestBase {
@@ -90,5 +80,4 @@ public class PrefixTest extends UCUMFormatTestBase {
 	UnitConverter conv = KILO(METER).getConverterTo(GIGA(METER));
 	assertEquals(RationalConverter.of(1d, 1000000d), conv);
     }
-
 }
