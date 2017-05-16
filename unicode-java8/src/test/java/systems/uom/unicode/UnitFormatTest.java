@@ -140,7 +140,7 @@ public class UnitFormatTest {
 		final UnitFormat format = EBNFUnitFormat.getInstance();
 		try {
 			Unit<?> u = format.parse("min");
-			// assertEquals("min", u.getSymbol());
+			assertEquals("min", u.getSymbol());
 			assertEquals(MINUTE, u);
 		} catch (ParserException e) {
 			fail(e.getMessage());

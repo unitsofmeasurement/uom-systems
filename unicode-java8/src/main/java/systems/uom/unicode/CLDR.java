@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.5.3, $Date: 2017-03-05 $
+ * @version 0.5.4, $Date: 2017-05-16 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -95,8 +95,22 @@ public final class CLDR extends AbstractSystemOfUnits {
     ////////////
     /**
      * US name for {@link Units#METRE}.
+     * Constant for unit of length: meter
+     * @stable ICU 53.
      */
     public static final Unit<Length> METER = METRE;
+    
+    /**
+     * Constant for unit of length: millimeter
+     * @stable ICU 53.
+     */
+    public static final Unit<Length> MILLIMETER = MILLI(METRE);
+    
+    /**
+     * Constant for unit of length: centimeter
+     * @stable ICU 53.
+     */
+    public static final Unit<Length> CENTIMETER = CENTI(METRE);
 
     /**
      * A unit of length equal to <code>0.3048 m</code> (standard name
@@ -176,6 +190,12 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Energy> JOULE = addUnit(Units.JOULE);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Power> WATT = addUnit(Units.WATT);
+    /** 
+     * Constant for unit of mass: kilogram
+       @stable ICU 53.
+     */
+    public static final Unit<Mass> KILOGRAM = addUnit(Units.KILOGRAM);
+    
     /**
      * We deviate slightly from the standard here, to maintain compatability
      * with the existing SI units. In CLDR, the ampere is defined as
@@ -583,6 +603,7 @@ public final class CLDR extends AbstractSystemOfUnits {
 	SimpleUnitFormat.getInstance().label(POUND, "lb");
 	SimpleUnitFormat.getInstance().label(BAR, "b");
 	SimpleUnitFormat.getInstance().label(PARSEC, "pc");
+	SimpleUnitFormat.getInstance().label(FOOT, "ft");
 	SimpleUnitFormat.getInstance().label(SQUARE_FOOT, "sft");
     }
 }
