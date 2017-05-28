@@ -1,5 +1,6 @@
 Werner Keil
 Eric Russell
 Jean-Marie Dautelle
+Anakar Parida
 Magno N. A. Cruz (GlobalMentor, Inc.)
 Garret Wilson (GlobalMentor, Inc.)
