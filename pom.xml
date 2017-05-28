@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0.4-SNAPSHOT</version>
+		<version>1.0.4</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -30,9 +30,9 @@
 	<properties>
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
-		<ri.version>1.0.3</ri.version>
-		<se.version>1.0.6-SNAPSHOT</se.version>
-		<si.version>0.6.6-SNAPSHOT</si.version>
+		<ri.version>1.0.3-SNAPSHOT</ri.version>
+		<se.version>1.0.7-SNAPSHOT</se.version>
+		<si.version>0.6.6</si.version>
 		<quantity.version>0.7.1-SNAPSHOT</quantity.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>

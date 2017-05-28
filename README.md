@@ -16,7 +16,7 @@ The project currently contains the following modules:
 - [Common Unit Systems](common-java8) on **Java SE 8**
 - [Unicode CLDR Unit System](unicode)
 - [Unicode CLDR Unit System](unicode-java8) on **Java SE 8**
-- [Unified Code for Units of Measure](ucum-java8) on **Java SE 8** **(WORK IN PROGRESS)**
+- [Unified Code for Units of Measure](ucum-java8) on **Java SE 8**
 
 Modular Unit Systems
 -------------------------------------
