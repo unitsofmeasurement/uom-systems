@@ -87,6 +87,7 @@
                     <instructions>
                         <Export-Package>systems.uom.common</Export-Package>
                         <Private-Package>systems.uom.common.internal</Private-Package>
+						<Import-Package>*,tec.uom.se.format</Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
