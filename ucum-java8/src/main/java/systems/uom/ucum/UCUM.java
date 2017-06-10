@@ -26,6 +26,7 @@
 package systems.uom.ucum;
 
 import static tec.uom.se.unit.MetricPrefix.*;
+import static tec.uom.se.unit.Units.SECOND;
 import static tec.uom.se.AbstractUnit.ONE;
 import si.uom.quantity.*;
 import systems.uom.quantity.*;
@@ -885,12 +886,21 @@ public final class UCUM extends AbstractSystemOfUnits {
     ////////////////////////////////////////////////
     // INFORMATION TECHNOLOGY UNITS: UCUM 4.6 §48 //
     ////////////////////////////////////////////////
+    /**
+     * The unit for binary information (standard name <code>bit</code>).
+     * As per <a href="http://unitsofmeasure.org/">UCUM</a> standard.
+     */
+    public static final Unit<Information> BIT = addUnit(new AlternateUnit<Information>(ONE, "bit"), Information.class);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Information> BIT = addUnit(NonSI.BIT);
+    public static final Unit<Information> BYTE = addUnit(BIT.multiply(8));
+    /**
+     * The SI unit for binary information rate (standard name
+     * <code>bit/s</code>).
+     */
+    protected static final ProductUnit<InformationRate> BITS_PER_SECOND = addUnit(
+	    new ProductUnit<InformationRate>(BIT.divide(SECOND)), InformationRate.class);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Information> BYTE = addUnit(NonSI.BIT.multiply(8));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<InformationRate> BAUD = addUnit(NonSI.BITS_PER_SECOND);
+    public static final Unit<InformationRate> BAUD = addUnit(BITS_PER_SECOND);
 
     /////////////////////
     // Collection View //
