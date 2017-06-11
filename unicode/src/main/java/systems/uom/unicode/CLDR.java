@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.5.2, $Date: 2017-03-05 $
+ * @version 0.6, $Date: 2017-06-12 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -95,8 +95,23 @@ public final class CLDR extends AbstractSystemOfUnits {
     ////////////
     /**
      * US name for {@link Units#METRE}.
+     * Constant for unit of length: meter
+     * @stable ICU 53.
      */
     public static final Unit<Length> METER = addUnit(METRE);
+    
+    /**
+     * Constant for unit of length: millimeter
+     * @stable ICU 53.
+     */
+    public static final Unit<Length> MILLIMETER = MILLI(METRE);
+    
+    /**
+     * Constant for unit of length: centimeter
+     * @stable ICU 53.
+     */
+    public static final Unit<Length> CENTIMETER = CENTI(METRE);
+
 
     /**
      * A unit of length equal to <code>0.3048 m</code> (standard name
@@ -144,7 +159,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Temperature> KELVIN = addUnit(Units.KELVIN);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<LuminousIntensity> CANDELA = addUnit(Units.CANDELA);
+    private static final Unit<LuminousIntensity> CANDELA = addUnit(Units.CANDELA);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Dimensionless> PI = addUnit(ONE.transform(new PiMultiplierConverter()));

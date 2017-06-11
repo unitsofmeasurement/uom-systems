@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.5.5, $Date: 2017-05-17 $
+ * @version 0.6, $Date: 2017-06-12 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -158,7 +158,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Temperature> KELVIN = addUnit(Units.KELVIN);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<LuminousIntensity> CANDELA = addUnit(Units.CANDELA);
+    private static final Unit<LuminousIntensity> CANDELA = addUnit(Units.CANDELA);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Dimensionless> PI = addUnit(ONE.transform(new PiMultiplierConverter()));
