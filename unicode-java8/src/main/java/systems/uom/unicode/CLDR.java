@@ -36,6 +36,7 @@ import static tec.uom.se.unit.Units.SQUARE_METRE;
 import static tec.uom.se.AbstractUnit.ONE;
 
 import systems.uom.quantity.Concentration;
+import systems.uom.quantity.Consumption;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import tec.uom.se.*;
@@ -341,6 +342,15 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> BUSHEL = addUnit(CUBIC_INCH.multiply(215042).divide(100));
 
+    /**
+     * Constant for unit of volume: gallon A unit of volume equal to one US
+     * gallon, Liquid Unit. The U.S. liquid gallon is based on the Queen Anne or
+     * Wine gallon occupying 231 cubic inches (standard name <code>gal</code>).
+     * 
+     * @stable ICU 54.
+     */
+    public static final Unit<Volume> GALLON = addUnit(CUBIC_INCH.multiply(231), "US gallon", "gal");
+
     //////////
     // Time //
     //////////
@@ -415,11 +425,13 @@ public final class CLDR extends AbstractSystemOfUnits {
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Mass> CARAT = addUnit(GRAM.divide(5));
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    private static final Unit<Dimensionless> CARAT_GOLD = addUnit(ONE.divide(24));
 
-    private static final Unit<Force> POUND_FORCE = addUnit(
-	    POUND.multiply(ACCELLERATION_OF_FREEFALL).asType(Force.class));
+    private static final Unit<Force> POUND_FORCE = POUND.multiply(ACCELLERATION_OF_FREEFALL).asType(Force.class);
+    /*
+     * POUND_PER_SQUARE_INCH public static final MeasureUnit
+     * POUND_PER_SQUARE_INCH Constant for unit of pressure:
+     * pound-per-square-inch Status: Stable ICU 54.
+     */
 
     /**
      * A unit of length equal to the distance at which a star would appear to
@@ -509,22 +521,32 @@ public final class CLDR extends AbstractSystemOfUnits {
     ///////////////////
 
     /**
-     * Constant for unit of concentr: milligram-per-deciliter 
+     * Constant for unit of concentr: milligram-per-deciliter
+     * 
      * @stable ICU 57
      */
     @SuppressWarnings("unchecked")
     public static final Unit<Concentration<Mass>> MILLIGRAM_PER_DECILITER = addUnit(
 	    MILLI(GRAM).divide(DECI(LITER)).asType(Concentration.class));
     /*
-     * Constant for unit of concentr: milligram-per-deciliter Status: Stable ICU
-     * 57.
-     * 
      * MILLIMOLE_PER_LITER public static final MeasureUnit MILLIMOLE_PER_LITER
      * Constant for unit of concentr: millimole-per-liter Status: Draft ICU 57.
      * PART_PER_MILLION public static final MeasureUnit PART_PER_MILLION
      * Constant for unit of concentr: part-per-million Status: Draft ICU 57.
      */
 
+    ///////////////////
+    // Consumption //
+    ///////////////////
+    
+    @SuppressWarnings("unchecked")
+    public static final Unit<Consumption<Volume>> MILE_PER_GALLON =
+	    addUnit(MILE.divide(GALLON).asType(Consumption.class));
+    /*
+    static MeasureUnit	MILE_PER_GALLON_IMPERIAL
+    Constant for unit of consumption: mile-per-gallon-imperial
+*/
+    
     /////////////////////
     // Collection View //
     /////////////////////
@@ -624,7 +646,6 @@ public final class CLDR extends AbstractSystemOfUnits {
     // Label adjustments for CLDR system
     static {
 	SimpleUnitFormat.getInstance().alias(BYTE, "B");
-	SimpleUnitFormat.getInstance().label(CARAT_GOLD, "kt");
 	SimpleUnitFormat.getInstance().label(CARAT, "ct");
 	SimpleUnitFormat.getInstance().label(POUND, "lb");
 	SimpleUnitFormat.getInstance().label(BAR, "b");

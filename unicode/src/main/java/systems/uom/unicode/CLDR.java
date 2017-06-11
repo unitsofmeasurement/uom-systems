@@ -36,6 +36,7 @@ import static tec.units.ri.unit.Units.SQUARE_METRE;
 import static tec.units.ri.AbstractUnit.ONE;
 
 import systems.uom.quantity.Concentration;
+import systems.uom.quantity.Consumption;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import tec.units.ri.*;
@@ -315,9 +316,11 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Volume> CUBIC_INCH = addUnit(INCH.pow(3).asType(Volume.class));
 
     /**
-     * A unit of volume equal to one US gallon, Liquid Unit. The U.S. liquid
-     * gallon is based on the Queen Anne or Wine gallon occupying 231 cubic
-     * inches (standard name <code>gal</code>).
+     * Constant for unit of volume: gallon A unit of volume equal to one US
+     * gallon, Liquid Unit. The U.S. liquid gallon is based on the Queen Anne or
+     * Wine gallon occupying 231 cubic inches (standard name <code>gal</code>).
+     * 
+     * @stable ICU 54.
      */
     public static final Unit<Volume> GALLON = addUnit(CUBIC_INCH.multiply(231));
 
@@ -553,6 +556,17 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Concentration<Mass>> MILLIGRAM_PER_DECILITER = addUnit(
 	    MILLI(GRAM).divide(DECI(LITER)).asType(Concentration.class));
 
+    ///////////////////
+    // Consumption //
+    ///////////////////
+    
+    @SuppressWarnings("unchecked")
+    public static final Unit<Consumption<Volume>> MILE_PER_GALLON =
+	    addUnit(MILE.divide(GALLON).asType(Consumption.class));
+    /*
+    static MeasureUnit	MILE_PER_GALLON_IMPERIAL
+    Constant for unit of consumption: mile-per-gallon-imperial
+*/
     
     /////////////////////
     // Collection View //
