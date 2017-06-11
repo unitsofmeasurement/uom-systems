@@ -30,10 +30,12 @@
 	<properties>
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
+		<lib.version>1.0.2</lib.version>
 		<ri.version>1.0.3</ri.version>
 		<se.version>1.0.7</se.version>
 		<si.version>0.7</si.version>
 		<quantity.version>0.7.1-SNAPSHOT</quantity.version>
+		<systems.version>0.7</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -196,7 +198,7 @@
 											<id>javax.measure:unit-api:${jsr.version}</id>
 										</artifact>
 										<artifact>
-											<id>tec.uom.lib:uom-lib-common:${jsr.version}</id>
+											<id>tec.uom.lib:uom-lib-common:${lib.version}</id>
 										</artifact>
 										<artifact>
 											<id>tec.uom:uom-se:${se.version}</id>
@@ -211,13 +213,13 @@
 											<id>systems.uom:systems-quantity:${quantity.version}</id>
 										</artifact>
 										<artifact>
-											<id>systems.uom:systems-common-java8:${project.version}</id>
+											<id>systems.uom:systems-common-java8:${systems.version}</id>
 										</artifact>
 										<artifact>
-											<id>systems.uom:systems-unicode-java8:${project.version}</id>
+											<id>systems.uom:systems-unicode-java8:${systems.version}</id>
 										</artifact>
 										<artifact>
-										  <id>systems.uom:systems-ucum-java8:${project.version}</id>
+										  <id>systems.uom:systems-ucum-java8:${systems.version}</id>
 										</artifact>
 									</artifacts>
 								</configuration>
