@@ -34,6 +34,8 @@ import static tec.units.ri.unit.Units.CUBIC_METRE;
 import static tec.units.ri.unit.Units.METRE;
 import static tec.units.ri.unit.Units.SQUARE_METRE;
 import static tec.units.ri.AbstractUnit.ONE;
+
+import systems.uom.quantity.Concentration;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import tec.units.ri.*;
@@ -174,7 +176,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * with the existing SI units. In CLDR, the mole is no longer a base unit,
      * but is defined as <code>Unit.ONE.multiply(6.0221367E23)</code>.
      */
-    public static final Unit<AmountOfSubstance> MOLE = addUnit(Units.MOLE);
+    private static final Unit<AmountOfSubstance> MOLE = addUnit(Units.MOLE);
     /**
      * We deviate slightly from the standard here, to maintain compatibility
      * with the existing SI units. In CLDR, the steradian is defined as
@@ -537,8 +539,21 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @draft Non-ICU
      */
-    static final Unit<Frequency> FRAME_PER_SECOND = addUnit(ONE.divide(SECOND)).asType(Frequency.class);
+    static final Unit<Frequency> FRAME_PER_SECOND = ONE.divide(SECOND).asType(Frequency.class);
 
+    ///////////////////
+    // Concentration //
+    ///////////////////
+
+    /**
+     * Constant for unit of concentr: milligram-per-deciliter 
+     * @stable ICU 57
+     */
+    @SuppressWarnings("unchecked")
+    public static final Unit<Concentration<Mass>> MILLIGRAM_PER_DECILITER = addUnit(
+	    MILLI(GRAM).divide(DECI(LITER)).asType(Concentration.class));
+
+    
     /////////////////////
     // Collection View //
     /////////////////////
@@ -555,7 +570,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      *            the unit being added.
      * @return <code>unit</code>.
      */
-    private static <U extends Unit<?>> U addUnit(U unit) {
+    private static <U extends Unit<Q>, Q extends Quantity<Q>> U addUnit(U unit) {
 	INSTANCE.units.add(unit);
 	return unit;
     }
@@ -569,7 +584,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      *            the quantity type.
      * @return <code>unit</code>.
      */
-    private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
+    private static <U extends Unit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
 	INSTANCE.units.add(unit);
 	INSTANCE.quantityToUnit.put(type, unit);
 	return unit;

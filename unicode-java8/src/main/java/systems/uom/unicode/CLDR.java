@@ -34,6 +34,8 @@ import static tec.uom.se.unit.Units.CUBIC_METRE;
 import static tec.uom.se.unit.Units.METRE;
 import static tec.uom.se.unit.Units.SQUARE_METRE;
 import static tec.uom.se.AbstractUnit.ONE;
+
+import systems.uom.quantity.Concentration;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import tec.uom.se.*;
@@ -94,20 +96,22 @@ public final class CLDR extends AbstractSystemOfUnits {
     // Length //
     ////////////
     /**
-     * US name for {@link Units#METRE}.
-     * Constant for unit of length: meter
+     * US name for {@link Units#METRE}. Constant for unit of length: meter
+     * 
      * @stable ICU 53.
      */
     public static final Unit<Length> METER = METRE;
-    
+
     /**
      * Constant for unit of length: millimeter
+     * 
      * @stable ICU 53.
      */
     public static final Unit<Length> MILLIMETER = MILLI(METRE);
-    
+
     /**
      * Constant for unit of length: centimeter
+     * 
      * @stable ICU 53.
      */
     public static final Unit<Length> CENTIMETER = CENTI(METRE);
@@ -173,7 +177,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * with the existing SI units. In CLDR, the mole is no longer a base unit,
      * but is defined as <code>Unit.ONE.multiply(6.0221367E23)</code>.
      */
-    public static final Unit<AmountOfSubstance> MOLE = addUnit(Units.MOLE);
+    private static final Unit<AmountOfSubstance> MOLE = addUnit(Units.MOLE);
     /**
      * We deviate slightly from the standard here, to maintain compatibility
      * with the existing SI units. In CLDR, the steradian is defined as
@@ -190,12 +194,13 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Energy> JOULE = addUnit(Units.JOULE);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Power> WATT = addUnit(Units.WATT);
-    /** 
+    /**
      * Constant for unit of mass: kilogram
-       @stable ICU 53.
+     * 
+     * @stable ICU 53.
      */
     public static final Unit<Mass> KILOGRAM = addUnit(Units.KILOGRAM);
-    
+
     /**
      * We deviate slightly from the standard here, to maintain compatability
      * with the existing SI units. In CLDR, the ampere is defined as
@@ -431,7 +436,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     // TYPESETTER'S LENGTH UNITS //
     ///////////////////////////////
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    static final Unit<Length> LINE = addUnit(INCH_INTERNATIONAL.divide(12));
+    static final Unit<Length> LINE = INCH_INTERNATIONAL.divide(12);
     /**
      * A unit of length equal to <code>0.013837 {@link #INCH}</code> exactly
      * (standard name <code>pt</code>).
@@ -460,7 +465,8 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Energy> CALORIE = addUnit(CALORIE_THERMOCHEMICAL);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-//    private static final Unit<Energy> CALORIE_FOOD = addUnit(KILO(CALORIE_THERMOCHEMICAL));
+    // private static final Unit<Energy> CALORIE_FOOD =
+    // addUnit(KILO(CALORIE_THERMOCHEMICAL));
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Power> HORSEPOWER = addUnit(
@@ -483,25 +489,45 @@ public final class CLDR extends AbstractSystemOfUnits {
 	    Information.class);
 
     /**
-     * A unit of data amount equal to <code>8 {@link #BIT}</code> (BinarY
-     * TErm, standard name <code>byte</code>).
+     * A unit of data amount equal to <code>8 {@link #BIT}</code> (BinarY TErm,
+     * standard name <code>byte</code>).
      */
     public static final Unit<Information> BYTE = addUnit(BIT.multiply(8), "Byte", "byte");
 
     /**
      * The unit for binary information rate (standard name <code>bit/s</code>).
      */
-    static final ProductUnit<InformationRate> BITS_PER_SECOND = addUnit(
-	    new ProductUnit<InformationRate>(BIT.divide(SECOND)), InformationRate.class);
+    private static final Unit<InformationRate> BITS_PER_SECOND = new ProductUnit<InformationRate>(BIT.divide(SECOND));
 
     /**
      * Equivalent {@link #BYTE}
      */
-    static final Unit<Information> OCTET = BYTE;
+    private static final Unit<Information> OCTET = BYTE;
 
-    // ///////////////////
+    ///////////////////
+    // Concentration //
+    ///////////////////
+
+    /**
+     * Constant for unit of concentr: milligram-per-deciliter 
+     * @stable ICU 57
+     */
+    @SuppressWarnings("unchecked")
+    public static final Unit<Concentration<Mass>> MILLIGRAM_PER_DECILITER = addUnit(
+	    MILLI(GRAM).divide(DECI(LITER)).asType(Concentration.class));
+    /*
+     * Constant for unit of concentr: milligram-per-deciliter Status: Stable ICU
+     * 57.
+     * 
+     * MILLIMOLE_PER_LITER public static final MeasureUnit MILLIMOLE_PER_LITER
+     * Constant for unit of concentr: millimole-per-liter Status: Draft ICU 57.
+     * PART_PER_MILLION public static final MeasureUnit PART_PER_MILLION
+     * Constant for unit of concentr: part-per-million Status: Draft ICU 57.
+     */
+
+    /////////////////////
     // Collection View //
-    // ///////////////////
+    /////////////////////
 
     @Override
     public String getName() {
@@ -515,7 +541,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      *            the unit being added.
      * @return <code>unit</code>.
      */
-    private static <U extends Unit<?>> U addUnit(U unit) {
+    private static <U extends Unit<Q>, Q extends Quantity<Q>> U addUnit(U unit) {
 	INSTANCE.units.add(unit);
 	return unit;
     }
@@ -529,7 +555,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      *            the quantity type.
      * @return <code>unit</code>.
      */
-    private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
+    private static <U extends Unit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
 	INSTANCE.units.add(unit);
 	INSTANCE.quantityToUnit.put(type, unit);
 	return unit;

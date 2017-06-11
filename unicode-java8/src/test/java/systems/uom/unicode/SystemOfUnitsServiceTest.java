@@ -38,7 +38,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-    private static final int NUM_OF_UNITS = 76;
+    private static final int NUM_OF_UNITS = 75;
     
     private static SystemOfUnitsService defaultService;
 
