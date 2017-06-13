@@ -104,16 +104,18 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Length> METER = addUnit(METRE);
     
     /**
-     * Constant for unit of length: millimeter
+     * Constant for unit of length: millimeter<br>
+     * This is a <b>convenience method</b> for <code>MILLI(METER)</code>.
      * @stable ICU 53.
      */
-    public static final Unit<Length> MILLIMETER = MILLI(METRE);
+    public static final Unit<Length> MILLIMETER = MILLI(METER);
     
     /**
-     * Constant for unit of length: centimeter
+     * Constant for unit of length: centimeter<br>
+     * This is a <b>convenience method</b> for <code>CENTI(METER)</code>.
      * @stable ICU 53.
      */
-    public static final Unit<Length> CENTIMETER = CENTI(METRE);
+    public static final Unit<Length> CENTIMETER = CENTI(METER);
 
 
     /**
@@ -282,11 +284,12 @@ public final class CLDR extends AbstractSystemOfUnits {
      * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
      * ).
      */
-    private static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
+    private static final Unit<Area> ARE = SQUARE_METRE.multiply(100);
 
     /**
      * A unit of area equal to <code>100 {@link #ARE}</code> (standard name
      * <code>ha</code>).
+     * @stable ICU 53.
      */
     public static final Unit<Area> HECTARE = addUnit(ARE.multiply(100)); // Exact.
 
@@ -309,7 +312,13 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> LITER = new TransformedUnit<Volume>(CUBIC_METRE, new RationalConverter(1, 1000));
     // private static final Unit<Volume> LITRE = addUnit(Units.LITRE);
-
+   
+    /**
+     * Constant for unit of volume: cubic-meter (<code>m³</code>).
+     * @stable ICU 54.
+     */
+    public static final Unit<Volume> CUBIC_METER = addUnit(CUBIC_METRE);
+    
     /**
      * A unit of volume equal to one cubic inch (<code>in³</code>).
      */
@@ -325,11 +334,14 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Volume> GALLON = addUnit(CUBIC_INCH.multiply(231));
 
     /**
+     * Constant for unit of volume: cubic-foot<br>
      * The cubic foot is an imperial and US customary (non-metric) unit of
      * volume, used in the United States, Canada, and the United Kingdom. It is
      * defined as the volume of a cube with sides of one foot (0.3048 m) in
      * length. Its volume is 28.3168 liters or about 1⁄35 of a cubic meter. (
      * <code>ft³</code>).
+     * 
+     * @stable ICU 54.
      */
     public static final Unit<Volume> CUBIC_FOOT = addUnit(CUBIC_INCH.multiply(1728).asType(Volume.class));
 
@@ -352,10 +364,13 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Volume> BUSHEL = addUnit(CUBIC_INCH.multiply(215042).divide(100));
 
     /**
+     * Constant for unit of volume: cup<br>
      * The cup is a unit of measurement for volume, used in cooking to measure
      * liquids (fluid measurement) and bulk foods such as granulated sugar (dry
      * measurement). A cup is equal to <code>8 {@link #FLUID_OUNCE}</code>
      * (standard name <code>cup</code>).
+     * 
+     * @stable ICU 54.
      */
     public static final Unit<Volume> CUP = addUnit(FLUID_OUNCE.multiply(8));
 
@@ -379,7 +394,10 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Time> MONTH = addUnit(YEAR_JULIAN.divide(12));
 
-    /** Constant for unit of time: century */
+    /** Constant for unit of time: century 
+     * @see <a href="http://www.aqua-calc.com/what-is/time/century">What Is century?</a>
+     * @stable ICU 56.
+     */
     public static final Unit<Time> CENTURY = addUnit(YEAR.multiply(100));
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
@@ -503,7 +521,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Pressure> POUND_PER_SQUARE_INCH = addUnit(
 	    new ProductUnit<Pressure>(POUND_FORCE.divide(INCH_INTERNATIONAL.pow(2))));
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Angle> CIRCLE = addUnit(new ProductUnit<Angle>(PI.multiply(RADIAN.multiply(2))));
+    private static final Unit<Angle> CIRCLE = new ProductUnit<Angle>(PI.multiply(RADIAN.multiply(2)));
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<SolidAngle> SPHERE = addUnit(

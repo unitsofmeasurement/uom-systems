@@ -26,7 +26,6 @@
 package systems.uom.ucum;
 
 import static tec.uom.se.unit.MetricPrefix.*;
-import static tec.uom.se.unit.Units.SECOND;
 import static tec.uom.se.AbstractUnit.ONE;
 import si.uom.quantity.*;
 import systems.uom.quantity.*;
@@ -61,7 +60,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.7.8, $Date: 2017-05-13 $
+ * @version 0.7.9, $Date: 2017-06-13 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 

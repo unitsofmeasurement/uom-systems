@@ -69,7 +69,7 @@ public class UnitFormatTest {
 		format2 = SimpleUnitFormat.getInstance();
 		
 		format2.label(CLDR.CARAT, "ct");
-		format2.label(CLDR.HECTARE, "Ha");
+		format2.label(CLDR.ACRE, "acr");
 		format2.label(CLDR.TONNE, "t");
 	}
 
@@ -88,8 +88,8 @@ public class UnitFormatTest {
 	
 	@Test
 	public void testFormat6() {
-		Unit<Area> b = CLDR.HECTARE;
-		assertEquals("Ha", b.toString());
+		Unit<Area> b = CLDR.ACRE;
+		assertEquals("acr", b.toString());
 	}
 	
 	@Test

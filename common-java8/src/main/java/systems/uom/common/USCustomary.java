@@ -245,25 +245,11 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	public static final Unit<Speed> FOOT_PER_SECOND = addUnit(FOOT.divide(SECOND)).asType(Speed.class);
 
 	/**
-	 * Alias for {@link FOOT_PER_SECOND}
-	 * 
-	 * @deprecated use FOOT_PER_SECOND.
-	 */
-	public static final Unit<Speed> FEET_PER_SECOND = FOOT_PER_SECOND;
-
-	/**
 	 * A unit of velocity expressing the number of international {@link #MILE
 	 * miles} per {@link #HOUR hour} (abbreviation <code>mph</code>).
 	 */
 	public static final Unit<Speed> MILE_PER_HOUR = addUnit(MILE.divide(HOUR).asType(Speed.class), "Mile per hour",
 			"mph");
-
-	/**
-	 * Alias for {@link MILE_PER_HOUR}
-	 * 
-	 * @deprecated use MILE_PER_HOUR.
-	 */
-	public static final Unit<Speed> MILES_PER_HOUR = MILE_PER_HOUR;
 
 	/**
 	 * A unit of velocity expressing the number of {@link #NAUTICAL_MILE
