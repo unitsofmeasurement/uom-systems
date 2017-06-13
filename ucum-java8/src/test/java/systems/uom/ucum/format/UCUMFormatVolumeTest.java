@@ -45,7 +45,7 @@ public class UCUMFormatVolumeTest extends UCUMFormatTestBase {
     @Test
     public void testFormatUCUMCI() {
 	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
-	assertEquals("L", unitFormat.format(UCUM.LITER_DM3)); // prints "CSTR"!
+	assertEquals("L", unitFormat.format(UCUM.LITER_DM3));
     }
     
     @Test
@@ -58,7 +58,7 @@ public class UCUMFormatVolumeTest extends UCUMFormatTestBase {
     public void testFormatUCUMCIDeciDm3() {
 	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
 	final Unit<?> deciliter = DECI(UCUM.LITER_DM3);
-	assertEquals("DL", unitFormat.format(deciliter)); // prints "CM3"
+	assertEquals("DL", unitFormat.format(deciliter));
     }
     
     @Test
@@ -144,8 +144,7 @@ public class UCUMFormatVolumeTest extends UCUMFormatTestBase {
     }
     
     @Test
-    @Ignore("There is no print format for gil in UCUM and no multiples intended with the parse format")
     public void testFormatUCUMCSmGill() {
-	assertEquals("[gil_br]", FORMAT_CS.format(MILLI(UCUM.GILL_BRITISH)));
+	assertEquals("m[gil_br]", FORMAT_CS.format(MILLI(UCUM.GILL_BRITISH)));
     }
 }
