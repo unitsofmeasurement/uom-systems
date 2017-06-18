@@ -76,7 +76,7 @@ class UCUMConverterFormatter {
 	    MultiplyConverter multiplyConverter = (MultiplyConverter) converter;
 	    double factor = multiplyConverter.getFactor();
 	    long lFactor = (long) factor;
-	    if ((lFactor != factor) || (lFactor < -9007199254740992L) || (lFactor > 9007199254740992L)) {
+	    if ((lFactor < Long.MIN_VALUE) || (lFactor > Long.MAX_VALUE)) { // (lFactor != factor) || 
 		throw new IllegalArgumentException("Only integer factors are supported in UCUM");
 	    }
 	    if (continued) {

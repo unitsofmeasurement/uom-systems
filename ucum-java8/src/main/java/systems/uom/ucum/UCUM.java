@@ -295,7 +295,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     public static final Unit<?> NEWTON_CONSTANT_OF_GRAVITY = addUnit(
 	    METER.pow(3).multiply(Units.KILOGRAM.pow(-1)).multiply(SECOND.pow(-2)).multiply(6.67259E-11));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Acceleration> ACCELLERATION_OF_FREEFALL = addUnit(
+    public static final Unit<Acceleration> ACCELERATION_OF_FREEFALL = addUnit(
 	    Units.METRE_PER_SQUARE_SECOND.multiply(9.80665));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Pressure> ATMOSPHERE = addUnit(Units.PASCAL.multiply(101325));
@@ -304,7 +304,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 	    new ProductUnit<Length>(VELOCITY_OF_LIGHT.multiply(YEAR_JULIAN)));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Force> GRAM_FORCE = addUnit(
-	    new ProductUnit<Force>(GRAM.multiply(ACCELLERATION_OF_FREEFALL)));
+	    new ProductUnit<Force>(GRAM.multiply(ACCELERATION_OF_FREEFALL)));
     // POUND_FORCE contains a forward reference to avoirdupois pound weight, so
     // it has been moved after section §39 below
 
@@ -582,7 +582,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     // ProductUnit<Force>(
     // POUND.multiply(ACCELLERATION_OF_FREEFALL)));
     public static final Unit<Force> POUND_FORCE = addUnit(
-	    POUND.multiply(ACCELLERATION_OF_FREEFALL).asType(Force.class));
+	    POUND.multiply(ACCELERATION_OF_FREEFALL).asType(Force.class));
 
     // public static final Unit<InformationRate> POUND_FORCE2 =
     // addUnit(POUND.multiply(ACCELLERATION_OF_FREEFALL).asType(InformationRate.class));
