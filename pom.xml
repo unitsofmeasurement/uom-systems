@@ -34,20 +34,20 @@
 		<ri.version>1.0.3</ri.version>
 		<se.version>1.0.7</se.version>
 		<si.version>0.7</si.version>
-		<quantity.version>0.7</quantity.version>
-		<systems.version>0.7</systems.version>
+		<quantity.version>0.7.1</quantity.version>
+		<systems.version>0.7.1</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
 
 	<modules>
-		<module>quantity</module><!-- 
+		<module>quantity</module> 
 		<module>common</module>
 		<module>common-java8</module>
 		<module>unicode</module>
 		<module>unicode-java8</module>
-		<module>ucum-java8</module>  -->
+		<module>ucum-java8</module>
 	</modules>
 
 	<build>
