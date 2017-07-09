@@ -580,12 +580,12 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     // public static final Unit<Force> POUND_FORCE = addUnit(new
     // ProductUnit<Force>(
-    // POUND.multiply(ACCELLERATION_OF_FREEFALL)));
+    // POUND.multiply(ACCELERATION_OF_FREEFALL)));
     public static final Unit<Force> POUND_FORCE = addUnit(
 	    POUND.multiply(ACCELERATION_OF_FREEFALL).asType(Force.class));
 
     // public static final Unit<InformationRate> POUND_FORCE2 =
-    // addUnit(POUND.multiply(ACCELLERATION_OF_FREEFALL).asType(InformationRate.class));
+    // addUnit(POUND.multiply(ACCELERATION_OF_FREEFALL).asType(InformationRate.class));
 
     /////////////////////////////////////
     // TROY WEIGHT UNITS: UCUM 4.4 §40 //
