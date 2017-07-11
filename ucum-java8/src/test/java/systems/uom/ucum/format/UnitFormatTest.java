@@ -28,6 +28,7 @@ package systems.uom.ucum.format;
 import static org.junit.Assert.*;
 import static systems.uom.ucum.UCUM.*;
 import static systems.uom.ucum.format.UCUMFormat.Variant.*;
+import static tec.uom.se.AbstractUnit.ONE;
 import static tec.uom.se.unit.MetricPrefix.*;
 
 import java.util.logging.Level;
@@ -41,6 +42,7 @@ import systems.uom.ucum.internal.format.TokenException;
 import tec.uom.se.format.LocalUnitFormat;
 import tec.uom.se.quantity.Quantities;
 import tec.uom.se.unit.ProductUnit;
+import tec.uom.se.unit.Units;
 
 import org.junit.*;
 
@@ -304,25 +306,15 @@ public class UnitFormatTest extends UCUMFormatTestBase {
 	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 
 	assertEquals("The DEKA prefix didn't work", DEKA(HERTZ), format.parse("DAHz"));
-
 	assertEquals("The HECTO prefix didn't work", HECTO(HERTZ), format.parse("HHz"));
-
 	assertEquals("The KILO prefix didn't work", KILO(HERTZ), format.parse("KHz"));
-
 	assertEquals("The MEGA prefix didn't work", MEGA(HERTZ), format.parse("MAHz"));
-
 	assertEquals("The GIGA prefix didn't work", GIGA(HERTZ), format.parse("GAHz"));
-
 	assertEquals("The TERA prefix didn't work", TERA(HERTZ), format.parse("TRHz"));
-
 	assertEquals("The PETA prefix didn't work", PETA(HERTZ), format.parse("PTHz"));
-
 	assertEquals("The EXA prefix didn't work", EXA(HERTZ), format.parse("EXHz"));
-
 	assertEquals("The ZETTA prefix didn't work", ZETTA(HERTZ), format.parse("ZAHz"));
-
 	assertEquals("The YOTTA prefix didn't work", YOTTA(HERTZ), format.parse("YAHz"));
-
 	assertEquals("The KILO prefix didn't work with a product unit", KILO(METER).divide(SECOND),
 		format.parse("KM/S"));
     }
@@ -419,27 +411,23 @@ public class UnitFormatTest extends UCUMFormatTestBase {
 
     @Test
     public void testFormatUCUMPrint() {
-	final UnitFormat format = UCUMFormat.getInstance(PRINT);
-
 	assertEquals(METER, sut.getUnit());
 	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it",
-		"m", format.format(METER));
+		"m", FORMAT_PRINT.format(METER));
 
 	Unit<Speed> v = new ProductUnit<Speed>(sut.getUnit().divide(SECOND));
-	assertEquals("the formatter isn't working with a product unit", "m/s", format.format(v));
+	assertEquals("the formatter isn't working with a product unit", "m/s", FORMAT_PRINT.format(v));
     }
 
     @Test
     public void testFormatUCUMCS() {
-	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
-
 	assertEquals(METER, sut.getUnit());
 	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it",
-		"m", format.format(METER));
+		"m", FORMAT_CS.format(METER));
 
 	Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
 
-	assertEquals("the formatter isn't working with a product unit", "m/s", format.format(v));
+	assertEquals("the formatter isn't working with a product unit", "m/s", FORMAT_CS.format(v));
     }
 
     @Test
@@ -503,6 +491,18 @@ public class UnitFormatTest extends UCUMFormatTestBase {
 	format.parse("g");
     }
 
+    @Test
+    public void testParseUCUMCITemperatureInverse() throws Exception {
+	Unit<?> parsedUnit = FORMAT_CI.parse("1/K");
+	assertEquals("The Unit<Temperature> in  parsed string doesn't match", ONE.divide(Units.KELVIN), parsedUnit);
+    }
+    
+    @Test
+    public void testParseUCUMCSTemperatureInverse() throws Exception {
+	Unit<?> parsedUnit = FORMAT_CS.parse("1/K");
+	assertEquals("The Unit<Temperature> in  parsed string doesn't match", ONE.divide(Units.KELVIN), parsedUnit);
+    }
+    
     @Test
     public void testUnitsUCUM() {
 	final UnitFormat cs = UCUMFormat.getInstance(CASE_SENSITIVE);
