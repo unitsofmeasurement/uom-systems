@@ -212,7 +212,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Angle> SECOND_ANGLE = addUnit(MINUTE_ANGLE.divide(60));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Volume> LITER = addUnit(Units.LITRE,  "Liter", "L", true);
+    public static final Unit<Volume> LITER = addUnit(Units.LITRE,  "liter", "L", true);
     /**
      * As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. Liter has
      * <b>two</b> definitions.
@@ -220,7 +220,7 @@ public final class UCUM extends AbstractSystemOfUnits {
      * @see <a href="http://unitsofmeasure.org/ucum.html#iso1000">UCUM Table
      *      5</a>
      */
-    public static final Unit<Volume> LITER_DM3 = addUnit(DECI(Units.CUBIC_METRE), "Liter", "l", true);
+    public static final Unit<Volume> LITER_DM3 = addUnit(DECI(Units.CUBIC_METRE), "liter", "l", true);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Area> ARE = addUnit(Units.SQUARE_METRE.multiply(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
