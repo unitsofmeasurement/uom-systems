@@ -34,8 +34,6 @@ import javax.measure.format.*;
 import systems.uom.ucum.format.UCUMFormat;
 import tec.uom.se.format.EBNFUnitFormat;
 
-import org.junit.*;
-
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  *
