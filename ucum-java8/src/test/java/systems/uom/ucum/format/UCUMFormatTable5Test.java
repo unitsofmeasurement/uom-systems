@@ -26,6 +26,7 @@
 package systems.uom.ucum.format;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static systems.uom.ucum.UCUM.LITER;
 import static systems.uom.ucum.UCUM.LITER_DM3;
 import static tec.uom.se.unit.MetricPrefix.DECI;
@@ -131,5 +132,10 @@ public class UCUMFormatTable5Test extends UCUMFormatTestBase {
     public void testParseUCUMCSMicro() {
 	final Unit<?> microliter = FORMAT_CS.parse("uL");
 	assertEquals(MICRO(UCUM.LITER), microliter);
+    }
+    
+    @Test
+    public void testEqualsLiters() {
+	assertNotEquals(UCUM.LITER, UCUM.LITER_DM3);
     }
 }
