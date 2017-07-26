@@ -60,7 +60,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.7.9, $Date: 2017-06-13 $
+ * @version 0.8, $Date: 2017-07-26 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -212,7 +212,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Angle> SECOND_ANGLE = addUnit(MINUTE_ANGLE.divide(60));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Volume> LITER = addUnit(Units.LITRE);
+    public static final Unit<Volume> LITER = addUnit(Units.LITRE,  "Liter", "L", true);
     /**
      * As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. Liter has
      * <b>two</b> definitions.
@@ -220,7 +220,7 @@ public final class UCUM extends AbstractSystemOfUnits {
      * @see <a href="http://unitsofmeasure.org/ucum.html#iso1000">UCUM Table
      *      5</a>
      */
-    public static final Unit<Volume> LITER_DM3 = addUnit(DECI(Units.CUBIC_METRE));
+    public static final Unit<Volume> LITER_DM3 = addUnit(DECI(Units.CUBIC_METRE), "Liter", "l", true);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Area> ARE = addUnit(Units.SQUARE_METRE.multiply(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
@@ -929,13 +929,39 @@ public final class UCUM extends AbstractSystemOfUnits {
 	INSTANCE.quantityToUnit.put(type, unit);
 	return unit;
     }
+    
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param text
+     *            the string to use as label or symbol
+     * @param isLabel
+     *            if the string should be used as a label or not
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
+	if (isLabel) {
+	    SimpleUnitFormat.getInstance().label(unit, text);
+	}
+	if (name != null && unit instanceof AbstractUnit) {
+	    return Helper.addUnit(INSTANCE.units, unit, name);
+	} else {
+	    INSTANCE.units.add(unit);
+	}
+	return unit;
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     // Label adjustments for UCUM system
     static {
 	SimpleUnitFormat.getInstance().label(ATOMIC_MASS_UNIT, "AMU");
-	SimpleUnitFormat.getInstance().label(LITER, "L");
-	SimpleUnitFormat.getInstance().label(LITER_DM3, "l");
+	//SimpleUnitFormat.getInstance().label(LITER, "L");
+	//SimpleUnitFormat.getInstance().label(LITER_DM3, "l");
 	SimpleUnitFormat.getInstance().label(OUNCE, "oz");
 	SimpleUnitFormat.getInstance().label(POUND, "lb");
 	SimpleUnitFormat.getInstance().label(PLANCK, "h");
