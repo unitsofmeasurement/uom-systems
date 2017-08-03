@@ -30,6 +30,7 @@ import static org.junit.Assert.assertNotEquals;
 import static systems.uom.ucum.UCUM.*;
 
 import javax.measure.Quantity;
+import javax.measure.UnitConverter;
 import javax.measure.quantity.Volume;
 
 import org.junit.Test;
@@ -58,6 +59,13 @@ public class UCUMTest {
     @Test
     public void testNameEqualsLiters() {
 	assertEquals(LITER.getName(), LITER_DM3.getName());
+    }
+    
+    @Test
+    public void testConvEqualsLiters() {
+	UnitConverter c1 = LITER.getConverterTo(LITER_DM3);
+	UnitConverter c2 = LITER_DM3.getConverterTo(LITER);
+	assertEquals(c1, c2);
     }
     
     @Test
