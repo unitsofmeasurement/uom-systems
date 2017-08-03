@@ -220,7 +220,7 @@ public final class UCUM extends AbstractSystemOfUnits {
      * @see <a href="http://unitsofmeasure.org/ucum.html#iso1000">UCUM Table
      *      5</a>
      */
-    public static final Unit<Volume> LITER_DM3 = addUnit(DECI(Units.CUBIC_METRE), "liter", "l", true);
+    public static final Unit<Volume> LITER_DM3 = addUnit(DECI(Units.METRE).pow(3).asType(Volume.class), "liter", "l", true);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Area> ARE = addUnit(Units.SQUARE_METRE.multiply(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
