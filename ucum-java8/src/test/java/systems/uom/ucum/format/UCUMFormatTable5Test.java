@@ -133,9 +133,4 @@ public class UCUMFormatTable5Test extends UCUMFormatTestBase {
 	final Unit<?> microliter = FORMAT_CS.parse("uL");
 	assertEquals(MICRO(UCUM.LITER), microliter);
     }
-    
-    @Test
-    public void testEqualsLiters() {
-	assertNotEquals(UCUM.LITER, UCUM.LITER_DM3);
-    }
 }
