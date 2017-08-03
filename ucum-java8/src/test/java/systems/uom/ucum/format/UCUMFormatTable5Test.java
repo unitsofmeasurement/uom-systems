@@ -125,7 +125,8 @@ public class UCUMFormatTable5Test extends UCUMFormatTestBase {
     @Test
     public void testParseUCUMCIMicro() {
 	final Unit<?> microliter = FORMAT_CI.parse("UL");
-	assertEquals(MICRO(UCUM.LITER_DM3), microliter); // Here we get LITER_DM3, not LITER
+	assertEquals(MICRO(UCUM.LITER_DM3), microliter); 
+	// Here we get LITER_DM3, not LITER because LITER has no c/i representation in UCUM
     }
     
     @Test

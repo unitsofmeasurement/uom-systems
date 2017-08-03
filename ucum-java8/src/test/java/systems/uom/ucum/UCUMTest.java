@@ -46,12 +46,18 @@ public class UCUMTest {
     @Test
     public void testLiterToDm3() {
 	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, LITER);
-	//final Quantity<Volume> oneDm3 = Quantities.getQuantity(1, LITER_DM3);
+	final Quantity<Volume> oneDm3 = Quantities.getQuantity(1, LITER_DM3);
 	assertEquals(1d, oneLiter.to(LITER_DM3).getValue());
+	//assertEquals(oneLiter, oneDm3);
     }
     
     @Test
-    public void testNotEqualsLiters() {
+    public void testUnitNotEqualsLiters() {
 	assertNotEquals(LITER, LITER_DM3);
+    }
+    
+    @Test
+    public void testNameEqualsLiters() {
+	assertEquals(LITER.getName(), LITER_DM3.getName());
     }
 }
