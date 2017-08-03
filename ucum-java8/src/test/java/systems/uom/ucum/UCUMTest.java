@@ -27,8 +27,7 @@ package systems.uom.ucum;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static systems.uom.ucum.UCUM.LITER;
-import static systems.uom.ucum.UCUM.LITER_DM3;
+import static systems.uom.ucum.UCUM.*;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Volume;
@@ -59,5 +58,17 @@ public class UCUMTest {
     @Test
     public void testNameEqualsLiters() {
 	assertEquals(LITER.getName(), LITER_DM3.getName());
+    }
+    
+    @Test
+    public void testStToDm3() {
+	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
+	assertEquals(1000d, oneLiter.to(LITER_DM3).getValue());
+    }
+    
+    @Test
+    public void testStToLiter() {
+	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
+	assertEquals(1000d, oneLiter.to(LITER).getValue());
     }
 }
