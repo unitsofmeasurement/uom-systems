@@ -30,6 +30,7 @@ import static tec.uom.se.unit.Units.KILOGRAM;
 import static tec.uom.se.unit.Units.METRE;
 import static tec.uom.se.unit.Units.MINUTE;
 import static tec.uom.se.unit.Units.SECOND;
+import static tec.uom.se.unit.MetricPrefix.MILLI;
 
 import java.io.IOException;
 
@@ -43,6 +44,7 @@ import javax.measure.quantity.Mass;
 import javax.measure.quantity.Speed;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import tec.uom.se.format.EBNFUnitFormat;
@@ -166,6 +168,18 @@ public class UnitFormatTest {
 			Unit<?> u = format.parse("kg");
 			assertEquals("kg", u.getSymbol());
 			assertEquals(KILOGRAM, u);
+		} catch (ParserException e) {
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	@Ignore
+	public void testParseSimple4() {
+		try {
+			Unit<?> u = format.parse("ms");
+			assertEquals("ms", u.getSymbol());
+			assertEquals(MILLI(SECOND), u);
 		} catch (ParserException e) {
 			fail(e.getMessage());
 		}
