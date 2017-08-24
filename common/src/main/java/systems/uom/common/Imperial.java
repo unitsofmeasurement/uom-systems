@@ -207,17 +207,14 @@ public final class Imperial extends AbstractSystemOfUnits {
 
     /**
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
-     * (standard name <code>oz_fl_uk</code>).
+     * (standard name <code>fl_oz_uk</code>).
      */
-    static final Unit<Volume> OUNCE_LIQUID_UK = GALLON_UK.divide(160); // ,
-								       // "oz_fl_uk",
-								       // true);
+    public static final Unit<Volume> FLUID_OUNCE = addUnit(GALLON_UK.divide(160), "fl_oz_uk", true);
 
     /**
-     * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
-     * (standard name <code>oz_fl</code>).
+     * @deprecated use <code>{@link #FLUID_OUNCE}</code> instead.
      */
-    public static final Unit<Volume> OUNCE_LIQUID = addUnit(OUNCE_LIQUID_UK, "oz_fl", true); // TODO
+    public static final Unit<Volume> OUNCE_FLUID = addUnit(GALLON_UK.divide(160), "oz_fl", true); // TODO
 											     // possible
 											     // ambiguity
 											     // if
@@ -230,22 +227,22 @@ public final class Imperial extends AbstractSystemOfUnits {
 											     // parse)
 
     /**
-     * A unit of volume equal to <code>5 {@link #OUNCE_LIQUID}</code> (standard
+     * A unit of volume equal to <code>5 {@link #FLUID_OUNCE}</code> (standard
      * name <code>gi</code>).
      */
-    public static final Unit<Volume> GILL = addUnit(OUNCE_LIQUID.multiply(5), "Gill", "gi");
+    public static final Unit<Volume> GILL = addUnit(FLUID_OUNCE.multiply(5), "Gill", "gi");
 
     /**
-     * A unit of volume equal to <code>20 {@link #OUNCE_LIQUID}</code> (standard
+     * A unit of volume equal to <code>20 {@link #FLUID_OUNCE}</code> (standard
      * name <code>pt</code>).
      */
-    public static final Unit<Volume> PINT = addUnit(OUNCE_LIQUID.multiply(20), "Pint", "pt", true);
+    public static final Unit<Volume> PINT = addUnit(FLUID_OUNCE.multiply(20), "Pint", "pt", true);
 
     /**
-     * A unit of volume equal to <code>40 {@link #OUNCE_LIQUID}</code> (standard
+     * A unit of volume equal to <code>40 {@link #FLUID_OUNCE}</code> (standard
      * name <code>qt</code>).
      */
-    public static final Unit<Volume> QUART = addUnit(OUNCE_LIQUID.multiply(40), "Quart", "qt");
+    public static final Unit<Volume> QUART = addUnit(FLUID_OUNCE.multiply(40), "Quart", "qt");
 
     /**
      * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
