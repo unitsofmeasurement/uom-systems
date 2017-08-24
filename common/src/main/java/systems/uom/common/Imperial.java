@@ -214,7 +214,7 @@ public final class Imperial extends AbstractSystemOfUnits {
     /**
      * @deprecated use <code>{@link #FLUID_OUNCE}</code> instead.
      */
-    public static final Unit<Volume> OUNCE_FLUID = addUnit(GALLON_UK.divide(160), "oz_fl", true); // TODO
+    public static final Unit<Volume> OUNCE_LIQUID = addUnit(GALLON_UK.divide(160), "oz_fl", true); // TODO
 											     // possible
 											     // ambiguity
 											     // if
