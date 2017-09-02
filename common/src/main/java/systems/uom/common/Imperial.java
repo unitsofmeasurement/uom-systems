@@ -207,34 +207,40 @@ public final class Imperial extends AbstractSystemOfUnits {
 
     /**
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
-     * (standard name <code>oz_fl_uk</code>).
+     * (standard name <code>fl_oz_uk</code>).
      */
     static final Unit<Volume> FLUID_OUNCE_UK = GALLON_UK.divide(160);
 
     /**
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
-     * (standard name <code>oz_fl</code>).
+     * (standard name <code>fl_oz</code>).
+     */
+    public static final Unit<Volume> FLUID_OUNCE = addUnit(FLUID_OUNCE_UK, "fl_oz", true);
+
+    /**
+     * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
+     * (standard name <code>fl_oz</code>).
      * @deprecated use FLUID_OUNCE
      */
     public static final Unit<Volume> OUNCE_LIQUID = FLUID_OUNCE_UK;
 
     /**
-     * A unit of volume equal to <code>5 {@link #OUNCE_LIQUID}</code> (standard
+     * A unit of volume equal to <code>5 {@link #FLUID_OUNCE}</code> (standard
      * name <code>gi</code>).
      */
-    public static final Unit<Volume> GILL = addUnit(OUNCE_LIQUID.multiply(5), "Gill", "gi");
+    public static final Unit<Volume> GILL = addUnit(FLUID_OUNCE.multiply(5), "Gill", "gi");
 
     /**
-     * A unit of volume equal to <code>20 {@link #OUNCE_LIQUID}</code> (standard
+     * A unit of volume equal to <code>20 {@link #FLUID_OUNCE}</code> (standard
      * name <code>pt</code>).
      */
-    public static final Unit<Volume> PINT = addUnit(OUNCE_LIQUID.multiply(20), "Pint", "pt", true);
+    public static final Unit<Volume> PINT = addUnit(FLUID_OUNCE.multiply(20), "Pint", "pt", true);
 
     /**
-     * A unit of volume equal to <code>40 {@link #OUNCE_LIQUID}</code> (standard
+     * A unit of volume equal to <code>40 {@link #FLUID_OUNCE}</code> (standard
      * name <code>qt</code>).
      */
-    public static final Unit<Volume> QUART = addUnit(OUNCE_LIQUID.multiply(40), "Quart", "qt");
+    public static final Unit<Volume> QUART = addUnit(FLUID_OUNCE.multiply(40), "Quart", "qt");
 
     /**
      * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
@@ -253,13 +259,6 @@ public final class Imperial extends AbstractSystemOfUnits {
      * name <code>fl drc</code>).
      */
     public static final Unit<Volume> FLUID_DRACHM = addUnit(FLUID_SCRUPLE.multiply(3), "fl drc", true);
-
-    /**
-     * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
-     * (standard name <code>oz_fl</code>).
-     */
-    public static final Unit<Volume> FLUID_OUNCE = addUnit(FLUID_OUNCE_UK, "oz_fl", true);
-
     
     /**
      * Adds a new unit not mapped to any specified quantity type.
@@ -269,8 +268,8 @@ public final class Imperial extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit) {
-	INSTANCE.units.add(unit);
-	return unit;
+        INSTANCE.units.add(unit);
+        return unit;
     }
 
     /**
@@ -288,15 +287,15 @@ public final class Imperial extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
-	if (isLabel) {
-	    SimpleUnitFormat.getInstance().label(unit, text);
-	}
-	if (name != null && unit instanceof AbstractUnit) {
-	    return Helper.addUnit(INSTANCE.units, unit, name);
-	} else {
-	    INSTANCE.units.add(unit);
-	}
-	return unit;
+    	if (isLabel) {
+    	    SimpleUnitFormat.getInstance().label(unit, text);
+    	}
+    	if (name != null && unit instanceof AbstractUnit) {
+    	    return Helper.addUnit(INSTANCE.units, unit, name);
+    	} else {
+    	    INSTANCE.units.add(unit);
+    	}
+    	return unit;
     }
 
     /**
@@ -312,7 +311,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit, String name, String label) {
-	return addUnit(unit, name, label, true);
+        return addUnit(unit, name, label, true);
     }
 
     /**
@@ -328,7 +327,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit, String text, boolean isLabel) {
-	return addUnit(unit, null, text, isLabel);
+        return addUnit(unit, null, text, isLabel);
     }
 
     /**
@@ -342,7 +341,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit, String text) {
-	return addUnit(unit, null, text, true);
+        return addUnit(unit, null, text, true);
     }
 
     // ///////////////////
@@ -351,6 +350,6 @@ public final class Imperial extends AbstractSystemOfUnits {
 
     @Override
     public String getName() {
-	return SYSTEM_NAME;
+        return SYSTEM_NAME;
     }
 }
