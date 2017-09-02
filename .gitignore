@@ -9,3 +9,5 @@ buildNumber.properties
 /.settings/
 /.project
 /_*/
+*.iml
+.idea/ 
