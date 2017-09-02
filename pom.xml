@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>0.7.2-SNAPSHOT</version>
+	<version>0.7.2</version>
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -34,8 +34,8 @@
 		<ri.version>1.0.3</ri.version>
 		<se.version>1.0.8</se.version>
 		<si.version>0.7.1</si.version>
-		<quantity.version>0.7.1</quantity.version>
-		<systems.version>0.7.2-SNAPSHOT</systems.version>
+		<quantity.version>0.7.2</quantity.version>
+		<systems.version>0.7.2</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
