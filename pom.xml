@@ -111,6 +111,41 @@
 						<verbose>true</verbose>
 					</configuration>
 				</plugin>
+				
+				<!-- ======================================================= -->
+                <!-- Maven License Plugin -->
+                <!-- ======================================================= -->
+                <plugin>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <configuration>
+                        <header>src/main/config/header.txt</header>
+                        <properties>
+                            <owner>Jean-Marie Dautelle, Werner Keil and others</owner>
+                            <currentYear>2017</currentYear>
+                        </properties>
+                        <excludes>
+                            <exclude>**/README</exclude>
+                            <exclude>**/pom.xml</exclude>
+                            <exclude>**/settings.xml</exclude>
+                            <exclude>src/test/resources/**</exclude>
+                            <exclude>src/main/resources/**</exclude>
+                            <exclude>src/main/config/**</exclude>
+                            <exclude>src/etc/**</exclude>
+                            <exclude>*.css</exclude>
+                            <exclude>*.editorconfig</exclude>
+                            <exclude>*.jpg</exclude>
+                            <exclude>*.png</exclude>
+                            <exclude>*.yml</exclude>
+                        </excludes>
+                        <headerDefinitions>
+                            <headerDefinition>src/main/config/headers.xml</headerDefinition>
+                        </headerDefinitions>
+                        <mapping>
+                            <java>JAVA_STYLE</java>
+                        </mapping>
+                    </configuration>
+                </plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

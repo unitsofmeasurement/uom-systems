@@ -1,16 +1,20 @@
 /*
- * Units of Measurement Systems for Java
+ * Units of Measurement Systems
  * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
  *
- * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+ *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -60,7 +64,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.8.1, $Date: 2017-08-03 $
+ * @version 0.8.2, $Date: 2017-09-02 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -81,7 +85,7 @@ public final class UCUM extends AbstractSystemOfUnits {
      * @return the UCUM system instance.
      */
     public static UCUM getInstance() {
-	return INSTANCE;
+        return INSTANCE;
     }
 
     //////////////////////////////
@@ -744,6 +748,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 	    MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Acidity.class));
 
     // @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public static final Unit<Concentration<Mass>> GRAM_PERCENT = addUnit(
 	    GRAM.divide(DECI(LITER)).asType(Concentration.class));
 
@@ -907,12 +912,12 @@ public final class UCUM extends AbstractSystemOfUnits {
 
     @Override
     public String getName() {
-	return "Unified Code for Units of Measure";
+        return "Unified Code for Units of Measure";
     }
 
     private static <U extends Unit<Q>, Q extends Quantity<Q>> U addUnit(U unit) {
-	INSTANCE.units.add(unit);
-	return unit;
+        INSTANCE.units.add(unit);
+        return unit;
     }
 
     /**
@@ -925,9 +930,9 @@ public final class UCUM extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
-	INSTANCE.units.add(unit);
-	INSTANCE.quantityToUnit.put(type, unit);
-	return unit;
+        INSTANCE.units.add(unit);
+        INSTANCE.quantityToUnit.put(type, unit);
+        return unit;
     }
     
     /**
@@ -945,15 +950,15 @@ public final class UCUM extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
-	if (isLabel) {
-	    SimpleUnitFormat.getInstance().label(unit, text);
-	}
-	if (name != null && unit instanceof AbstractUnit) {
-	    return Helper.addUnit(INSTANCE.units, unit, name);
-	} else {
-	    INSTANCE.units.add(unit);
-	}
-	return unit;
+    	if (isLabel) {
+    	    SimpleUnitFormat.getInstance().label(unit, text);
+    	}
+    	if (name != null && unit instanceof AbstractUnit) {
+    	    return Helper.addUnit(INSTANCE.units, unit, name);
+    	} else {
+    	    INSTANCE.units.add(unit);
+    	}
+    	return unit;
     }
 
     ////////////////////////////////////////////////////////////////////////////
