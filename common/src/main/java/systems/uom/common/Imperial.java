@@ -51,7 +51,7 @@ import tec.units.ri.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.2, $Date: 2017-03-03 $
+ * @version 1.0.3, $Date: 2017-09-02 $
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
@@ -209,25 +209,14 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
      * (standard name <code>oz_fl_uk</code>).
      */
-    static final Unit<Volume> OUNCE_LIQUID_UK = GALLON_UK.divide(160); // ,
-								       // "oz_fl_uk",
-								       // true);
+    static final Unit<Volume> FLUID_OUNCE_UK = GALLON_UK.divide(160);
 
     /**
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
      * (standard name <code>oz_fl</code>).
+     * @deprecated use FLUID_OUNCE
      */
-    public static final Unit<Volume> OUNCE_LIQUID = addUnit(OUNCE_LIQUID_UK, "oz_fl", true); // TODO
-											     // possible
-											     // ambiguity
-											     // if
-											     // US
-											     // and
-											     // Imperial
-											     // are
-											     // registered
-											     // (try
-											     // parse)
+    public static final Unit<Volume> OUNCE_LIQUID = FLUID_OUNCE_UK;
 
     /**
      * A unit of volume equal to <code>5 {@link #OUNCE_LIQUID}</code> (standard
@@ -265,6 +254,13 @@ public final class Imperial extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> FLUID_DRACHM = addUnit(FLUID_SCRUPLE.multiply(3), "fl drc", true);
 
+    /**
+     * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
+     * (standard name <code>oz_fl</code>).
+     */
+    public static final Unit<Volume> FLUID_OUNCE = addUnit(FLUID_OUNCE_UK, "oz_fl", true);
+
+    
     /**
      * Adds a new unit not mapped to any specified quantity type.
      *
