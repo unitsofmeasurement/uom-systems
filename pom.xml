@@ -32,8 +32,8 @@
 		<jsr.version>1.0</jsr.version>
 		<lib.version>1.0.2</lib.version>
 		<ri.version>1.0.3</ri.version>
-		<se.version>1.0.8</se.version>
-		<si.version>0.7.1</si.version>
+		<se.version>1.0.9-SNAPSHOT</se.version>
+		<si.version>0.8-SNAPSHOT</si.version>
 		<quantity.version>0.7.2</quantity.version>
 		<systems.version>0.8-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
