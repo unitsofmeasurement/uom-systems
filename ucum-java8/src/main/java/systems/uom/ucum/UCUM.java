@@ -64,7 +64,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.8.2, $Date: 2017-09-02 $
+ * @version 0.8.3, $Date: 2017-11-30 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -801,9 +801,9 @@ public final class UCUM extends AbstractSystemOfUnits {
     /////////////////////////////////
     // LEVELS UNITS: UCUM 4.5 §46 //
     ////////////////////////////////
-    @SuppressWarnings("unchecked")
-    public static final Unit<Level<Dimensionless>> NEPER = addUnit(
-	    ONE.transform(new LogConverter(Math.E)).asType(Level.class));
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public static final Unit<Level<Dimensionless>> NEPER = (Unit) addUnit(
+	    ONE.transform(new LogConverter(Math.E)));
     /**
      * A logarithmic unit used to describe a power {@link Level} ratio (standard
      * name <code>dB</code>).
@@ -812,9 +812,9 @@ public final class UCUM extends AbstractSystemOfUnits {
     // .transform(new LogConverter(10).inverse().concatenate(
     // RationalConverter.of(1d, 10d))));
 
-    @SuppressWarnings("unchecked")
-    public static final Unit<Level<Dimensionless>> BEL = addUnit(
-	    ONE.transform(new LogConverter(10)).asType(Level.class));
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public static final Unit<Level<Dimensionless>> BEL = (Unit) addUnit(
+	    ONE.transform(new LogConverter(10)));
 
     @SuppressWarnings("unchecked")
     public static final Unit<Level<Pressure>> BEL_SOUND = addUnit(
