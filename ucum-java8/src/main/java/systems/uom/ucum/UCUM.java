@@ -837,11 +837,11 @@ public final class UCUM extends AbstractSystemOfUnits {
 	    NANO(VOLT).multiply(10).transform(new LogConverter(10)).multiply(2).asType(Level.class));
 
     @SuppressWarnings("unchecked")
-    public static final Unit<Level<ElectricPotential>> BEL_WATT = addUnit(
+    public static final Unit<Level<Power>> BEL_WATT = addUnit(
 	    WATT.transform(new LogConverter(10)).asType(Level.class));
 
     @SuppressWarnings("unchecked")
-    public static final Unit<Level<ElectricPotential>> BEL_KILOWATT = addUnit(
+    public static final Unit<Level<Power>> BEL_KILOWATT = addUnit(
 	    KILO(WATT).transform(new LogConverter(10)).asType(Level.class));
 
     ///////////////////////////////////////
