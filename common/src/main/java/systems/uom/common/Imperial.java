@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2018, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -55,7 +55,7 @@ import tec.units.ri.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.3, $Date: 2017-09-02 $
+ * @version 1.0.4, $Date: 2018-05-02 $
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
@@ -107,7 +107,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
      * standard name <code>lb</code>).
      */
-    static final Unit<Mass> POUND = addUnit(
+    public static final Unit<Mass> POUND = addUnit(
 	    KILOGRAM.multiply(AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR), "Pound", "lb", true);
     // LABEL);
     /**
