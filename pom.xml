@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>0.8-SNAPSHOT</version>
+	<version>0.8</version>
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -32,10 +32,10 @@
 		<jsr.version>1.0</jsr.version>
 		<lib.version>1.0.2</lib.version>
 		<ri.version>1.0.3</ri.version>
-		<se.version>1.0.9-SNAPSHOT</se.version>
-		<si.version>0.8-SNAPSHOT</si.version>
+		<se.version>1.0.8</se.version>
+		<si.version>0.8</si.version>
 		<quantity.version>0.7.2</quantity.version>
-		<systems.version>0.8-SNAPSHOT</systems.version>
+		<systems.version>0.8</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -122,7 +122,7 @@
                         <header>src/main/config/header.txt</header>
                         <properties>
                             <owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-                            <currentYear>2017</currentYear>
+                            <currentYear>2018</currentYear>
                         </properties>
                         <excludes>
                             <exclude>**/README</exclude>

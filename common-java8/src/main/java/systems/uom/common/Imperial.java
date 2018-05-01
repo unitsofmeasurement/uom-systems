@@ -287,9 +287,9 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code>
      * (standard name <code>lbf</code>).
      */
-    static final Unit<Force> POUND_FORCE = addUnit(
+    public static final Unit<Force> POUND_FORCE = addUnit(
 	    NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
-		    .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR));
+		    .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR), "lbf");
     /**
      * A unit of force equal to <code>9.80665 N</code> (standard name
      * <code>kgf</code>).

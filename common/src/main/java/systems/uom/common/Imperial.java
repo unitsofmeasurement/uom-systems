@@ -34,6 +34,7 @@ import static tec.units.ri.unit.Units.*;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Area;
+import javax.measure.quantity.Force;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Temperature;
@@ -71,6 +72,13 @@ public final class Imperial extends AbstractSystemOfUnits {
     static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
 
     static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
+    
+    /**
+     * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
+     */
+    private static final int STANDARD_GRAVITY_DIVIDEND = 980665;
+
+    private static final int STANDARD_GRAVITY_DIVISOR = 100000;
 
     /**
      * Default constructor (prevents this class from being instantiated).
@@ -153,7 +161,7 @@ public final class Imperial extends AbstractSystemOfUnits {
     static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67), "°F", true);
 
     //////////////
-    // Time //
+    // Time     //
     //////////////
     /**
      * A unit of time equal to <code>60 s</code> (standard name <code>min</code>
@@ -263,6 +271,21 @@ public final class Imperial extends AbstractSystemOfUnits {
      * name <code>fl drc</code>).
      */
     public static final Unit<Volume> FLUID_DRACHM = addUnit(FLUID_SCRUPLE.multiply(3), "fl drc", true);
+    
+    /**
+     * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code>
+     * (standard name <code>lbf</code>).
+     */
+    public static final Unit<Force> POUND_FORCE = addUnit(
+	    NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
+		    .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR), "lbf");
+    /**
+     * A unit of force equal to <code>9.80665 N</code> (standard name
+     * <code>kgf</code>).
+     */
+    static final Unit<Force> KILOGRAM_FORCE = addUnit(
+	    NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+
     
     /**
      * Adds a new unit not mapped to any specified quantity type.
