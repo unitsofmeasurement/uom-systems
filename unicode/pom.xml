@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>0.8</version>
+		<version>0.9-SNAPSHOT</version>
 	</parent>
 	<artifactId>systems-unicode</artifactId>
 	<name>Units of Measurement Unicode CLDR System</name>

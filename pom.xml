@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>0.8</version>
+	<version>0.9-SNAPSHOT</version>
 	<parent>
-		<groupId>tec.uom</groupId>
+		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0.4</version>
+		<version>1.2</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -30,12 +30,14 @@
 	<properties>
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
+		<jsr2.version>2.0-SNAPSHOT</jsr2.version>
 		<lib.version>1.0.2</lib.version>
 		<ri.version>1.0.3</ri.version>
-		<se.version>1.0.8</se.version>
-		<si.version>0.8</si.version>
-		<quantity.version>0.7.2</quantity.version>
-		<systems.version>0.8</systems.version>
+		<ri2.version>1.0</ri2.version>
+		<se.version>1.0.9</se.version>
+		<si.version>0.9-SNAPSHOT</si.version>
+		<quantity.version>0.8</quantity.version>
+		<systems.version>0.9-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -47,6 +49,7 @@
 		<module>common-java8</module>
 		<module>unicode</module>
 		<module>unicode-java8</module>
+		<module>ucum</module>
 		<module>ucum-java8</module>
 	</modules>
 

@@ -4,10 +4,10 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>0.8</version>
+		<version>0.9-SNAPSHOT</version>
 	</parent>
 	<artifactId>systems-ucum-java8</artifactId>
-	<name>Units of Measurement UCUM System</name>
+	<name>Units of Measurement UCUM System for Java 8</name>
 	<description>Unit System supporting the Unified Code for Units of Measure (UCUM) on Java SE 8</description>
 	<licenses>
 		<license>
@@ -21,7 +21,7 @@
 	</licenses>
 	<developers>
 		<developer>
-			<name>Werner Keilw</name>
+			<name>Werner Keil</name>
 			<organization>Creative Arts &amp; Technologies</organization>
 			<organizationUrl>http://www.catmedia.site/</organizationUrl>
 		</developer>

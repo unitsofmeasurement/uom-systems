@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -6,9 +7,31 @@
 		<artifactId>systems-parent</artifactId>
 		<version>0.9-SNAPSHOT</version>
 	</parent>
-	<artifactId>systems-common-java8</artifactId>
-	<name>Units of Measurement Common Unit Systems for Java 8</name>
-    <packaging>bundle</packaging>
+	<artifactId>systems-ucum</artifactId>
+	<name>Units of Measurement UCUM System</name>
+	<description>Unit System supporting the Unified Code for Units of Measure (UCUM)</description>
+	<licenses>
+		<license>
+			<name>BSD</name>
+			<url>LICENSE</url>
+		</license>
+		<license>
+			<name>UCUM</name>
+			<url>http://unitsofmeasure.org/trac/wiki/TermsOfUse</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Werner Keil</name>
+			<organization>Creative Arts &amp; Technologies</organization>
+			<organizationUrl>http://www.catmedia.site/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Magno N. A. Cruz</name>
+			<organization>GlobalMentor, Inc.</organization>
+			<organizationUrl>http://www.globalmentor.com/</organizationUrl>
+		</developer>
+	</developers>
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
@@ -18,26 +41,34 @@
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>tec.uom</groupId>
-				<artifactId>uom-se</artifactId>
-				<version>${se.version}</version>
+				<groupId>javax.measure</groupId>
+				<artifactId>unit-api</artifactId>
+				<version>${jsr.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tec.units</groupId>
+				<artifactId>indriya</artifactId>
+				<version>${ri2.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>systems.uom</groupId>
 				<artifactId>systems-quantity</artifactId>
 				<version>${quantity.version}</version>
-				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>systems.uom</groupId>
+				<artifactId>systems-common</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>tec.uom</groupId>
-			<artifactId>uom-se</artifactId>
+			<groupId>tec.units</groupId>
+			<artifactId>indriya</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>si.uom</groupId>
@@ -45,7 +76,7 @@
 		</dependency>
 		<dependency>
 			<groupId>si.uom</groupId>
-			<artifactId>si-units-java8</artifactId>
+			<artifactId>si-units</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>systems.uom</groupId>
@@ -67,30 +98,14 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
-			
-			<!-- ======================================================= -->
-            <!-- JavaDoc Attachment -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
 
-            <!-- ======================================================= -->
-            <!-- Packaging (OSGi bundle) -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Export-Package>systems.uom.common</Export-Package>
-                        <Private-Package>systems.uom.common.internal</Private-Package>
-						<Import-Package>*,tec.uom.se.format</Import-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
+			<!-- ======================================================= -->
+			<!-- JavaDoc Attachment -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 </project>

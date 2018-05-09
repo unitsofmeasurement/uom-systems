@@ -38,6 +38,7 @@ import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Force;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import si.uom.SI;
@@ -65,6 +66,7 @@ public class NewtonsSecondLawTest {
 	}
 	
 	@Test
+	@Ignore("should be fixed for Indriya if problem persists")
 	public void testWithOddUnits() {
 		MassAmount m = new MassAmount(100, USCustomary.POUND);
 		@SuppressWarnings("unchecked") // we know this creates an acceleration!

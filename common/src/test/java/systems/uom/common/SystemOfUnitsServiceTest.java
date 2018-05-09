@@ -90,7 +90,7 @@ public class SystemOfUnitsServiceTest {
     public void testOtherUnitSystemServices() {
 	Collection<ServiceProvider> services = ServiceProvider.available();
 	assertNotNull(services);
-	assertEquals(3, services.size());
+	assertEquals(4, services.size());
 	// for (SystemOfUnitsService service : services) {
 	// checkService(service);
 	// }
