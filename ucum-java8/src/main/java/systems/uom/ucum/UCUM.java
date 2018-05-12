@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2018, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -32,7 +32,12 @@ package systems.uom.ucum;
 import static tec.uom.se.unit.MetricPrefix.*;
 import static tec.uom.se.AbstractUnit.ONE;
 import si.uom.quantity.*;
-import systems.uom.quantity.*;
+import systems.uom.quantity.Acidity;
+import systems.uom.quantity.Concentration;
+import systems.uom.quantity.Drag;
+import systems.uom.quantity.Information;
+import systems.uom.quantity.InformationRate;
+import systems.uom.quantity.Level;
 import si.uom.SI;
 import tec.uom.se.*;
 import tec.uom.se.format.SimpleUnitFormat;
@@ -64,7 +69,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.8.3, $Date: 2017-11-30 $
+ * @version 0.8.4, $Date: 2018-05-12 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
