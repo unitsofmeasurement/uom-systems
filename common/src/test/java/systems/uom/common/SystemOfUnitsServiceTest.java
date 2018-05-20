@@ -90,7 +90,7 @@ public class SystemOfUnitsServiceTest {
     public void testOtherUnitSystemServices() {
 	Collection<ServiceProvider> services = ServiceProvider.available();
 	assertNotNull(services);
-	assertEquals(4, services.size());
+	assertEquals(3, services.size());
 	// for (SystemOfUnitsService service : services) {
 	// checkService(service);
 	// }
@@ -121,8 +121,8 @@ public class SystemOfUnitsServiceTest {
      * assertEquals(1, service.getAvailableSystemsOfUnits().size()); system =
      * service.getSystemOfUnits(); assertNotNull(system); assertEquals("SI",
      * system.getName()); break; case
-     * "tec.units.ri.internal.DefaultSystemOfUnitsService":
-     * assertEquals("tec.units.ri.internal.DefaultSystemOfUnitsService",
+     * "tec.units.indriya.internal.DefaultSystemOfUnitsService":
+     * assertEquals("tec.units.indriya.internal.DefaultSystemOfUnitsService",
      * service.getClass().getName());
      * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
      * service.getAvailableSystemsOfUnits().size()); system =

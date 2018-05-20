@@ -32,12 +32,12 @@ package systems.uom.common;
 import static org.junit.Assert.assertEquals;
 import static systems.uom.common.IndianPrefix.CRORE;
 import static systems.uom.common.IndianPrefix.LAKH;
-import static tec.units.ri.unit.MetricPrefix.KILO;
-import static tec.units.ri.unit.Units.METRE;
+import static tec.units.indriya.unit.MetricPrefix.KILO;
+import static tec.units.indriya.unit.Units.METRE;
 
 import org.junit.Test;
 
-import tec.units.ri.function.RationalConverter;
+import tec.units.indriya.function.RationalConverter;
 
 public class IndianTest {
 	@Test

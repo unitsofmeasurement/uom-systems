@@ -32,9 +32,9 @@ package systems.uom.common;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static systems.uom.common.USCustomary.POUND; 
-import static tec.units.ri.unit.MetricPrefix.*;
-import static tec.units.ri.unit.Units.GRAM;
-import static tec.units.ri.unit.Units.KILOGRAM;
+import static tec.units.indriya.unit.MetricPrefix.*;
+import static tec.units.indriya.unit.Units.GRAM;
+import static tec.units.indriya.unit.Units.KILOGRAM;
 
 import org.junit.Test;
 

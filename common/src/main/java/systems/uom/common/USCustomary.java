@@ -29,14 +29,14 @@
  */
 package systems.uom.common;
 
-import static tec.units.ri.unit.MetricPrefix.MICRO;
-import static tec.units.ri.unit.Units.*;
-import tec.units.ri.AbstractSystemOfUnits;
-import tec.units.ri.AbstractUnit;
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.RationalConverter;
-import tec.units.ri.unit.ProductUnit;
-import tec.units.ri.unit.TransformedUnit;
+import static tec.units.indriya.unit.MetricPrefix.MICRO;
+import static tec.units.indriya.unit.Units.*;
+import tec.units.indriya.AbstractSystemOfUnits;
+import tec.units.indriya.AbstractUnit;
+import tec.units.indriya.format.SimpleUnitFormat;
+import tec.units.indriya.function.RationalConverter;
+import tec.units.indriya.unit.ProductUnit;
+import tec.units.indriya.unit.TransformedUnit;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Angle;

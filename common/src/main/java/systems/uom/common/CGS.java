@@ -29,12 +29,12 @@
  */
 package systems.uom.common;
 
-import static tec.units.ri.AbstractUnit.ONE;
-import static tec.units.ri.unit.MetricPrefix.CENTI;
-import static tec.units.ri.unit.Units.JOULE;
-import static tec.units.ri.unit.Units.METRE;
-import static tec.units.ri.unit.Units.NEWTON;
-import static tec.units.ri.unit.Units.PASCAL;
+import static tec.units.indriya.AbstractUnit.ONE;
+import static tec.units.indriya.unit.MetricPrefix.CENTI;
+import static tec.units.indriya.unit.Units.JOULE;
+import static tec.units.indriya.unit.Units.METRE;
+import static tec.units.indriya.unit.Units.NEWTON;
+import static tec.units.indriya.unit.Units.PASCAL;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
@@ -49,11 +49,11 @@ import javax.measure.quantity.Time;
 
 import si.uom.quantity.DynamicViscosity;
 import si.uom.quantity.KinematicViscosity;
-import tec.units.ri.AbstractSystemOfUnits;
-import tec.units.ri.AbstractUnit;
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.unit.ProductUnit;
-import tec.units.ri.unit.Units;
+import tec.units.indriya.AbstractSystemOfUnits;
+import tec.units.indriya.AbstractUnit;
+import tec.units.indriya.format.SimpleUnitFormat;
+import tec.units.indriya.unit.ProductUnit;
+import tec.units.indriya.unit.Units;
 
 /**
  * <p>

@@ -30,7 +30,9 @@
 package systems.uom.common;
 
 import static org.junit.Assert.*;
-import static tec.units.ri.unit.Units.METRE;
+import static tec.units.indriya.unit.Units.METRE;
+
+import java.math.BigDecimal;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
@@ -39,9 +41,9 @@ import javax.measure.quantity.Mass;
 import org.junit.Before;
 import org.junit.Test;
 
-import tec.units.ri.quantity.DefaultQuantityFactory;
-import tec.units.ri.quantity.Quantities;
-import tec.units.ri.unit.Units;
+import tec.units.indriya.quantity.DefaultQuantityFactory;
+import tec.units.indriya.quantity.Quantities;
+import tec.units.indriya.unit.Units;
 
 public class ArithmeticTest {
 
@@ -67,7 +69,7 @@ public class ArithmeticTest {
 		Quantity<Length> km = Quantities.getQuantity(1000, Units.METRE);
 		Quantity<Length> mile = Quantities.getQuantity(1, USCustomary.MILE);
 		Quantity<Length> result = km.add(mile);
-		assertEquals(2609, result.getValue());
+		assertEquals(BigDecimal.valueOf(2609.344d), result.getValue());
 		assertEquals(Units.METRE, result.getUnit());
 	}
 	
@@ -85,7 +87,7 @@ public class ArithmeticTest {
 		Quantity<Length> km = Quantities.getQuantity(2000, Units.METRE);
 		Quantity<Length> mile = Quantities.getQuantity(1, USCustomary.MILE);
 		Quantity<Length> result = km.subtract(mile);
-		assertEquals(391, result.getValue());
+		assertEquals(BigDecimal.valueOf(390.656d), result.getValue());
 		assertEquals(Units.METRE, result.getUnit());
 	}
 	
