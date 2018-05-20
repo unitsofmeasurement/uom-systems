@@ -42,91 +42,90 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-    private static final int NUM_OF_UNITS_US = 45;
-    private static final int NUM_OF_UNITS_CGS = 12;
+	private static final int NUM_OF_UNITS_US = 45;
+	private static final int NUM_OF_UNITS_CGS = 12;
 
-    private static SystemOfUnitsService defaultService;
+	private static SystemOfUnitsService defaultService;
 
-    @BeforeClass
-    public static void setUp() {
-	defaultService = ServiceProvider.current().getSystemOfUnitsService();
-    }
+	@BeforeClass
+	public static void setUp() {
+		defaultService = ServiceProvider.current().getSystemOfUnitsService();
+	}
 
-    @Test
-    public void testDefaultUnitSystemService() {
-	assertNotNull(defaultService);
-	assertEquals("systems.uom.common.internal.CommonSystemService", defaultService.getClass().getName());
-	SystemOfUnits system = defaultService.getSystemOfUnits();
-	assertNotNull(system);
-	assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
-	assertEquals("United States Customary Units", system.getName());
-	assertNotNull(system.getUnits());
-	assertEquals(NUM_OF_UNITS_US, system.getUnits().size());
-    }
+	@Test
+	public void testDefaultUnitSystemService() {
+		assertNotNull(defaultService);
+		assertEquals("systems.uom.common.internal.CommonSystemService", defaultService.getClass().getName());
+		SystemOfUnits system = defaultService.getSystemOfUnits();
+		assertNotNull(system);
+		assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
+		assertEquals("United States Customary Units", system.getName());
+		assertNotNull(system.getUnits());
+		assertEquals(NUM_OF_UNITS_US, system.getUnits().size());
+	}
 
-    @Test
-    // TODO consolidate asserts
-    public void testUnitSystemServiceAlias() {
-	assertNotNull(defaultService);
-	assertEquals("systems.uom.common.internal.CommonSystemService", defaultService.getClass().getName());
-	SystemOfUnits system = defaultService.getSystemOfUnits("USCustomary");
-	assertNotNull(system);
-	assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
-	assertEquals("United States Customary Units", system.getName());
-	assertNotNull(system.getUnits());
-	assertEquals(NUM_OF_UNITS_US, system.getUnits().size());
-	SystemOfUnits system2 = defaultService.getSystemOfUnits("US");
-	assertEquals(system, system2);
+	@Test
+	// TODO consolidate asserts
+	public void testUnitSystemServiceAlias() {
+		assertNotNull(defaultService);
+		assertEquals("systems.uom.common.internal.CommonSystemService", defaultService.getClass().getName());
+		SystemOfUnits system = defaultService.getSystemOfUnits("USCustomary");
+		assertNotNull(system);
+		assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
+		assertEquals("United States Customary Units", system.getName());
+		assertNotNull(system.getUnits());
+		assertEquals(NUM_OF_UNITS_US, system.getUnits().size());
+		SystemOfUnits system2 = defaultService.getSystemOfUnits("US");
+		assertEquals(system, system2);
 
-	system = defaultService.getSystemOfUnits("CGS");
-	assertNotNull(system);
-	assertEquals("Centimetre–gram–second System of Units", system.getName());
-	system2 = defaultService.getSystemOfUnits("Centimetre–gram–second");
-	assertEquals(system, system2);
-	assertEquals(NUM_OF_UNITS_CGS, system.getUnits().size());
-    }
+		system = defaultService.getSystemOfUnits("CGS");
+		assertNotNull(system);
+		assertEquals("Centimetre–gram–second System of Units", system.getName());
+		system2 = defaultService.getSystemOfUnits("Centimetre–gram–second");
+		assertEquals(system, system2);
+		assertEquals(NUM_OF_UNITS_CGS, system.getUnits().size());
+	}
 
-    @Test
-    public void testOtherUnitSystemServices() {
-	Collection<ServiceProvider> services = ServiceProvider.available();
-	assertNotNull(services);
-	assertEquals(3, services.size());
-	// for (SystemOfUnitsService service : services) {
-	// checkService(service);
-	// }
-    }
-    /*
-     * private void checkService(SystemOfUnitsService service) { SystemOfUnits
-     * system; switch (service.getClass().getName()) { case
-     * "systems.uom.iso80k.internal.ISO80kSystemService":
-     * assertEquals("systems.uom.iso80k.internal.ISO80kSystemService",
-     * service.getClass().getName());
-     * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
-     * service.getAvailableSystemsOfUnits().size()); system =
-     * service.getSystemOfUnits(); assertNotNull(system);
-     * assertEquals("ISO80000", system.getName()); system =
-     * service.getSystemOfUnits("ISO80000"); assertNotNull(system);
-     * assertEquals("ISO80000", system.getName()); break; case
-     * "systems.uom.common.internal.CommonSystemService":
-     * assertEquals("systems.uom.common.internal.CommonSystemService",
-     * service.getClass().getName());
-     * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(2,
-     * service.getAvailableSystemsOfUnits().size()); system =
-     * service.getSystemOfUnits(); assertNotNull(system); assertEquals("US",
-     * system.getName()); system = service.getSystemOfUnits("Imperial");
-     * assertNotNull(system); assertEquals("Imperial", system.getName()); break;
-     * case "si.uom.impl.SISystemService":
-     * assertEquals("si.uom.impl.SISystemService", service.getClass()
-     * .getName()); assertNotNull(service.getAvailableSystemsOfUnits());
-     * assertEquals(1, service.getAvailableSystemsOfUnits().size()); system =
-     * service.getSystemOfUnits(); assertNotNull(system); assertEquals("SI",
-     * system.getName()); break; case
-     * "tec.units.indriya.internal.DefaultSystemOfUnitsService":
-     * assertEquals("tec.units.indriya.internal.DefaultSystemOfUnitsService",
-     * service.getClass().getName());
-     * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
-     * service.getAvailableSystemsOfUnits().size()); system =
-     * service.getSystemOfUnits(); assertNotNull(system); assertEquals("Units",
-     * system.getName()); break; default: break; } }
-     */
+	@Test
+	public void testOtherUnitSystemServices() {
+		Collection<ServiceProvider> services = ServiceProvider.available();
+		assertNotNull(services);
+		assertEquals(3, services.size());
+		// for (SystemOfUnitsService service : services) {
+		// checkService(service);
+		// }
+	}
+	/*
+	 * private void checkService(SystemOfUnitsService service) { SystemOfUnits
+	 * system; switch (service.getClass().getName()) { case
+	 * "systems.uom.iso80k.internal.ISO80kSystemService":
+	 * assertEquals("systems.uom.iso80k.internal.ISO80kSystemService",
+	 * service.getClass().getName());
+	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
+	 * service.getAvailableSystemsOfUnits().size()); system =
+	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("ISO80000",
+	 * system.getName()); system = service.getSystemOfUnits("ISO80000");
+	 * assertNotNull(system); assertEquals("ISO80000", system.getName()); break;
+	 * case "systems.uom.common.internal.CommonSystemService":
+	 * assertEquals("systems.uom.common.internal.CommonSystemService",
+	 * service.getClass().getName());
+	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(2,
+	 * service.getAvailableSystemsOfUnits().size()); system =
+	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("US",
+	 * system.getName()); system = service.getSystemOfUnits("Imperial");
+	 * assertNotNull(system); assertEquals("Imperial", system.getName()); break;
+	 * case "si.uom.impl.SISystemService":
+	 * assertEquals("si.uom.impl.SISystemService", service.getClass() .getName());
+	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
+	 * service.getAvailableSystemsOfUnits().size()); system =
+	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("SI",
+	 * system.getName()); break; case
+	 * "tec.units.indriya.internal.DefaultSystemOfUnitsService":
+	 * assertEquals("tec.units.indriya.internal.DefaultSystemOfUnitsService",
+	 * service.getClass().getName());
+	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
+	 * service.getAvailableSystemsOfUnits().size()); system =
+	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("Units",
+	 * system.getName()); break; default: break; } }
+	 */
 }
