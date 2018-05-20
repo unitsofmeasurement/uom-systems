@@ -29,24 +29,24 @@
  */
 package systems.uom.unicode;
 
-import static tec.units.ri.unit.MetricPrefix.*;
-import static tec.units.ri.unit.Units.CUBIC_METRE;
-import static tec.units.ri.unit.Units.METRE;
-import static tec.units.ri.unit.Units.SQUARE_METRE;
-import static tec.units.ri.AbstractUnit.ONE;
+import static tec.units.indriya.unit.MetricPrefix.*;
+import static tec.units.indriya.unit.Units.CUBIC_METRE;
+import static tec.units.indriya.unit.Units.METRE;
+import static tec.units.indriya.unit.Units.SQUARE_METRE;
+import static tec.units.indriya.AbstractUnit.ONE;
 
 import systems.uom.quantity.Concentration;
 import systems.uom.quantity.Consumption;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
-import tec.units.ri.*;
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.PiMultiplierConverter;
-import tec.units.ri.function.RationalConverter;
-import tec.units.ri.unit.AlternateUnit;
-import tec.units.ri.unit.ProductUnit;
-import tec.units.ri.unit.TransformedUnit;
-import tec.units.ri.unit.Units;
+import tec.units.indriya.*;
+import tec.units.indriya.format.SimpleUnitFormat;
+import tec.units.indriya.function.PiMultiplierConverter;
+import tec.units.indriya.function.RationalConverter;
+import tec.units.indriya.unit.AlternateUnit;
+import tec.units.indriya.unit.ProductUnit;
+import tec.units.indriya.unit.TransformedUnit;
+import tec.units.indriya.unit.Units;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;

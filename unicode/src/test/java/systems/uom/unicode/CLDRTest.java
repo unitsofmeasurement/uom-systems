@@ -31,8 +31,8 @@ package systems.uom.unicode;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static tec.units.ri.unit.MetricPrefix.*;
-import static tec.units.ri.unit.Units.KILOGRAM;
+import static tec.units.indriya.unit.MetricPrefix.*;
+import static tec.units.indriya.unit.Units.KILOGRAM;
 import static systems.uom.unicode.CLDR.*;
 
 import javax.measure.Quantity;
@@ -40,8 +40,8 @@ import javax.measure.quantity.Speed;
 
 import org.junit.Test;
 
-import tec.units.ri.quantity.Quantities;
-import tec.units.ri.unit.Units;
+import tec.units.indriya.quantity.Quantities;
+import tec.units.indriya.unit.Units;
 
 public class CLDRTest {
 	@Test
