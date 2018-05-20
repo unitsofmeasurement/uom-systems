@@ -35,7 +35,7 @@
 		<ri.version>1.0.3</ri.version>
 		<ri2.version>1.0</ri2.version>
 		<se.version>1.0.9</se.version>
-		<si.version>0.9-SNAPSHOT</si.version>
+		<si.version>0.9</si.version>
 		<quantity.version>0.8</quantity.version>
 		<systems.version>0.9-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
