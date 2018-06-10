@@ -1,6 +1,0 @@
-general:
-  artifacts:
-    - "target" # files, relative to the build directory
-machine:
-  java:
-    version: oraclejdk8
