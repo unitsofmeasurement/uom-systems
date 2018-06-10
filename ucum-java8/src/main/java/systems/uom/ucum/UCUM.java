@@ -69,7 +69,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 0.8.4, $Date: 2018-05-12 $
+ * @version 0.9, $Date: 2018-06-10 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -500,9 +500,9 @@ public final class UCUM extends AbstractSystemOfUnits {
     // US VOLUME UNITS: UCUM 4.4 §37 //
     ///////////////////////////////////
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Volume> GALLON_US = addUnit(CUBIC_INCH_INTERNATIONAL.multiply(231));
+    public static final Unit<Volume> GALLON_US = addUnit(CUBIC_INCH_INTERNATIONAL.multiply(231), "Queen Anne's wine gallon", "gal_us");
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Volume> BARREL_US = addUnit(GALLON_US.multiply(42));
+    public static final Unit<Volume> BARREL_US = addUnit(GALLON_US.multiply(42), "barrel", "bbl_us");
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Volume> QUART_US = addUnit(GALLON_US.divide(4));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
@@ -906,7 +906,7 @@ public final class UCUM extends AbstractSystemOfUnits {
      * The SI unit for binary information rate (standard name
      * <code>bit/s</code>).
      */
-    protected static final ProductUnit<InformationRate> BITS_PER_SECOND = addUnit(
+    protected static final Unit<InformationRate> BITS_PER_SECOND = addUnit(
 	    new ProductUnit<InformationRate>(BIT.divide(SECOND)), InformationRate.class);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<InformationRate> BAUD = addUnit(BITS_PER_SECOND);
@@ -964,6 +964,23 @@ public final class UCUM extends AbstractSystemOfUnits {
     	    INSTANCE.units.add(unit);
     	}
     	return unit;
+    }
+    
+    
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param text
+     *            the string to use as label
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name, String text) {
+    	return addUnit(unit, name, text, true);
     }
 
     ////////////////////////////////////////////////////////////////////////////
