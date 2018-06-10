@@ -71,7 +71,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 1.0, $Date: 2018-05-10 $
+ * @version 1.0.1, $Date: 2018-06-10 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -503,9 +503,9 @@ public final class UCUM extends AbstractSystemOfUnits {
     // US VOLUME UNITS: UCUM 4.4 §37 //
     ///////////////////////////////////
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Volume> GALLON_US = addUnit(CUBIC_INCH_INTERNATIONAL.multiply(231));
+    public static final Unit<Volume> GALLON_US = addUnit(CUBIC_INCH_INTERNATIONAL.multiply(231), "Queen Anne's wine gallon", "gal_us");
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Volume> BARREL_US = addUnit(GALLON_US.multiply(42));
+    public static final Unit<Volume> BARREL_US = addUnit(GALLON_US.multiply(42), "barrel", "bbl_us");
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Volume> QUART_US = addUnit(GALLON_US.divide(4));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
@@ -969,6 +969,22 @@ public final class UCUM extends AbstractSystemOfUnits {
     	return unit;
     }
 
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text
+     * as label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param text
+     *            the string to use as label
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name, String text) {
+    	return addUnit(unit, name, text, true);
+    }
+    
     ////////////////////////////////////////////////////////////////////////////
     // Label adjustments for UCUM system
     static {
