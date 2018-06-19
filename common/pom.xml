@@ -13,7 +13,7 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jdkVersion>1.8</jdkVersion> <!-- TODO try to make this 1.6 compliant -->
+		<jdkVersion>1.8</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -87,7 +87,7 @@
                     <instructions>
                         <Export-Package>systems.uom.common</Export-Package>
                         <Private-Package>systems.uom.common.internal</Private-Package>
-						<Import-Package>*,tec.uom.se.format</Import-Package>
+						<Import-Package>*,tec.units.indriya.format</Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
