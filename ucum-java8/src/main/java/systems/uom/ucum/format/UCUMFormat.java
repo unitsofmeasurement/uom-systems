@@ -39,12 +39,10 @@ import tec.uom.se.format.SymbolMap;
 import tec.uom.se.internal.format.TokenException;
 import tec.uom.se.internal.format.TokenMgrError;
 import tec.uom.se.unit.AnnotatedUnit;
-import tec.uom.se.unit.MetricPrefix;
 import tec.uom.se.unit.TransformedUnit;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.UnitConverter;
 import javax.measure.format.ParserException;
 
 import java.io.ByteArrayInputStream;
@@ -195,11 +193,10 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	} else if (unit instanceof TransformedUnit) {
 	    final StringBuilder temp = new StringBuilder();
 	    final Unit<?> parentUnit = ((TransformedUnit) unit).getParentUnit();
-	    final UnitConverter converter = unit.getConverterTo(parentUnit);
 	    final boolean printSeparator = !parentUnit.equals(ONE);
 
 	    format(parentUnit, temp);
-	    formatConverter(converter, printSeparator, temp, symbolMap);
+	    formatConverter(unit, parentUnit, printSeparator, temp, symbolMap);
 
 	    symbol = temp;
 	} else if (unit.getBaseUnits() != null) {
@@ -261,9 +258,10 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 		}
 
 		app.insert(indexToAppend, temp);
+		indexToAppend += temp.length();
 
 		if (pow != 1) {
-		    app.append(Integer.toString(pow));
+		    app.insert(indexToAppend, Integer.toString(pow));
 		    // this statement make sure that the power will be added if
 		    // it's different than 1.
 		}
@@ -271,28 +269,11 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 	    symbol = app;
 	} else if (!unit.isSystemUnit() || unit.equals(SI.KILOGRAM)) {
 	    final StringBuilder temp = new StringBuilder();
-	    UnitConverter converter;
-	    boolean printSeparator;
-	    if (unit.equals(SI.KILOGRAM)) {
-		// A special case because KILOGRAM is a BaseUnit instead of
-		// a transformed unit, for compatibility with existing SI
-		// unit system.
-		format(SI.GRAM, temp);
-		converter = MetricPrefix.KILO.getConverter();
-		printSeparator = true;
-	    } else {
-		Unit<?> parentUnit = unit.getSystemUnit();
-		converter = unit.getConverterTo(parentUnit);
-		if (parentUnit.equals(SI.KILOGRAM)) {
-		    // More special-case hackery to work around gram/kilogram
-		    // inconsistency
-		    parentUnit = SI.GRAM;
-		    converter = converter.concatenate(MetricPrefix.KILO.getConverter());
-		}
-		format(parentUnit, temp);
-		printSeparator = !parentUnit.equals(ONE);
-	    }
-	    formatConverter(converter, printSeparator, temp, symbolMap);
+	    Unit<?> unitParent = unit.getSystemUnit();
+	    if (unitParent.equals(SI.KILOGRAM)) unitParent = SI.GRAM;  // Work around gram/kilogram inconsistency
+	    format(unitParent, temp);
+	    boolean printSeparator = !unitParent.equals(ONE);
+	    formatConverter(unit, unitParent, printSeparator, temp, symbolMap);
 	    symbol = temp;
 	} else if (unit.getSymbol() != null) {
 	    symbol = unit.getSymbol();

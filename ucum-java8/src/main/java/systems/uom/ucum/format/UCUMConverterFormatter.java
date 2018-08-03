@@ -30,7 +30,9 @@
 package systems.uom.ucum.format;
 
 import java.math.BigInteger;
+import java.util.Map;
 
+import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
 import tec.uom.se.AbstractConverter;
@@ -43,6 +45,8 @@ import tec.uom.se.unit.MetricPrefix;
  * @author keilw
  */
 class UCUMConverterFormatter {
+    protected static final double epsilon = Math.ulp(1) * 2;
+
     /**
      * Formats the given converter to the given StringBuilder. This is similar to
      * what <type>ConverterFormatter</type> does, but there's no need to worry about
@@ -61,9 +65,29 @@ class UCUMConverterFormatter {
      *            the <code>StringBuffer</code> to append to. Contains the
      *            already-formatted unit being modified by the given converter.
      */
-    static void formatConverter(UnitConverter converter, boolean continued, StringBuilder buffer, final SymbolMap symbolMap) {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    static void formatConverter(Unit<?> unit, Unit<?> unitParent, boolean continued, StringBuilder buffer, final SymbolMap symbolMap) {
 	boolean unitIsExpression = ((buffer.indexOf(".") >= 0) || (buffer.indexOf("/") >= 0));
+
+	UnitConverter converter = ((Unit) unit).getConverterTo(unitParent);
+	String mapSymbol = symbolMap.getSymbol(unitParent);
+	Map<? extends Unit<?>,Integer> map = unit.getBaseUnits();
+	if (map != null  &&  map.size() == 1  &&  mapSymbol == null) { // Only adjust prefix for a single base unit that is raised to some power.
+	    int pow = map.values().iterator().next();
+	    if (pow != 1  &&  pow != 0) {
+		double scale = converter.convert(1);  // There is no direct way to access the scale factor.
+		int   log10  = (int) Math.round(Math.log10(scale));
+		if (Math.abs(Math.pow(10, log10) - scale) < epsilon) {  // scale is a power of 10, to within a few bits at the end of the mantissa
+		    int scalePower = log10 / pow;  // Note the interaction of signs
+		    if (Math.abs (scalePower - (double) log10 / pow) < epsilon) {  // The root falls on a power of 10.
+			if      (scalePower > 0) converter = new RationalConverter (BigInteger.TEN.pow(scalePower), BigInteger.ONE);
+			else if (scalePower < 0) converter = new RationalConverter (BigInteger.ONE,                 BigInteger.TEN.pow(-scalePower));
+		    }
+		}
+	    }
+	}
 	MetricPrefix prefix = symbolMap.getPrefix(converter);
+
 	if ((prefix != null) && (!unitIsExpression)) {
 	    buffer.insert(0, symbolMap.getSymbol(prefix));
 	} else if (converter == AbstractConverter.IDENTITY) {
