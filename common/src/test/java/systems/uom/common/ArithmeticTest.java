@@ -30,7 +30,7 @@
 package systems.uom.common;
 
 import static org.junit.Assert.*;
-import static tec.units.indriya.unit.Units.METRE;
+import static tech.units.indriya.unit.Units.METRE;
 
 import java.math.BigDecimal;
 
@@ -41,9 +41,9 @@ import javax.measure.quantity.Mass;
 import org.junit.Before;
 import org.junit.Test;
 
-import tec.units.indriya.quantity.DefaultQuantityFactory;
-import tec.units.indriya.quantity.Quantities;
-import tec.units.indriya.unit.Units;
+import tech.units.indriya.quantity.DefaultQuantityFactory;
+import tech.units.indriya.quantity.Quantities;
+import tech.units.indriya.unit.Units;
 
 public class ArithmeticTest {
 

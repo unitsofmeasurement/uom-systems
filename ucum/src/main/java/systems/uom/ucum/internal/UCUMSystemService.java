@@ -37,7 +37,7 @@ import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
 import systems.uom.ucum.UCUM;
-import tec.uom.lib.common.function.IntPrioritySupplier;
+import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>

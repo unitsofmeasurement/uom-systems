@@ -33,14 +33,14 @@ import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
 import javax.measure.spi.UnitFormatService;
 
-import tec.units.indriya.spi.DefaultServiceProvider;
+import tech.units.indriya.internal.DefaultServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.5
+ * @version 0.6
  */
 public final class UCUMServiceProvider extends DefaultServiceProvider {
 

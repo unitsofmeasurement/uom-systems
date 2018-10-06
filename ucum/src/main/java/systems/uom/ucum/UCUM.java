@@ -29,9 +29,9 @@
  */
 package systems.uom.ucum;
 
-//import static tec.units.indriya.unit.MetricPrefix.*;
-import static tec.units.indriya.unit.MetricPrefix.*;
-import static tec.units.indriya.AbstractUnit.ONE;
+//import static tech.units.indriya.unit.MetricPrefix.*;
+import static javax.measure.MetricPrefix.*;
+import static tech.units.indriya.AbstractUnit.ONE;
 import si.uom.quantity.*;
 import systems.uom.quantity.Acidity;
 import systems.uom.quantity.Concentration;
@@ -40,16 +40,16 @@ import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import systems.uom.quantity.Level;
 import si.uom.SI;
-import tec.units.indriya.*;
-import tec.units.indriya.format.SimpleUnitFormat;
-import tec.units.indriya.function.LogConverter;
-import tec.units.indriya.function.MultiplyConverter;
-import tec.units.indriya.function.PiMultiplierConverter;
-//import tec.units.indriya.function.PowerOfPiConverter;
-import tec.units.indriya.unit.AlternateUnit;
-import tec.units.indriya.unit.ProductUnit;
-import tec.units.indriya.unit.TransformedUnit;
-import tec.units.indriya.unit.Units;
+import tech.units.indriya.*;
+import tech.units.indriya.format.SimpleUnitFormat;
+import tech.units.indriya.function.LogConverter;
+import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.function.PowerOfPiConverter;
+//import tech.units.indriya.function.PowerOfPiConverter;
+import tech.units.indriya.unit.AlternateUnit;
+import tech.units.indriya.unit.ProductUnit;
+import tech.units.indriya.unit.TransformedUnit;
+import tech.units.indriya.unit.Units;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -132,8 +132,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Dimensionless> HUNDREDS = addUnit(ONE.multiply(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(new PiMultiplierConverter()));
-    //public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowerOfPiConverter.of(1)));
+    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowerOfPiConverter.of(1)));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Dimensionless> PERCENT = addUnit(ONE.divide(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */

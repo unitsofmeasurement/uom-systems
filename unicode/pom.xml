@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -8,7 +9,7 @@
 	</parent>
 	<artifactId>systems-unicode</artifactId>
 	<name>Units of Measurement Unicode CLDR System</name>
-    <packaging>bundle</packaging>
+	<packaging>bundle</packaging>
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
@@ -22,9 +23,14 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>tec.units</groupId>
+				<groupId>javax.measure</groupId>
+				<artifactId>unit-api</artifactId>
+				<version>${jsr2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tech.units</groupId>
 				<artifactId>indriya</artifactId>
-				<version>1.0</version>
+				<version>${ri2.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>systems.uom</groupId>
@@ -36,7 +42,11 @@
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>tec.units</groupId>
+			<groupId>javax.measure</groupId>
+			<artifactId>unit-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>tech.units</groupId>
 			<artifactId>indriya</artifactId>
 		</dependency>
 		<dependency>
@@ -68,20 +78,20 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 
-            <!-- ======================================================= -->
-            <!-- Packaging (OSGi bundle) -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Export-Package>systems.uom.unicode</Export-Package>
-                        <Private-Package>systems.uom.unicode.internal</Private-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
+			<!-- ======================================================= -->
+			<!-- Packaging (OSGi bundle) -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Export-Package>systems.uom.unicode</Export-Package>
+						<Private-Package>systems.uom.unicode.internal</Private-Package>
+					</instructions>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

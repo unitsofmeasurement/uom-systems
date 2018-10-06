@@ -45,15 +45,15 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import tec.units.indriya.AbstractConverter;
-import tec.units.indriya.quantity.Quantities;
-import tec.units.indriya.unit.TransformedUnit;
-import tec.units.indriya.unit.Units;
+import tech.units.indriya.AbstractConverter;
+import tech.units.indriya.quantity.Quantities;
+import tech.units.indriya.unit.TransformedUnit;
+import tech.units.indriya.unit.Units;
 import systems.uom.ucum.UCUM;
-import tec.units.indriya.AbstractUnit;
+import tech.units.indriya.AbstractUnit;
 import static org.junit.Assert.*;
-import static tec.units.indriya.AbstractUnit.ONE;
-import static tec.units.indriya.unit.MetricPrefix.*;
+import static tech.units.indriya.AbstractUnit.ONE;
+import static javax.measure.MetricPrefix.*;
 import static systems.uom.ucum.UCUM.*;
 
 /**
@@ -266,12 +266,12 @@ public class UnitsTest {
     @Test
     public void testPow() {
 	Unit<?> result = one.pow(10);
-	assertEquals(result, one);
+	assertEquals("one^10", result.toString());
     }
 
     @Test
     public void testKiloIsAThousand() {
-	// FIXME: Need to find the org.hamcrest assertion libs
+	// TODO Need to find the org.hamcrest assertion libs
 	Quantity<Power> w2000 = Quantities.getQuantity(2000, WATT);
 	Quantity<Power> kW2 = Quantities.getQuantity(2, KILO(WATT));
 	// assertThat(w2000, is(kW2));

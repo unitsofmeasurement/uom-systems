@@ -35,8 +35,8 @@ import javax.measure.quantity.Mass;
 
 import org.junit.Test;
 
-import tec.units.indriya.quantity.Quantities;
-import tec.units.indriya.unit.Units;
+import tech.units.indriya.quantity.Quantities;
+import tech.units.indriya.unit.Units;
 
 public class ArithmeticTest {
 	

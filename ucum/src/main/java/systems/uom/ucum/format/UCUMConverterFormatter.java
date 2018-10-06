@@ -32,78 +32,72 @@ package systems.uom.ucum.format;
 import java.math.BigInteger;
 
 import javax.measure.UnitConverter;
+import javax.measure.Prefix;
 
-import tec.units.indriya.AbstractConverter;
-import tec.units.indriya.format.SymbolMap;
-import tec.units.indriya.function.MultiplyConverter;
-import tec.units.indriya.function.RationalConverter;
-import tec.units.indriya.unit.MetricPrefix;
+import tech.units.indriya.AbstractConverter;
+import tech.units.indriya.format.SymbolMap;
+import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.function.RationalConverter;
 
 /**
  * @author keilw
  */
 class UCUMConverterFormatter {
     /**
-     * Formats the given converter to the given StringBuilder. This is similar to
-     * what <type>ConverterFormatter</type> does, but there's no need to worry about
-     * operator precedence here, since UCUM only supports multiplication,
-     * division, and exponentiation and expressions are always evaluated left-
-     * to-right.
+     * Formats the given converter to the given StringBuilder. This is similar to what <type>ConverterFormatter</type> does, but there's no need to
+     * worry about operator precedence here, since UCUM only supports multiplication, division, and exponentiation and expressions are always
+     * evaluated left- to-right.
      * 
      * @param converter
      *            the converter to be formatted
      * @param continued
-     *            <code>true</code> if the converter expression should begin
-     *            with an operator, otherwise <code>false</code>. This will
-     *            always be true unless the unit being modified is equal to
-     *            AbstractUnit.ONE.
+     *            <code>true</code> if the converter expression should begin with an operator, otherwise <code>false</code>. This will always be true
+     *            unless the unit being modified is equal to AbstractUnit.ONE.
      * @param buffer
-     *            the <code>StringBuffer</code> to append to. Contains the
-     *            already-formatted unit being modified by the given converter.
+     *            the <code>StringBuffer</code> to append to. Contains the already-formatted unit being modified by the given converter.
      */
     static void formatConverter(UnitConverter converter, boolean continued, StringBuilder buffer, final SymbolMap symbolMap) {
-	boolean unitIsExpression = ((buffer.indexOf(".") >= 0) || (buffer.indexOf("/") >= 0));
-	MetricPrefix prefix = symbolMap.getPrefix(converter);
-	if ((prefix != null) && (!unitIsExpression)) {
-	    buffer.insert(0, symbolMap.getSymbol(prefix));
-	} else if (converter == AbstractConverter.IDENTITY) {
-	    // do nothing
-	} else if (converter instanceof MultiplyConverter) {
-	    if (unitIsExpression) {
-		buffer.insert(0, '(');
-		buffer.append(')');
-	    }
-	    MultiplyConverter multiplyConverter = (MultiplyConverter) converter;
-	    double factor = multiplyConverter.getFactor();
-	    long lFactor = (long) factor;
-	    if ((lFactor < Long.MIN_VALUE) || (lFactor > Long.MAX_VALUE)) { // (lFactor != factor) || 
-		throw new IllegalArgumentException("Only integer factors are supported in UCUM");
-	    }
-	    if (continued) {
-		buffer.append('.');
-	    }
-	    buffer.append(lFactor);
-	} else if (converter instanceof RationalConverter) {
-	    if (unitIsExpression) {
-		buffer.insert(0, '(');
-		buffer.append(')');
-	    }
-	    RationalConverter rationalConverter = (RationalConverter) converter;
-	    if (!rationalConverter.getDividend().equals(BigInteger.ONE)) {
-		if (continued) {
-		    buffer.append('.');
-		}
-		buffer.append(rationalConverter.getDividend());
-	    }
-	    if (!rationalConverter.getDivisor().equals(BigInteger.ONE)) {
-		buffer.append('/');
-		buffer.append(rationalConverter.getDivisor());
-	    }
-	} else { // All other converter type (e.g. exponential) we use the
-		 // string representation.
-	    buffer.insert(0, converter.toString() + "(");
-	    buffer.append(")");
-	}
+        boolean unitIsExpression = ((buffer.indexOf(".") >= 0) || (buffer.indexOf("/") >= 0));
+        Prefix prefix = symbolMap.getPrefix(converter);
+        if ((prefix != null) && (!unitIsExpression)) {
+            buffer.insert(0, symbolMap.getSymbol(prefix));
+        } else if (converter == AbstractConverter.IDENTITY) {
+            // do nothing
+        } else if (converter instanceof MultiplyConverter) {
+            if (unitIsExpression) {
+                buffer.insert(0, '(');
+                buffer.append(')');
+            }
+            MultiplyConverter multiplyConverter = (MultiplyConverter) converter;
+            double factor = multiplyConverter.getFactor();
+            long lFactor = (long) factor;
+            if ((lFactor < Long.MIN_VALUE) || (lFactor > Long.MAX_VALUE)) { // (lFactor != factor) ||
+                throw new IllegalArgumentException("Only integer factors are supported in UCUM");
+            }
+            if (continued) {
+                buffer.append('.');
+            }
+            buffer.append(lFactor);
+        } else if (converter instanceof RationalConverter) {
+            if (unitIsExpression) {
+                buffer.insert(0, '(');
+                buffer.append(')');
+            }
+            RationalConverter rationalConverter = (RationalConverter) converter;
+            if (!rationalConverter.getDividend().equals(BigInteger.ONE)) {
+                if (continued) {
+                    buffer.append('.');
+                }
+                buffer.append(rationalConverter.getDividend());
+            }
+            if (!rationalConverter.getDivisor().equals(BigInteger.ONE)) {
+                buffer.append('/');
+                buffer.append(rationalConverter.getDivisor());
+            }
+        } else { // All other converter type (e.g. exponential) we use the
+            // string representation.
+            buffer.insert(0, converter.toString() + "(");
+            buffer.append(")");
+        }
     }
-
 }

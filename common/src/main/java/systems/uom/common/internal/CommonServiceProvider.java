@@ -31,23 +31,22 @@ package systems.uom.common.internal;
 
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tec.units.indriya.spi.DefaultServiceProvider;
+import tech.units.indriya.internal.DefaultServiceProvider;
 
 /**
- * This class implements the {@link ServiceProvider} interface and hereby uses
- * the JDK {@link java.util.ServiceLoader} to load the services required.
+ * This class implements the {@link ServiceProvider} interface and hereby uses the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.1
+ * @version 0.2
  */
 public class CommonServiceProvider extends DefaultServiceProvider {
 
     public int getPriority() {
-	return 1000;
+        return 1000;
     }
 
     @Override
     public SystemOfUnitsService getSystemOfUnitsService() {
-	return new CommonSystemService();
+        return new CommonSystemService();
     }
 }

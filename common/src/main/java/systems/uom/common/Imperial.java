@@ -29,8 +29,8 @@
  */
 package systems.uom.common;
 
-import static tec.units.indriya.unit.MetricPrefix.MICRO;
-import static tec.units.indriya.unit.Units.*;
+import static javax.measure.MetricPrefix.MICRO;
+import static tech.units.indriya.unit.Units.*;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Area;
@@ -42,10 +42,10 @@ import javax.measure.quantity.Time;
 import javax.measure.quantity.Volume;
 import javax.measure.spi.SystemOfUnits;
 
-import tec.units.indriya.AbstractSystemOfUnits;
-import tec.units.indriya.AbstractUnit;
-import tec.units.indriya.format.SimpleUnitFormat;
-import tec.units.indriya.unit.ProductUnit;
+import tech.units.indriya.AbstractSystemOfUnits;
+import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.format.SimpleUnitFormat;
+import tech.units.indriya.unit.ProductUnit;
 
 /**
  * <p>

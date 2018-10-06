@@ -36,7 +36,7 @@ import java.util.logging.Logger;
 
 import javax.measure.format.*;
 import systems.uom.ucum.format.UCUMFormat;
-import tec.units.indriya.format.EBNFUnitFormat;
+import tech.units.indriya.format.EBNFUnitFormat;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>

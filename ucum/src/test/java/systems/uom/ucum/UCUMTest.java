@@ -39,7 +39,7 @@ import javax.measure.quantity.Volume;
 
 import org.junit.Test;
 
-import tec.units.indriya.quantity.Quantities;
+import tech.units.indriya.quantity.Quantities;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
@@ -51,7 +51,7 @@ public class UCUMTest {
     public void testLiterToDm3() {
 	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, LITER);
 	final Quantity<Volume> oneDm3 = Quantities.getQuantity(1, LITER_DM3);
-	assertEquals(1d, oneLiter.to(LITER_DM3).getValue());
+	assertEquals(1, oneLiter.to(LITER_DM3).getValue());
 	//assertEquals(oneLiter, oneDm3);
     }
     

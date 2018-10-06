@@ -32,20 +32,18 @@ package systems.uom.ucum.format;
 import static org.junit.Assert.*;
 import static systems.uom.ucum.UCUM.*;
 import static systems.uom.ucum.format.UCUMFormat.Variant.*;
-import static tec.units.indriya.AbstractUnit.ONE;
+import static tech.units.indriya.AbstractUnit.ONE;
 
-import java.util.logging.Level;
 import javax.measure.*;
 import javax.measure.format.*;
 import javax.measure.quantity.*;
 
-import systems.uom.ucum.UCUM;
 import systems.uom.ucum.format.UCUMFormat;
 import systems.uom.ucum.internal.format.TokenException;
-import tec.units.indriya.format.LocalUnitFormat;
-import tec.units.indriya.quantity.Quantities;
-import tec.units.indriya.unit.ProductUnit;
-import tec.units.indriya.unit.Units;
+import tech.units.indriya.format.LocalUnitFormat;
+import tech.units.indriya.quantity.Quantities;
+import tech.units.indriya.unit.ProductUnit;
+import tech.units.indriya.unit.Units;
 
 import org.junit.*;
 
@@ -58,100 +56,92 @@ public class UCUMFormatTable2Test extends UCUMFormatTestBase {
 
     @Before
     public void init() {
-	// sut =
-	// QuantityFactoryProvider.getQuantityFactory(Length.class).create(10,
-	// METER);
-	sut = Quantities.getQuantity(10, METER);
+        // sut =
+        // QuantityFactoryProvider.getQuantityFactory(Length.class).create(10,
+        // METER);
+        sut = Quantities.getQuantity(10, METER);
     }
-
 
     @Test
     public void testFormatLocal() {
-	final UnitFormat format = LocalUnitFormat.getInstance();
+        final UnitFormat format = LocalUnitFormat.getInstance();
 
-	assertEquals(METER, sut.getUnit());
-	assertEquals("m", format.format(METER));
+        assertEquals(METER, sut.getUnit());
+        assertEquals("m", format.format(METER));
 
-	Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
-
-	assertEquals("m/s", format.format(v));
+        Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
+        assertEquals("m/s", format.format(v));
     }
 
     @Test
     public void testFormatUCUMPrint() {
-	assertEquals(METER, sut.getUnit());
-	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it",
-		"m", FORMAT_PRINT.format(METER));
+        assertEquals(METER, sut.getUnit());
+        assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "m",
+                FORMAT_PRINT.format(METER));
 
-	Unit<Speed> v = new ProductUnit<Speed>(sut.getUnit().divide(SECOND));
-	assertEquals("the formatter isn't working with a product unit", "m/s", FORMAT_PRINT.format(v));
+        Unit<Speed> v = new ProductUnit<Speed>(sut.getUnit().divide(SECOND));
+        assertEquals("the formatter isn't working with a product unit", "m/s", FORMAT_PRINT.format(v));
     }
 
     @Test
     public void testFormatUCUMCS() {
-	assertEquals(METER, sut.getUnit());
-	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it",
-		"m", FORMAT_CS.format(METER));
+        assertEquals(METER, sut.getUnit());
+        assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "m", FORMAT_CS.format(METER));
 
-	Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
+        Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
 
-	assertEquals("the formatter isn't working with a product unit", "m/s", FORMAT_CS.format(v));
+        assertEquals("the formatter isn't working with a product unit", "m/s", FORMAT_CS.format(v));
     }
 
     @Test
     public void testFormatUCUMCI() {
-	assertEquals(METER, sut.getUnit());
-	assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it",
-		"M", FORMAT_CI.format(METER));
+        assertEquals(METER, sut.getUnit());
+        assertEquals("the formatter isn't working with a unit which there's a specific symbol on the symbolMap for it", "M", FORMAT_CI.format(METER));
 
-	Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
-	assertEquals("the formatter isn't working with a product unit", "M/S", FORMAT_CI.format(v));
+        Unit<Speed> v = new ProductUnit<Speed>(METER.divide(SECOND));
+        assertEquals("the formatter isn't working with a product unit", "M/S", FORMAT_CI.format(v));
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void testParseLocal() {
-	final UnitFormat format = LocalUnitFormat.getInstance();
-
-	format.parse("min").getSymbol();
+        final UnitFormat format = LocalUnitFormat.getInstance();
+        format.parse("min").getSymbol();
     }
 
     @Test
     public void testParseUCUMCS() {
-	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
-
-	assertEquals(MINUTE, format.parse("min"));
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+        assertEquals(MINUTE, format.parse("min"));
     }
 
     @Test
     public void testParseUCUMCI() {
-	final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 
-	assertEquals(METER, format.parse("M"));
+        assertEquals(METER, format.parse("M"));
     }
 
     @Test(expected = TokenException.class)
     public void testParseUCUMCSError() {
-	final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
-
-	format.parse("MIN");
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+        format.parse("MIN");
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void testParseUCUMPrint() {
-	final UnitFormat format = UCUMFormat.getInstance(PRINT);
-
-	format.parse("g");
+        final UnitFormat format = UCUMFormat.getInstance(PRINT);
+        format.parse("g");
     }
 
     @Test
     public void testParseUCUMCITemperatureInverse() throws Exception {
-	Unit<?> parsedUnit = FORMAT_CI.parse("1/K");
-	assertEquals("The Unit<Temperature> in  parsed string doesn't match", ONE.divide(Units.KELVIN), parsedUnit);
+        Unit<?> parsedUnit = FORMAT_CI.parse("1/K");
+        assertEquals("The Unit<Temperature> in  parsed string doesn't match", ONE.divide(Units.KELVIN), parsedUnit);
     }
-    
+
     @Test
     public void testParseUCUMCSTemperatureInverse() throws Exception {
-	Unit<?> parsedUnit = FORMAT_CS.parse("1/K");
-	assertEquals("The Unit<Temperature> in  parsed string doesn't match", ONE.divide(Units.KELVIN), parsedUnit);
+        Unit<?> parsedUnit = FORMAT_CS.parse("1/K");
+        assertEquals("The Unit<Temperature> in  parsed string doesn't match", ONE.divide(Units.KELVIN), parsedUnit);
     }
 }

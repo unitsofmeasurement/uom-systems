@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.2</version>
+		<version>2.0-EDR</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -30,12 +30,12 @@
 	<properties>
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
-		<jsr2.version>2.0-SNAPSHOT</jsr2.version>
+		<jsr2.version>2.0-EDR</jsr2.version>
 		<lib.version>1.0.2</lib.version>
 		<ri.version>1.0.3</ri.version>
-		<ri2.version>1.0</ri2.version>
+		<ri2.version>2.0-EDR</ri2.version>
 		<se.version>1.0.9</se.version>
-		<si.version>0.9</si.version>
+		<si.version>1.0-SNAPSHOT</si.version>
 		<quantity.version>0.9</quantity.version>
 		<systems.version>1.0-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
@@ -236,7 +236,7 @@
 											<id>javax.measure:unit-api:${jsr.version}</id>
 										</artifact>
 										<artifact>
-											<id>tec.uom.lib:uom-lib-common:${lib.version}</id>
+											<id>tech.uom.lib:uom-lib-common:${lib.version}</id>
 										</artifact>
 										<artifact>
 											<id>tec.uom:uom-se:${se.version}</id>

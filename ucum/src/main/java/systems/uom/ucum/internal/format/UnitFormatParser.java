@@ -30,13 +30,14 @@
 package systems.uom.ucum.internal.format;
 
 import static systems.uom.ucum.internal.format.UnitTokenConstants.*;
-import static tec.units.indriya.AbstractUnit.ONE;
+import static tech.units.indriya.AbstractUnit.ONE;
 
 import javax.measure.Unit;
+import javax.measure.Prefix;
 
-import tec.units.indriya.format.SymbolMap;
-import tec.units.indriya.function.LogConverter;
-import tec.units.indriya.unit.MetricPrefix;
+import tech.units.indriya.format.SymbolMap;
+import tech.units.indriya.function.LogConverter;
+import tech.units.indriya.function.PowerOfIntConverter;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public final class UnitFormatParser {
@@ -276,13 +277,13 @@ public final class UnitFormatParser {
                 token = consumeToken(UNIT_IDENTIFIER);
                 Unit unit = symbols.getUnit(token.image);
                 if (unit == null) {
-                    MetricPrefix prefix = symbols.getPrefix(token.image);
+                    Prefix prefix = symbols.getPrefix(token.image);
                     if (prefix != null) {
                         String prefixSymbol = symbols.getSymbol(prefix);
                         unit = symbols.getUnit(token.image.substring(prefixSymbol.length()));
                         if (unit != null) {
                             {
-                                return unit.transform(prefix.getConverter());
+                                return unit.transform(PowerOfIntConverter.of(prefix));
                             }
                         }
                     }

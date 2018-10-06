@@ -106,8 +106,8 @@ public class SystemOfUnitsServiceTest {
 	    assertNotNull(system);
 	    assertEquals("ISO80000", system.getName());
 	    break;
-	case "tec.units.indriya.internal.DefaultSystemOfUnitsService":
-	    assertEquals("tec.units.indriya.internal.DefaultSystemOfUnitsService",
+	case "tech.units.indriya.internal.DefaultSystemOfUnitsService":
+	    assertEquals("tech.units.indriya.internal.DefaultSystemOfUnitsService",
 		    service.getClass().getName());
 	    assertNotNull(service.getAvailableSystemsOfUnits());
 	    assertEquals(1, service.getAvailableSystemsOfUnits().size());

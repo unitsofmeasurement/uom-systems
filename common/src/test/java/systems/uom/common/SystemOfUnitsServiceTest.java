@@ -120,8 +120,8 @@ public class SystemOfUnitsServiceTest {
 	 * service.getAvailableSystemsOfUnits().size()); system =
 	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("SI",
 	 * system.getName()); break; case
-	 * "tec.units.indriya.internal.DefaultSystemOfUnitsService":
-	 * assertEquals("tec.units.indriya.internal.DefaultSystemOfUnitsService",
+	 * "tech.units.indriya.internal.DefaultSystemOfUnitsService":
+	 * assertEquals("tech.units.indriya.internal.DefaultSystemOfUnitsService",
 	 * service.getClass().getName());
 	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
 	 * service.getAvailableSystemsOfUnits().size()); system =

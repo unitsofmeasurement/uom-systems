@@ -32,16 +32,14 @@ package systems.uom.ucum;
 import static org.junit.Assert.*;
 import static systems.uom.ucum.UCUM.*;
 
-import java.math.BigDecimal;
-
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Temperature;
 
 import org.junit.Test;
 
-import tec.units.indriya.quantity.Quantities;
-import tec.units.indriya.unit.Units;
+import tech.units.indriya.quantity.Quantities;
+import tech.units.indriya.unit.Units;
 
 public class ConverterTest {
 

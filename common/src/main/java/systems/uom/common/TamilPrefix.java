@@ -34,7 +34,7 @@ package systems.uom.common;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 
-import tec.units.indriya.function.RationalConverter;
+import tech.units.indriya.function.RationalConverter;
 
 /**
  * Utility class holding prefixes used today in parts of India and Sri Lanka;

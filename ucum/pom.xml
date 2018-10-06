@@ -46,10 +46,10 @@
 			<dependency>
 				<groupId>javax.measure</groupId>
 				<artifactId>unit-api</artifactId>
-				<version>${jsr.version}</version>
+				<version>${jsr2.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>tec.units</groupId>
+				<groupId>tech.units</groupId>
 				<artifactId>indriya</artifactId>
 				<version>${ri2.version}</version>
 			</dependency>
@@ -67,7 +67,7 @@
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>tec.units</groupId>
+			<groupId>tech.units</groupId>
 			<artifactId>indriya</artifactId>
 		</dependency>
 		<dependency>
