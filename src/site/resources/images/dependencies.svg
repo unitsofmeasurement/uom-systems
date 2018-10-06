@@ -30,8 +30,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.050338"
-     inkscape:cx="565.00507"
-     inkscape:cy="775.06138"
+     inkscape:cx="412.67315"
+     inkscape:cy="412.17863"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -172,15 +172,15 @@
          y="605.04236" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-         x="311.39676"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="382.09793"
          y="672.39288"
          id="text3014"
          sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="tspan3016"
-           x="311.39676"
-           y="672.39288">SE Port</tspan></text>
+           x="382.09793"
+           y="672.39288">SE 8 Port</tspan></text>
     </g>
     <g
        id="g3045"
