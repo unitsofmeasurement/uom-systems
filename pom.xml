@@ -31,7 +31,7 @@
 		<jdkVersion>1.7</jdkVersion>
 		<jsr.version>1.0</jsr.version>
 		<jsr2.version>2.0-EDR</jsr2.version>
-		<lib.version>1.0.2</lib.version>
+		<lib.version>2.0-EDR</lib.version>
 		<ri.version>1.0.3</ri.version>
 		<ri2.version>2.0-EDR</ri2.version>
 		<se.version>1.0.9</se.version>
