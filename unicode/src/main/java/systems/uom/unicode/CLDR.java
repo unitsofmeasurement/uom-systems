@@ -217,7 +217,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     private static final Unit<LuminousIntensity> CANDELA = addUnit(Units.CANDELA);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowerOfPiConverter.of(1)));
+    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(tech.units(1)));
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Dimensionless> PERCENT = addUnit(ONE.divide(100), "Percent", "%");
 
@@ -299,19 +299,19 @@ public final class CLDR extends AbstractSystemOfUnits {
      * An angle unit accepted for use with SI units (standard name <code>deg/code>).
      */
     static final Unit<Angle> DEGREE_ANGLE = new TransformedUnit<Angle>(RADIAN,
-            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180)));
+            tech.units(1).concatenate(new RationalConverter(1, 180)));
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>'/code>).
      */
     static final Unit<Angle> MINUTE_ANGLE = new TransformedUnit<Angle>(RADIAN,
-            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60)));
+            tech.units(1).concatenate(new RationalConverter(1, 180 * 60)));
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>''</code>).
      */
     static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
-            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60)));
+            tech.units(1).concatenate(new RationalConverter(1, 180 * 60 * 60)));
 
     /**
      * We deviate slightly from the standard here, to maintain compatibility with the existing NonSI units. In CLDR, the degree is defined as
