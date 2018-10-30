@@ -36,7 +36,7 @@
 		<ri2.version>2.0-EDR</ri2.version>
 		<se.version>1.0.9</se.version>
 		<si.version>1.0-SNAPSHOT</si.version>
-		<quantity.version>0.9</quantity.version>
+		<quantity.version>1.0-SNAPSHOT</quantity.version>
 		<systems.version>1.0-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
