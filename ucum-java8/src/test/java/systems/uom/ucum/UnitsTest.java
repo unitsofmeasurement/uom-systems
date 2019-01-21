@@ -266,7 +266,7 @@ public class UnitsTest {
     @Test
     public void testPow() {
 	Unit<?> result = one.pow(10);
-	assertEquals(result, one);
+	assertEquals(one, result);
     }
 
     @Test

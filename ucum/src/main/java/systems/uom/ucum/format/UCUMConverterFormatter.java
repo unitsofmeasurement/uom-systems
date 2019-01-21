@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2018 Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2019 Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -32,12 +32,12 @@ package systems.uom.ucum.format;
 import java.math.BigInteger;
 
 import javax.measure.UnitConverter;
-import javax.measure.Prefix;
 
 import tech.units.indriya.AbstractConverter;
 import tech.units.indriya.format.SymbolMap;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.unit.Prefix;
 
 /**
  * @author keilw

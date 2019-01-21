@@ -29,24 +29,24 @@
  */
 package systems.uom.ucum.format;
 
-import static systems.uom.ucum.format.UCUMConverterFormatter.formatConverter;
 import static tech.units.indriya.AbstractUnit.ONE;
+import static systems.uom.ucum.format.UCUMConverterFormatter.*;
 import si.uom.SI;
 import systems.uom.ucum.internal.format.UCUMFormatParser;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.AbstractUnitFormat;
 import tech.units.indriya.format.SymbolMap;
-import tech.units.indriya.function.PowerOfIntConverter;
+import tech.units.indriya.function.*;
 import tech.units.indriya.internal.format.TokenException;
 import tech.units.indriya.internal.format.TokenMgrError;
 import tech.units.indriya.unit.AnnotatedUnit;
-import javax.measure.MetricPrefix;
+import tech.units.indriya.unit.MetricPrefix;
 import tech.units.indriya.unit.TransformedUnit;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
-import javax.measure.format.MeasurementParseException;
+import javax.measure.format.ParserException;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -157,14 +157,14 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     // ///////////
     // Parsing //
     // ///////////
-    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws MeasurementParseException;
+    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws ParserException;
 
-    protected Unit<?> parse(CharSequence csq, int index) throws MeasurementParseException {
+    protected Unit<?> parse(CharSequence csq, int index) throws ParserException {
         return parse(csq, new ParsePosition(index));
     }
 
     @Override
-    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq) throws MeasurementParseException;
+    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException;
 
     ////////////////
     // Formatting //
@@ -269,7 +269,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                 // a transformed unit, for compatibility with existing SI
                 // unit system.
                 format(SI.GRAM, temp);
-                converter = PowerOfIntConverter.of(MetricPrefix.KILO);
+                converter = PowersOfIntConverter.of(MetricPrefix.KILO);
                 printSeparator = true;
             } else {
                 Unit<?> parentUnit = unit.getSystemUnit();
@@ -278,7 +278,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                     // More special-case hackery to work around gram/kilogram
                     // inconsistency
                     parentUnit = SI.GRAM;
-                    converter = converter.concatenate(PowerOfIntConverter.of(MetricPrefix.KILO));
+                    converter = converter.concatenate(PowersOfIntConverter.of(MetricPrefix.KILO));
                 }
                 format(parentUnit, temp);
                 printSeparator = !parentUnit.equals(ONE);
@@ -436,7 +436,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         }
 
         @Override
-        public Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws MeasurementParseException {
+        public Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws ParserException {
             // Parsing reads the whole character sequence from the parse
             // position.
             int start = cursor.getIndex();
@@ -462,7 +462,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                 } else {
                     cursor.setErrorIndex(start);
                 }
-                throw new MeasurementParseException(e);
+                throw new ParserException(e);
             } catch (TokenMgrError e) {
                 cursor.setErrorIndex(start);
                 throw new IllegalArgumentException(e.getMessage());
@@ -470,7 +470,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         }
 
         @Override
-        public Unit<? extends Quantity<?>> parse(CharSequence csq) throws MeasurementParseException {
+        public Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException {
             return parse(csq, new ParsePosition(0));
         }
     }

@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -33,33 +33,32 @@ import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
 import javax.measure.spi.UnitFormatService;
 
-import tech.units.indriya.internal.DefaultServiceProvider;
+import tech.units.indriya.spi.DefaultServiceProvider;
 
 /**
- * This class implements the {@link ServiceProvider} interface and hereby uses
- * the JDK {@link java.util.ServiceLoader} to load the services required.
+ * This class implements the {@link ServiceProvider} interface and hereby uses the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.6
+ * @version 0.7
  */
 public final class UCUMServiceProvider extends DefaultServiceProvider {
 
     public int getPriority() {
-	return 1000;
+        return 1000;
     }
 
     @Override
     public SystemOfUnitsService getSystemOfUnitsService() {
-	return new UCUMSystemService();
+        return new UCUMSystemService();
     }
-    
+
     @Override
     public UnitFormatService getUnitFormatService() {
-	return new UCUMFormatService();
+        return new UCUMFormatService();
     }
-    
+
     @Override
     public String toString() {
-	return UCUMServiceProvider.class.getSimpleName();
+        return UCUMServiceProvider.class.getSimpleName();
     }
 }

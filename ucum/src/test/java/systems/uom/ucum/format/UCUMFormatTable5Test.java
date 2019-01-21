@@ -32,8 +32,8 @@ package systems.uom.ucum.format;
 import static org.junit.Assert.assertEquals;
 import static systems.uom.ucum.UCUM.LITER;
 import static systems.uom.ucum.UCUM.LITER_DM3;
-import static javax.measure.MetricPrefix.DECI;
-import static javax.measure.MetricPrefix.MICRO;
+import static tech.units.indriya.unit.MetricPrefix.DECI;
+import static tech.units.indriya.unit.MetricPrefix.MICRO;
 
 import javax.measure.Unit;
 

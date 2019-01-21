@@ -31,7 +31,7 @@ package systems.uom.common.internal;
 
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tech.units.indriya.internal.DefaultServiceProvider;
+import tech.units.indriya.spi.DefaultServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses the JDK {@link java.util.ServiceLoader} to load the services required.

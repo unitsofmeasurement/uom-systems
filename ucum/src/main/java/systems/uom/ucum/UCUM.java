@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2018, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -30,8 +30,11 @@
 package systems.uom.ucum;
 
 //import static tech.units.indriya.unit.MetricPrefix.*;
-import static javax.measure.MetricPrefix.*;
+import static tech.units.indriya.unit.MetricPrefix.*;
 import static tech.units.indriya.AbstractUnit.ONE;
+
+import java.util.Objects;
+
 import si.uom.quantity.*;
 import systems.uom.quantity.Acidity;
 import systems.uom.quantity.Concentration;
@@ -44,8 +47,8 @@ import tech.units.indriya.*;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.LogConverter;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.function.PowerOfPiConverter;
-//import tech.units.indriya.function.PowerOfPiConverter;
+import tech.units.indriya.function.PowersOfPiConverter;
+//import tech.units.indriya.function.PowersOfPiConverter;
 import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.ProductUnit;
 import tech.units.indriya.unit.TransformedUnit;
@@ -71,7 +74,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 1.0.1, $Date: 2018-06-10 $
+ * @version 1.1, $Date: 2019-01-21 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -132,7 +135,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Dimensionless> HUNDREDS = addUnit(ONE.multiply(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowerOfPiConverter.of(1)));
+    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowersOfPiConverter.of(1)));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Dimensionless> PERCENT = addUnit(ONE.divide(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */

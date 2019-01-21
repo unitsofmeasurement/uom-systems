@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2018, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,8 +29,10 @@
  */
 package systems.uom.common;
 
-import static javax.measure.MetricPrefix.MICRO;
+import static tech.units.indriya.unit.MetricPrefix.MICRO;
 import static tech.units.indriya.unit.Units.*;
+
+import java.util.Objects;
 
 import javax.measure.Unit;
 import javax.measure.quantity.Area;
@@ -56,7 +58,7 @@ import tech.units.indriya.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.4, $Date: 2018-05-02 $
+ * @version 1.1, $Date: 2019-01-21 $
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
@@ -378,5 +380,14 @@ public final class Imperial extends AbstractSystemOfUnits {
     @Override
     public String getName() {
         return SYSTEM_NAME;
+    }
+    
+    @Override
+    public Unit<?> getUnit(String string) {
+        Objects.requireNonNull(string);
+        return this.getUnits().stream()
+                  .filter((u) -> string.equals(u.toString()))
+                  .findAny()
+                  .orElse(null);
     }
 }

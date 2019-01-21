@@ -53,7 +53,7 @@ import systems.uom.ucum.UCUM;
 import tech.units.indriya.AbstractUnit;
 import static org.junit.Assert.*;
 import static tech.units.indriya.AbstractUnit.ONE;
-import static javax.measure.MetricPrefix.*;
+import static tech.units.indriya.unit.MetricPrefix.*;
 import static systems.uom.ucum.UCUM.*;
 
 /**
@@ -266,7 +266,8 @@ public class UnitsTest {
     @Test
     public void testPow() {
 	Unit<?> result = one.pow(10);
-	assertEquals("one^10", result.toString());
+	assertEquals(one, result);
+	//assertEquals("one^10", result.toString()); TODO verify, but behaves like SE 8 version
     }
 
     @Test

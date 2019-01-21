@@ -30,7 +30,7 @@
 package systems.uom.ucum.format;
 
 import static org.junit.Assert.assertEquals;
-import static javax.measure.MetricPrefix.*;
+import static tech.units.indriya.unit.MetricPrefix.*;
 
 import static systems.uom.ucum.UCUM.*;
 import javax.measure.Unit;
@@ -39,7 +39,7 @@ import javax.measure.quantity.Mass;
 
 import org.junit.Test;
 
-import tech.units.indriya.function.PowerOfIntConverter;
+import tech.units.indriya.function.PowersOfIntConverter;
 
 public class PrefixTest extends UCUMFormatTestBase {
 
@@ -72,12 +72,12 @@ public class PrefixTest extends UCUMFormatTestBase {
     @Test
     public void testBetweenPrefixes() {
         UnitConverter conv = YOTTA(METER).getConverterTo(ZETTA(METER));
-        assertEquals(PowerOfIntConverter.of(10, 3), conv);
+        assertEquals(PowersOfIntConverter.of(10, 3), conv);
     }
 
     @Test
     public void testBetweenPrefixes2() {
         UnitConverter conv = KILO(METER).getConverterTo(GIGA(METER));
-        assertEquals(PowerOfIntConverter.of(10, -6), conv);
+        assertEquals(PowersOfIntConverter.of(10, -6), conv);
     }
 }

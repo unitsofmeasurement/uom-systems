@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2018, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -33,11 +33,11 @@ import static systems.uom.ucum.internal.format.UnitTokenConstants.*;
 import static tech.units.indriya.AbstractUnit.ONE;
 
 import javax.measure.Unit;
-import javax.measure.Prefix;
 
 import tech.units.indriya.format.SymbolMap;
 import tech.units.indriya.function.LogConverter;
-import tech.units.indriya.function.PowerOfIntConverter;
+import tech.units.indriya.function.PowersOfIntConverter;
+import tech.units.indriya.unit.Prefix;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public final class UnitFormatParser {
@@ -283,7 +283,7 @@ public final class UnitFormatParser {
                         unit = symbols.getUnit(token.image.substring(prefixSymbol.length()));
                         if (unit != null) {
                             {
-                                return unit.transform(PowerOfIntConverter.of(prefix));
+                                return unit.transform(PowersOfIntConverter.of(prefix));
                             }
                         }
                     }
