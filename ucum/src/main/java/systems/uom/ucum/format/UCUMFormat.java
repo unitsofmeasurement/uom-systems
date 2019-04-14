@@ -52,6 +52,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.ParsePosition;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * <p>
@@ -198,67 +199,63 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         } else if (unit.getBaseUnits() != null) {
             Map<? extends AbstractUnit<?>, Integer> productUnits = unit.getBaseUnits();
             StringBuffer app = new StringBuffer();
-            for (AbstractUnit<?> u : productUnits.keySet()) {
-                StringBuffer temp = new StringBuffer();
-                temp = (StringBuffer) format(u, temp);
-                if ((temp.indexOf(".") >= 0) || (temp.indexOf("/") >= 0)) {
-                    temp.insert(0, '(');
-                    temp.append(')');
-                }
-                int pow = productUnits.get(u);
-                int indexToAppend;
-                if (app.length() > 0) { // Not the first unit.
+            
+            Map<AbstractUnit<?>, Integer> numeratorUnits = new LinkedHashMap<>();            
+            Map<AbstractUnit<?>, Integer> denominatorUnits = new LinkedHashMap<>();
 
-                    if (pow >= 0) {
-
-                        if (app.indexOf("1/") >= 0) {
-                            indexToAppend = app.indexOf("1/");
-                            app.replace(indexToAppend, indexToAppend + 2, "/");
-                            // this statement make sure that (1/y).x will be
-                            // (x/y)
-
-                        } else if (app.indexOf("/") >= 0) {
-                            indexToAppend = app.indexOf("/");
-                            app.insert(indexToAppend, ".");
-                            indexToAppend++;
-                            // this statement make sure that (x/z).y will be
-                            // (x.y/z)
-
-                        } else {
-                            app.append('.');
-                            indexToAppend = app.length();
-                            // this statement make sure that (x).y will be (x.y)
-                        }
-
-                    } else {
-                        app.append('/');
-                        pow = -pow;
-
-                        indexToAppend = app.length();
-                        // this statement make sure that (x).y^-z will be
-                        // (x/y^z), where z would be added if it has a value
-                        // different than 1.
-                    }
-
-                } else { // First unit.
-                    if (pow < 0) {
-                        app.append("1/");
-                        pow = -pow;
-                        // this statement make sure that x^-y will be (1/x^y),
-                        // where z would be added if it has a value different
-                        // than 1.
-                    }
-                    indexToAppend = app.length();
-                }
-
-                app.insert(indexToAppend, temp);
-
-                if (pow != 1) {
-                    app.append(Integer.toString(pow));
-                    // this statement make sure that the power will be added if
-                    // it's different than 1.
-                }
+            // divide units into numerators and denominators
+            for (Entry<? extends AbstractUnit<?>, Integer> u : productUnits.entrySet()) {
+            	if (u.getValue() > 0) {
+            		numeratorUnits.put(u.getKey(), u.getValue());
+            	}else {
+            		denominatorUnits.put(u.getKey(), u.getValue());
+            	}
             }
+            
+            int numeratorCount = 1;
+            for (Entry<? extends AbstractUnit<?>, Integer> u : numeratorUnits.entrySet()) {
+            	// add multiplication separators after first unit
+        		if (numeratorCount > 1){
+        			app.append(".");
+        		}
+        		// add individual unit string
+        		format(u.getKey(),app);
+        		// add power number if greater than 1
+            	if (u.getValue() > 1){
+            		app.append(u.getValue());
+            	}
+            	numeratorCount++;
+            }
+            // special case if there is no numerator append one for inverse
+            if (numeratorCount == 1) {
+            	app.append("1");
+            }
+            if (denominatorUnits.size() >0){
+            	// append division symbol
+            	app.append("/");
+            	int denominatorCount = 1;
+            	for (Entry<? extends AbstractUnit<?>, Integer> u : denominatorUnits.entrySet()) {
+            		// if there is more than one denominator unit and this is the first, add open parenthesis 
+            		if (denominatorCount == 1 && denominatorUnits.size() > 1 ) {
+            			app.append("(");
+            		}
+            		// add multiplication separators after first unit
+            		if (denominatorCount > 1){
+            			app.append(".");
+            		}
+            		// add individual unit string
+            		format(u.getKey(),app);
+            		// add power number if abs greater than 1
+                	if (Math.abs(u.getValue()) < -1){
+                		app.append(-u.getValue());
+                	}
+                	// if there is more than one denominator unit and this is the last, add close parenthesis
+                	if (denominatorCount == denominatorUnits.size() && denominatorUnits.size() > 1 ) {
+            			app.append(")");
+            		}
+                	denominatorCount++;
+                }
+            }            
             symbol = app;
         } else if (!unit.isSystemUnit() || unit.equals(SI.KILOGRAM)) {
             final StringBuilder temp = new StringBuilder();
