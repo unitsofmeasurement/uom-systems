@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -28,16 +28,16 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jdkVersion>1.7</jdkVersion>
+		<jdkVersion>1.8</jdkVersion>
 		<jsr.version>1.0</jsr.version>
 		<jsr2.version>2.0-EDR</jsr2.version>
 		<lib.version>1.1</lib.version>
 		<ri.version>1.0.3</ri.version>
 		<ri2.version>1.2</ri2.version>
-		<se.version>1.0.10-SNAPSHOT</se.version>
-		<si.version>1.0-SNAPSHOT</si.version>
-		<quantity.version>1.0-SNAPSHOT</quantity.version>
-		<systems.version>1.0-SNAPSHOT</systems.version>
+		<se.version>1.0.10</se.version>
+		<si.version>1.0</si.version>
+		<quantity.version>1.0</quantity.version>
+		<systems.version>1.0</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
