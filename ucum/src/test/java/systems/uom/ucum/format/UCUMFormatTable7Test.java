@@ -31,7 +31,7 @@ package systems.uom.ucum.format;
 
 import static org.junit.Assert.*;
 import static systems.uom.ucum.UCUM.*;
-import static tech.units.indriya.unit.MetricPrefix.KILO;
+import static javax.measure.MetricPrefix.KILO;
 
 import org.junit.*;
 

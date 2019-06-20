@@ -34,19 +34,20 @@ import static systems.uom.ucum.format.UCUMConverterFormatter.*;
 import si.uom.SI;
 import systems.uom.ucum.internal.format.UCUMFormatParser;
 import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.ComparableUnit;
 import tech.units.indriya.format.AbstractUnitFormat;
 import tech.units.indriya.format.SymbolMap;
 import tech.units.indriya.function.*;
 import tech.units.indriya.internal.format.TokenException;
 import tech.units.indriya.internal.format.TokenMgrError;
 import tech.units.indriya.unit.AnnotatedUnit;
-import tech.units.indriya.unit.MetricPrefix;
+import javax.measure.MetricPrefix;
 import tech.units.indriya.unit.TransformedUnit;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
-import javax.measure.format.ParserException;
+import javax.measure.format.MeasurementParseException;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -73,7 +74,7 @@ import java.util.Map.Entry;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8, 6 October 2018
+ * @version 0.9, 19 June 2019
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -158,29 +159,29 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     // ///////////
     // Parsing //
     // ///////////
-    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws ParserException;
+    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws MeasurementParseException;
 
-    protected Unit<?> parse(CharSequence csq, int index) throws ParserException {
+    protected Unit<?> parse(CharSequence csq, int index) throws MeasurementParseException {
         return parse(csq, new ParsePosition(index));
     }
 
     @Override
-    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException;
+    public abstract Unit<? extends Quantity<?>> parse(CharSequence csq) throws MeasurementParseException;
 
     ////////////////
     // Formatting //
     ////////////////
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public Appendable format(Unit<?> unknownUnit, Appendable appendable) throws IOException {
-        if (!(unknownUnit instanceof AbstractUnit)) {
-            throw new UnsupportedOperationException("The UCUM format supports only known units (AbstractUnit instances)");
+    public Appendable format(final Unit<?> unknownUnit, Appendable appendable) throws IOException {
+        if (!(unknownUnit instanceof ComparableUnit)) {
+            throw new UnsupportedOperationException("The UCUM format supports only known units (Comparable units)");
         }
-        AbstractUnit unit = (AbstractUnit) unknownUnit;
+        ComparableUnit unit = (ComparableUnit) unknownUnit;
         CharSequence symbol;
         CharSequence annotation = null;
         if (unit instanceof AnnotatedUnit) {
             AnnotatedUnit annotatedUnit = (AnnotatedUnit) unit;
-            unit = annotatedUnit.getActualUnit();
+            unit = (ComparableUnit)annotatedUnit.getActualUnit();
             annotation = annotatedUnit.getAnnotation();
         }
         String mapSymbol = symbolMap.getSymbol(unit);
@@ -266,7 +267,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                 // a transformed unit, for compatibility with existing SI
                 // unit system.
                 format(SI.GRAM, temp);
-                converter = PowersOfIntConverter.of(MetricPrefix.KILO);
+                converter = PowerOfIntConverter.of(MetricPrefix.KILO);
                 printSeparator = true;
             } else {
                 Unit<?> parentUnit = unit.getSystemUnit();
@@ -275,7 +276,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                     // More special-case hackery to work around gram/kilogram
                     // inconsistency
                     parentUnit = SI.GRAM;
-                    converter = converter.concatenate(PowersOfIntConverter.of(MetricPrefix.KILO));
+                    converter = converter.concatenate(PowerOfIntConverter.of(MetricPrefix.KILO));
                 }
                 format(parentUnit, temp);
                 printSeparator = !parentUnit.equals(ONE);
@@ -433,7 +434,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         }
 
         @Override
-        public Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws ParserException {
+        public Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws MeasurementParseException {
             // Parsing reads the whole character sequence from the parse
             // position.
             int start = cursor.getIndex();
@@ -459,7 +460,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                 } else {
                     cursor.setErrorIndex(start);
                 }
-                throw new ParserException(e);
+                throw new MeasurementParseException(e);
             } catch (TokenMgrError e) {
                 cursor.setErrorIndex(start);
                 throw new IllegalArgumentException(e.getMessage());
@@ -467,7 +468,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         }
 
         @Override
-        public Unit<? extends Quantity<?>> parse(CharSequence csq) throws ParserException {
+        public Unit<? extends Quantity<?>> parse(CharSequence csq) throws MeasurementParseException {
             return parse(csq, new ParsePosition(0));
         }
     }

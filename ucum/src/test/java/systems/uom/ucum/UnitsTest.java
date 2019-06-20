@@ -53,7 +53,7 @@ import systems.uom.ucum.UCUM;
 import tech.units.indriya.AbstractUnit;
 import static org.junit.Assert.*;
 import static tech.units.indriya.AbstractUnit.ONE;
-import static tech.units.indriya.unit.MetricPrefix.*;
+import static javax.measure.MetricPrefix.*;
 import static systems.uom.ucum.UCUM.*;
 
 /**

@@ -51,7 +51,7 @@
 			<dependency>
 				<groupId>tech.units</groupId>
 				<artifactId>indriya</artifactId>
-				<version>${ri2.version}</version>
+				<version>${ri.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>systems.uom</groupId>

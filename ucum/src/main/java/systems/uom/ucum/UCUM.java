@@ -29,8 +29,8 @@
  */
 package systems.uom.ucum;
 
-//import static tech.units.indriya.unit.MetricPrefix.*;
-import static tech.units.indriya.unit.MetricPrefix.*;
+//import static javax.measure.MetricPrefix.*;
+import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.AbstractUnit.ONE;
 
 import java.util.Objects;
@@ -47,7 +47,7 @@ import tech.units.indriya.*;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.LogConverter;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.function.PowersOfPiConverter;
+import tech.units.indriya.function.PowerOfPiConverter;
 //import tech.units.indriya.function.PowersOfPiConverter;
 import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.ProductUnit;
@@ -135,7 +135,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Dimensionless> HUNDREDS = addUnit(ONE.multiply(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowersOfPiConverter.of(1)));
+    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowerOfPiConverter.of(1)));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Dimensionless> PERCENT = addUnit(ONE.divide(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */

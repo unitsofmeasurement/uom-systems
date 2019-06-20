@@ -37,11 +37,11 @@ import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
 import systems.uom.ucum.UCUM;
-import tec.uom.lib.common.function.IntPrioritySupplier;
+import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8.1, March 16, 2017
+ * @version 0.9, June 19, 2019
  */
 final class UCUMSystemService implements SystemOfUnitsService,
 	IntPrioritySupplier {

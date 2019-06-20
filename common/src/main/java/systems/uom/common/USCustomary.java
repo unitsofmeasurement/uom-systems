@@ -29,7 +29,7 @@
  */
 package systems.uom.common;
 
-import static tech.units.indriya.unit.MetricPrefix.MICRO;
+import static javax.measure.MetricPrefix.MICRO;
 import static tech.units.indriya.unit.Units.*;
 
 import java.util.Objects;

@@ -30,7 +30,7 @@
 package systems.uom.common;
 
 import static tech.units.indriya.AbstractUnit.ONE;
-import static tech.units.indriya.unit.MetricPrefix.CENTI;
+import static javax.measure.MetricPrefix.CENTI;
 import static tech.units.indriya.unit.Units.JOULE;
 import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.NEWTON;
@@ -69,7 +69,7 @@ import tech.units.indriya.unit.Units;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, $Date: 2019-01-21$
+ * @version 1.0, $Date: 2019-06-19$
  * @see <a href= "https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">Wikipedia: Centimetre–gram–second system of
  *      units</a>
  * @since 0.6

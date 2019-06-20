@@ -29,25 +29,32 @@
  */
 package systems.uom.unicode.internal;
 
+import javax.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tech.units.indriya.spi.DefaultServiceProvider;
+import tech.units.indriya.internal.DefaultServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.1
+ * @version 0.3
  */
+@Named("Unicode")
 public class UnicodeServiceProvider extends DefaultServiceProvider {
 
-    public int getPriority() {
-	return 500;
-    }
+	public int getPriority() {
+		return 500;
+	}
 
+	@Override
+	public SystemOfUnitsService getSystemOfUnitsService() {
+		return new CLDRSystemService();
+	}
+	
     @Override
-    public SystemOfUnitsService getSystemOfUnitsService() {
-	return new CLDRSystemService();
+    public String toString() {
+        return "Unicode";
     }
 }

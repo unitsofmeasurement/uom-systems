@@ -37,11 +37,11 @@ import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
 import systems.uom.unicode.CLDR;
-import tec.uom.lib.common.function.IntPrioritySupplier;
+import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2, March 4, 2017
+ * @version 0.3, June 19, 2019
  */
 class CLDRSystemService implements SystemOfUnitsService, IntPrioritySupplier {
     private static final int PRIO = 20;

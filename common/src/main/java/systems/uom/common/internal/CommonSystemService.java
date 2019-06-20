@@ -39,11 +39,11 @@ import javax.measure.spi.SystemOfUnitsService;
 import systems.uom.common.CGS;
 import systems.uom.common.Imperial;
 import systems.uom.common.USCustomary;
-import tec.uom.lib.common.function.IntPrioritySupplier;
+import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, October 6, 2018
+ * @version 0.8, June 19, 2019
  */
 class CommonSystemService implements SystemOfUnitsService, IntPrioritySupplier {
     private static final int PRIO = 100;

@@ -41,7 +41,7 @@ import javax.measure.quantity.Mass;
 import org.junit.Before;
 import org.junit.Test;
 
-import tech.units.indriya.quantity.DefaultQuantityFactory;
+import tech.units.indriya.internal.DefaultQuantityFactory;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.Units;
 
@@ -69,7 +69,7 @@ public class ArithmeticTest {
 		Quantity<Length> km = Quantities.getQuantity(1000, Units.METRE);
 		Quantity<Length> mile = Quantities.getQuantity(1, USCustomary.MILE);
 		Quantity<Length> result = km.add(mile);
-		assertEquals(BigDecimal.valueOf(2609.344d), result.getValue());
+		assertEquals(2609.344d, result.getValue().doubleValue(), 0d);
 		assertEquals(Units.METRE, result.getUnit());
 	}
 	
@@ -78,7 +78,7 @@ public class ArithmeticTest {
 		Quantity<Mass> kg = Quantities.getQuantity(50d, Units.KILOGRAM);
 		Quantity<Mass> p = Quantities.getQuantity(10d, USCustomary.POUND);
 		Quantity<Mass> result = kg.add(p);
-		assertEquals(54.5359237d, result.getValue());
+		assertEquals(54.5359237d, result.getValue().doubleValue(), 0d);
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 
@@ -87,7 +87,7 @@ public class ArithmeticTest {
 		Quantity<Length> km = Quantities.getQuantity(2000, Units.METRE);
 		Quantity<Length> mile = Quantities.getQuantity(1, USCustomary.MILE);
 		Quantity<Length> result = km.subtract(mile);
-		assertEquals(BigDecimal.valueOf(390.656d), result.getValue());
+		assertEquals(390.656d, result.getValue().doubleValue(), 0d);
 		assertEquals(Units.METRE, result.getUnit());
 	}
 	
@@ -96,7 +96,7 @@ public class ArithmeticTest {
 		Quantity<Mass> kg = Quantities.getQuantity(50d, Units.KILOGRAM);
 		Quantity<Mass> p = Quantities.getQuantity(10d, USCustomary.POUND);
 		Quantity<Mass> result = kg.subtract(p);
-		assertEquals(45.4640763d, result.getValue());
+		assertEquals(45.4640763d, result.getValue().doubleValue(), 0d);
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 }

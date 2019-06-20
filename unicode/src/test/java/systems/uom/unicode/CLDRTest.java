@@ -31,7 +31,7 @@ package systems.uom.unicode;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static tech.units.indriya.unit.MetricPrefix.*;
+import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static systems.uom.unicode.CLDR.*;
 
@@ -62,6 +62,7 @@ public class CLDRTest {
 	public void testConvert() {
 		Quantity<Speed> kph = Quantities.getQuantity(30, Units.KILOMETRE_PER_HOUR);
 		Quantity<Speed> knots = kph.to(CLDR.KNOT);
-		assertEquals(16.19871706263499, knots.getValue());
+		assertEquals(16.19870410367171d, knots.getValue().doubleValue(), 0d);
+		// Using doubleValue() see https://github.com/unitsofmeasurement/indriya/issues/237
 	}
 }

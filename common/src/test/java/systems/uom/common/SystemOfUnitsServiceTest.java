@@ -42,6 +42,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
+	private static final String DEFAULT_SERVICE_CLASSNAME = "tech.units.indriya.internal.DefaultSystemOfUnitsService";
+	private static final String COMMON_SERVICE_CLASSNAME = "systems.uom.common.internal.CommonSystemService";
+
+	private static final int NUM_OF_UNITS_DEFAULT = 43;
 	private static final int NUM_OF_UNITS_US = 45;
 	private static final int NUM_OF_UNITS_CGS = 12;
 
@@ -55,8 +59,23 @@ public class SystemOfUnitsServiceTest {
 	@Test
 	public void testDefaultUnitSystemService() {
 		assertNotNull(defaultService);
-		assertEquals("systems.uom.common.internal.CommonSystemService", defaultService.getClass().getName());
+		assertEquals(DEFAULT_SERVICE_CLASSNAME, defaultService.getClass().getName());
 		SystemOfUnits system = defaultService.getSystemOfUnits();
+		assertNotNull(system);
+		assertEquals("tech.units.indriya.unit.Units", system.getClass().getName());
+		assertEquals("Units", system.getName());
+		assertNotNull(system.getUnits());
+		assertEquals(NUM_OF_UNITS_DEFAULT, system.getUnits().size());
+	}
+	
+	@Test
+	public void testCommonUnitSystemService() {
+		final ServiceProvider commonProvider = ServiceProvider.of("Common");
+		assertNotNull(commonProvider);
+		final SystemOfUnitsService commonService = commonProvider.getSystemOfUnitsService();
+		assertNotNull(commonService);
+		assertEquals("systems.uom.common.internal.CommonSystemService", commonService.getClass().getName());
+		SystemOfUnits system = commonService.getSystemOfUnits();
 		assertNotNull(system);
 		assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
 		assertEquals("United States Customary Units", system.getName());
@@ -66,22 +85,25 @@ public class SystemOfUnitsServiceTest {
 
 	@Test
 	// TODO consolidate asserts
-	public void testUnitSystemServiceAlias() {
-		assertNotNull(defaultService);
-		assertEquals("systems.uom.common.internal.CommonSystemService", defaultService.getClass().getName());
-		SystemOfUnits system = defaultService.getSystemOfUnits("USCustomary");
+	public void testCommonUnitSystemServiceAlias() {
+		final ServiceProvider commonProvider = ServiceProvider.of("Common");
+		assertNotNull(commonProvider);
+		final SystemOfUnitsService commonService = commonProvider.getSystemOfUnitsService();
+		assertNotNull(commonService);
+		assertEquals(COMMON_SERVICE_CLASSNAME, commonService.getClass().getName());
+		SystemOfUnits system = commonService.getSystemOfUnits("USCustomary");
 		assertNotNull(system);
 		assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
 		assertEquals("United States Customary Units", system.getName());
 		assertNotNull(system.getUnits());
 		assertEquals(NUM_OF_UNITS_US, system.getUnits().size());
-		SystemOfUnits system2 = defaultService.getSystemOfUnits("US");
+		SystemOfUnits system2 = commonService.getSystemOfUnits("US");
 		assertEquals(system, system2);
 
-		system = defaultService.getSystemOfUnits("CGS");
+		system = commonService.getSystemOfUnits("CGS");
 		assertNotNull(system);
 		assertEquals("Centimetre–gram–second System of Units", system.getName());
-		system2 = defaultService.getSystemOfUnits("Centimetre–gram–second");
+		system2 = commonService.getSystemOfUnits("Centimetre–gram–second");
 		assertEquals(system, system2);
 		assertEquals(NUM_OF_UNITS_CGS, system.getUnits().size());
 	}
@@ -91,6 +113,9 @@ public class SystemOfUnitsServiceTest {
 		Collection<ServiceProvider> services = ServiceProvider.available();
 		assertNotNull(services);
 		assertEquals(3, services.size());
+		for (ServiceProvider provider : services) {
+			System.out.println(provider);
+		}
 		// for (SystemOfUnitsService service : services) {
 		// checkService(service);
 		// }

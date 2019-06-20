@@ -35,6 +35,7 @@ import javax.measure.quantity.Mass;
 
 import org.junit.Test;
 
+import tech.units.indriya.function.RationalNumber;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.Units;
 
@@ -45,7 +46,7 @@ public class ArithmeticTest {
 		Quantity<Mass> kg = Quantities.getQuantity(5d, Units.KILOGRAM);
 		Quantity<Mass> p = Quantities.getQuantity(10d, CLDR.CARAT);
 		Quantity<Mass> result = kg.add(p);
-		assertEquals(5.002d, result.getValue());
+		assertEquals(RationalNumber.of(5002, 1000), result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 
@@ -54,7 +55,7 @@ public class ArithmeticTest {
 		Quantity<Mass> kg = Quantities.getQuantity(5d, Units.KILOGRAM);
 		Quantity<Mass> p = Quantities.getQuantity(10d, CLDR.CARAT);
 		Quantity<Mass> result = kg.subtract(p);
-		assertEquals(4.998d, result.getValue());
+		assertEquals(RationalNumber.of(4998, 1000), result.getValue());
 		assertEquals(Units.KILOGRAM, result.getUnit());
 	}
 }

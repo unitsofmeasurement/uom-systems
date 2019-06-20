@@ -75,12 +75,12 @@ public class UCUMTest {
     @Test
     public void testStToDm3() {
 	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
-	assertEquals(1000d, oneLiter.to(LITER_DM3).getValue());
+	assertEquals(1000, oneLiter.to(LITER_DM3).getValue());
     }
     
     @Test
     public void testStToLiter() {
 	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
-	assertEquals(1000d, oneLiter.to(LITER).getValue());
+	assertEquals(1000, oneLiter.to(LITER).getValue());
     }
 }

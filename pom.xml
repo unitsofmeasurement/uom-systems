@@ -3,11 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>systems-parent</artifactId>
 	<groupId>systems.uom</groupId>
-	<version>2.0-SNAPSHOT</version>
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.2</version>
+		<version>2.0-SNAPSHOT</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -29,15 +28,12 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.8</jdkVersion>
-		<jsr.version>1.0</jsr.version>
-		<jsr2.version>2.0-EDR</jsr2.version>
-		<lib.version>1.1</lib.version>
-		<ri.version>1.0.3</ri.version>
-		<ri2.version>1.2</ri2.version>
-		<se.version>1.0.10</se.version>
-		<si.version>1.0</si.version>
-		<quantity.version>1.0</quantity.version>
-		<systems.version>1.0</systems.version>
+		<jsr.version>2.0-SNAPSHOT</jsr.version>
+		<lib.version>2.0-SNAPSHOT</lib.version>
+		<ri.version>2.0-SNAPSHOT</ri.version>
+		<si.version>2.0-SNAPSHOT</si.version>
+		<quantity.version>2.0-SNAPSHOT</quantity.version>
+		<systems.version>2.0-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -46,11 +42,8 @@
 	<modules>
 		<module>quantity</module> 
 		<module>common</module>
-		<module>common-java8</module>
 		<module>unicode</module>
-		<module>unicode-java8</module>
 		<module>ucum</module>
-		<module>ucum-java8</module>
 	</modules>
 
 	<build>
@@ -125,7 +118,7 @@
                         <header>src/main/config/header.txt</header>
                         <properties>
                             <owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-                            <currentYear>2018</currentYear>
+                            <currentYear>2019</currentYear>
                         </properties>
                         <excludes>
                             <exclude>**/README</exclude>
@@ -164,11 +157,6 @@
 			<dependency>
 				<groupId>si.uom</groupId>
 				<artifactId>si-units</artifactId>
-				<version>${si.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>si.uom</groupId>
-				<artifactId>si-units-java8</artifactId>
 				<version>${si.version}</version>
 			</dependency>
 		</dependencies>
@@ -239,25 +227,16 @@
 											<id>tech.uom.lib:uom-lib-common:${lib.version}</id>
 										</artifact>
 										<artifact>
-											<id>tec.uom:uom-se:${se.version}</id>
-										</artifact>
-										<artifact>
 											<id>si.uom:si-quantity:${si.version}</id>
-										</artifact>
-										<artifact>
-											<id>si.uom:si-units-java8:${si.version}</id>
 										</artifact>
 										<artifact>
 											<id>systems.uom:systems-quantity:${quantity.version}</id>
 										</artifact>
 										<artifact>
-											<id>systems.uom:systems-common-java8:${systems.version}</id>
+											<id>systems.uom:systems-unicode:${systems.version}</id>
 										</artifact>
 										<artifact>
-											<id>systems.uom:systems-unicode-java8:${systems.version}</id>
-										</artifact>
-										<artifact>
-										  <id>systems.uom:systems-ucum-java8:${systems.version}</id>
+										  <id>systems.uom:systems-ucum:${systems.version}</id>
 										</artifact>
 									</artifacts>
 								</configuration>

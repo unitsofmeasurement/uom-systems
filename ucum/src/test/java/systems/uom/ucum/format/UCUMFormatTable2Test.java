@@ -102,10 +102,10 @@ public class UCUMFormatTable2Test extends UCUMFormatTestBase {
         assertEquals("the formatter isn't working with a product unit", "M/S", FORMAT_CI.format(v));
     }
 
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testParseLocal() {
         final UnitFormat format = LocalUnitFormat.getInstance();
-        format.parse("min").getSymbol();
+        assertEquals("min", format.parse("min").getSymbol());
     }
 
     @Test

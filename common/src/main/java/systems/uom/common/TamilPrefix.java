@@ -29,33 +29,123 @@
  */
 package systems.uom.common;
 
-//import java.math.BigInteger;
-
+import javax.measure.Prefix;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 
-import tech.units.indriya.function.RationalConverter;
-
 /**
- * Utility class holding prefixes used today in parts of India and Sri Lanka;
+ * Utility class holding Tamil-System prefixes used today in parts of India and Sri Lanka;
  * based on grouping by two decimal places, rather than the
  * three decimal places common in most parts of the world.</br><code> import static
- * org.eclipse.uomo.units.TamilPrefix.*; // Static import. ... Unit<Pressure>
+ * systems.uom.common.TamilPrefix.*; // Static import. ... Unit<Pressure>
  * ONDRU_PASCAL = ONDRU(PASCAL); 
  * Unit<Length> PATHU_METER = PATHU(METER); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.3, $Date: 2015-06-27 $
+ * @version 1.4, $Date: 2019-06-19 $
  * @see <a
- *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
- *      Tamil units of measurement - Whole numbers</a>
+ *      href="https://en.wikipedia.org/wiki/Tamil_numerals#Tamil-System">Wikipedia:
+ *      Tamil numerals - Tamil-System</a>
  */
- // TODO while SE-specific, consider moving to a local module in uom-systems
-public abstract class TamilPrefix  {
+// FIXME Update
+public enum TamilPrefix implements Prefix {
+    /** Prefix for 10<sup>5</sup>. */
+	lațcham("L", 10, 5),
+    /** Prefix for 10<sup>6</sup>. */
+	pathu_lațcham("A", 10, 6),
+    /** Prefix for 10<sup>3</sup>. */
+	kōdi("K", 10, 7),
+    /** Prefix for 10<sup>2</sup>. */
+	pathu_kōdi("N", 10, 8),
+    /** Prefix for 10<sup>1</sup>. */
+	aṟputam("Pa", 10, 9),
+    /** Prefix for 10<sup>-1</sup>. */
+	nikarputam("NI", 10, 11),
+    /** Prefix for 10<sup>-2</sup>. */
+	karvam("M", 10, 13),
+    /** Prefix for 10<sup>15</sup>. */
+	saṅkam("M", 10, 15),
+    /** Prefix for 10<sup>17</sup>. */
+	arttam("M", 10, 17),
+    /** Prefix for 10<sup>19</sup>. */
+	pūriyam("M", 10, 19),
+    /** Prefix for 10<sup>21</sup>. */
+	mukkoți("M", 10, 21),
+    /** Prefix for 10<sup>25</sup>. */
+	māyukam("M", 10, 25);
+	
+    /**
+     * The symbol of this prefix, as returned by {@link #getSymbol}.
+     *
+     * @serial
+     * @see #getSymbol()
+     */
+    private final String symbol;
+
+    /**
+     * Base part of the associated factor in base^exponent representation.
+     */
+    private final int base;
+    
+    /**
+     * Exponent part of the associated factor in base^exponent representation.
+     */
+    private final int exponent;
+
+    /**
+     * Creates a new prefix.
+     *
+     * @param symbol
+     *          the symbol of this prefix.
+     * @param exponent
+     *          part of the associated factor in base^exponent representation.
+     */
+    private TamilPrefix(String symbol, int base, int exponent) {
+        this.symbol = symbol;
+        this.base = base;
+        this.exponent = exponent;
+    }
+    
+    /**
+     * Base part of the associated factor in base^exponent representation. For metric prefix, this is always 10.
+     */
+    @Override
+    public int getBase() {
+        return base;
+    }
+    
+
+    /**
+     * Exponent part of the associated factor in base^exponent representation.
+     */
+    @Override
+    public int getExponent() {
+        return exponent;
+    }
+
+    /**
+     * Returns the name of this prefix.
+     *
+     * @return this prefix name, not {@code null}.
+     */
+    @Override
+    public String getName() {
+        return name();
+    }
+    
+    /**
+     * Returns the symbol of this prefix.
+     *
+     * @return this prefix symbol, not {@code null}.
+     */
+    @Override
+    public String getSymbol() {
+        return symbol;
+    }
 
 	/**
 	 * <p>
-	 * onRu
+	 * एक (Ek)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor <code>1</code>
 	 * 
@@ -63,13 +153,13 @@ public abstract class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> onRu(Unit<Q> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> EK(Unit<Q> unit) {
 		return unit;
 	}
-	
+
 	/**
 	 * <p>
-	 * patthu
+	 * दस (Das)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>1</sup></code>
@@ -78,13 +168,13 @@ public abstract class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(10)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> patthu(Unit<Q> unit) {
-		return unit.transform(E1);
+	public static final <Q extends Quantity<Q>> Unit<Q> DAS(Unit<Q> unit) {
+		return unit.prefix(lațcham);
 	}
 
 	/**
 	 * <p>
-	 * nooRu
+	 * सौ (Sau)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>2</sup></code>
@@ -93,13 +183,13 @@ public abstract class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(100)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> nooRu(Unit<Q> unit) {
-		return unit.transform(E2);
+	public static final <Q extends Quantity<Q>> Unit<Q> SAU(Unit<Q> unit) {
+		return unit.prefix(lațcham);
 	}
 
 	/**
 	 * <p>
-	 * aayiram
+	 * सहस्र (Sahasr)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>3</sup></code>
@@ -108,13 +198,13 @@ public abstract class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e3)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> aayiram(Unit<Q> unit) {
-		return unit.transform(E3);
+	public static final <Q extends Quantity<Q>> Unit<Q> SAHASR(Unit<Q> unit) {
+		return unit.prefix(lațcham);
 	}
 
 	/**
 	 * <p>
-	 * nooRaayiram
+	 * लाख (Lakh)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>5</sup></code>
@@ -123,13 +213,28 @@ public abstract class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e5)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> nooRaayiram(Unit<Q> unit) {
-		return unit.transform(E5);
+	public static final <Q extends Quantity<Q>> Unit<Q> LAKH(Unit<Q> unit) {
+		return unit.prefix(lațcham);
 	}
 
 	/**
 	 * <p>
-	 * thoLLunn
+	 * करोड़ (Crore)
+	 * </p>
+	 * Returns the specified unit multiplied by the factor
+	 * <code>10<sup>7</sup></code>
+	 * 
+	 * @param unit
+	 *            any unit.
+	 * @return <code>unit.times(1e7)</code>.
+	 */
+	public static final <Q extends Quantity<Q>> Unit<Q> CRORE(Unit<Q> unit) {
+		return unit.prefix(lațcham);
+	}
+
+	/**
+	 * <p>
+	 * अरब (Arawb)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>9</sup></code>
@@ -138,28 +243,43 @@ public abstract class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e9)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> thoLLunn(Unit<Q> unit) {
-		return unit.transform(E9);
+	public static final <Q extends Quantity<Q>> Unit<Q> ARAWB(Unit<Q> unit) {
+		return unit.prefix(lațcham);
 	}
 
 	/**
 	 * <p>
-	 * eegiyam
+	 * खरब (Kharawb)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>12</sup></code>
+	 * <code>10<sup>11</sup></code>
 	 * 
 	 * @param unit
 	 *            any unit.
-	 * @return <code>unit.times(1e12)</code>.
+	 * @return <code>unit.times(1e11)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> eegiyam(Unit<Q> unit) {
-		return unit.transform(E12);
+	public static final <Q extends Quantity<Q>> Unit<Q> KHARAWB(Unit<Q> unit) {
+		return unit.prefix(lațcham);
 	}
 
 	/**
 	 * <p>
-	 * neLai
+	 * नील (Neel)
+	 * </p>
+	 * Returns the specified unit multiplied by the factor
+	 * <code>10<sup>13</sup></code>
+	 * 
+	 * @param unit
+	 *            any unit.
+	 * @return <code>unit.times(1e13)</code>.
+	 */
+	public static final <Q extends Quantity<Q>> Unit<Q> NEEL(Unit<Q> unit) {
+		return unit.prefix(lațcham);
+	}
+
+	/**
+	 * <p>
+	 * पद्म (Padma)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>15</sup></code>
@@ -168,114 +288,37 @@ public abstract class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e15)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> neLai(Unit<Q> unit) {
-		return unit.transform(E15);
+	public static final <Q extends Quantity<Q>> Unit<Q> PADMA(Unit<Q> unit) {
+		return unit.prefix(lațcham);
 	}
 
 	/**
 	 * <p>
-	 * iLanji
+	 * ஆம்பல் (pūriyam)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>18</sup></code>
+	 * <code>10<sup>19</sup></code>
 	 * 
 	 * @param unit
 	 *            any unit.
-	 * @return <code>unit.times(1e18)</code>.
+	 * @return <code>unit.times(1e19)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> iLanji(Unit<Q> unit) {
-		return unit.transform(E18);
+	public static final <Q extends Quantity<Q>> Unit<Q> pūriyam(Unit<Q> unit) {
+		return unit.prefix(pūriyam);
 	}
 
 	/**
 	 * <p>
-	 * veLLam
+	 * महाशंख (Mahashankh)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>20</sup></code>
+	 * <code>10<sup>19</sup></code>
 	 * 
 	 * @param unit
 	 *            any unit.
-	 * @return <code>unit.times(1e20)</code>.
+	 * @return <code>unit.times(1e19)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> veLLam(Unit<Q> unit) {
-		return unit.transform(E20);
+	public static final <Q extends Quantity<Q>> Unit<Q> MAHASHANKH(Unit<Q> unit) {
+		return unit.prefix(lațcham);
 	}
-	
-	/**
-	 * <p>
-	 * aambal
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>21</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e21)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> aambal(Unit<Q> unit) {
-		return unit.transform(E21);
-	}
-	
-	public static final class Sanskrit {
-		/**
-		 * <p>
-		 * ONDRU -one
-		 * </p>
-		 * Sanskrit translation for {@link #onRu}.
-		 */
-		public static final <Q extends Quantity<Q>> Unit<Q> ONDRU (Unit<Q> unit) {
-			return onRu(unit);
-		}
-		
-		/**
-		 * <p>
-		 * PATHU -ten
-		 * </p>
-		 * Sanskrit translation for {@link #patthu}.
-		 */
-		public static final <Q extends Quantity<Q>> Unit<Q> PATHU(Unit<Q> unit) {
-			return patthu(unit);
-		}
-	}
-
-	private static final RationalConverter E21 = RationalConverter.of(1e21d, 1d);
-	private static final RationalConverter E20 = RationalConverter.of(1e20d, 1d);
-	private static final RationalConverter E19 = RationalConverter.of(1e19d, 1d);
-	private static final RationalConverter E18 = RationalConverter.of(1e18d, 1d);
-	private static final RationalConverter E17 = RationalConverter.of(1e17d, 1d);
-	private static final RationalConverter E15 = RationalConverter.of(1e15d, 1d);
-	private static final RationalConverter E13 = RationalConverter.of(1e13d, 1d);
-	private static final RationalConverter E12 = RationalConverter.of(1e12d, 1d);
-	private static final RationalConverter E11 = RationalConverter.of(1e11d, 1d);
-	private static final RationalConverter E9 = RationalConverter.of(1e9d, 1d);
-	private static final RationalConverter E7 = RationalConverter.of(1e7d, 1d);
-	private static final RationalConverter E5 = RationalConverter.of(1e5d, 1d);
-	private static final RationalConverter E3 =RationalConverter.of(1e3d, 1d);
-	private static final RationalConverter E2 = RationalConverter.of(1e2d, 1d);
-	private static final RationalConverter E1 = RationalConverter.of(1e1d, 1d);
-	
-	/*
-	 * static final RationalConverter E5 = new RationalConverter(
-			BigInteger.TEN.pow(5), BigInteger.ONE);
-	// Holds prefix converters (optimization).
-	private static RationalConverter E21 = new RationalConverter(
-			BigInteger.TEN.pow(21), BigInteger.ONE);
-	private static RationalConverter E20 = new RationalConverter(
-			BigInteger.TEN.pow(20), BigInteger.ONE);
-	private static RationalConverter E18 = new RationalConverter(
-			BigInteger.TEN.pow(18), BigInteger.ONE);
-	private static RationalConverter E15 = new RationalConverter(
-			BigInteger.TEN.pow(15), BigInteger.ONE);
-	private static RationalConverter E12 = new RationalConverter(
-			BigInteger.TEN.pow(12), BigInteger.ONE);
-	private static RationalConverter E9 = new RationalConverter(
-			BigInteger.TEN.pow(9), BigInteger.ONE);
-	private static RationalConverter E3 = new RationalConverter(
-			BigInteger.TEN.pow(3), BigInteger.ONE);
-	private static RationalConverter E2 = new RationalConverter(
-			BigInteger.TEN.pow(2), BigInteger.ONE);
-	private static RationalConverter E1 = new RationalConverter(
-			BigInteger.TEN.pow(1), BigInteger.ONE);
-			*/
 }

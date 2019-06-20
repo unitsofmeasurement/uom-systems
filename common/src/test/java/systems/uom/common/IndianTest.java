@@ -32,23 +32,23 @@ package systems.uom.common;
 import static org.junit.Assert.assertEquals;
 import static systems.uom.common.IndianPrefix.CRORE;
 import static systems.uom.common.IndianPrefix.LAKH;
-import static tech.units.indriya.unit.MetricPrefix.KILO;
+import static javax.measure.MetricPrefix.KILO;
 import static tech.units.indriya.unit.Units.METRE;
 
 import org.junit.Test;
 
-import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.function.PowerOfIntConverter;
 
 public class IndianTest {
 	@Test
 	public void testLakhPrefix() {
-		assertEquals(LAKH(METRE).getConverterTo(KILO(METRE)),
-				new RationalConverter(100l, 1l));
+		assertEquals(PowerOfIntConverter.of(10, 2), 
+				LAKH(METRE).getConverterTo(KILO(METRE)));
 	}
 	
 	@Test
 	public void testCrorePrefix() {
-		assertEquals(CRORE(METRE).getConverterTo(KILO(METRE)),
-				new RationalConverter(10000l, 1l));
+		assertEquals(PowerOfIntConverter.of(10, 4), 
+				CRORE(METRE).getConverterTo(KILO(METRE)));
 	}
 }

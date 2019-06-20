@@ -39,7 +39,7 @@ import java.io.IOException;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.format.ParserException;
+import javax.measure.format.MeasurementParseException;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
@@ -48,7 +48,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.quantity.DefaultQuantityFactory;
+import tech.units.indriya.internal.DefaultQuantityFactory;
 import tech.units.indriya.unit.Units;
 
 /**
@@ -98,7 +98,7 @@ public class UnitFormatTest {
 			Unit<?> u = format2.parse("s");
 			assertEquals("s", u.getSymbol());
 			assertEquals(SECOND, u);
-		} catch (ParserException e) {
+		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}
@@ -131,7 +131,7 @@ public class UnitFormatTest {
 			Unit<?> u = format2.parse("min");
 			// assertEquals("min", u.getSymbol());
 			assertEquals(MINUTE, u);
-		} catch (ParserException e) {
+		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}
@@ -142,7 +142,7 @@ public class UnitFormatTest {
 			Unit<?> u = format2.parse("m");
 			assertEquals("m", u.getSymbol());
 			assertEquals(METRE, u);
-		} catch (ParserException e) {
+		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}
@@ -153,7 +153,7 @@ public class UnitFormatTest {
 			Unit<?> u = format2.parse("kg");
 			assertEquals("kg", u.getSymbol());
 			assertEquals(KILOGRAM, u);
-		} catch (ParserException e) {
+		} catch (MeasurementParseException e) {
 			fail(e.getMessage());
 		}
 	}

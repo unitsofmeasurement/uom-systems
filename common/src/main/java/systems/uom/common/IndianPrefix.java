@@ -29,10 +29,9 @@
  */
 package systems.uom.common;
 
+import javax.measure.Prefix;
 import javax.measure.Quantity;
 import javax.measure.Unit;
-
-import tech.units.indriya.function.RationalConverter;
 
 /**
  * Utility class holding prefixes used today in India, Pakistan, Bangladesh, Nepal
@@ -43,11 +42,104 @@ import tech.units.indriya.function.RationalConverter;
  * Unit<Length>CRORE_METER = CRORE(METER); [/code]
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.6 $Date: 2016-03-29 $
+ * @version 2.0 $Date: 2019-06-19 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Indian_numbering_system">Wikipedia: Indian numbering system</a>
  */
-public abstract class IndianPrefix {
+public enum IndianPrefix implements Prefix {
+    /** Prefix for 10<sup>24</sup>. */
+	EK("E", 1, 1),
+    /** Prefix for 10<sup>21</sup>. */
+	DAS("D", 10, 1),
+    /** Prefix for 10<sup>18</sup>. */
+	SAU("S", 10, 2),
+    /** Prefix for 10<sup>15</sup>. */
+	SAHASR("SA", 10, 3),
+    /** Prefix for 10<sup>12</sup>. */
+	LAKH("Lk", 10, 5),
+    /** Prefix for 10<sup>9</sup>. */
+	CRORE("Cr", 10, 7),
+    /** Prefix for 10<sup>6</sup>. */
+	ARAWB("A", 10, 9),
+    /** Prefix for 10<sup>3</sup>. */
+	KHARAWB("K", 10, 11),
+    /** Prefix for 10<sup>2</sup>. */
+	NEEL("N", 10, 13),
+    /** Prefix for 10<sup>1</sup>. */
+	PADMA("Pa", 10, 15),
+    /** Prefix for 10<sup>-1</sup>. */
+	SHANKH("SH", 10, 17),
+    /** Prefix for 10<sup>-2</sup>. */
+	MAHASHANKH("M", 10, 19);
+	
+    /**
+     * The symbol of this prefix, as returned by {@link #getSymbol}.
+     *
+     * @serial
+     * @see #getSymbol()
+     */
+    private final String symbol;
+
+    /**
+     * Base part of the associated factor in base^exponent representation.
+     */
+    private final int base;
+    
+    /**
+     * Exponent part of the associated factor in base^exponent representation.
+     */
+    private final int exponent;
+
+    /**
+     * Creates a new prefix.
+     *
+     * @param symbol
+     *          the symbol of this prefix.
+     * @param exponent
+     *          part of the associated factor in base^exponent representation.
+     */
+    private IndianPrefix(String symbol, int base, int exponent) {
+        this.symbol = symbol;
+        this.base = base;
+        this.exponent = exponent;
+    }
+    
+    /**
+     * Base part of the associated factor in base^exponent representation. For metric prefix, this is always 10.
+     */
+    @Override
+    public int getBase() {
+        return base;
+    }
+    
+
+    /**
+     * Exponent part of the associated factor in base^exponent representation.
+     */
+    @Override
+    public int getExponent() {
+        return exponent;
+    }
+
+    /**
+     * Returns the name of this prefix.
+     *
+     * @return this prefix name, not {@code null}.
+     */
+    @Override
+    public String getName() {
+        return name();
+    }
+    
+    /**
+     * Returns the symbol of this prefix.
+     *
+     * @return this prefix symbol, not {@code null}.
+     */
+    @Override
+    public String getSymbol() {
+        return symbol;
+    }
 
 	/**
 	 * <p>
@@ -75,7 +167,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(10)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> DAS(Unit<Q> unit) {
-		return unit.transform(E1);
+		return unit.prefix(DAS);
 	}
 
 	/**
@@ -90,7 +182,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(100)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> SAU(Unit<Q> unit) {
-		return unit.transform(E2);
+		return unit.prefix(SAU);
 	}
 
 	/**
@@ -105,7 +197,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e3)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> SAHASR(Unit<Q> unit) {
-		return unit.transform(E3);
+		return unit.prefix(SAHASR);
 	}
 
 	/**
@@ -130,7 +222,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e5)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> LAKH(Unit<Q> unit) {
-		return unit.transform(E5);
+		return unit.prefix(LAKH);
 	}
 
 	/**
@@ -145,7 +237,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e7)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> CRORE(Unit<Q> unit) {
-		return unit.transform(E7);
+		return unit.prefix(CRORE);
 	}
 
 	/**
@@ -160,7 +252,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e9)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> ARAWB(Unit<Q> unit) {
-		return unit.transform(E9);
+		return unit.prefix(ARAWB);
 	}
 
 	/**
@@ -175,7 +267,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e11)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> KHARAWB(Unit<Q> unit) {
-		return unit.transform(E11);
+		return unit.prefix(KHARAWB);
 	}
 
 	/**
@@ -190,7 +282,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e13)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> NEEL(Unit<Q> unit) {
-		return unit.transform(E13);
+		return unit.prefix(NEEL);
 	}
 
 	/**
@@ -205,7 +297,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e15)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> PADMA(Unit<Q> unit) {
-		return unit.transform(E15);
+		return unit.prefix(PADMA);
 	}
 
 	/**
@@ -220,7 +312,7 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e17)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> SHANKH(Unit<Q> unit) {
-		return unit.transform(E17);
+		return unit.prefix(SHANKH);
 	}
 
 	/**
@@ -235,45 +327,6 @@ public abstract class IndianPrefix {
 	 * @return <code>unit.times(1e19)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> MAHASHANKH(Unit<Q> unit) {
-		return unit.transform(E19);
+		return unit.prefix(MAHASHANKH);
 	}
-
-	private static final RationalConverter E19 = RationalConverter.of(1e19d, 1d);
-	private static final RationalConverter E17 = RationalConverter.of(1e17d, 1d);
-	private static final RationalConverter E15 = RationalConverter.of(1e15d, 1d);
-	private static final RationalConverter E13 = RationalConverter.of(1e13d, 1d);
-	private static final RationalConverter E11 = RationalConverter.of(1e11d, 1d);
-	private static final RationalConverter E9 = RationalConverter.of(1e9d, 1d);
-	private static final RationalConverter E7 = RationalConverter.of(1e7d, 1d);
-	private static final RationalConverter E5 = RationalConverter.of(1e5d, 1d);
-	private static final RationalConverter E3 =RationalConverter.of(1e3d, 1d);
-	private static final RationalConverter E2 = RationalConverter.of(1e2d, 1d);
-	private static final RationalConverter E1 = RationalConverter.of(1e1d, 1d);
-	
-	// Holds prefix converters (optimization).
-	/*
-	 * 	static final RationalConverter E7 = new RationalConverter(
-			BigInteger.TEN.pow(7), BigInteger.ONE);
-	 * 	static final RationalConverter E5 = new RationalConverter(
-			BigInteger.TEN.pow(5), BigInteger.ONE);
-
-	private static final RationalConverter E19 = new RationalConverter(
-			BigInteger.TEN.pow(19), BigInteger.ONE);
-	private static final RationalConverter E17 = new RationalConverter(
-			BigInteger.TEN.pow(17), BigInteger.ONE);
-	private static final RationalConverter E15 = new RationalConverter(
-			BigInteger.TEN.pow(15), BigInteger.ONE);
-	private static final RationalConverter E13 = new RationalConverter(
-			BigInteger.TEN.pow(13), BigInteger.ONE);
-	private static final RationalConverter E11 = new RationalConverter(
-			BigInteger.TEN.pow(11), BigInteger.ONE);
-	private static final RationalConverter E9 = new RationalConverter(
-			BigInteger.TEN.pow(9), BigInteger.ONE);
-	private static final RationalConverter E3 = new RationalConverter(
-			BigInteger.TEN.pow(3), BigInteger.ONE);
-	private static final RationalConverter E2 = new RationalConverter(
-			BigInteger.TEN.pow(2), BigInteger.ONE);
-	private static final RationalConverter E1 = new RationalConverter(
-			BigInteger.TEN.pow(1), BigInteger.ONE);
-			*/
 }

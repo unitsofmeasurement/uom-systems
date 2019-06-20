@@ -30,7 +30,7 @@
 package systems.uom.ucum.format;
 
 import static org.junit.Assert.*;
-import static tech.units.indriya.unit.MetricPrefix.*;
+import static javax.measure.MetricPrefix.*;
 import javax.measure.*;
 import javax.measure.format.*;
 import javax.measure.spi.ServiceProvider;

@@ -37,7 +37,7 @@ import tech.units.indriya.AbstractConverter;
 import tech.units.indriya.format.SymbolMap;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.function.RationalConverter;
-import tech.units.indriya.unit.Prefix;
+import javax.measure.Prefix;
 
 /**
  * @author keilw
