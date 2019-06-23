@@ -58,7 +58,7 @@ public enum IndianPrefix implements Prefix {
     /** Prefix for 10<sup>12</sup>. */
 	LAKH("Lk", 10, 5),
     /** Prefix for 10<sup>9</sup>. */
-	CRORE("Cr", 10, 7),
+	CRORE("cr", 10, 7),
     /** Prefix for 10<sup>6</sup>. */
 	ARAWB("A", 10, 9),
     /** Prefix for 10<sup>3</sup>. */

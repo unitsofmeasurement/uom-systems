@@ -27,49 +27,47 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.common;
+package systems.uom.common.ancient;
 
 import javax.measure.Prefix;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 
 /**
- * Utility class holding  traditional numbers of the Ancient Tamil Country, Tamizhakam.
- * Unit<Length> PATHU_METER = PATHU(METER); </code>
+ * Utility class holding  traditional numbers of the Vedic numbering system used in the Valmiki Ramayana
+ * Unit<Length> KOTI_METRE = KOTI(METRE); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 0.8, $Date: 2019-06-19 $
+ * @version 0.1, $Date: 2019-06-23 $
  * @see <a
- *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
- *      Tamil units of measurement - Whole numbers</a>
+ *      href="https://en.wikipedia.org/wiki/Indian_numbering_system#Vedic_numbering_systems">Wikipedia: Indian numbering system - Vedic numbering systems</a>
+ * @draft 2.0
  */
-// FIXME Update
-public enum TamilAncientPrefix implements Prefix {
+public enum VedicPrefix implements Prefix {
+    /** Prefix for 10<sup>24</sup>. */
+	EK("E", 1, 1),
     /** Prefix for 10<sup>21</sup>. */
-	pathu("D", 10, 1),
+	DAS("D", 10, 1),
     /** Prefix for 10<sup>18</sup>. */
-	nūru("S", 10, 2),
+	SAU("S", 10, 2),
     /** Prefix for 10<sup>15</sup>. */
-	āyiram("SA", 10, 3),
+	SAHASR("SA", 10, 3),
     /** Prefix for 10<sup>12</sup>. */
-	pattāyiram("Lk", 10, 4),
+	LAKH("Lk", 10, 5),
     /** Prefix for 10<sup>9</sup>. */
-	nūraiyiram("Cr", 10, 5),
+	CRORE("cr", 10, 7),
     /** Prefix for 10<sup>6</sup>. */
-	meiyyiram("A", 10, 6),
+	ARAWB("A", 10, 9),
     /** Prefix for 10<sup>3</sup>. */
-	tollun("K", 10, 9),
+	KHARAWB("K", 10, 11),
     /** Prefix for 10<sup>2</sup>. */
-	īkiyam("N", 10, 12),
+	NEEL("N", 10, 13),
     /** Prefix for 10<sup>1</sup>. */
-	neļai("Pa", 10, 15),
+	PADMA("Pa", 10, 15),
     /** Prefix for 10<sup>-1</sup>. */
-	iļañci("SH", 10, 18),
+	SHANKH("SH", 10, 17),
     /** Prefix for 10<sup>-2</sup>. */
-	veļļam("M", 10, 20),
-    /** Prefix for 10<sup>-2</sup>. */
-	āmpal("M", 10, 21);
-	
+	MAHASHANKH("M", 10, 19);
 	
     /**
      * The symbol of this prefix, as returned by {@link #getSymbol}.
@@ -97,7 +95,7 @@ public enum TamilAncientPrefix implements Prefix {
      * @param exponent
      *          part of the associated factor in base^exponent representation.
      */
-    private TamilAncientPrefix(String symbol, int base, int exponent) {
+    private VedicPrefix(String symbol, int base, int exponent) {
         this.symbol = symbol;
         this.base = base;
         this.exponent = exponent;
@@ -166,7 +164,7 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(10)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> DAS(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(DAS);
 	}
 
 	/**
@@ -181,7 +179,7 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(100)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> SAU(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(SAU);
 	}
 
 	/**
@@ -196,7 +194,17 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(1e3)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> SAHASR(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(SAHASR);
+	}
+
+	/**
+	 * <p>
+	 * हजार (Hazaar)
+	 * </p>
+	 * Equivalent to {@link #SAHASR}.
+	 */
+	public static final <Q extends Quantity<Q>> Unit<Q> HAZAAR(Unit<Q> unit) {
+		return SAHASR(unit);
 	}
 
 	/**
@@ -211,7 +219,7 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(1e5)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> LAKH(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(LAKH);
 	}
 
 	/**
@@ -226,7 +234,7 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(1e7)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> CRORE(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(CRORE);
 	}
 
 	/**
@@ -241,7 +249,7 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(1e9)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> ARAWB(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(ARAWB);
 	}
 
 	/**
@@ -256,7 +264,7 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(1e11)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> KHARAWB(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(KHARAWB);
 	}
 
 	/**
@@ -271,7 +279,7 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(1e13)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> NEEL(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(NEEL);
 	}
 
 	/**
@@ -286,22 +294,22 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(1e15)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> PADMA(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(PADMA);
 	}
 
 	/**
 	 * <p>
-	 * ஆம்பல் (āmpal)
+	 * शंख (Shankh)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>19</sup></code>
+	 * <code>10<sup>17</sup></code>
 	 * 
 	 * @param unit
 	 *            any unit.
-	 * @return <code>unit.times(1e19)</code>.
+	 * @return <code>unit.times(1e17)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> AMPAL(Unit<Q> unit) {
-		return unit.prefix(āmpal);
+	public static final <Q extends Quantity<Q>> Unit<Q> SHANKH(Unit<Q> unit) {
+		return unit.prefix(SHANKH);
 	}
 
 	/**
@@ -316,6 +324,6 @@ public enum TamilAncientPrefix implements Prefix {
 	 * @return <code>unit.times(1e19)</code>.
 	 */
 	public static final <Q extends Quantity<Q>> Unit<Q> MAHASHANKH(Unit<Q> unit) {
-		return unit.prefix(pathu);
+		return unit.prefix(MAHASHANKH);
 	}
 }

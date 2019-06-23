@@ -27,47 +27,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.ucum.format;
+package systems.uom.ucum;
 
 import static org.junit.Assert.assertEquals;
 import static javax.measure.MetricPrefix.*;
 
 import static systems.uom.ucum.UCUM.*;
-import javax.measure.Unit;
 import javax.measure.UnitConverter;
-import javax.measure.quantity.Mass;
-
 import org.junit.Test;
 
 import tech.units.indriya.function.MultiplyConverter;
 
-public class PrefixTest extends UCUMFormatTestBase {
-
-    @Test
-    public void testKilo() {
-        Unit<Mass> m1 = KILO(GRAM);
-        assertEquals("g.1000", FORMAT_PRINT.format(m1)); // FIXME make "kg" work
-    }
-
-    @Test
-    public void testMega() {
-        Unit<Mass> m1 = MEGA(GRAM);
-        assertEquals("t", FORMAT_PRINT.format(TONNE));
-        assertEquals("g.1000000", FORMAT_PRINT.format(m1)); // FIXME make Mg work as well
-    }
-
-    @Test
-    public void testMega2() {
-        Unit<Mass> m1 = MEGA(TONNE);
-        assertEquals("t.1000000", FORMAT_PRINT.format(m1)); // FIXME make Mt work as well
-    }
-
-    @Test
-    public void testNano() {
-        Unit<Mass> m1 = NANO(GRAM);
-        assertEquals("g/1000000000", FORMAT_PRINT.format(m1)); // FIXME make ng work as well
-        // assertEquals("ng", FORMAT_EBNF.format(m1));
-    }
+public class PrefixTest {
 
     @Test
     public void testBetweenPrefixes() {
