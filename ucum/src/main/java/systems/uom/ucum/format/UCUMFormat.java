@@ -74,7 +74,7 @@ import java.util.Map.Entry;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.9, 19 June 2019
+ * @version 1.0, 23 June 2019
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -267,7 +267,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                 // a transformed unit, for compatibility with existing SI
                 // unit system.
                 format(SI.GRAM, temp);
-                converter = PowerOfIntConverter.of(MetricPrefix.KILO);
+                converter = MultiplyConverter.ofPrefix(MetricPrefix.KILO);
                 printSeparator = true;
             } else {
                 Unit<?> parentUnit = unit.getSystemUnit();
@@ -276,7 +276,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                     // More special-case hackery to work around gram/kilogram
                     // inconsistency
                     parentUnit = SI.GRAM;
-                    converter = converter.concatenate(PowerOfIntConverter.of(MetricPrefix.KILO));
+                    converter = converter.concatenate(MultiplyConverter.ofPrefix(MetricPrefix.KILO));
                 }
                 format(parentUnit, temp);
                 printSeparator = !parentUnit.equals(ONE);

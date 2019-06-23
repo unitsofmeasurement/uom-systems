@@ -33,6 +33,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.KILOGRAM;
+
+import java.math.BigDecimal;
+
 import static systems.uom.unicode.CLDR.*;
 
 import javax.measure.Quantity;
@@ -40,6 +43,7 @@ import javax.measure.quantity.Speed;
 
 import org.junit.Test;
 
+import tech.units.indriya.function.RationalNumber;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.Units;
 
@@ -62,7 +66,6 @@ public class CLDRTest {
 	public void testConvert() {
 		Quantity<Speed> kph = Quantities.getQuantity(30, Units.KILOMETRE_PER_HOUR);
 		Quantity<Speed> knots = kph.to(CLDR.KNOT);
-		assertEquals(16.19870410367171d, knots.getValue().doubleValue(), 0d);
-		// Using doubleValue() see https://github.com/unitsofmeasurement/indriya/issues/237
+		assertEquals(RationalNumber.of(new BigDecimal("16.19870410367170626349892008639309")), knots.getValue());
 	}
 }

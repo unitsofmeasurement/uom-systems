@@ -37,18 +37,18 @@ import static tech.units.indriya.unit.Units.METRE;
 
 import org.junit.Test;
 
-import tech.units.indriya.function.PowerOfIntConverter;
+import tech.units.indriya.function.MultiplyConverter;
 
 public class IndianTest {
 	@Test
 	public void testLakhPrefix() {
-		assertEquals(PowerOfIntConverter.of(10, 2), 
+		assertEquals(MultiplyConverter.ofTenExponent(2), 
 				LAKH(METRE).getConverterTo(KILO(METRE)));
 	}
 	
 	@Test
 	public void testCrorePrefix() {
-		assertEquals(PowerOfIntConverter.of(10, 4), 
+		assertEquals(MultiplyConverter.ofTenExponent(4), 
 				CRORE(METRE).getConverterTo(KILO(METRE)));
 	}
 }

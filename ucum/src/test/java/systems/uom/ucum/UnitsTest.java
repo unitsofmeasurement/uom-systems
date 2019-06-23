@@ -45,7 +45,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import tech.units.indriya.AbstractConverter;
+import tech.units.indriya.function.AbstractConverter;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.TransformedUnit;
 import tech.units.indriya.unit.Units;

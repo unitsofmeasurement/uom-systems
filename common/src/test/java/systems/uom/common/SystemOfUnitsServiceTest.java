@@ -33,6 +33,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
+import java.util.logging.Logger;
 
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
@@ -44,6 +45,7 @@ import org.junit.Test;
 public class SystemOfUnitsServiceTest {
 	private static final String DEFAULT_SERVICE_CLASSNAME = "tech.units.indriya.internal.DefaultSystemOfUnitsService";
 	private static final String COMMON_SERVICE_CLASSNAME = "systems.uom.common.internal.CommonSystemService";
+	private static final Logger LOGGER = Logger.getLogger(SystemOfUnitsServiceTest.class.getName());
 
 	private static final int NUM_OF_UNITS_DEFAULT = 43;
 	private static final int NUM_OF_UNITS_US = 45;
@@ -114,7 +116,8 @@ public class SystemOfUnitsServiceTest {
 		assertNotNull(services);
 		assertEquals(3, services.size());
 		for (ServiceProvider provider : services) {
-			System.out.println(provider);
+			LOGGER.info(String.valueOf(provider));
+			// TODO change to DEBUG or lower after https://github.com/unitsofmeasurement/unit-api/issues/195 was resolved
 		}
 		// for (SystemOfUnitsService service : services) {
 		// checkService(service);

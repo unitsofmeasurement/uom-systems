@@ -36,8 +36,7 @@ import javax.measure.Prefix;
 
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SymbolMap;
-import tech.units.indriya.function.PowerOfIntConverter;
-
+import tech.units.indriya.function.MultiplyConverter;
 import static systems.uom.ucum.internal.format.UCUMTokenConstants.*;
 
 /**
@@ -49,7 +48,7 @@ import static systems.uom.ucum.internal.format.UCUMTokenConstants.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://unitsofmeasure.org">UCUM</a>
- * @version 0.7, June 19, 2019
+ * @version 1.0, June 23, 2019
  */
 public final class UCUMFormatParser {
 
@@ -200,7 +199,7 @@ public final class UCUMFormatParser {
                 unit = symbols.getUnit(token.image.substring(prefixSymbol.length()));
                 if (unit != null) {
                     {
-                        return unit.transform(PowerOfIntConverter.of(prefix));
+                        return unit.transform(MultiplyConverter.ofPrefix(prefix));
                     }
                 }
             }

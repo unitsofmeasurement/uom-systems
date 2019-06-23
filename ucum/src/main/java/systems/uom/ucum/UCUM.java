@@ -33,22 +33,18 @@ package systems.uom.ucum;
 import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.AbstractUnit.ONE;
 
-import java.util.Objects;
-
 import si.uom.quantity.*;
 import systems.uom.quantity.Acidity;
 import systems.uom.quantity.Concentration;
 import systems.uom.quantity.Drag;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
-import systems.uom.quantity.Level;
+import si.uom.quantity.Level;
 import si.uom.SI;
 import tech.units.indriya.*;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.LogConverter;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.function.PowerOfPiConverter;
-//import tech.units.indriya.function.PowersOfPiConverter;
 import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.ProductUnit;
 import tech.units.indriya.unit.TransformedUnit;
@@ -74,7 +70,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 1.1, $Date: 2019-01-21 $
+ * @version 2.0, $Date: 2019-01-23 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -135,7 +131,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Dimensionless> HUNDREDS = addUnit(ONE.multiply(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowerOfPiConverter.of(1)));
+    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(MultiplyConverter.ofPiExponent(1)));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Dimensionless> PERCENT = addUnit(ONE.divide(100));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
@@ -862,7 +858,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     //public static final Unit<Volume> STERE = addUnit(new ProductUnit<Volume>(METER.pow(3)));
-    public static final Unit<Volume> STERE = addUnit(new TransformedUnit<Volume>("st", Units.CUBIC_METRE, Units.CUBIC_METRE, MultiplyConverter.IDENTITY));
+    public static final Unit<Volume> STERE = addUnit(new TransformedUnit<Volume>("st", Units.CUBIC_METRE, Units.CUBIC_METRE, MultiplyConverter.identity()));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Length> ANGSTROM = addUnit(NANO(METER).divide(10));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */

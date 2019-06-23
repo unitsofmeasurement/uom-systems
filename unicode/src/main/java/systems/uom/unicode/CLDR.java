@@ -41,8 +41,7 @@ import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import tech.units.indriya.*;
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.function.PowerOfPiConverter;
-import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.ProductUnit;
 import tech.units.indriya.unit.TransformedUnit;
@@ -66,7 +65,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 0.8, $Date: 2019-06-19 $
+ * @version 1.0, $Date: 2019-06-23 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -214,7 +213,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Temperature> KELVIN = addUnit(Units.KELVIN);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(PowerOfPiConverter.of(1)));
+    public static final Unit<Dimensionless> PI = addUnit(ONE.transform(MultiplyConverter.ofPiExponent(1)));
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Dimensionless> PERCENT = addUnit(ONE.divide(100), "Percent", "%");
 
@@ -222,10 +221,10 @@ public final class CLDR extends AbstractSystemOfUnits {
     // SI UNITS: CLDR //
     ////////////////////
     /**
-     * We deviate slightly from the standard here, to maintain compatibility with the existing SI units. In CLDR, the mole is no longer a base unit,
-     * but is defined as <code>Unit.ONE.multiply(6.0221367E23)</code>.
+     * Constant for unit of concentr: mole.
+     * @draft ICU 64.
      */
-    private static final Unit<AmountOfSubstance> MOLE = addUnit(Units.MOLE);
+    public static final Unit<AmountOfSubstance> MOLE = addUnit(Units.MOLE);
     /**
      * We deviate slightly from the standard here, to maintain compatibility with the existing SI units. In CLDR, the steradian is defined as
      * <code>RADIAN.pow(2)</code>.
@@ -296,19 +295,19 @@ public final class CLDR extends AbstractSystemOfUnits {
      * An angle unit accepted for use with SI units (standard name <code>deg/code>).
      */
     static final Unit<Angle> DEGREE_ANGLE = new TransformedUnit<Angle>(RADIAN,
-            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180)));
+    		MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(1, 180)));
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>'/code>).
      */
     static final Unit<Angle> MINUTE_ANGLE = new TransformedUnit<Angle>(RADIAN,
-            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60)));
+            MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(1, 180 * 60)));
 
     /**
      * An angle unit accepted for use with SI units (standard name <code>''</code>).
      */
     static final Unit<Angle> SECOND_ANGLE = new TransformedUnit<Angle>(RADIAN,
-            PowerOfPiConverter.of(1).concatenate(new RationalConverter(1, 180 * 60 * 60)));
+    		MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(1, 180 * 60 * 60)));
 
     /**
      * We deviate slightly from the standard here, to maintain compatibility with the existing NonSI units. In CLDR, the degree is defined as
@@ -377,7 +376,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @stable ICU 53
      */
-    public static final Unit<Volume> LITER = new TransformedUnit<Volume>(CUBIC_METRE, new RationalConverter(1, 1000));
+    public static final Unit<Volume> LITER = new TransformedUnit<Volume>(CUBIC_METRE, MultiplyConverter.ofRational(1, 1000));
     // private static final Unit<Volume> LITRE = addUnit(Units.LITRE);
 
     /**

@@ -33,10 +33,11 @@ import java.math.BigInteger;
 
 import javax.measure.UnitConverter;
 
-import tech.units.indriya.AbstractConverter;
 import tech.units.indriya.format.SymbolMap;
+import tech.units.indriya.function.AbstractConverter;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.function.RationalConverter;
+
 import javax.measure.Prefix;
 
 /**
@@ -63,14 +64,30 @@ class UCUMConverterFormatter {
             buffer.insert(0, symbolMap.getSymbol(prefix));
         } else if (converter == AbstractConverter.IDENTITY) {
             // do nothing
+        } else if (converter instanceof RationalConverter) {
+                if (unitIsExpression) {
+                    buffer.insert(0, '(');
+                    buffer.append(')');
+                }
+                RationalConverter rationalConverter = (RationalConverter) converter;
+                if (!rationalConverter.getDividend().equals(BigInteger.ONE)) {
+                    if (continued) {
+                        buffer.append('.');
+                    }
+                    buffer.append(rationalConverter.getDividend());
+                }
+                if (!rationalConverter.getDivisor().equals(BigInteger.ONE)) {
+                    buffer.append('/');
+                    buffer.append(rationalConverter.getDivisor());
+                }
+        // need to swap those because RationalConverter also implements MultiplyConverter now
         } else if (converter instanceof MultiplyConverter) {
             if (unitIsExpression) {
                 buffer.insert(0, '(');
                 buffer.append(')');
             }
             MultiplyConverter multiplyConverter = (MultiplyConverter) converter;
-            double factor = multiplyConverter.getFactor();
-            long lFactor = (long) factor;
+            long lFactor = multiplyConverter.getFactor().longValue();
             if ((lFactor < Long.MIN_VALUE) || (lFactor > Long.MAX_VALUE)) { // (lFactor != factor) ||
                 throw new IllegalArgumentException("Only integer factors are supported in UCUM");
             }
@@ -78,22 +95,6 @@ class UCUMConverterFormatter {
                 buffer.append('.');
             }
             buffer.append(lFactor);
-        } else if (converter instanceof RationalConverter) {
-            if (unitIsExpression) {
-                buffer.insert(0, '(');
-                buffer.append(')');
-            }
-            RationalConverter rationalConverter = (RationalConverter) converter;
-            if (!rationalConverter.getDividend().equals(BigInteger.ONE)) {
-                if (continued) {
-                    buffer.append('.');
-                }
-                buffer.append(rationalConverter.getDividend());
-            }
-            if (!rationalConverter.getDivisor().equals(BigInteger.ONE)) {
-                buffer.append('/');
-                buffer.append(rationalConverter.getDivisor());
-            }
         } else { // All other converter type (e.g. exponential) we use the
             // string representation.
             buffer.insert(0, converter.toString() + "(");

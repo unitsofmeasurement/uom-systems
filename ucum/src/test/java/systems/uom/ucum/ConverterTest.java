@@ -32,16 +32,13 @@ package systems.uom.ucum;
 import static org.junit.Assert.*;
 import static systems.uom.ucum.UCUM.*;
 
-import java.math.BigDecimal;
-
 import javax.measure.Quantity;
-import javax.measure.Unit;
 import javax.measure.quantity.Temperature;
 
 import org.junit.Test;
 
+import tech.units.indriya.function.RationalNumber;
 import tech.units.indriya.quantity.Quantities;
-import tech.units.indriya.unit.Units;
 
 public class ConverterTest {
 
@@ -66,6 +63,6 @@ public class ConverterTest {
     Quantity<Temperature> sut = Quantities.getQuantity(1d, KELVIN).to(REAUMUR);
     assertNotNull(sut);
     assertEquals(REAUMUR, sut.getUnit());
-    assertEquals(BigDecimal.valueOf(-217.27d), sut.getValue());
+    assertEquals(RationalNumber.of(-217.27d), sut.getValue());
   }
 }

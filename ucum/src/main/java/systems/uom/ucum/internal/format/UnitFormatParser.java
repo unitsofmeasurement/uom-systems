@@ -37,7 +37,7 @@ import javax.measure.Prefix;
 
 import tech.units.indriya.format.SymbolMap;
 import tech.units.indriya.function.LogConverter;
-import tech.units.indriya.function.PowerOfIntConverter;
+import tech.units.indriya.function.MultiplyConverter;
 
 
 @SuppressWarnings({"rawtypes", "unchecked"})
@@ -284,7 +284,7 @@ public final class UnitFormatParser {
                         unit = symbols.getUnit(token.image.substring(prefixSymbol.length()));
                         if (unit != null) {
                             {
-                                return unit.transform(PowerOfIntConverter.of(prefix));
+                                return unit.transform(MultiplyConverter.ofPrefix(prefix));
                             }
                         }
                     }

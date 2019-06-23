@@ -37,7 +37,7 @@ import java.util.Objects;
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.unit.ProductUnit;
 import tech.units.indriya.unit.TransformedUnit;
 
@@ -65,7 +65,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.28, January 21, 2019
+ * @version 1.29, January 23, 2019
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units"> Wikipedia: United State Customary Units</a>
  * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems"> Wikipedia: United State Customary Units</a>
  * @since 0.3
@@ -307,7 +307,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
     /**
      * A unit of volume equal to one cubic decimeter (default label <code>L</code>, also recognized <code>µL, mL, cL, dL</code>).
      */
-    public static final Unit<Volume> LITER = addUnit(new TransformedUnit<Volume>(CUBIC_METRE, new RationalConverter(1, 1000)), "Liter", "L");
+    public static final Unit<Volume> LITER = addUnit(new TransformedUnit<Volume>(CUBIC_METRE, MultiplyConverter.ofRational(1, 1000)), "Liter", "L");
 
     /**
      * A unit of volume equal to one cubic inch (<code>in³</code>).
