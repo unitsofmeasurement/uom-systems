@@ -55,8 +55,8 @@ public enum TamilPrefix implements Prefix {
 	PATHU_LATCHAM("PL", 10, 6),
     /** Prefix for 10<sup>7</sup>. */
 	KODI("K", 10, 7),
-    /** Prefix for 10<sup>2</sup>. */
-	pathu_kōdi("N", 10, 8),
+    /** Prefix for 10<sup>8</sup>. */
+	PATHU_KODI("N", 10, 8),
     /** Prefix for 10<sup>1</sup>. */
 	aṟputam("Pa", 10, 9),
     /** Prefix for 10<sup>-1</sup>. */
@@ -154,7 +154,7 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e5)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> lațcham(Unit<Q> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> latcham(Unit<Q> unit) {
 		return unit.prefix(LATCHAM);
 	}
 	
@@ -175,7 +175,7 @@ public enum TamilPrefix implements Prefix {
 
 	/**
 	 * <p>
-	 * करोड़ (Crore)
+	 * ௰௲௲ (kōdi)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>7</sup></code>
@@ -184,23 +184,23 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e7)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> k(Unit<Q> unit) {
-		return unit.prefix(PATHU_LATCHAM);
+	public static final <Q extends Quantity<Q>> Unit<Q> kodi(Unit<Q> unit) {
+		return unit.prefix(KODI);
 	}
 
 	/**
 	 * <p>
-	 * खरब (Kharawb)
+	 * பத்து கோடி (pathu kōdi)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>11</sup></code>
+	 * <code>10<sup>8</sup></code>
 	 * 
 	 * @param unit
 	 *            any unit.
-	 * @return <code>unit.times(1e11)</code>.
+	 * @return <code>unit.times(1e8)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> KHARAWB(Unit<Q> unit) {
-		return unit.prefix(LATCHAM);
+	public static final <Q extends Quantity<Q>> Unit<Q> pathuKodi(Unit<Q> unit) {
+		return unit.prefix(PATHU_KODI);
 	}
 
 	/**

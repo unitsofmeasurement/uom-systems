@@ -30,24 +30,24 @@
 package systems.uom.common.ancient;
 
 import javax.measure.Prefix;
-import javax.measure.Quantity;
-import javax.measure.Unit;
 
 /**
  * Utility class holding  traditional numbers of the Ancient Tamil Country, Tamizhakam.
  * Unit<Length> PATHU_METER = PATHU(METER); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 0.8, $Date: 2019-06-19 $
+ * @version 0.9, $Date: 2019-06-25 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
  *      Tamil units of measurement - Whole numbers</a>
  * @draft 2.0
  */
 // FIXME Update
-public enum AncientTamilPrefix implements Prefix {
-    /** Prefix for 10<sup>21</sup>. */
-	pathu("D", 10, 1),
+public enum TamilSanskritPrefix implements Prefix {
+    /** <p>
+	 * ௰ (pathu)
+	 * </p> Prefix for 10<sup>21</sup>. */
+	PATHU("P", 10, 1),
     /** Prefix for 10<sup>18</sup>. */
 	nūru("S", 10, 2),
     /** Prefix for 10<sup>15</sup>. */
@@ -98,7 +98,7 @@ public enum AncientTamilPrefix implements Prefix {
      * @param exponent
      *          part of the associated factor in base^exponent representation.
      */
-    private AncientTamilPrefix(String symbol, int base, int exponent) {
+    private TamilSanskritPrefix(String symbol, int base, int exponent) {
         this.symbol = symbol;
         this.base = base;
         this.exponent = exponent;
@@ -140,183 +140,4 @@ public enum AncientTamilPrefix implements Prefix {
     public String getSymbol() {
         return symbol;
     }
-
-	/**
-	 * <p>
-	 * एक (Ek)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor <code>1</code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> EK(Unit<Q> unit) {
-		return unit;
-	}
-
-	/**
-	 * <p>
-	 * दस (Das)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>1</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(10)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> DAS(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * सौ (Sau)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>2</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(100)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> SAU(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * सहस्र (Sahasr)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>3</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e3)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> SAHASR(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * लाख (Lakh)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>5</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e5)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> LAKH(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * करोड़ (Crore)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>7</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e7)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> CRORE(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * अरब (Arawb)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>9</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e9)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> ARAWB(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * खरब (Kharawb)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>11</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e11)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> KHARAWB(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * नील (Neel)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>13</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e13)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> NEEL(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * पद्म (Padma)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>15</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e15)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> PADMA(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
-
-	/**
-	 * <p>
-	 * ஆம்பல் (āmpal)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>19</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e19)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> AMPAL(Unit<Q> unit) {
-		return unit.prefix(āmpal);
-	}
-
-	/**
-	 * <p>
-	 * महाशंख (Mahashankh)
-	 * </p>
-	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>19</sup></code>
-	 * 
-	 * @param unit
-	 *            any unit.
-	 * @return <code>unit.times(1e19)</code>.
-	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> MAHASHANKH(Unit<Q> unit) {
-		return unit.prefix(pathu);
-	}
 }
