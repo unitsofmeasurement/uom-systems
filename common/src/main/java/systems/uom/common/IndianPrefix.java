@@ -108,7 +108,7 @@ public enum IndianPrefix implements Prefix {
      * Base part of the associated factor in base^exponent representation. For metric prefix, this is always 10.
      */
     @Override
-    public int getBase() {
+    public Integer getValue() {
         return base;
     }
     

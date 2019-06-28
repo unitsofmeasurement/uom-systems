@@ -38,7 +38,7 @@ import javax.measure.Unit;
  * Unit<Length> KOTI_METRE = KOTI(METRE); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 0.1, $Date: 2019-06-23 $
+ * @version 0.2, $Date: 2019-06-28 $
  * @see <a
  *      href="https://en.wikipedia.org/wiki/Indian_numbering_system#Vedic_numbering_systems">Wikipedia: Indian numbering system - Vedic numbering systems</a>
  * @draft 2.0
@@ -102,10 +102,10 @@ public enum VedicPrefix implements Prefix {
     }
     
     /**
-     * Base part of the associated factor in base^exponent representation. For metric prefix, this is always 10.
+     * Base part of the associated factor in {@code base^exponent} representation.
      */
     @Override
-    public int getBase() {
+    public Integer getValue() {
         return base;
     }
     

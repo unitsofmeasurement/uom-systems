@@ -36,7 +36,7 @@ import javax.measure.Prefix;
  * Unit<Length> PATU_METER = METER.prefix(PATU); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 0.9, $Date: 2019-06-25 $
+ * @version 1.0, $Date: 2019-06-28 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
  *      Tamil units of measurement - Sanskritized version</a>
@@ -105,10 +105,10 @@ public enum TamilAncientPrefix implements Prefix {
     }
     
     /**
-     * Base part of the associated factor in base^exponent representation. For metric prefix, this is always 10.
+     * Base part of the associated factor in {@code base^exponent} representation.
      */
     @Override
-    public int getBase() {
+    public Integer getValue() {
         return base;
     }
     

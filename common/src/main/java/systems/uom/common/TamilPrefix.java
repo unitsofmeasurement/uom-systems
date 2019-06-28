@@ -42,7 +42,7 @@ import javax.measure.Unit;
  * Unit<Length> PATHU_METER = PATHU(METER); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.4, $Date: 2019-06-19 $
+ * @version 1.5, $Date: 2019-06-28 $
  * @see <a
  *      href="https://en.wikipedia.org/wiki/Tamil_numerals#Tamil-System">Wikipedia:
  *      Tamil numerals - Tamil-System</a>
@@ -107,14 +107,13 @@ public enum TamilPrefix implements Prefix {
     }
     
     /**
-     * Base part of the associated factor in base^exponent representation. For metric prefix, this is always 10.
+     * Base part of the associated factor in {@code base^exponent} representation.
      */
     @Override
-    public int getBase() {
+    public Integer getValue() {
         return base;
     }
     
-
     /**
      * Exponent part of the associated factor in base^exponent representation.
      */
