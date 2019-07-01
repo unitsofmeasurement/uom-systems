@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -80,7 +80,7 @@ public class UnitFormatPrefixTest extends UCUMFormatTestBase {
 	@Test
 	public void testKibiLiter() {
 		Unit<Volume> v1 = KIBI(LITER);
-		assertEquals("L.1024", FORMAT_PRINT.format(v1)); // FIXME make KiL work as well
+		assertEquals("KiL", FORMAT_PRINT.format(v1)); // FIXME make KiL work as well
 	}
 
 	@Test
