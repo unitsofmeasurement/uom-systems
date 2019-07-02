@@ -34,53 +34,44 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.measure.spi.SystemOfUnits;
-import javax.measure.spi.SystemOfUnitsService;
-
 import systems.uom.common.CGS;
 import systems.uom.common.Imperial;
 import systems.uom.common.USCustomary;
-import tech.uom.lib.common.function.IntPrioritySupplier;
+import tech.units.indriya.spi.AbstractSystemOfUnitsService;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8, June 19, 2019
+ * @version 1.0, July 2, 2019
  */
-class CommonSystemService implements SystemOfUnitsService, IntPrioritySupplier {
-    private static final int PRIO = 100;
-    private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
-    
-    private final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
-    private final Map<String, String> aliases = new HashMap<String, String>();
-	    
-    public CommonSystemService() {
-	souMap.put("Imperial", Imperial.getInstance());
-	souMap.put(DEFAULT_SYSTEM_NAME, USCustomary.getInstance());
-	souMap.put("CGS", CGS.getInstance());
-	aliases.put("US", DEFAULT_SYSTEM_NAME);
-	aliases.put("Centimetre–gram–second", "CGS");
-    }
+class CommonSystemService extends AbstractSystemOfUnitsService {
+	private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
 
-    public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
-	return souMap.values();
-    }
+	private final Map<String, String> aliases = new HashMap<String, String>();
 
-    @Override
-    public SystemOfUnits getSystemOfUnits() {
-	return getSystemOfUnits(DEFAULT_SYSTEM_NAME); // We assume US Customary as the more
-				       // common system here
-    }
+	public CommonSystemService() {
+		souMap.put("Imperial", Imperial.getInstance());
+		souMap.put(DEFAULT_SYSTEM_NAME, USCustomary.getInstance());
+		souMap.put("CGS", CGS.getInstance());
+		aliases.put("US", DEFAULT_SYSTEM_NAME);
+		aliases.put("Centimetre–gram–second", "CGS");
+	}
 
-    @Override
-    public SystemOfUnits getSystemOfUnits(String name) {
-	String alias = aliases.get(name);
-	if (alias != null && alias.length()>0) {
-	    return souMap.get(alias);
-	} 
-	return souMap.get(name);
-    }
+	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
+		return souMap.values();
+	}
 
-    @Override
-    public int getPriority() {
-	return PRIO;
-    }
+	@Override
+	public SystemOfUnits getSystemOfUnits() {
+		return getSystemOfUnits(DEFAULT_SYSTEM_NAME); // We assume US Customary as the more
+		// common system here
+	}
+
+	@Override
+	public SystemOfUnits getSystemOfUnits(String name) {
+		String alias = aliases.get(name);
+		if (alias != null && alias.length() > 0) {
+			return souMap.get(alias);
+		}
+		return souMap.get(name);
+	}
 }

@@ -32,17 +32,17 @@ package systems.uom.unicode.internal;
 import javax.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import tech.units.indriya.internal.DefaultServiceProvider;
+import tech.units.indriya.spi.AbstractServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.3
+ * @version 0.5
  */
 @Named("Unicode")
-public class UnicodeServiceProvider extends DefaultServiceProvider {
+public class UnicodeServiceProvider extends AbstractServiceProvider {
 
 	public int getPriority() {
 		return 500;
