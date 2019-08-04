@@ -34,7 +34,9 @@ import static org.junit.Assert.assertNotEquals;
 import static systems.uom.ucum.UCUM.*;
 
 import javax.measure.Quantity;
+import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.quantity.Mass;
 import javax.measure.quantity.Volume;
 
 import org.junit.Test;
@@ -82,5 +84,11 @@ public class UCUMTest {
     public void testStToLiter() {
 	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
 	assertEquals(1000, oneLiter.to(LITER).getValue());
+    }
+    
+    @Test
+    public void testAMU() {
+    	Unit<Mass> atomicMassUnit = ATOMIC_MASS_UNIT;
+    	System.out.println(atomicMassUnit.getSymbol());
     }
 }
