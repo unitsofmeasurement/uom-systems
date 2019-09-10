@@ -29,12 +29,6 @@
  */
 package systems.uom.unicode;
 
-import static org.junit.Assert.*;
-import static tech.units.indriya.unit.Units.KILOGRAM;
-import static tech.units.indriya.unit.Units.METRE;
-import static tech.units.indriya.unit.Units.MINUTE;
-import static tech.units.indriya.unit.Units.SECOND;
-
 import java.io.IOException;
 
 import javax.measure.Quantity;
@@ -47,8 +41,15 @@ import javax.measure.quantity.Speed;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import static tech.units.indriya.unit.Units.KILOGRAM;
+import static tech.units.indriya.unit.Units.METRE;
+import static tech.units.indriya.unit.Units.MINUTE;
+import static tech.units.indriya.unit.Units.SECOND;
+
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.internal.DefaultQuantityFactory;
+import tech.units.indriya.quantity.DefaultQuantityFactory;
 import tech.units.indriya.unit.Units;
 
 /**
