@@ -49,7 +49,7 @@ import static tech.units.indriya.unit.Units.MINUTE;
 import static tech.units.indriya.unit.Units.SECOND;
 
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.quantity.DefaultQuantityFactory;
+import tech.units.indriya.internal.DefaultQuantityFactory;
 import tech.units.indriya.unit.Units;
 
 /**
