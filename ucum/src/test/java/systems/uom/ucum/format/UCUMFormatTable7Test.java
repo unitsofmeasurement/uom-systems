@@ -54,17 +54,16 @@ public class UCUMFormatTable7Test extends UCUMFormatTestBase {
 
     @Test
     public void testFormatkKayserCI() {
-        assertEquals("KY.1000", FORMAT_CI.format(KILO(KAYSER)));
+        assertEquals("KKY", FORMAT_CI.format(KILO(KAYSER)));
     }
 
     @Test
     public void testFormatkKayserCS() {
-        assertEquals("Ky.1000", FORMAT_CS.format(KILO(KAYSER))); // FIXME check if "kKy" also worked
+        assertEquals("kKy", FORMAT_CS.format(KILO(KAYSER)));
     }
 
     @Test
     public void testFormatkKayserPrint() {
-        assertEquals("K.1000", FORMAT_PRINT.format(KILO(KAYSER)));
-        //assertEquals("kK", FORMAT_PRINT.format(KILO(KAYSER))); FIXME make this one work, too
+        assertEquals("kK", FORMAT_PRINT.format(KILO(KAYSER)));
     }
 }

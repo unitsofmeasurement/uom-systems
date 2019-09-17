@@ -38,7 +38,6 @@ import javax.measure.spi.ServiceProvider;
 import org.junit.*;
 
 import systems.uom.ucum.UCUM;
-import systems.uom.ucum.internal.format.TokenException;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
@@ -81,8 +80,6 @@ public class UCUMFormatVolumeTest extends UCUMFormatTestBase {
     
     @Test
     public void testFormatUCUMCSmGill() {
-        // FIXME see, how "m" could also work
-        //assertEquals("m[gil_br]", FORMAT_CS.format(MILLI(UCUM.GILL_BRITISH)));
-        assertEquals("[gil_br]/1000", FORMAT_CS.format(MILLI(UCUM.GILL_BRITISH)));
+        assertEquals("m[gil_br]", FORMAT_CS.format(MILLI(UCUM.GILL_BRITISH)));
     }
 }

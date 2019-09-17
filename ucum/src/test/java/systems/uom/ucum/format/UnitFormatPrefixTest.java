@@ -45,30 +45,35 @@ import systems.uom.quantity.Information;
 
 public class UnitFormatPrefixTest extends UCUMFormatTestBase {
 
+    @Test
+    public void testKiloMeter() {
+        Unit<Length> m1 = KILO(METER);
+        assertEquals("km", FORMAT_PRINT.format(m1));
+    }
+    
 	@Test
 	public void testKiloGram() {
 		Unit<Mass> m1 = KILO(GRAM);
-		assertEquals("g.1000", FORMAT_PRINT.format(m1)); // FIXME make "kg" work
+		assertEquals("kg", FORMAT_PRINT.format(m1));
 	}
 
 	@Test
 	public void testMegaGram() {
 		Unit<Mass> m1 = MEGA(GRAM);
 		assertEquals("t", FORMAT_PRINT.format(TONNE));
-		assertEquals("g.1000000", FORMAT_PRINT.format(m1)); // FIXME make Mg work as well
+		assertEquals("Mg", FORMAT_PRINT.format(m1));
 	}
 
 	@Test
 	public void testMegaTonne() {
 		Unit<Mass> m1 = MEGA(TONNE);
-		assertEquals("t.1000000", FORMAT_PRINT.format(m1)); // FIXME make Mt work as well
+		assertEquals("Mt", FORMAT_PRINT.format(m1));
 	}
 
 	@Test
 	public void testNanoGram() {
 		Unit<Mass> m1 = NANO(GRAM);
-		assertEquals("g/1000000000", FORMAT_PRINT.format(m1)); // FIXME make ng work as well
-		// assertEquals("ng", FORMAT_EBNF.format(m1));
+		assertEquals("ng", FORMAT_PRINT.format(m1));
 	}
 
 	@Test
@@ -80,7 +85,7 @@ public class UnitFormatPrefixTest extends UCUMFormatTestBase {
 	@Test
 	public void testKibiLiter() {
 		Unit<Volume> v1 = KIBI(LITER);
-		assertEquals("KiL", FORMAT_PRINT.format(v1)); // FIXME make KiL work as well
+		assertEquals("KiL", FORMAT_PRINT.format(v1));
 	}
 
 	@Test

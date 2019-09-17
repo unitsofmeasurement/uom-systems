@@ -29,31 +29,37 @@
  */
 package systems.uom.ucum.format;
 
-import static tech.units.indriya.AbstractUnit.ONE;
-import static systems.uom.ucum.format.UCUMConverterFormatter.*;
-import si.uom.SI;
-import systems.uom.ucum.internal.format.UCUMFormatParser;
-import tech.units.indriya.AbstractUnit;
-import tech.units.indriya.ComparableUnit;
-import tech.units.indriya.format.AbstractUnitFormat;
-import tech.units.indriya.format.SymbolMap;
-import tech.units.indriya.function.*;
-import tech.units.indriya.internal.format.TokenException;
-import tech.units.indriya.internal.format.TokenMgrError;
-import tech.units.indriya.unit.AnnotatedUnit;
-import javax.measure.MetricPrefix;
-import tech.units.indriya.unit.TransformedUnit;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.text.ParsePosition;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.ResourceBundle;
 
+import javax.measure.MetricPrefix;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 import javax.measure.format.MeasurementParseException;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.text.ParsePosition;
-import java.util.*;
-import java.util.Map.Entry;
+import static systems.uom.ucum.format.UCUMConverterFormatter.formatConverter;
+import static tech.units.indriya.AbstractUnit.ONE;
+
+import si.uom.SI;
+import systems.uom.ucum.format.UCUMFormatHelper.SymbolProvider;
+import systems.uom.ucum.internal.format.UCUMFormatParser;
+import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.ComparableUnit;
+import tech.units.indriya.format.AbstractUnitFormat;
+import tech.units.indriya.format.SymbolMap;
+import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.internal.format.TokenException;
+import tech.units.indriya.internal.format.TokenMgrError;
+import tech.units.indriya.unit.TransformedUnit;
 
 /**
  * <p>
@@ -74,7 +80,8 @@ import java.util.Map.Entry;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, 23 June 2019
+ * @author Andi Huber
+ * @version 1.0, 19. September 2019
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -171,133 +178,179 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     ////////////////
     // Formatting //
     ////////////////
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({ "rawtypes" })
     public Appendable format(final Unit<?> unknownUnit, Appendable appendable) throws IOException {
+        
         if (!(unknownUnit instanceof ComparableUnit)) {
             throw new UnsupportedOperationException("The UCUM format supports only known units (Comparable units)");
         }
-        ComparableUnit unit = (ComparableUnit) unknownUnit;
-        CharSequence symbol;
-        CharSequence annotation = null;
-        if (unit instanceof AnnotatedUnit) {
-            AnnotatedUnit annotatedUnit = (AnnotatedUnit) unit;
-            unit = (ComparableUnit)annotatedUnit.getActualUnit();
-            annotation = annotatedUnit.getAnnotation();
-        }
-        String mapSymbol = symbolMap.getSymbol(unit);
-        if (mapSymbol != null) {
-            symbol = mapSymbol;
-        } else if (unit instanceof TransformedUnit) {
-            final StringBuilder temp = new StringBuilder();
-            final Unit<?> parentUnit = ((TransformedUnit) unit).getParentUnit();
-            final UnitConverter converter = unit.getConverterTo(parentUnit);
-            final boolean printSeparator = !parentUnit.equals(ONE);
-
-            format(parentUnit, temp);
-            formatConverter(converter, printSeparator, temp, symbolMap);
-
-            symbol = temp;
-        } else if (unit.getBaseUnits() != null) {
-            Map<? extends AbstractUnit<?>, Integer> productUnits = unit.getBaseUnits();
-            StringBuffer app = new StringBuffer();
-            
-            Map<AbstractUnit<?>, Integer> numeratorUnits = new LinkedHashMap<>();            
-            Map<AbstractUnit<?>, Integer> denominatorUnits = new LinkedHashMap<>();
-
-            // divide units into numerators and denominators
-            for (Entry<? extends AbstractUnit<?>, Integer> u : productUnits.entrySet()) {
-            	if (u.getValue() > 0) {
-            		numeratorUnits.put(u.getKey(), u.getValue());
-            	}else {
-            		denominatorUnits.put(u.getKey(), u.getValue());
-            	}
-            }
-            
-            int numeratorCount = 1;
-            for (Entry<? extends AbstractUnit<?>, Integer> u : numeratorUnits.entrySet()) {
-            	// add multiplication separators after first unit
-        		if (numeratorCount > 1){
-        			app.append(".");
-        		}
-        		// add individual unit string
-        		format(u.getKey(),app);
-        		// add power number if greater than 1
-            	if (u.getValue() > 1){
-            		app.append(u.getValue());
-            	}
-            	numeratorCount++;
-            }
-            // special case if there is no numerator append one for inverse
-            if (numeratorCount == 1) {
-            	app.append("1");
-            }
-            if (denominatorUnits.size() >0){
-            	// append division symbol
-            	app.append("/");
-            	int denominatorCount = 1;
-            	for (Entry<? extends AbstractUnit<?>, Integer> u : denominatorUnits.entrySet()) {
-            		// if there is more than one denominator unit and this is the first, add open parenthesis 
-            		if (denominatorCount == 1 && denominatorUnits.size() > 1 ) {
-            			app.append("(");
-            		}
-            		// add multiplication separators after first unit
-            		if (denominatorCount > 1){
-            			app.append(".");
-            		}
-            		// add individual unit string
-            		format(u.getKey(),app);
-            		// add power number if abs greater than 1
-                	if (Math.abs(u.getValue()) < -1){
-                		app.append(-u.getValue());
-                	}
-                	// if there is more than one denominator unit and this is the last, add close parenthesis
-                	if (denominatorCount == denominatorUnits.size() && denominatorUnits.size() > 1 ) {
-            			app.append(")");
-            		}
-                	denominatorCount++;
-                }
-            }            
-            symbol = app;
-        } else if (!unit.isSystemUnit() || unit.equals(SI.KILOGRAM)) {
-            final StringBuilder temp = new StringBuilder();
-            UnitConverter converter;
-            boolean printSeparator;
-            if (unit.equals(SI.KILOGRAM)) {
-                // A special case because KILOGRAM is a BaseUnit instead of
-                // a transformed unit, for compatibility with existing SI
-                // unit system.
-                format(SI.GRAM, temp);
-                converter = MultiplyConverter.ofPrefix(MetricPrefix.KILO);
-                printSeparator = true;
-            } else {
-                Unit<?> parentUnit = unit.getSystemUnit();
-                converter = unit.getConverterTo(parentUnit);
-                if (parentUnit.equals(SI.KILOGRAM)) {
-                    // More special-case hackery to work around gram/kilogram
-                    // inconsistency
-                    parentUnit = SI.GRAM;
-                    converter = converter.concatenate(MultiplyConverter.ofPrefix(MetricPrefix.KILO));
-                }
-                format(parentUnit, temp);
-                printSeparator = !parentUnit.equals(ONE);
-            }
-            formatConverter(converter, printSeparator, temp, symbolMap);
-            symbol = temp;
-        } else if (unit.getSymbol() != null) {
-            symbol = unit.getSymbol();
-        } else {
+        
+        final ComparableUnit unit = (ComparableUnit) unknownUnit;
+        final UCUMFormatHelper formatHelper = UCUMFormatHelper.of(this, unit);
+        final CharSequence symbol = formatHelper.findSymbolFor(symbolProviders, unit);
+        
+        if (symbol == null) {
             throw new IllegalArgumentException("Cannot format the given Object as UCUM units (unsupported unit " + unit.getClass().getName() + "). "
                     + "Custom units types should override the toString() method as the default implementation uses the UCUM format.");
         }
 
         appendable.append(symbol);
-        if (annotation != null && annotation.length() > 0) {
-            appendAnnotation(symbol, annotation, appendable);
-        }
+        formatHelper.appendAnnotation(symbol, appendable);
 
         return appendable;
     }
+    
+    // -- SYMBOL PROVIDERS
+    
+    /* processed in order of declaration, the first to return a non-null string wins */
+    private final SymbolProvider[] symbolProviders = {
+            this::symbolFromLookupMap,
+            this::symbolForTransformedUnit,
+            this::symbolForKilogram,
+            this::symbolForProductUnits,
+            this::symbolForNonSystemUnit,
+            this::symbolFromField,
+            };
+    
+    private CharSequence symbolFromLookupMap(ComparableUnit<?> unit) throws IOException {
+        return symbolMap.getSymbol(unit);
+    }
+    
+    private CharSequence symbolFromField(ComparableUnit<?> unit) throws IOException {
+        return unit.getSymbol();
+    }
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private CharSequence symbolForTransformedUnit(ComparableUnit unit) throws IOException {
+        if (!(unit instanceof TransformedUnit)) {
+            return null;    
+        }
+        final StringBuilder sb = new StringBuilder();
+        final Unit<?> parentUnit = ((TransformedUnit) unit).getParentUnit();
+        final UnitConverter converter = 
+                UCUMFormatHelper.toKnownPrefixConverterIfPossible(unit.getConverterTo(parentUnit));
+        final boolean printSeparator = !parentUnit.equals(ONE);
 
+        format(parentUnit, sb);
+        formatConverter(converter, printSeparator, sb, symbolMap);
+
+        return sb;
+    }
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private CharSequence symbolForProductUnits(ComparableUnit unit) throws IOException {
+        final Map<? extends AbstractUnit<?>, Integer> productUnits = unit.getBaseUnits();
+        
+        if (productUnits == null) {
+            return null;
+        }
+        
+        final StringBuffer sb = new StringBuffer();
+        
+        final Map<AbstractUnit<?>, Integer> numeratorUnits = new LinkedHashMap<>();            
+        final Map<AbstractUnit<?>, Integer> denominatorUnits = new LinkedHashMap<>();
+
+        // divide units into numerators and denominators
+        for (Entry<? extends AbstractUnit<?>, Integer> u : productUnits.entrySet()) {
+            if (u.getValue() > 0) {
+                numeratorUnits.put(u.getKey(), u.getValue());
+            }else {
+                denominatorUnits.put(u.getKey(), u.getValue());
+            }
+        }
+        
+        int numeratorCount = 1;
+        for (Entry<? extends AbstractUnit<?>, Integer> u : numeratorUnits.entrySet()) {
+            // add multiplication separators after first unit
+            if (numeratorCount > 1){
+                sb.append(".");
+            }
+            // add individual unit string
+            format(u.getKey(),sb);
+            // add power number if greater than 1
+            if (u.getValue() > 1){
+                sb.append(u.getValue());
+            }
+            numeratorCount++;
+        }
+        // special case if there is no numerator append one for inverse
+        if (numeratorCount == 1) {
+            sb.append("1");
+        }
+        if (denominatorUnits.size() >0){
+            // append division symbol
+            sb.append("/");
+            int denominatorCount = 1;
+            for (Entry<? extends AbstractUnit<?>, Integer> u : denominatorUnits.entrySet()) {
+                // if there is more than one denominator unit and this is the first, add open parenthesis 
+                if (denominatorCount == 1 && denominatorUnits.size() > 1 ) {
+                    sb.append("(");
+                }
+                // add multiplication separators after first unit
+                if (denominatorCount > 1){
+                    sb.append(".");
+                }
+                // add individual unit string
+                format(u.getKey(),sb);
+                // add power number if abs greater than 1
+                if (Math.abs(u.getValue()) < -1){
+                    sb.append(-u.getValue());
+                }
+                // if there is more than one denominator unit and this is the last, add close parenthesis
+                if (denominatorCount == denominatorUnits.size() && denominatorUnits.size() > 1 ) {
+                    sb.append(")");
+                }
+                denominatorCount++;
+            }
+        }            
+        return sb;
+    }
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private CharSequence symbolForKilogram(ComparableUnit unit) throws IOException {
+        
+        final Unit<?> systemUnit = unit.getSystemUnit();
+        if (!systemUnit.equals(SI.KILOGRAM)) {
+            return null;
+        }
+
+        final UnitConverter converter = 
+                UCUMFormatHelper.toKnownPrefixConverterIfPossible(
+                        unit.getConverterTo(systemUnit)
+                        .concatenate(MultiplyConverter.ofPrefix(MetricPrefix.KILO)));
+        
+        final StringBuilder sb = new StringBuilder();
+        final boolean printSeparator = true;
+        
+        // A special case because KILOGRAM is a BaseUnit instead of
+        // a transformed unit, for compatibility with existing SI
+        // unit system.
+        format(SI.GRAM, sb);
+        formatConverter(converter, printSeparator, sb, symbolMap);    
+        
+        return sb;
+    }
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private CharSequence symbolForNonSystemUnit(ComparableUnit unit) throws IOException {
+        
+        if (unit.isSystemUnit()) {
+            return null;
+        }
+        
+        final Unit<?> parentUnit = unit.getSystemUnit();
+        final UnitConverter converter = unit.getConverterTo(parentUnit);
+        final StringBuilder sb = new StringBuilder();
+        final boolean printSeparator = !parentUnit.equals(ONE);
+        
+        format(parentUnit, sb);
+        formatConverter(converter, printSeparator, sb, symbolMap);
+        
+        return sb;
+    }
+    
+    // ---
+    
     public void label(Unit<?> unit, String label) {
         throw new UnsupportedOperationException("label() not supported by this implementation");
     }
@@ -311,6 +364,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         appendable.append(annotation);
         appendable.append('}');
     }
+
 
     // static final ResourceBundle.Control getControl(final String key) {
     // return new ResourceBundle.Control() {
