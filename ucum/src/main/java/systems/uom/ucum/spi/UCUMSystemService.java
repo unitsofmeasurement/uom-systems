@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.ucum.internal;
+package systems.uom.ucum.spi;
 
 import java.util.Collection;
 import java.util.HashMap;

@@ -27,8 +27,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.ucum.internal;
+package systems.uom.ucum.spi;
 
+import javax.measure.spi.FormatService;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
 import javax.measure.spi.UnitFormatService;
@@ -54,6 +55,11 @@ public final class UCUMServiceProvider extends AbstractServiceProvider {
 
     @Override
     public UnitFormatService getUnitFormatService() {
+        return new UCUMFormatService();
+    }
+    
+    @Override
+    public FormatService getFormatService() {
         return new UCUMFormatService();
     }
 
