@@ -29,7 +29,6 @@
  */
 package systems.uom.ucum;
 
-//import static javax.measure.MetricPrefix.*;
 import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.AbstractUnit.ONE;
 
@@ -70,7 +69,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 2.0, $Date: 2019-01-23 $
+ * @version 2.1, $Date: 2019-10-02 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -263,9 +262,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     public static final Unit<Pressure> BAR = addUnit(Units.PASCAL.multiply(100000));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Mass> ATOMIC_MASS_UNIT = addUnit(SI.UNIFIED_ATOMIC_MASS);
-    // public static final Unit<Mass> ATOMIC_MASS_UNIT = addUnit(
-    // new AlternateUnit<Mass>(Units.UNIFIED_ATOMIC_MASS,
-    // Units.UNIFIED_ATOMIC_MASS.getSymbol()), Mass.class);
+
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Energy> ELECTRON_VOLT = addUnit(SI.ELECTRON_VOLT);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
@@ -763,8 +760,8 @@ public final class UCUM extends AbstractSystemOfUnits {
     public static final Unit<Dimensionless> HIGH_POWER_FIELD = addUnit(ONE);
     public static final Unit<Dimensionless> LOW_POWER_FIELD = addUnit(ONE.multiply(100));
 
-    // public static final Unit KATAL = addUnit(MOLE.divide(SECOND));
-    // public static final Unit UNIT = addUnit(MICRO(MOLE).divide(MINUTE));
+    public static final Unit KATAL = addUnit(MOLE.divide(SECOND));
+    public static final Unit UNIT = addUnit(MICRO(MOLE).divide(MINUTE));
 
     // public static final Unit INTERNATIONAL_UNIT = UNDEFINED;
     // public static final Unit ARBITRARY_UNIT = UNDEFINED;
