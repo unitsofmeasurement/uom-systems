@@ -32,16 +32,14 @@ package systems.uom.common;
 import static org.junit.Assert.*;
 import static tech.units.indriya.unit.Units.METRE;
 
-import java.math.BigDecimal;
-
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+import javax.measure.spi.ServiceProvider;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import tech.units.indriya.internal.DefaultQuantityFactory;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.Units;
 
@@ -51,7 +49,7 @@ public class ArithmeticTest {
 	
 	@Before
 	public void init() {
-		sut = DefaultQuantityFactory.getInstance(Length.class).create(10, METRE);
+		sut = ServiceProvider.current().getQuantityFactory(Length.class).create(10, METRE);
 	}
 	
 	@Test

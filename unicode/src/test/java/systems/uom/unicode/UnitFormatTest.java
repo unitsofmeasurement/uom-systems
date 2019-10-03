@@ -37,6 +37,7 @@ import javax.measure.format.MeasurementParseException;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Speed;
+import javax.measure.spi.ServiceProvider;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -49,7 +50,6 @@ import static tech.units.indriya.unit.Units.MINUTE;
 import static tech.units.indriya.unit.Units.SECOND;
 
 import tech.units.indriya.format.SimpleUnitFormat;
-import tech.units.indriya.internal.DefaultQuantityFactory;
 import tech.units.indriya.unit.Units;
 
 /**
@@ -63,7 +63,7 @@ public class UnitFormatTest {
 	
 	@Before
 	public void init() {
-		sut = DefaultQuantityFactory.getInstance(Length.class).create(10,
+		sut = ServiceProvider.current().getQuantityFactory(Length.class).create(10,
 				METRE);
 		
 //		format = EBNFUnitFormat.getInstance();

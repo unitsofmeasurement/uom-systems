@@ -43,7 +43,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-	private static final String DEFAULT_SERVICE_CLASSNAME = "tech.units.indriya.internal.DefaultSystemOfUnitsService";
+	private static final String DEFAULT_SERVICE_CLASSNAME = "tech.units.indriya.unit.DefaultSystemOfUnitsService";
 	private static final String COMMON_SERVICE_CLASSNAME = "systems.uom.common.internal.CommonSystemService";
 	private static final Logger LOGGER = Logger.getLogger(SystemOfUnitsServiceTest.class.getName());
 
