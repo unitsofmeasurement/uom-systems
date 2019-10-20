@@ -8,7 +8,7 @@
 		<artifactId>uom-parent</artifactId>
 		<version>2.0.1</version>
 	</parent>
-	<version>2.0</version>
+	<version>2.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
 	<url>http://www.uom.systems</url>
@@ -34,7 +34,7 @@
 		<ri.version>2.0.1</ri.version>
 		<si.version>2.0.1</si.version>
 		<quantity.version>2.0</quantity.version>
-		<systems.version>2.0</systems.version>
+		<systems.version>2.0.1-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
