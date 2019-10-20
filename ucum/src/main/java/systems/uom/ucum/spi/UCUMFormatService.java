@@ -51,9 +51,9 @@ import tech.units.indriya.format.SimpleQuantityFormat;
  * UCUM format service.
  *
  * @author Werner Keil
- * @version 1.0, September 20, 2019
+ * @version 1.1, October 20, 2019
  */
-final class UCUMFormatService implements FormatService {
+public final class UCUMFormatService implements FormatService {
 
 	private static final String DEFAULT_UNIT_FORMAT = Variant.CASE_SENSITIVE.name();
 

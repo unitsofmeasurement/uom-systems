@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2019, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -27,34 +27,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.unicode.spi;
-
-import javax.inject.Named;
-import javax.measure.spi.ServiceProvider;
-import javax.measure.spi.SystemOfUnitsService;
-import tech.units.indriya.spi.AbstractServiceProvider;
-
-/**
- * This class implements the {@link ServiceProvider} interface and hereby uses
- * the JDK {@link java.util.ServiceLoader} to load the services required.
- *
- * @author Werner Keil
- * @version 0.5
- */
-@Named("Unicode")
-public class UnicodeServiceProvider extends AbstractServiceProvider {
-
-	public int getPriority() {
-		return 500;
-	}
-
-	@Override
-	public SystemOfUnitsService getSystemOfUnitsService() {
-		return new CLDRSystemService();
-	}
-	
-    @Override
-    public String toString() {
-        return "Unicode";
-    }
+module systems.uom.unicode {
+    requires transitive java.measure;
+    requires transitive tech.units.indriya;
+    requires transitive systems.uom.quantity;
+    
+    exports systems.uom.unicode;
+    exports systems.uom.unicode.spi;
+    
+    provides javax.measure.spi.ServiceProvider with
+    	systems.uom.unicode.spi.UnicodeServiceProvider;
+    
+    provides javax.measure.spi.SystemOfUnitsService with
+    	systems.uom.unicode.spi.CLDRSystemService;
 }

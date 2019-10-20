@@ -44,7 +44,7 @@ import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
 	private static final String DEFAULT_SERVICE_CLASSNAME = "tech.units.indriya.unit.DefaultSystemOfUnitsService";
-	private static final String COMMON_SERVICE_CLASSNAME = "systems.uom.common.internal.CommonSystemService";
+	private static final String COMMON_SERVICE_CLASSNAME = "systems.uom.common.spi.CommonSystemService";
 	private static final Logger LOGGER = Logger.getLogger(SystemOfUnitsServiceTest.class.getName());
 
 	private static final int NUM_OF_UNITS_DEFAULT = 43;
@@ -76,7 +76,7 @@ public class SystemOfUnitsServiceTest {
 		assertNotNull(commonProvider);
 		final SystemOfUnitsService commonService = commonProvider.getSystemOfUnitsService();
 		assertNotNull(commonService);
-		assertEquals("systems.uom.common.internal.CommonSystemService", commonService.getClass().getName());
+		assertEquals("systems.uom.common.spi.CommonSystemService", commonService.getClass().getName());
 		SystemOfUnits system = commonService.getSystemOfUnits();
 		assertNotNull(system);
 		assertEquals("systems.uom.common.USCustomary", system.getClass().getName());

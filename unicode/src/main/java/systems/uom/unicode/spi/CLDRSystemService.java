@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.unicode.internal;
+package systems.uom.unicode.spi;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,9 +41,9 @@ import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.3, June 19, 2019
+ * @version 0.5, October 20, 2019
  */
-class CLDRSystemService implements SystemOfUnitsService, IntPrioritySupplier {
+public class CLDRSystemService implements SystemOfUnitsService, IntPrioritySupplier {
     private static final int PRIO = 20;
 
     private final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();

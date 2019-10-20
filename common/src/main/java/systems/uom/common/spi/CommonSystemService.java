@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.common.internal;
+package systems.uom.common.spi;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,9 +41,9 @@ import tech.units.indriya.spi.AbstractSystemOfUnitsService;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, July 2, 2019
+ * @version 1.1, October 20, 2019
  */
-class CommonSystemService extends AbstractSystemOfUnitsService {
+public class CommonSystemService extends AbstractSystemOfUnitsService {
 	private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
 
 	private final Map<String, String> aliases = new HashMap<String, String>();

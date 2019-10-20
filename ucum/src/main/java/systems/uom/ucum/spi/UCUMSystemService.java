@@ -41,9 +41,9 @@ import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.9, June 19, 2019
+ * @version 1.0, October 20, 2019
  */
-final class UCUMSystemService implements SystemOfUnitsService,
+public final class UCUMSystemService implements SystemOfUnitsService,
 	IntPrioritySupplier {
     static final int PRIO = 100;
     private static final String DEFAULT_SYSTEM_NAME = "UCUM";

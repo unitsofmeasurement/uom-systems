@@ -8,6 +8,7 @@
 		<artifactId>uom-parent</artifactId>
 		<version>2.0.1</version>
 	</parent>
+	<version>2.0</version>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
 	<url>http://www.uom.systems</url>
@@ -32,8 +33,8 @@
 		<lib.version>2.0</lib.version>
 		<ri.version>2.0.1</ri.version>
 		<si.version>2.0.1</si.version>
-		<quantity.version>2.0-SNAPSHOT</quantity.version>
-		<systems.version>2.0-SNAPSHOT</systems.version>
+		<quantity.version>2.0</quantity.version>
+		<systems.version>2.0</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -253,6 +254,66 @@
 				</pluginRepository>
 			</pluginRepositories>
 		</profile>
+		
+		<profile>
+			<id>jdk9-setup</id>
+			<activation>
+				<jdk>[9,)</jdk>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-compiler-plugin</artifactId>
+							<configuration>
+								<release>8</release>
+							</configuration>
+							<executions>
+								<execution>
+									<id>default-compile</id>
+									<configuration>
+										<release>9</release>
+										<source>9</source>
+										<target>9</target>
+									</configuration>
+								</execution>
+								<execution>
+									<id>base-compile</id>
+									<goals>
+										<goal>compile</goal>
+									</goals>
+									<configuration>
+										<excludes>
+											<exclude>module-info.java</exclude>
+										</excludes>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>add-jdk9-source</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>src/main/jdk9</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
-	<version>2.0-SNAPSHOT</version>
 </project>

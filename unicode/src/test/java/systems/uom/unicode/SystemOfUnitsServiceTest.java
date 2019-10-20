@@ -70,7 +70,7 @@ public class SystemOfUnitsServiceTest {
 		assertNotNull(cldrProvider);
 		final SystemOfUnitsService cldrService = cldrProvider.getSystemOfUnitsService();
 		assertNotNull(cldrService);
-		assertEquals("systems.uom.unicode.internal.CLDRSystemService", cldrService.getClass().getName());
+		assertEquals("systems.uom.unicode.spi.CLDRSystemService", cldrService.getClass().getName());
 		SystemOfUnits system = cldrService.getSystemOfUnits();
 		assertNotNull(system);
 		assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
@@ -96,7 +96,7 @@ public class SystemOfUnitsServiceTest {
 		assertNotNull(cldrProvider);
 		final SystemOfUnitsService cldrService = cldrProvider.getSystemOfUnitsService();
 		assertNotNull(cldrService);
-		assertEquals("systems.uom.unicode.internal.CLDRSystemService", cldrService.getClass().getName());
+		assertEquals("systems.uom.unicode.spi.CLDRSystemService", cldrService.getClass().getName());
 		SystemOfUnits system = cldrService.getSystemOfUnits("CLDR");
 		assertNotNull(system);
 		assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
