@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -34,11 +34,11 @@ import javax.measure.Quantity;
 import javax.measure.Unit;
 
 /**
- * Utility class holding  traditional numbers of the Vedic numbering system used in the Valmiki Ramayana
- * Unit<Length> KOTI_METRE = KOTI(METRE); </code>
+ * Utility class holding  traditional numbers of the Vedic numbering system used in the Valmiki Ramayana<br>
+ * <code>Unit&lt;Length&gt; KOTI_METRE = KOTI(METRE); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 0.2, $Date: 2019-06-28 $
+ * @version 0.3, $Date: 2020-01-11 $
  * @see <a
  *      href="https://en.wikipedia.org/wiki/Indian_numbering_system#Vedic_numbering_systems">Wikipedia: Indian numbering system - Vedic numbering systems</a>
  * @draft 2.0

@@ -95,7 +95,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>systems.uom.common</Export-Package>
+						<Export-Package>systems.uom.common, systems.uom.common.ancient, systems.uom.common.spi</Export-Package>
 						<Private-Package>systems.uom.common.internal</Private-Package>
 						<Import-Package>*,tech.units.indriya.format</Import-Package>
 					</instructions>

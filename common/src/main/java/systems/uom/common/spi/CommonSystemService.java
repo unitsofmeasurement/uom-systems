@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -41,12 +41,12 @@ import tech.units.indriya.spi.AbstractSystemOfUnitsService;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.1, October 20, 2019
+ * @version 1.2, January 11, 2020
  */
 public class CommonSystemService extends AbstractSystemOfUnitsService {
 	private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
 
-	private final Map<String, String> aliases = new HashMap<String, String>();
+	private final Map<String, String> aliases = new HashMap<>();
 
 	public CommonSystemService() {
 		souMap.put("Imperial", Imperial.getInstance());
