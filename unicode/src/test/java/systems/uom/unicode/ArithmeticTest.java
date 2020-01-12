@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -29,11 +29,12 @@
  */
 package systems.uom.unicode;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import javax.measure.Quantity;
 import javax.measure.quantity.Mass;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.function.RationalNumber;
 import tech.units.indriya.quantity.Quantities;

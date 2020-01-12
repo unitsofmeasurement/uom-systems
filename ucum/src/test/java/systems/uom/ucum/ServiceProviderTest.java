@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -29,30 +29,31 @@
  */
 package systems.uom.ucum;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
 import javax.measure.spi.ServiceProvider;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 public class ServiceProviderTest {
 
     @Test
     public void testAvailable() throws Exception {
-	List<ServiceProvider> providers = ServiceProvider.available();
-	assertNotNull(providers);
-	assertFalse(providers.isEmpty());
-	assertEquals(3, providers.size());
-	assertEquals("UCUMServiceProvider", providers.get(0).toString());
+		List<ServiceProvider> providers = ServiceProvider.available();
+		assertNotNull(providers);
+		assertFalse(providers.isEmpty());
+		assertEquals(3, providers.size());
+		assertEquals("UCUMServiceProvider", providers.get(0).toString());
     }
 
     @Test
     public void testCurrent() throws Exception {
-	ServiceProvider provider = ServiceProvider.current();
-	assertNotNull(provider);
-	assertEquals("UCUMServiceProvider", provider.toString());
+		ServiceProvider provider = ServiceProvider.current();
+		assertNotNull(provider);
+		assertEquals("UCUMServiceProvider", provider.toString());
     }
 }

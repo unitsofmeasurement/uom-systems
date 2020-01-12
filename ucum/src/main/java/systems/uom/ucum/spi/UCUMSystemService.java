@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -40,8 +40,8 @@ import systems.uom.ucum.UCUM;
 import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, October 20, 2019
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
+ * @version 1.1, January 11, 2020
  */
 public final class UCUMSystemService implements SystemOfUnitsService,
 	IntPrioritySupplier {
@@ -51,31 +51,31 @@ public final class UCUMSystemService implements SystemOfUnitsService,
     private final Map<String, SystemOfUnits> souMap = new HashMap<>();
     private final Map<String, String> aliases = new HashMap<>();
 
-    UCUMSystemService() {
-	souMap.put(DEFAULT_SYSTEM_NAME, UCUM.getInstance());
-	aliases.put("Unified Code for Units of Measure", DEFAULT_SYSTEM_NAME);
+    public UCUMSystemService() {
+    	souMap.put(DEFAULT_SYSTEM_NAME, UCUM.getInstance());
+    	aliases.put("Unified Code for Units of Measure", DEFAULT_SYSTEM_NAME);
     }
 
     public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
-	return souMap.values();
+    	return souMap.values();
     }
 
     @Override
     public SystemOfUnits getSystemOfUnits() {
-	return getSystemOfUnits(DEFAULT_SYSTEM_NAME); 
+    	return getSystemOfUnits(DEFAULT_SYSTEM_NAME); 
     }
 
     @Override
     public SystemOfUnits getSystemOfUnits(String name) {
-	String alias = aliases.get(name);
-	if (alias != null && alias.length() > 0) {
-	    return souMap.get(alias);
-	}
-	return souMap.get(name);
+		String alias = aliases.get(name);
+		if (alias != null && alias.length() > 0) {
+		    return souMap.get(alias);
+		}
+		return souMap.get(name);
     }
 
     @Override
     public int getPriority() {
-	return PRIO;
+    	return PRIO;
     }
 }

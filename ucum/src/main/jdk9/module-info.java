@@ -27,32 +27,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.ucum.format;
-
-import static org.junit.jupiter.api.Assertions.*;
-import javax.measure.*;
-import javax.measure.format.*;
-import javax.measure.spi.ServiceProvider;
-
-import org.junit.jupiter.api.Test;
-
-/**
- * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- *
- */
-public class UCUMFormat135Test extends UCUMFormatTestBase {
-
-    @Test
-    public void testParseUCUMCSM3PerSecond() {
-    	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
-    	final Unit<?> dst = unitFormat.parse("m3/s");
-    	assertEquals("m3/s",FORMAT_CS.format(dst));
-    }
+module systems.uom.ucum {
+    requires transitive java.measure;
+    requires transitive si.uom.quantity;
+    requires transitive si.uom.units;
+    requires transitive tech.units.indriya;
+    requires transitive java.annotation;
+    requires transitive systems.uom.quantity;
     
-    @Test
-    public void testParseUCUMCSComplexDenominator() {
-    	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
-    	final Unit<?> dst = unitFormat.parse("m/(bar.s)");
-    	assertEquals("m/(bar.s)",FORMAT_CS.format(dst));
-    }
+    exports systems.uom.ucum;
+    exports systems.uom.ucum.format;
+    exports systems.uom.ucum.spi;
+    
+    provides javax.measure.spi.ServiceProvider with
+	systems.uom.ucum.spi.UCUMServiceProvider;
+    
+    provides javax.measure.spi.FormatService with
+    	systems.uom.ucum.spi.UCUMFormatService;
+    
+    provides javax.measure.spi.SystemOfUnitsService with
+    	systems.uom.ucum.spi.UCUMSystemService;
 }

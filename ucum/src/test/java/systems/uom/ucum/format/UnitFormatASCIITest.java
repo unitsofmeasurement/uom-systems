@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -30,16 +30,18 @@
 package systems.uom.ucum.format;
 
 import static systems.uom.ucum.format.StringUtils.isPureAscii;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static systems.uom.ucum.format.UCUMFormat.Variant.*;
 import javax.measure.*;
 import javax.measure.format.*;
+
+import org.junit.jupiter.api.Test;
+
 import systems.uom.ucum.UCUM;
 import systems.uom.ucum.format.UCUMFormat;
-import org.junit.*;
 
 /**
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  *
  */
 public class UnitFormatASCIITest extends UCUMFormatTestBase {
@@ -54,8 +56,8 @@ public class UnitFormatASCIITest extends UCUMFormatTestBase {
 	    // try {
 	    // Unit<?> v = format.parse("1/" + u.toString());
 	    //LOGGER.log(LOG_LEVEL, String.format("%s @ %s @ %s @ %s", 
-		    assertTrue(String.format("CS format %s contains non-ASCII characters", cs.format(u)), isPureAscii(cs.format(u)));
-		    assertTrue(String.format("CI format %s contains non-ASCII characters", ci.format(u)), isPureAscii(ci.format(u)));
+		    assertTrue(isPureAscii(cs.format(u)), String.format("CS format %s contains non-ASCII characters", cs.format(u)));
+		    assertTrue(isPureAscii(ci.format(u)), String.format("CI format %s contains non-ASCII characters", ci.format(u)));
 //		    assertTrue(String.format("Print format %s contains non-ASCII characters", pr.format(u)), isPureAscii(pr.format(u)));
 	    // } catch (ParserException pex) {
 	    // logger.log(Level.WARNING, String.format(" %s parsing %s", pex,"

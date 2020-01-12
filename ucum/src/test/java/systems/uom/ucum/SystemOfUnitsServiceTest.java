@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -29,8 +29,8 @@
  */
 package systems.uom.ucum;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Collection;
 
@@ -38,8 +38,8 @@ import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class SystemOfUnitsServiceTest {
     private static final String EXPECTED_SYSTEM_NAME = "Unified Code for Units of Measure";
@@ -47,45 +47,45 @@ public class SystemOfUnitsServiceTest {
 
     private static SystemOfUnitsService defaultService;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
-	defaultService = ServiceProvider.current().getSystemOfUnitsService();
+    	defaultService = ServiceProvider.current().getSystemOfUnitsService();
     }
 
     @Test
     public void testDefaultUnitSystemService() {
-	assertNotNull(defaultService);
-	assertEquals("systems.uom.ucum.spi.UCUMSystemService", defaultService.getClass().getName());
-	SystemOfUnits system = defaultService.getSystemOfUnits();
-	assertNotNull(system);
-	assertEquals("systems.uom.ucum.UCUM", system.getClass().getName());
-	assertEquals(EXPECTED_SYSTEM_NAME, system.getName());
-	assertNotNull(system.getUnits());
-	assertEquals(NUM_OF_UNITS, system.getUnits().size());
+		assertNotNull(defaultService);
+		assertEquals("systems.uom.ucum.spi.UCUMSystemService", defaultService.getClass().getName());
+		SystemOfUnits system = defaultService.getSystemOfUnits();
+		assertNotNull(system);
+		assertEquals("systems.uom.ucum.UCUM", system.getClass().getName());
+		assertEquals(EXPECTED_SYSTEM_NAME, system.getName());
+		assertNotNull(system.getUnits());
+		assertEquals(NUM_OF_UNITS, system.getUnits().size());
     }
 
     @Test
     // TODO consolidate asserts
     public void testUnitSystemServiceAlias() {
-	assertNotNull(defaultService);
-	assertEquals("systems.uom.ucum.spi.UCUMSystemService", defaultService.getClass().getName());
-	SystemOfUnits system = defaultService.getSystemOfUnits("UCUM");
-	assertNotNull(system);
-	assertEquals("systems.uom.ucum.UCUM", system.getClass().getName());
-	assertEquals("Unified Code for Units of Measure", system.getName());
-	assertNotNull(system.getUnits());
-	assertEquals(NUM_OF_UNITS, system.getUnits().size());
-	SystemOfUnits system2 = defaultService.getSystemOfUnits("Unified Code for Units of Measure");
-	assertEquals(system, system2);
+		assertNotNull(defaultService);
+		assertEquals("systems.uom.ucum.spi.UCUMSystemService", defaultService.getClass().getName());
+		SystemOfUnits system = defaultService.getSystemOfUnits("UCUM");
+		assertNotNull(system);
+		assertEquals("systems.uom.ucum.UCUM", system.getClass().getName());
+		assertEquals("Unified Code for Units of Measure", system.getName());
+		assertNotNull(system.getUnits());
+		assertEquals(NUM_OF_UNITS, system.getUnits().size());
+		SystemOfUnits system2 = defaultService.getSystemOfUnits("Unified Code for Units of Measure");
+		assertEquals(system, system2);
     }
 
     @Test
     public void testOtherUnitSystemServices() {
-	Collection<ServiceProvider> services = ServiceProvider.available();
-	assertNotNull(services);
-	assertEquals(3, services.size());
-	// for (SystemOfUnitsService service : services) {
-	// checkService(service);
-	// }
+		Collection<ServiceProvider> services = ServiceProvider.available();
+		assertNotNull(services);
+		assertEquals(3, services.size());
+		// for (SystemOfUnitsService service : services) {
+		// checkService(service);
+		// }
     }
 }

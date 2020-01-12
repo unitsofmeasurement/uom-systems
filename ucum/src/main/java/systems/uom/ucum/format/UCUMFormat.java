@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -56,9 +56,9 @@ import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.ComparableUnit;
 import tech.units.indriya.format.AbstractUnitFormat;
 import tech.units.indriya.format.SymbolMap;
+import tech.units.indriya.format.TokenException;
+import tech.units.indriya.format.TokenMgrError;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.internal.format.TokenException;
-import tech.units.indriya.internal.format.TokenMgrError;
 import tech.units.indriya.unit.TransformedUnit;
 
 /**
@@ -79,9 +79,9 @@ import tech.units.indriya.unit.TransformedUnit;
  * </p>
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 1.0, 19. September 2019
+ * @version 1.1, 11. January 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**

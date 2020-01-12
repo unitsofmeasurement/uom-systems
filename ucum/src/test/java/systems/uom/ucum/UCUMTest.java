@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -29,8 +29,8 @@
  */
 package systems.uom.ucum;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static systems.uom.ucum.UCUM.*;
 
 import javax.measure.Quantity;
@@ -39,45 +39,45 @@ import javax.measure.UnitConverter;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Volume;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.quantity.Quantities;
 
 /**
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  *
  */
 public class UCUMTest {
 
     @Test
     public void testLiterToDm3() {
-	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, LITER);
-	final Quantity<Volume> oneDm3 = Quantities.getQuantity(1, LITER_DM3);
-	assertEquals(1, oneLiter.to(LITER_DM3).getValue());
-	//assertEquals(oneLiter, oneDm3);
+		final Quantity<Volume> oneLiter = Quantities.getQuantity(1, LITER);
+		final Quantity<Volume> oneDm3 = Quantities.getQuantity(1, LITER_DM3);
+		assertEquals(1, oneLiter.to(LITER_DM3).getValue());
+		//assertEquals(oneLiter, oneDm3);
     }
     
     @Test
     public void testUnitNotEqualsLiters() {
-	assertNotEquals(LITER, LITER_DM3);
+    	assertNotEquals(LITER, LITER_DM3);
     }
     
     @Test
     public void testNameEqualsLiters() {
-	assertEquals(LITER.getName(), LITER_DM3.getName());
+    	assertEquals(LITER.getName(), LITER_DM3.getName());
     }
     
     @Test
     public void testConvEqualsLiters() {
-	UnitConverter c1 = LITER.getConverterTo(LITER_DM3);
-	UnitConverter c2 = LITER_DM3.getConverterTo(LITER);
-	assertEquals(c1, c2);
+		final UnitConverter c1 = LITER.getConverterTo(LITER_DM3);
+		final UnitConverter c2 = LITER_DM3.getConverterTo(LITER);
+		assertEquals(c1, c2);
     }
     
     @Test
     public void testStToDm3() {
-	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
-	assertEquals(1000, oneLiter.to(LITER_DM3).getValue());
+		final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
+		assertEquals(1000, oneLiter.to(LITER_DM3).getValue());
     }
     
     @Test
