@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>1.3</version>
+		<version>1.3.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>systems-ucum-java8</artifactId>
 	<name>Units of Measurement UCUM System for Java 8</name>

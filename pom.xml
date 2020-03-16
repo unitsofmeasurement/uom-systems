@@ -29,14 +29,14 @@
 	<properties>
 		<jdkVersion>1.8</jdkVersion>
 		<jsr.version>1.0</jsr.version>
-		<jsr2.version>2.0-EDR</jsr2.version>
+		<jsr2.version>2.0</jsr2.version>
 		<lib.version>1.1</lib.version>
 		<ri.version>1.0.3</ri.version>
 		<ri2.version>1.3</ri2.version>
 		<se.version>1.0.10</se.version>
-		<si.version>1.3</si.version>
-		<quantity.version>1.0</quantity.version>
-		<systems.version>1.3</systems.version>
+		<si.version>1.3.1</si.version>
+		<quantity.version>1.3</quantity.version>
+		<systems.version>1.3.1-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -274,4 +274,5 @@
 			</pluginRepositories>
 		</profile>
 	</profiles>
+	<version>1.3.1-SNAPSHOT</version>
 </project>

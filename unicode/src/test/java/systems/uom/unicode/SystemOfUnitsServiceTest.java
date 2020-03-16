@@ -30,6 +30,7 @@
 package systems.uom.unicode;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
@@ -42,7 +43,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-    private static final int NUM_OF_UNITS = 97;
+    private static final int NUM_OF_UNITS = 43;
     
     private static SystemOfUnitsService defaultService;
 
@@ -54,12 +55,12 @@ public class SystemOfUnitsServiceTest {
     @Test
     public void testDefaultUnitSystemService() {
 	assertNotNull(defaultService);
-	assertEquals("systems.uom.unicode.internal.CLDRSystemService",
+	assertEquals("tech.units.indriya.internal.DefaultSystemOfUnitsService",
 		defaultService.getClass().getName());
 	SystemOfUnits system = defaultService.getSystemOfUnits();
 	assertNotNull(system);
-	assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
-	assertEquals("Unicode CLDR", system.getName());
+	assertEquals("tech.units.indriya.unit.Units", system.getClass().getName());
+	assertEquals("Units", system.getName());
 	assertNotNull(system.getUnits());
 	assertEquals(NUM_OF_UNITS, system.getUnits().size());
     }
@@ -77,17 +78,17 @@ public class SystemOfUnitsServiceTest {
     @Test
     // TODO consolidate asserts
     public void testUnitSystemServiceAlias() {
-	assertNotNull(defaultService);
-	assertEquals("systems.uom.unicode.internal.CLDRSystemService",
-		defaultService.getClass().getName());
-	SystemOfUnits system = defaultService.getSystemOfUnits("CLDR");
-	assertNotNull(system);
-	assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
-	assertEquals("Unicode CLDR", system.getName());
-	assertNotNull(system.getUnits());
-	assertEquals(NUM_OF_UNITS, system.getUnits().size());
-	SystemOfUnits system2 = defaultService.getSystemOfUnits("Unicode");
-	assertEquals(system, system2);
+		assertNotNull(defaultService);
+		assertEquals("tech.units.indriya.internal.DefaultSystemOfUnitsService",
+			defaultService.getClass().getName());
+		SystemOfUnits system = defaultService.getSystemOfUnits("Units");
+		assertNotNull(system);
+		assertEquals("tech.units.indriya.unit.Units", system.getClass().getName());
+		assertEquals("Units", system.getName());
+		assertNotNull(system.getUnits());
+		assertEquals(NUM_OF_UNITS, system.getUnits().size());
+		SystemOfUnits system2 = defaultService.getSystemOfUnits("Unicode");
+		assertNotEquals(system, system2);
     }
 
     /*
