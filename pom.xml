@@ -8,6 +8,7 @@
 		<artifactId>uom-parent</artifactId>
 		<version>1.3</version>
 	</parent>
+	<version>1.3.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
 	<url>http://www.uom.systems</url>
@@ -277,5 +278,4 @@
 			</pluginRepositories>
 		</profile>
 	</profiles>
-	<version>1.3.1-SNAPSHOT</version>
 </project>
