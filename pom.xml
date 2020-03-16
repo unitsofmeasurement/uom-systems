@@ -238,6 +238,9 @@
 											<id>tech.uom.lib:uom-lib-common:${lib.version}</id>
 										</artifact>
 										<artifact>
+											<id>tech.units:indriya:${ri2.version}</id>
+										</artifact>
+										<artifact>
 											<id>tec.uom:uom-se:${se.version}</id>
 										</artifact>
 										<artifact>
