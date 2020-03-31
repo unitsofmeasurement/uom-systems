@@ -236,6 +236,8 @@
 				<scope>provided</scope>
 				<optional>true</optional>
 			</dependency>
+			
+			<!-- Testing -->
 			<dependency>
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest-junit</artifactId>
