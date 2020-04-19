@@ -226,7 +226,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
      * 
      * @since 0.5.1
      */
-    public static final Unit<Speed> FOOT_PER_SECOND = addUnit(FOOT.divide(SECOND)).asType(Speed.class);
+    public static final Unit<Speed> FOOT_PER_SECOND = addUnit(FOOT.divide(SECOND).asType(Speed.class));
 
     /**
      * Alias for {@link FOOT_PER_SECOND}
