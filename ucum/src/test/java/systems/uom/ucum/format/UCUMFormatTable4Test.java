@@ -396,5 +396,12 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 
 		assertEquals("km/s", format.format(KILO(METER).divide(SECOND)), "The KILO prefix didn't work with a product unit");
 	}
+	
+	@Test
+	public void testNewton() {
+		final UnitFormat format = UCUMFormat.getInstance(PRINT);
+		Unit newton = KILO(UCUM.GRAM).multiply(UCUM.METER).divide(UCUM.SECOND).divide(UCUM.SECOND);
+		assertEquals("kg.m/s2", format.format(newton));
+	}
 
 }
