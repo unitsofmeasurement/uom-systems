@@ -61,6 +61,7 @@ import javax.measure.quantity.Frequency;
 
 import org.junit.jupiter.api.Test;
 
+
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  *
@@ -400,7 +401,7 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 	@Test
 	public void testNewton() {
 		final UnitFormat format = UCUMFormat.getInstance(PRINT);
-		Unit newton = KILO(UCUM.GRAM).multiply(UCUM.METER).divide(UCUM.SECOND).divide(UCUM.SECOND);
+		Unit newton = KILO(GRAM).multiply(METER).divide(SECOND).divide(SECOND);
 		assertEquals("kg.m/s2", format.format(newton));
 	}
 
