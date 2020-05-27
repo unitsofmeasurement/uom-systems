@@ -62,4 +62,68 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+			<profile>
+			<id>jdk9-setup</id>
+			<activation>
+				<jdk>[9,)</jdk>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-compiler-plugin</artifactId>
+							<configuration>
+								<release>8</release>
+							</configuration>
+							<executions>
+								<execution>
+									<id>default-compile</id>
+									<configuration>
+										<release>9</release>
+										<source>9</source>
+										<target>9</target>
+									</configuration>
+								</execution>
+								<execution>
+									<id>base-compile</id>
+									<goals>
+										<goal>compile</goal>
+									</goals>
+									<configuration>
+										<excludes>
+											<exclude>module-info.java</exclude>
+										</excludes>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>add-jdk9-source</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>src/main/jdk9</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
