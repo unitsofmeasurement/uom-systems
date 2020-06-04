@@ -246,7 +246,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
             		// add individual unit string
             		format(u.getKey(),app);
             		// add power number if abs greater than 1
-                	if (Math.abs(u.getValue()) < -1){
+                	if (u.getValue() < -1){
                 		app.append(-u.getValue());
                 	}
                 	// if there is more than one denominator unit and this is the last, add close parenthesis

@@ -61,6 +61,8 @@ import javax.measure.quantity.Frequency;
 
 import org.junit.*;
 
+import systems.uom.ucum.UCUM;
+
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  *
@@ -402,5 +404,12 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 	assertEquals("The KILO prefix didn't work with a product unit", "km/s",
 		format.format(KILO(METER).divide(SECOND)));
     }
+    
+	@Test
+	public void testNewton(){
+		final UnitFormat format = UCUMFormat.getInstance(PRINT);
+		Unit newton = KILO(UCUM.GRAM).multiply(UCUM.METER).divide(UCUM.SECOND).divide(UCUM.SECOND);
+		assertEquals("g.1000.m/s2", format.format(newton));
+	}
 
 }
