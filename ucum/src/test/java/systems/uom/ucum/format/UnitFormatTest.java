@@ -29,13 +29,15 @@
  */
 package systems.uom.ucum.format;
 
+import static javax.measure.MetricPrefix.KILO;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static systems.uom.ucum.format.UCUMFormat.Variant.PRINT;
 import static systems.uom.ucum.format.StringUtils.isPureAscii;
-
-import java.util.logging.Level;
 
 import javax.measure.MeasurementException;
 import javax.measure.Unit;
+import javax.measure.format.UnitFormat;
 
 import org.junit.jupiter.api.Test;
 
@@ -78,14 +80,21 @@ public class UnitFormatTest extends UCUMFormatTestBase {
     
     @Test
     public void testInvertUCUM() {
-	for (Unit<?> u : UCUM.getInstance().getUnits()) {
-	    try {
-		Unit<?> v = FORMAT_CS.parse("1/" + FORMAT_CS.format(u));
-//		LOGGER.log(LOG_LEVEL, String.format("%s @ %s @ %s @ %s -> %s @ %s", FORMAT_CI.format(u), FORMAT_CI.format(u),
-//			FORMAT_PRINT.format(u), u, FORMAT_PRINT.format(v), v));
-	    } catch (MeasurementException mex) {
-//		LOGGER.log(Level.WARNING, String.format(" %s parsing %s", mex, u));
-	    }
-	}
+    	for (Unit<?> u : UCUM.getInstance().getUnits()) {
+		    try {
+			Unit<?> v = FORMAT_CS.parse("1/" + FORMAT_CS.format(u));
+	//		LOGGER.log(LOG_LEVEL, String.format("%s @ %s @ %s @ %s -> %s @ %s", FORMAT_CI.format(u), FORMAT_CI.format(u),
+	//			FORMAT_PRINT.format(u), u, FORMAT_PRINT.format(v), v));
+		    } catch (MeasurementException mex) {
+	//		LOGGER.log(Level.WARNING, String.format(" %s parsing %s", mex, u));
+		    }
+		}
+    }
+    
+    @Test
+    public void testNewton() {
+    	final UnitFormat format = UCUMFormat.getInstance(PRINT);
+    	Unit newton = KILO(UCUM.GRAM).multiply(UCUM.METER).divide(UCUM.SECOND).divide(UCUM.SECOND);
+    	assertEquals("kg.m/s2", format.format(newton));
     }
 }

@@ -81,7 +81,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 1.1, 11. January 2020
+ * @version 1.2, 12. June 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
