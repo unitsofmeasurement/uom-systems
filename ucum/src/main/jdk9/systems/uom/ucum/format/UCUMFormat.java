@@ -81,7 +81,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 2.0, 06. April 2020
+ * @version 2.1, 13, June 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -438,7 +438,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                     }
                 }));*/
         private static final SymbolMap CASE_INSENSITIVE_SYMBOLS = SymbolMap
-                .of(ResourceBundle.getBundle(BUNDLE_BASE + "_CI", new ResourceBundle.Control() {
+                .of(ResourceBundle.getBundle(BUNDLE_BASE + "_CI",  UCUMFormat.class.getModule())); 
+             		/*
+                		new ResourceBundle.Control() {
                     @Override
                     public List<Locale> getCandidateLocales(String baseName, Locale locale) {
                         if (baseName == null)
@@ -454,7 +456,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                         }
                         return super.getCandidateLocales(baseName, locale);
                     }
-                }));
+                })); */
         private static final Parsing DEFAULT_CS = new Parsing(CASE_SENSITIVE_SYMBOLS, true);
         private static final Parsing DEFAULT_CI = new Parsing(CASE_INSENSITIVE_SYMBOLS, false);
         private final boolean caseSensitive;
