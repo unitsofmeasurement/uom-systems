@@ -81,7 +81,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 1.2, 12. June 2020
+ * @version 2.0, 13. June 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -364,30 +364,6 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         appendable.append(annotation);
         appendable.append('}');
     }
-
-
-    // static final ResourceBundle.Control getControl(final String key) {
-    // return new ResourceBundle.Control() {
-    // @Override
-    // public List<Locale> getCandidateLocales(String baseName, Locale locale) {
-    // if (baseName == null)
-    // throw new NullPointerException();
-    // if (locale.equals(new Locale(key))) {
-    // return Arrays.asList(
-    // locale,
-    // Locale.GERMANY,
-    // // no Locale.GERMAN here
-    // Locale.ROOT);
-    // } else if (locale.equals(Locale.GERMANY)) {
-    // return Arrays.asList(
-    // locale,
-    // // no Locale.GERMAN here
-    // Locale.ROOT);
-    // }
-    // return super.getCandidateLocales(baseName, locale);
-    // }
-    // };
-    // }
 
     // /////////////////
     // Inner classes //
