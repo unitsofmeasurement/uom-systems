@@ -163,6 +163,37 @@
 				</executions>
 			</plugin>
 		
+					<!-- JAR packaging -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Specification-Title>Unit API</Specification-Title>
+							<Specification-Version>${jsr.version}</Specification-Version>
+							<Specification-Vendor>Unit-API contributors</Specification-Vendor>
+							<Implementation-Title>${project.name}</Implementation-Title>
+							<Implementation-Version>${project.version}</Implementation-Version>
+							<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+							<Implementation-URL>http://uom.systems</Implementation-URL>
+							<Automatic-Module-Name>systems.uom.ucum</Automatic-Module-Name>
+							<Multi-Release>true</Multi-Release>
+						</manifestEntries>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		
 			<!-- ======================================================= -->
 			<!-- Source Attachment -->
 			<!-- ======================================================= -->
