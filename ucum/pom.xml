@@ -179,7 +179,7 @@
 							<Implementation-Title>${project.name}</Implementation-Title>
 							<Implementation-Version>${project.version}</Implementation-Version>
 							<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
-							<Implementation-URL>http://uom.systems</Implementation-URL>
+							<Implementation-URL>http://www.uom.systems</Implementation-URL>
 							<Automatic-Module-Name>systems.uom.ucum</Automatic-Module-Name>
 							<Multi-Release>true</Multi-Release>
 						</manifestEntries>
