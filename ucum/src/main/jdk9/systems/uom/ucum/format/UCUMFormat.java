@@ -64,7 +64,7 @@ import tech.units.indriya.unit.TransformedUnit;
 /**
  * <p>
  * This class provides the interface for formatting and parsing {@link AbstractUnit units} according to the
- * <a href="http://unitsofmeasure.org/">Uniform Code for CommonUnits of Measure</a> (UCUM).
+ * <a href="http://unitsofmeasure.org/">Uniform Code for Units of Measure</a> (UCUM).
  * </p>
  *
  * <p>
@@ -81,7 +81,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 2.1, 13, June 2020
+ * @version 2.2, 13, June 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
