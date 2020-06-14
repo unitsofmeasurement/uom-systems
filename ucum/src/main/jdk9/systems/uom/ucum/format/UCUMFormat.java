@@ -81,7 +81,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 2.2, 13, June 2020
+ * @version 2.2.1, 14, June 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -230,8 +230,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         final UnitConverter converter = 
                 UCUMFormatHelper.toKnownPrefixConverterIfPossible(unit.getConverterTo(parentUnit));
         final boolean printSeparator = !parentUnit.equals(ONE);
-
-        format(parentUnit, sb);
+        if (printSeparator && converter instanceof MultiplyConverter) { // workaround for #166
+        	format(parentUnit, sb);
+        }
         formatConverter(converter, printSeparator, sb, symbolMap);
 
         return sb;
@@ -245,7 +246,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
             return null;
         }
         
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         
         final Map<AbstractUnit<?>, Integer> numeratorUnits = new LinkedHashMap<>();            
         final Map<AbstractUnit<?>, Integer> denominatorUnits = new LinkedHashMap<>();
@@ -341,7 +342,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         final Unit<?> parentUnit = unit.getSystemUnit();
         final UnitConverter converter = unit.getConverterTo(parentUnit);
         final StringBuilder sb = new StringBuilder();
-        final boolean printSeparator = !parentUnit.equals(ONE);
+        final boolean printSeparator = !ONE.equals(parentUnit);
         
         format(parentUnit, sb);
         formatConverter(converter, printSeparator, sb, symbolMap);
