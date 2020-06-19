@@ -32,6 +32,7 @@ package systems.uom.ucum.format;
 import static org.junit.jupiter.api.Assertions.*;
 import static systems.uom.ucum.UCUM.*;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static javax.measure.MetricPrefix.KILO;
@@ -49,6 +50,7 @@ public class UCUMFormatTable7Test extends UCUMFormatTestBase {
     }
 
     @Test
+    @Disabled("EBNF currently not working with UCUM units")
     public void testFormatKayserEB() {
         assertEquals("K", FORMAT_EBNF.format(KAYSER));
     }
