@@ -10,7 +10,7 @@ Units of Measurement Systems
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
 [![Stack Overflow](http://img.shields.io/badge/stack%20overflow-unit%20systems-4183C4.svg)](http://stackoverflow.com/search?q="unit+systems")
 
-The project currently contains the following modules:
+The project contains the following modules:
 
 - [Reusable Quantities](quantity)
 - [Common Unit Systems](common) like [US customary units](https://en.wikipedia.org/wiki/United_States_customary_units) or [Imperial units](https://en.wikipedia.org/wiki/Imperial_units)
