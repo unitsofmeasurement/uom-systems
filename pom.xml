@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.0.2</version>
+		<version>2.0.3-SNAPSHOT</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -32,14 +32,14 @@
 		<jsr.version>2.0</jsr.version>
 		<lib.version>2.0</lib.version>
 		<ri.version>2.0.2</ri.version>
-		<si.version>2.0.1</si.version>
-		<quantity.version>2.0.1</quantity.version><!-- only need to change when new quantities added -->
-		<systems.version>2.0.2</systems.version>
+		<si.version>2.1-SNAPSHOT</si.version>
+		<quantity.version>2.0.2</quantity.version><!-- only need to change when new quantities added -->
+		<systems.version>2.1-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 
-		<maven.surefire.version>2.20</maven.surefire.version>
+		<maven.surefire.version>2.22</maven.surefire.version>
 		<junit.platform.version>1.5.2</junit.platform.version>
 	</properties>
 
