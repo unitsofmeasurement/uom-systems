@@ -3,7 +3,6 @@ uom-systems
 
 Units of Measurement Systems
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/systems.uom/systems-parent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/systems.uom/systems-parent)
 [![Circle CI](https://circleci.com/gh/unitsofmeasurement/uom-systems.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/uom-systems)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f1ce1fbf3ff24b67a48592c27869d023)](https://www.codacy.com/app/unitsofmeasurement/uom-systems?utm_source=github.com&utm_medium=referral&utm_content=unitsofmeasurement/uom-systems&utm_campaign=badger)
 [![Stability: Active](https://masterminds.github.io/stability/active.svg)](https://masterminds.github.io/stability/active.html)
