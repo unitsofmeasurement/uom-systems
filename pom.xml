@@ -39,7 +39,7 @@
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 
-		<maven.surefire.version>2.22</maven.surefire.version>
+		<maven.surefire.version>2.22.2</maven.surefire.version>
 		<junit.platform.version>1.5.2</junit.platform.version>
 	</properties>
 
