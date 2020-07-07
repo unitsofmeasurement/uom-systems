@@ -79,4 +79,214 @@ public class UCUMFormatTable18Test {
 
 	assertEquals("P.R.U.", format.format(PERIPHERAL_VASCULAR_RESISTANCE));
     }
+
+    @Test
+    public void testParseMWColCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(METER_OF_WATER_COLUMN, format.parse("m[H2O]"));
+    }
+
+    @Test
+    public void testParseMWColCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals(METER_OF_WATER_COLUMN, format.parse("M[H2O]"));
+    }
+
+    @Test
+    public void testFormatMWColCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals("M[H2O]", format.format(METER_OF_WATER_COLUMN));
+    }
+
+    @Test
+    public void testFormatMWColCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals("m[H2O]", format.format(METER_OF_WATER_COLUMN));
+    }
+
+    @Test
+    public void testFormatMWColPrint() {
+        final UnitFormat format = UCUMFormat.getInstance(PRINT);
+
+        assertEquals("m H2O", format.format(METER_OF_WATER_COLUMN));
+    }
+
+    @Test
+    public void testParseMHGCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(METER_OF_MERCURY_COLUMN, format.parse("m[Hg]"));
+    }
+
+    @Test
+    public void testParseMHGCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals(METER_OF_MERCURY_COLUMN, format.parse("M[HG]"));
+    }
+
+    @Test
+    public void testFormatMHGCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals("M[HG]", format.format(METER_OF_MERCURY_COLUMN));
+    }
+
+    @Test
+    public void testFormatMHGCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals("m[Hg]", format.format(METER_OF_MERCURY_COLUMN));
+    }
+
+    @Test
+    public void testFormatMHGPrint() {
+        final UnitFormat format = UCUMFormat.getInstance(PRINT);
+
+        assertEquals("m Hg", format.format(METER_OF_MERCURY_COLUMN));
+    }
+
+    @Test
+    public void testParseInMWColCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(INCH_OF_WATER_COLUMN, format.parse("[in_i'H2O]"));
+    }
+
+    @Test
+    public void testParseInMWColCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals(INCH_OF_WATER_COLUMN, format.parse("[IN_I'H2O]"));
+    }
+
+    @Test
+    public void testFormatInMWColCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals("[IN_I'H2O]", format.format(INCH_OF_WATER_COLUMN));
+    }
+
+    @Test
+    public void testFormatInMWColCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals("[in_i'H2O]", format.format(INCH_OF_WATER_COLUMN));
+    }
+
+    @Test
+    public void testFormatInMWColPrint() {
+        final UnitFormat format = UCUMFormat.getInstance(PRINT);
+
+        assertEquals("in H2O", format.format(INCH_OF_WATER_COLUMN));
+    }
+
+    @Test
+    public void testParseInMHGCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(INCH_OF_MERCURY_COLUMN, format.parse("[in_i'Hg]"));
+    }
+
+    @Test
+    public void testParseInMHGCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals(INCH_OF_MERCURY_COLUMN, format.parse("[IN_I'HG]"));
+    }
+
+    @Test
+    public void testFormatInMHGCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals("[IN_I'HG]", format.format(INCH_OF_MERCURY_COLUMN));
+    }
+
+    @Test
+    public void testFormatInMHGCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals("[in_i'Hg]", format.format(INCH_OF_MERCURY_COLUMN));
+    }
+
+    @Test
+    public void testFormatInMHGPrint() {
+        final UnitFormat format = UCUMFormat.getInstance(PRINT);
+
+        assertEquals("in Hg", format.format(INCH_OF_MERCURY_COLUMN));
+    }
+
+    @Test
+    public void testParseWoodCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(WOOD, format.parse("[wood'U]"));
+    }
+
+    @Test
+    public void testParseWoodCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals(WOOD, format.parse("[WOOD'U]"));
+    }
+
+    @Test
+    public void testFormatWoodCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals("[WOOD'U]", format.format(WOOD));
+    }
+
+    @Test
+    public void testFormatWoodCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals("[wood'U]", format.format(WOOD));
+    }
+
+    @Test
+    public void testFormatWoodPrint() {
+        final UnitFormat format = UCUMFormat.getInstance(PRINT);
+
+        assertEquals("Wood U.", format.format(WOOD));
+    }
+
+    @Test
+    public void testParseDropCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals(DROP, format.parse("[drp]"));
+    }
+
+    @Test
+    public void testParseDropCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals(DROP, format.parse("[DRP]"));
+    }
+
+    @Test
+    public void testFormatDropCI() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
+
+        assertEquals("[DRP]", format.format(DROP));
+    }
+
+    @Test
+    public void testFormatDropCS() {
+        final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
+
+        assertEquals("[drp]", format.format(DROP));
+    }
+
+    @Test
+    public void testFormatDropPrint() {
+        final UnitFormat format = UCUMFormat.getInstance(PRINT);
+
+        assertEquals("drp", format.format(DROP));
+    }
 }
