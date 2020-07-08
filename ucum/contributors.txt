@@ -28,9 +28,11 @@
     EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ====
 
-Werner Keil
 Eric Russell
-Jean-Marie Dautelle
+Chris Senior
 Anakar Parida
 Magno N. A. Cruz (GlobalMentor, Inc.)
 Garret Wilson (GlobalMentor, Inc.)
+Fred Rothganger
+Max von Hippel
+Edem Tiassou
