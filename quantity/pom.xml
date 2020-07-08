@@ -9,6 +9,12 @@
 	</parent>
 	<artifactId>systems-quantity</artifactId>
 	<name>Units of Measurement Systems Quantities</name>
+	<description>Additional quantities for Unit Systems</description>
+	<contributors>
+        <contributor>
+            <name>See contributors.txt</name>
+        </contributor>
+    </contributors>
 	<dependencies>
 		<dependency>
 			<groupId>javax.measure</groupId>
@@ -125,5 +131,4 @@
 			</build>
 		</profile>
 	</profiles>
-
 </project>

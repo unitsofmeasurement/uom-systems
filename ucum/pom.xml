@@ -12,7 +12,7 @@
 	<description>Unit System supporting the Unified Code for Units of Measure (UCUM)</description>
 	<licenses>
 		<license>
-			<name>BSD</name>
+			<name>BSD 3-Clause</name>
 			<url>LICENSE</url>
 		</license>
 		<license>
@@ -20,18 +20,17 @@
 			<url>http://unitsofmeasure.org/trac/wiki/TermsOfUse</url>
 		</license>
 	</licenses>
-	<developers>
-		<developer>
-			<name>Werner Keil</name>
-			<organization>Creative Arts &amp; Technologies</organization>
-			<organizationUrl>http://www.catmedia.site/</organizationUrl>
-		</developer>
-		<developer>
-			<name>Magno N. A. Cruz</name>
-			<organization>GlobalMentor, Inc.</organization>
-			<organizationUrl>http://www.globalmentor.com/</organizationUrl>
-		</developer>
-	</developers>
+	<contributors>
+	   <contributor>
+            <name>Magno N. A. Cruz</name>
+            <organization>GlobalMentor, Inc.</organization>
+            <organizationUrl>http://www.globalmentor.com/</organizationUrl>
+        </contributor>
+        <contributor>
+            <name>See contributors.txt</name>
+        </contributor>
+	</contributors>
+	
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->

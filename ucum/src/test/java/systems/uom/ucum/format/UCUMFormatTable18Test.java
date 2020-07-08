@@ -36,9 +36,6 @@ import javax.measure.format.*;
 
 import org.junit.jupiter.api.Test;
 
-import systems.uom.ucum.format.UCUMFormat;
-
-
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  *
