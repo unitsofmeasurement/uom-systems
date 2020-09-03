@@ -148,7 +148,6 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
      * 
      * @return SymbolMap the current symbol map
      */
-    @Override
     protected SymbolMap getSymbols() {
         return symbolMap;
     }

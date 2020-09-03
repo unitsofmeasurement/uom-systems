@@ -42,7 +42,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class SystemOfUnitsServiceTest {
-	private static final int NUM_OF_UNITS = 43;
+	private static final int NUM_OF_UNITS = 44;
 	private static final int NUM_OF_UNITS_CLDR = 96;
 
 	private static SystemOfUnitsService defaultService;

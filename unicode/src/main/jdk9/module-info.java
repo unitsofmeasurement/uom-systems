@@ -29,9 +29,10 @@
  */
 module systems.uom.unicode {
     requires transitive java.measure;
-    requires transitive tech.units.indriya;
+    requires transitive tech.uom.lib.common;
     requires transitive systems.uom.quantity;
-    
+    requires tech.units.indriya;
+        
     exports systems.uom.unicode;
     exports systems.uom.unicode.spi;
     

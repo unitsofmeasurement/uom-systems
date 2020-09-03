@@ -760,10 +760,17 @@ public final class UCUM extends AbstractSystemOfUnits {
     public static final Unit<Dimensionless> HIGH_POWER_FIELD = addUnit(ONE);
     public static final Unit<Dimensionless> LOW_POWER_FIELD = addUnit(ONE.multiply(100));
 
-    public static final Unit KATAL = addUnit(MOLE.divide(SECOND));
-    public static final Unit UNIT = addUnit(MICRO(MOLE).divide(MINUTE));
+	/**
+	 * The SI unit for catalytic activity (standard name <code>kat</code>).
+	 */
+	public static final Unit<CatalyticActivity> KATAL = addUnit(Units.KATAL);
 
-    // public static final Unit INTERNATIONAL_UNIT = UNDEFINED;
+    public static final Unit<CatalyticActivity> UNIT = addUnit(MICRO(MOLE).divide(MINUTE).asType(CatalyticActivity.class));
+
+    public static final Unit<Dimensionless> INTERNATIONAL_UNIT = addUnit(new AlternateUnit<Dimensionless>(ONE, "IU"), "International Unit", "IU");
+    
+    public static final Unit<Dimensionless> INTERNATIONAL_UNIT_UC = addUnit(new AlternateUnit<Dimensionless>(INTERNATIONAL_UNIT, "i.U."), "International Unit", "i.U.");
+    
     // public static final Unit ARBITRARY_UNIT = UNDEFINED;
     // public static final Unit US_PHARMACOPEIA = UNDEFINED;
     // public static final Unit GPL = UNDEFINED;

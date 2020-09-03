@@ -147,8 +147,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
      * Get the symbol map used by this instance to map between {@link AbstractUnit Unit}s and <code>String</code>s, etc...
      * 
      * @return SymbolMap the current symbol map
-     */
-    @Override
+     */    
     protected SymbolMap getSymbols() {
         return symbolMap;
     }
