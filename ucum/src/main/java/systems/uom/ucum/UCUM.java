@@ -769,7 +769,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 
     public static final Unit<Dimensionless> INTERNATIONAL_UNIT = addUnit(new AlternateUnit<Dimensionless>(ONE, "IU"), "International Unit", "IU");
     
-    public static final Unit<Dimensionless> INTERNATIONAL_UNIT_UC = addUnit(new AlternateUnit<Dimensionless>(INTERNATIONAL_UNIT, "i.U."), "International Unit", "i.U.");
+    public static final Unit<Dimensionless> INTERNATIONAL_UNIT_ALT = addUnit(new AlternateUnit<Dimensionless>(INTERNATIONAL_UNIT, "i.U."), "International Unit", "i.U.");
     
     // public static final Unit ARBITRARY_UNIT = UNDEFINED;
     // public static final Unit US_PHARMACOPEIA = UNDEFINED;
