@@ -61,6 +61,8 @@ import javax.measure.quantity.Frequency;
 
 import org.junit.jupiter.api.Test;
 
+import tech.units.indriya.ComparableUnit;
+
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
@@ -401,8 +403,17 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 	@Test
 	public void testNewton() {
 		final UnitFormat format = UCUMFormat.getInstance(PRINT);
-		Unit newton = KILO(GRAM).multiply(METER).divide(SECOND).divide(SECOND);
+		ComparableUnit newton = (ComparableUnit) KILO(GRAM).multiply(METER).divide(SECOND).divide(SECOND);
+		assertTrue(newton.isEquivalentTo(NEWTON));
 		assertEquals("kg.m/s2", format.format(newton));
 	}
 
+	
+	@Test
+	public void testBaud() {
+		final UnitFormat format = UCUMFormat.getInstance(PRINT);		
+		assertEquals("Bd", format.format(BAUD));
+		final UnitFormat formatCS = UCUMFormat.getInstance(CASE_SENSITIVE);
+		assertEquals(BAUD, formatCS.parse("Bd"));
+	}
 }

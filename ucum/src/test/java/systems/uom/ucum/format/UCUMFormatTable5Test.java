@@ -30,6 +30,7 @@
 package systems.uom.ucum.format;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static systems.uom.ucum.UCUM.LITER;
 import static systems.uom.ucum.UCUM.LITER_DM3;
@@ -68,6 +69,12 @@ public class UCUMFormatTable5Test extends UCUMFormatTestBase {
 	assertEquals(LITER, FORMAT_CS.parse("L"));
     }
     
+    @Test
+    public void testParseUCUMCSUppercaseLiterDivision() {
+    	final Unit<?> literDiv = FORMAT_CS.parse("103/L"); 
+    	assertEquals("103/L", FORMAT_CS.format(literDiv));
+    }
+        
 
     @Test
     public void testFormatUCUMCI() {
