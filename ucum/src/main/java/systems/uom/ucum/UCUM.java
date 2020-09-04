@@ -905,6 +905,12 @@ public final class UCUM extends AbstractSystemOfUnits {
      * As per <a href="http://unitsofmeasure.org/">UCUM</a> standard.
      */
     public static final Unit<Information> BIT = addUnit(new AlternateUnit<Information>(ONE, "bit"), Information.class);
+    
+    /**
+     * The bit is defined twice. One definition with a subscript letter ‘s‘ is defined as the logarithmus dualis of the number of distinct signals. However this unit can not practically be used to express more than 1000 bits. Especially when the bit is used to express transmission rate or memory capacities, floating point registers would quickly overflow. Therefore we define a second symbol for bit, without the suffix, to be the dimensionless unit 1.
+     */
+    public static final Unit<Information> BIT_S = addUnit(new AlternateUnit<Information>(BIT, "bit\\u2082"));
+    
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Information> BYTE = addUnit(BIT.multiply(8));
     /**

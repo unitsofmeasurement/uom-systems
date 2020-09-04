@@ -43,7 +43,7 @@ import org.junit.jupiter.api.Test;
 
 public class SystemOfUnitsServiceTest {
     private static final String EXPECTED_SYSTEM_NAME = "Unified Code for Units of Measure";
-    private static final int NUM_OF_UNITS = 248;
+    private static final int NUM_OF_UNITS = 249;
 
     private static SystemOfUnitsService defaultService;
 
