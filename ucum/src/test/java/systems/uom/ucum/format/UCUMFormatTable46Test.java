@@ -39,7 +39,7 @@ import org.junit.jupiter.api.Test;
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  *
  */
-public class UCUMFormat46Test extends UCUMFormatTestBase {
+public class UCUMFormatTable46Test extends UCUMFormatTestBase {
 
     @Test
     public void testParseBit() {

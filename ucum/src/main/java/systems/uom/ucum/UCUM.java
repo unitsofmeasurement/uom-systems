@@ -56,7 +56,7 @@ import javax.measure.quantity.*;
 /**
  * <p>
  * This class contains {@link SI} and Non-SI units as defined in the
- * <a href="http://unitsofmeasure.org/"> Unified Code for Units of Measure</a>.
+ * <a href="http://unitsofmeasure.org/">Unified Code for Units of Measure</a>.
  * </p>
  *
  * <p>
@@ -69,7 +69,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 2.2, $Date: 2020-01-11 $
+ * @version 2.3, $Date: 2020-09-05 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -744,8 +744,14 @@ public final class UCUM extends AbstractSystemOfUnits {
     //////////////////////////////////////////////////
     // CHEMICAL AND BIOCHEMICAL UNITS: UCUM 4.5 §45 //
     //////////////////////////////////////////////////
-    // public static final Unit EQUIVALENTS = addUnit(MOLE);
-    // public static final Unit OSMOLE = addUnit(MOLE);
+    /**
+     * amount of substance
+     */
+    public static final Unit<AmountOfSubstance> EQUIVALENTS = addUnit(new AlternateUnit<AmountOfSubstance>(MOLE, "eq"));
+    /**
+     * amount of substance (dissolved particles)
+     */
+    public static final Unit<AmountOfSubstance>  OSMOLE = addUnit(new AlternateUnit<AmountOfSubstance>(MOLE, "osm"));
 
     public static final Unit<Acidity> PH = addUnit(
 	    MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Acidity.class));
@@ -996,14 +1002,14 @@ public final class UCUM extends AbstractSystemOfUnits {
     ////////////////////////////////////////////////////////////////////////////
     // Label adjustments for UCUM system
     static {
-	SimpleUnitFormat.getInstance().label(ATOMIC_MASS_UNIT, "AMU");
-	//SimpleUnitFormat.getInstance().label(LITER, "L");
-	//SimpleUnitFormat.getInstance().label(LITER_DM3, "l");
-	SimpleUnitFormat.getInstance().label(OUNCE, "oz");
-	SimpleUnitFormat.getInstance().label(POUND, "lb");
-	SimpleUnitFormat.getInstance().label(PLANCK, "h");
-	// TODO maybe we can find a better solution, but it would require to
-	// "harvest" the entire UCUMFormat ResourceBundle and label every
-	// matching UCUM unit in a loop.
+		SimpleUnitFormat.getInstance().label(ATOMIC_MASS_UNIT, "AMU");
+		//SimpleUnitFormat.getInstance().label(LITER, "L");
+		//SimpleUnitFormat.getInstance().label(LITER_DM3, "l");
+		SimpleUnitFormat.getInstance().label(OUNCE, "oz");
+		SimpleUnitFormat.getInstance().label(POUND, "lb");
+		SimpleUnitFormat.getInstance().label(PLANCK, "h");
+		// TODO maybe we can find a better solution, but it would require to
+		// "harvest" the entire UCUMFormat ResourceBundle and label every
+		// matching UCUM unit in a loop.
     }
 }
