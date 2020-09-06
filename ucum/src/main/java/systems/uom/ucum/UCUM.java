@@ -171,9 +171,8 @@ public final class UCUM extends AbstractSystemOfUnits {
      * with the existing SI units. In UCUM, the ampere is defined as
      * <code>COULOMB.divide(SECOND)</code>.
      */
-    public static final Unit<ElectricCurrent> AMPERE = addUnit(Units.AMPERE);
-    // public static final Unit<MagnetomotiveForce> AMPERE_TURN =
-    // addUnit(Units.AMPERE_TURN);
+    public static final Unit<ElectricCurrent> AMPERE = addUnit(Units.AMPERE, "Ampère", "A");
+
     /**
      * We deviate slightly from the standard here, to maintain compatibility
      * with the existing SI units. In UCUM, the volt is defined as
@@ -975,7 +974,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     	if (isLabel) {
     	    SimpleUnitFormat.getInstance().label(unit, text);
     	}
-    	if (name != null && unit instanceof AbstractUnit) {
+    	if (name != null && unit instanceof ComparableUnit) {
     	    return Helper.addUnit(INSTANCE.units, unit, name);
     	} else {
     	    INSTANCE.units.add(unit);
