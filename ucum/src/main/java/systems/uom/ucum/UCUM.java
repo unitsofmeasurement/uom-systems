@@ -62,14 +62,14 @@ import javax.measure.quantity.*;
  * <p>
  * Compatibility with {@link SI} units has been given priority over strict
  * adherence to the standard. We have attempted to note every place where the
- * definitions in this class deviate from the UCUM standard, but such notes are
- * likely to be incomplete.
+ * definitions in this class deviate from the UCUM standard, but such notes 
+ * could be incomplete.
  * </p>
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 2.3, $Date: 2020-09-05 $
+ * @version 2.4, $Date: 2020-09-06 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -560,7 +560,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Volume> MINIM_BRITISH = addUnit(FLUID_DRAM_BRITISH.divide(60));
     ////////////////////////////////////////////
-    // AVOIRDUPOIS WIEGHT UNITS: UCUM 4.4 §39 //
+    // AVOIRDUPOIS WEIGHT UNITS: UCUM 4.4 §39 //
     ////////////////////////////////////////////
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Mass> GRAIN = addUnit(MILLI(GRAM).multiply(6479891).divide(100000));
@@ -584,14 +584,8 @@ public final class UCUM extends AbstractSystemOfUnits {
     // contains a forward reference to POUND, so we had to move it here, below
     // section §39
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    // public static final Unit<Force> POUND_FORCE = addUnit(new
-    // ProductUnit<Force>(
-    // POUND.multiply(ACCELERATION_OF_FREEFALL)));
     public static final Unit<Force> POUND_FORCE = addUnit(
 	    POUND.multiply(ACCELERATION_OF_FREEFALL).asType(Force.class));
-
-    // public static final Unit<InformationRate> POUND_FORCE2 =
-    // addUnit(POUND.multiply(ACCELERATION_OF_FREEFALL).asType(InformationRate.class));
 
     /////////////////////////////////////
     // TROY WEIGHT UNITS: UCUM 4.4 §40 //
@@ -639,6 +633,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     public static final Unit<Length> DIDOT = addUnit(LIGNE.divide(6));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Length> CICERO = addUnit(DIDOT.multiply(12));
+    
     //////////////////////////////////////
     // OTHER LEGACY UNITS: UCUM 4.5 §43 //
     //////////////////////////////////////
@@ -745,37 +740,59 @@ public final class UCUM extends AbstractSystemOfUnits {
     //////////////////////////////////////////////////
     /**
      * amount of substance
+     * @since 2.4
      */
     public static final Unit<AmountOfSubstance> EQUIVALENTS = addUnit(new AlternateUnit<AmountOfSubstance>(MOLE, "eq"));
     /**
      * amount of substance (dissolved particles)
+     * @since 2.4
      */
-    public static final Unit<AmountOfSubstance>  OSMOLE = addUnit(new AlternateUnit<AmountOfSubstance>(MOLE, "osm"));
+    public static final Unit<AmountOfSubstance> OSMOLE = addUnit(new AlternateUnit<AmountOfSubstance>(MOLE, "osm"));
 
     public static final Unit<Acidity> PH = addUnit(
 	    MOLE.divide(LITER).transform(new LogConverter(10)).multiply(-1).asType(Acidity.class));
 
-    // @SuppressWarnings("unchecked")
     @SuppressWarnings("unchecked")
     public static final Unit<Concentration<Mass>> GRAM_PERCENT = addUnit(
 	    GRAM.divide(DECI(LITER)).asType(Concentration.class));
 
-    // public static final Unit SVEDBERG = addUnit(SECOND.multiply(1E-13));
+    /**
+     * sedimentation coefficient
+     * @since 2.4
+     */
+    public static final Unit<Time> SVEDBERG = addUnit(SECOND.multiply(1E-13));
 
     public static final Unit<Dimensionless> HIGH_POWER_FIELD = addUnit(ONE);
     public static final Unit<Dimensionless> LOW_POWER_FIELD = addUnit(ONE.multiply(100));
 
 	/**
 	 * The SI unit for catalytic activity (standard name <code>kat</code>).
+	 * @since 2.3
 	 */
 	public static final Unit<CatalyticActivity> KATAL = addUnit(Units.KATAL);
 
+	/**
+	 * catalytic activity
+	 * @since 2.3
+	 */	
     public static final Unit<CatalyticActivity> UNIT = addUnit(MICRO(MOLE).divide(MINUTE).asType(CatalyticActivity.class));
 
+	/**
+	 * arbitrary
+	 * @since 2.3
+	 */	
     public static final Unit<Dimensionless> INTERNATIONAL_UNIT = addUnit(new AlternateUnit<Dimensionless>(ONE, "IU"), "International Unit", "IU");
     
+	/**
+	 * arbitrary
+	 * @since 2.3
+	 */	
     public static final Unit<Dimensionless> INTERNATIONAL_UNIT_ALT = addUnit(new AlternateUnit<Dimensionless>(INTERNATIONAL_UNIT, "i.U."), "International Unit", "i.U.");
     
+	/**
+	 * arbitrary
+	 * @since 2.3
+	 */	
     public static final Unit<Dimensionless> ARBITRARY_UNIT = addUnit(new AlternateUnit<Dimensionless>(ONE, "arb. U"), "Arbitrary Unit", "arb. U");
     // public static final Unit US_PHARMACOPEIA = UNDEFINED;
     // public static final Unit GPL = UNDEFINED;
@@ -865,16 +882,13 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** temporary helper for MHO */
     private static final Unit<? extends Quantity<?>> TMP_MHO = SIEMENS.alternate("mho");
 
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    //public static final Unit<Volume> STERE = addUnit(new ProductUnit<Volume>(METER.pow(3)));
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */ 
     public static final Unit<Volume> STERE = addUnit(new TransformedUnit<Volume>("st", Units.CUBIC_METRE, Units.CUBIC_METRE, MultiplyConverter.identity()));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Length> ANGSTROM = addUnit(NANO(METER).divide(10));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Area> BARN = addUnit(new ProductUnit<Area>(FEMTO(METER).pow(2)).multiply(100));
-    // public static final Unit<Area> BARN = addUnit(new
-    // ProductUnit<Area>(FEMTO(
-    // METER).pow(2).multiply(100)));
+
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Pressure> ATMOSPHERE_TECHNICAL = addUnit(
 	    new ProductUnit<Pressure>(KILO(GRAM_FORCE).divide(CENTI(METER).pow(2))));
@@ -886,15 +900,11 @@ public final class UCUM extends AbstractSystemOfUnits {
 	    new ProductUnit<Pressure>(POUND_FORCE.divide(INCH_INTERNATIONAL.pow(2))));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Angle> CIRCLE = addUnit(new ProductUnit<Angle>(PI.multiply(RADIAN.multiply(2))));
-    // public static final Unit<Angle> CIRCLE = addUnit(new
-    // ProductUnit<Angle>(PI
-    // .multiply(RADIAN).multiply(2)));
+
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<SolidAngle> SPHERE = addUnit(
 	    new ProductUnit<SolidAngle>(PI.multiply(STERADIAN.multiply(4))));
-    // public static final Unit<SolidAngle> SPHERE = addUnit(new
-    // ProductUnit<SolidAngle>(
-    // PI.multiply(STERADIAN).multiply(4)));
+
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Mass> CARAT_METRIC = addUnit(GRAM.divide(5));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
@@ -913,6 +923,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     
     /**
      * The bit is defined twice. One definition with a subscript letter ‘s‘ is defined as the logarithmus dualis of the number of distinct signals. However this unit can not practically be used to express more than 1000 bits. Especially when the bit is used to express transmission rate or memory capacities, floating point registers would quickly overflow. Therefore we define a second symbol for bit, without the suffix, to be the dimensionless unit 1.
+     * @since 2.3
      */
     public static final Unit<Information> BIT_S = addUnit(new AlternateUnit<Information>(BIT, "bit\\u2082"));
     
