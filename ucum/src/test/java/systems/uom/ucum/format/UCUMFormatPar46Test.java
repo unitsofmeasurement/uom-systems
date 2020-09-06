@@ -29,7 +29,6 @@
  */
 package systems.uom.ucum.format;
 
-
 import static javax.measure.MetricPrefix.DECI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static systems.uom.ucum.UCUM.*;
