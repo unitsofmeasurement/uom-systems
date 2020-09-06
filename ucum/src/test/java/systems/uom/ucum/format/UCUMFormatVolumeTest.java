@@ -47,28 +47,28 @@ public class UCUMFormatVolumeTest extends UCUMFormatTestBase {
 
     @Test
     public void testParseUCUMCIDeciSt() {
-	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
+	final UnitFormat unitFormat = ServiceProvider.current().getFormatService().getUnitFormat("CI");
 	final Unit<?> dst = unitFormat.parse("DSTR");
 	assertEquals(DECI(UCUM.STERE), dst);
     }
     
     @Test
     public void testParseUCUMCIMicroSt() {
-	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
+	final UnitFormat unitFormat = ServiceProvider.current().getFormatService().getUnitFormat("CI");
 	final Unit<?> ust = unitFormat.parse("USTR");
 	assertEquals(MICRO(UCUM.STERE), ust);
     }
     
     @Test
     public void testParseUCUMCSDeciSt() {
-	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
+	final UnitFormat unitFormat = ServiceProvider.current().getFormatService().getUnitFormat("CS");
 	final Unit<?> dst = unitFormat.parse("dst");
 	assertEquals(DECI(UCUM.STERE), dst);
     }
     
     @Test
     public void testParseUCUMCSMicroSt() {
-	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CS");
+	final UnitFormat unitFormat = ServiceProvider.current().getFormatService().getUnitFormat("CS");
 	final Unit<?> ust = unitFormat.parse("ust");
 	assertEquals(MICRO(UCUM.STERE), ust);
     }
