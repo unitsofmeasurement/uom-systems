@@ -88,7 +88,7 @@ final class UCUMFormatHelper {
         return annotation!=null && annotation.length()>0;
     }
     
-    public void appendAnnotation(CharSequence symbol, Appendable appendable) throws IOException {
+    void appendAnnotation(CharSequence symbol, Appendable appendable) throws IOException {
         if (!hasAnnotation()) {
             return;
         }
