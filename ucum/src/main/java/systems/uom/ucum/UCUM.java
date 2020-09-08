@@ -873,6 +873,7 @@ public final class UCUM extends AbstractSystemOfUnits {
 	    WATT.transform(new LogConverter(10)).asType(Level.class));
 
     @SuppressWarnings("unchecked")
+    /** power level */
     public static final Unit<Level<ElectricPotential>> BEL_KILOWATT = addUnit(
 	    KILO(WATT).transform(new LogConverter(10)).asType(Level.class));
 

@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.0.3-SNAPSHOT</version>
+		<version>2.0.3</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -17,6 +17,7 @@
 		<url>http://uom.technology</url>
 	</organization>
 	<description>Parent POM for Unit Systems</description>
+	<version>2.1-SNAPSHOT</version>
 	<licenses>
 		<license>
 			<name>BSD</name>
@@ -374,7 +375,5 @@
 				</pluginRepository>
 			</pluginRepositories>
 		</profile>
-
-	</profiles>
-	<version>2.1-SNAPSHOT</version>
+	</profiles>	
 </project>
