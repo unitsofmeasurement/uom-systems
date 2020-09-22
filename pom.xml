@@ -31,8 +31,8 @@
 	<properties>
 		<jdkVersion>1.8</jdkVersion>
 		<jsr.version>2.0</jsr.version>
-		<lib.version>2.0.2-SNAPSHOT</lib.version>
-		<ri.version>2.0.5-SNAPSHOT</ri.version>
+		<lib.version>2.1</lib.version>
+		<ri.version>2.0.4</ri.version>
 		<si.version>2.1-SNAPSHOT</si.version>
 		<quantity.version>2.0.2</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>2.1-SNAPSHOT</systems.version>
@@ -307,7 +307,7 @@
 		<repository>
 			<id>jcenter</id>
 			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
+			<url>https://jcenter.bintray.com</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -315,7 +315,7 @@
 			</snapshots>
 			<id>bintray-release</id>
 			<name>libs-release</name>
-			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+			<url>https://oss.jfrog.org/artifactory/libs-release</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -323,7 +323,7 @@
 			</snapshots>
 			<id>bintray-snapshot</id>
 			<name>libs-snapshot</name>
-			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 	</repositories>
 
