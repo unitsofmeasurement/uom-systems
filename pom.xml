@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.0.3</version>
+		<version>2.1-SNAPSHOT</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -17,7 +17,6 @@
 		<url>http://uom.technology</url>
 	</organization>
 	<description>Parent POM for Unit Systems</description>
-	<version>2.1-SNAPSHOT</version>
 	<licenses>
 		<license>
 			<name>BSD</name>
@@ -30,9 +29,8 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.8</jdkVersion>
-		<jsr.version>2.0</jsr.version>
-		<lib.version>2.1</lib.version>
-		<ri.version>2.0.4</ri.version>
+		<lib.version>2.1-SNAPSHOT</lib.version>
+		<ri.version>2.1-SNAPSHOT</ri.version>
 		<si.version>2.1-SNAPSHOT</si.version>
 		<quantity.version>2.0.2</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>2.1-SNAPSHOT</systems.version>

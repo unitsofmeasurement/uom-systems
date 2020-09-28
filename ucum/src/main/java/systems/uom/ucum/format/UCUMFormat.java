@@ -485,8 +485,8 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                 cursor.setIndex(end);
                 return result;
             } catch (TokenException e) {
-                if (e.currentToken != null) {
-                    cursor.setErrorIndex(start + e.currentToken.endColumn);
+                if (e.getToken() != null) {
+                    cursor.setErrorIndex(start + e.getToken().endColumn);
                 } else {
                     cursor.setErrorIndex(start);
                 }
