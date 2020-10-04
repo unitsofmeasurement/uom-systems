@@ -23,9 +23,10 @@ Bundle-SymbolicName: systems.uom.quantity
 Bundle-Description: Units of Measurement - System Quantities
 Bundle-Category: Interface
 Bundle-Copyright: (C) 2005, 2020 Units of Measurement
-Bundle-License: BSD 3
+Bundle-License: BSD 3-Clause
 Bundle-Vendor: Units of Measurement
 Bundle-DocURL: http://uom.techology
 
 # Bundle capabilities and requirements
 Import-Package: *
+Export-Package: systems.uom.quantity
