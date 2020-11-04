@@ -44,7 +44,7 @@ public class UnitFormatServiceTest {
 
   @Test
   public void testGetService() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    UnitFormatService ufs = ServiceProvider.current().getFormatService();
     assertNotNull(ufs);
     assertNotNull(ufs.getUnitFormat());
     assertEquals("Parsing", ufs.getUnitFormat().getClass().getSimpleName());
@@ -52,35 +52,35 @@ public class UnitFormatServiceTest {
 
   @Test
   public void testGetCIFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    UnitFormatService ufs = ServiceProvider.current().getFormatService();
     assertNotNull(ufs);
     assertNotNull(ufs.getUnitFormat("CI"));
   }
   
   @Test
   public void testGetCSFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    UnitFormatService ufs = ServiceProvider.current().getFormatService();
     assertNotNull(ufs);
     assertNotNull(ufs.getUnitFormat("CS"));
   }
 
   @Test
   public void testGetPrintFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    UnitFormatService ufs = ServiceProvider.current().getFormatService();
     assertNotNull(ufs);
     assertNotNull(ufs.getUnitFormat("Print"));
   }
   
   @Test
   public void testGetFormatNotFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    UnitFormatService ufs = ServiceProvider.current().getFormatService();
     assertNotNull(ufs);
     assertNull(ufs.getUnitFormat("XYZ"));
   }
   
   @Test
   public void testGetFormatNotFoundEither() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getUnitFormatService();
+    UnitFormatService ufs = ServiceProvider.current().getFormatService();
     assertNotNull(ufs);
     assertNotNull(ufs.getUnitFormat("UCUM"));
   }

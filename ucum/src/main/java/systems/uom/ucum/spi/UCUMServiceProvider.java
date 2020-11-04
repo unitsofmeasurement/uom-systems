@@ -32,15 +32,13 @@ package systems.uom.ucum.spi;
 import javax.measure.spi.FormatService;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import javax.measure.spi.UnitFormatService;
-
 import tech.units.indriya.spi.AbstractServiceProvider;
 
 /**
  * This class implements the {@link ServiceProvider} interface and hereby uses the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 1.0
+ * @version 2.0
  */
 public final class UCUMServiceProvider extends AbstractServiceProvider {
 
@@ -52,12 +50,7 @@ public final class UCUMServiceProvider extends AbstractServiceProvider {
     public SystemOfUnitsService getSystemOfUnitsService() {
         return new UCUMSystemService();
     }
-
-    @Override
-    public UnitFormatService getUnitFormatService() {
-        return new UCUMFormatService();
-    }
-    
+   
     @Override
     public FormatService getFormatService() {
         return new UCUMFormatService();

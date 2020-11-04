@@ -44,14 +44,14 @@ public class UCUMFormat135Test extends UCUMFormatTestBase {
 
     @Test
     public void testParseUCUMCSM3PerSecond() {
-    	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
+    	final UnitFormat unitFormat = ServiceProvider.current().getFormatService().getUnitFormat("CI");
     	final Unit<?> dst = unitFormat.parse("m3/s");
     	assertEquals("m3/s",FORMAT_CS.format(dst));
     }
     
     @Test
     public void testParseUCUMCSComplexDenominator() {
-    	final UnitFormat unitFormat = ServiceProvider.current().getUnitFormatService().getUnitFormat("CI");
+    	final UnitFormat unitFormat = ServiceProvider.current().getFormatService().getUnitFormat("CI");
     	final Unit<?> dst = unitFormat.parse("m/(bar.s)");
     	assertEquals("m/(bar.s)",FORMAT_CS.format(dst));
     }
