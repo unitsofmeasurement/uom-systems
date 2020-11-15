@@ -32,7 +32,7 @@ package systems.uom.ucum.format;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.measure.spi.ServiceProvider;
-import javax.measure.spi.UnitFormatService;
+import javax.measure.spi.FormatService;
 
 import org.junit.jupiter.api.Test;
 
@@ -44,44 +44,44 @@ public class UnitFormatServiceTest {
 
   @Test
   public void testGetService() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat());
-    assertEquals("Parsing", ufs.getUnitFormat().getClass().getSimpleName());
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNotNull(fs.getUnitFormat());
+    assertEquals("Parsing", fs.getUnitFormat().getClass().getSimpleName());
   }
 
   @Test
   public void testGetCIFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat("CI"));
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNotNull(fs.getUnitFormat("CI"));
   }
   
   @Test
   public void testGetCSFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat("CS"));
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNotNull(fs.getUnitFormat("CS"));
   }
 
   @Test
   public void testGetPrintFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat("Print"));
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNotNull(fs.getUnitFormat("Print"));
   }
   
   @Test
   public void testGetFormatNotFound() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getFormatService();
-    assertNotNull(ufs);
-    assertNull(ufs.getUnitFormat("XYZ"));
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNull(fs.getUnitFormat("XYZ"));
   }
   
   @Test
-  public void testGetFormatNotFoundEither() throws Exception {
-    UnitFormatService ufs = ServiceProvider.current().getFormatService();
-    assertNotNull(ufs);
-    assertNotNull(ufs.getUnitFormat("UCUM"));
+  public void testGetFormatAlias() throws Exception {
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNotNull(fs.getUnitFormat("UCUM"));
   }
 }
