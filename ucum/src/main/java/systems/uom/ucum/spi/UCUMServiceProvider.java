@@ -29,11 +29,13 @@
  */
 package systems.uom.ucum.spi;
 
-import static systems.uom.ucum.spi.ServiceConstants.PRIO;
+import static systems.uom.ucum.spi.ServiceConstants.*;
 
 import javax.measure.spi.FormatService;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
+
+import jakarta.inject.Named;
 import tech.units.indriya.spi.AbstractServiceProvider;
 
 /**
@@ -42,6 +44,7 @@ import tech.units.indriya.spi.AbstractServiceProvider;
  * @author Werner Keil
  * @version 2.0
  */
+@Named(NAME)
 public final class UCUMServiceProvider extends AbstractServiceProvider {
 
     public int getPriority() {
