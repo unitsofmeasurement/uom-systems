@@ -29,6 +29,8 @@
  */
 package systems.uom.ucum.spi;
 
+import static systems.uom.ucum.spi.ServiceConstants.PRIO;
+
 import javax.measure.spi.FormatService;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
@@ -43,7 +45,7 @@ import tech.units.indriya.spi.AbstractServiceProvider;
 public final class UCUMServiceProvider extends AbstractServiceProvider {
 
     public int getPriority() {
-        return 1000;
+        return PRIO;
     }
 
     @Override
