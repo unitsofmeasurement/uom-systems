@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.1-SNAPSHOT</version>
+		<version>2.1</version>
 	</parent>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
@@ -29,8 +29,8 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.8</jdkVersion>
-		<lib.version>2.1-SNAPSHOT</lib.version>
-		<ri.version>2.1-SNAPSHOT</ri.version>
+		<lib.version>2.1</lib.version>
+		<ri.version>2.1</ri.version>
 		<si.version>2.1-SNAPSHOT</si.version>
 		<quantity.version>2.0.2</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>2.1-SNAPSHOT</systems.version>
@@ -374,4 +374,5 @@
 			</pluginRepositories>
 		</profile>
 	</profiles>	
+	<version>2.1-SNAPSHOT</version>
 </project>

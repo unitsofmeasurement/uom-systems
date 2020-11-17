@@ -53,7 +53,6 @@ import si.uom.SI;
 import systems.uom.ucum.format.UCUMFormatHelper.SymbolProvider;
 import systems.uom.ucum.internal.format.UCUMFormatParser;
 import tech.units.indriya.AbstractUnit;
-import tech.units.indriya.ComparableUnit;
 import tech.units.indriya.format.AbstractUnitFormat;
 import tech.units.indriya.format.SymbolMap;
 import tech.units.indriya.format.TokenException;
@@ -63,7 +62,7 @@ import tech.units.indriya.unit.TransformedUnit;
 
 /**
  * <p>
- * This class provides the interface for formatting and parsing {@link AbstractUnit units} according to the
+ * This class provides the interface for formatting and parsing {@link Unit units} according to the
  * <a href="http://unitsofmeasure.org/">Uniform Code for CommonUnits of Measure</a> (UCUM).
  * </p>
  *
@@ -81,7 +80,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 2.1, 14 June 2020
+ * @version 2.2, 17 November 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -180,11 +179,11 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     @SuppressWarnings({ "rawtypes" })
     public Appendable format(final Unit<?> unknownUnit, Appendable appendable) throws IOException {
         
-        if (!(unknownUnit instanceof ComparableUnit)) {
+        if (!(unknownUnit instanceof AbstractUnit)) {
             throw new UnsupportedOperationException("The UCUM format supports only known units (Comparable units)");
         }
         
-        final ComparableUnit unit = (ComparableUnit) unknownUnit;
+        final AbstractUnit unit = (AbstractUnit) unknownUnit;
         final UCUMFormatHelper formatHelper = UCUMFormatHelper.of(this, unit);
         final CharSequence symbol = formatHelper.findSymbolFor(symbolProviders, unit);
         
@@ -211,16 +210,16 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
             this::symbolFromField,
             };
     
-    private CharSequence symbolFromLookupMap(ComparableUnit<?> unit) throws IOException {
+    private CharSequence symbolFromLookupMap(AbstractUnit<?> unit) throws IOException {
         return symbolMap.getSymbol(unit);
     }
     
-    private CharSequence symbolFromField(ComparableUnit<?> unit) throws IOException {
+    private CharSequence symbolFromField(AbstractUnit<?> unit) throws IOException {
         return unit.getSymbol();
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private CharSequence symbolForTransformedUnit(ComparableUnit unit) throws IOException {
+    private CharSequence symbolForTransformedUnit(AbstractUnit unit) throws IOException {
         if (!(unit instanceof TransformedUnit)) {
             return null;    
         }
@@ -239,7 +238,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private CharSequence symbolForProductUnits(ComparableUnit unit) throws IOException {
+    private CharSequence symbolForProductUnits(AbstractUnit unit) throws IOException {
         final Map<? extends AbstractUnit<?>, Integer> productUnits = unit.getBaseUnits();
         
         if (productUnits == null) {
@@ -307,7 +306,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private CharSequence symbolForKilogram(ComparableUnit unit) throws IOException {
+    private CharSequence symbolForKilogram(AbstractUnit unit) throws IOException {
         
         final Unit<?> systemUnit = unit.getSystemUnit();
         if (!systemUnit.equals(SI.KILOGRAM)) {
@@ -332,7 +331,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private CharSequence symbolForNonSystemUnit(ComparableUnit unit) throws IOException {
+    private CharSequence symbolForNonSystemUnit(AbstractUnit unit) throws IOException {
         
         if (unit.isSystemUnit()) {
             return null;

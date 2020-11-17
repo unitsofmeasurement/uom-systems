@@ -137,4 +137,10 @@ public final class UCUMFormatService implements FormatService {
 			return unitFormats.keySet();
 		}
 	}
+
+	@Override
+	public UnitFormat getUnitFormat(String name, String variant) {
+		// TODO apply variant here
+		return getUnitFormat(name);
+	}
 }

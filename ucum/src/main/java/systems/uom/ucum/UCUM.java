@@ -69,7 +69,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 2.4, $Date: 2020-09-06 $
+ * @version 2.5, $Date: 2020-11-16 $
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -986,7 +986,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     	if (isLabel) {
     	    SimpleUnitFormat.getInstance().label(unit, text);
     	}
-    	if (name != null && unit instanceof ComparableUnit) {
+    	if (name != null && unit instanceof AbstractUnit) {
     	    return Helper.addUnit(INSTANCE.units, unit, name);
     	} else {
     	    INSTANCE.units.add(unit);

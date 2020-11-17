@@ -36,7 +36,7 @@ import java.util.Map;
 import javax.measure.MetricPrefix;
 import javax.measure.UnitConverter;
 
-import tech.units.indriya.ComparableUnit;
+import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.function.Calculus;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.function.PowerOfIntConverter;
@@ -49,32 +49,33 @@ import tech.units.indriya.unit.AnnotatedUnit;
  * </p>
  *
  * @author Andi Huber
- * @version 1.0, 11 September 2019
+ * @author Werner Keil
+ * @version 1.1, 17 November 2020
  */
 @SuppressWarnings("rawtypes")
 final class UCUMFormatHelper {
     
     static interface SymbolProvider {
-        CharSequence symbolFor(ComparableUnit<?> unit) throws IOException;
+        CharSequence symbolFor(AbstractUnit<?> unit) throws IOException;
     }
 
     private static Map<String, UnitConverter> prefixConverterByFactor = null;
     
     private final UCUMFormat ucumFormat;
     @SuppressWarnings("unused") // maybe we want to extend this class later
-    private final ComparableUnit unit; 
+    private final AbstractUnit unit; 
     private final CharSequence annotation;
 
-    static UCUMFormatHelper of(UCUMFormat ucumFormat, ComparableUnit<?> unit) {
+    static UCUMFormatHelper of(UCUMFormat ucumFormat, AbstractUnit<?> unit) {
         if (unit instanceof AnnotatedUnit) {
             final AnnotatedUnit annotatedUnit = (AnnotatedUnit) unit;
-            final ComparableUnit<?> actualUnit = (ComparableUnit) (annotatedUnit.getActualUnit());
+            final AbstractUnit<?> actualUnit = (AbstractUnit) (annotatedUnit.getActualUnit());
             return new UCUMFormatHelper(ucumFormat, actualUnit, annotatedUnit.getAnnotation());
         }
         return new UCUMFormatHelper(ucumFormat, unit, /*annotation*/ null);
     }
     
-    private UCUMFormatHelper(UCUMFormat ucumFormat, ComparableUnit unit, CharSequence annotation) {
+    private UCUMFormatHelper(UCUMFormat ucumFormat, AbstractUnit unit, CharSequence annotation) {
         this.ucumFormat = ucumFormat;
         this.unit = unit;
         this.annotation = annotation;
@@ -102,7 +103,7 @@ final class UCUMFormatHelper {
      * @return
      * @throws IOException
      */
-    public CharSequence findSymbolFor(SymbolProvider[] symbolProviders, ComparableUnit<?> unit) throws IOException {
+    public CharSequence findSymbolFor(SymbolProvider[] symbolProviders, AbstractUnit<?> unit) throws IOException {
         for(SymbolProvider symbolProvider : symbolProviders) {
             CharSequence symbol = symbolProvider.symbolFor(unit);
             if (symbol != null) {

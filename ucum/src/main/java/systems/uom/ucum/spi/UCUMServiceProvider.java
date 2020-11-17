@@ -42,7 +42,7 @@ import tech.units.indriya.spi.AbstractServiceProvider;
  * This class implements the {@link ServiceProvider} interface and hereby uses the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 2.0
+ * @version 2.1
  */
 @Named(NAME)
 public final class UCUMServiceProvider extends AbstractServiceProvider {
@@ -64,9 +64,5 @@ public final class UCUMServiceProvider extends AbstractServiceProvider {
     @Override
     public String toString() {
         return UCUMServiceProvider.class.getSimpleName();
-    }
-    
-    public UCUMServiceProvider() {
-    	setCurrent(this);
     }
 }

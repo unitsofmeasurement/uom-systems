@@ -33,6 +33,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.measure.spi.ServiceProvider;
@@ -43,11 +44,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemOfUnitsServiceTest {
-	private static final String DEFAULT_SERVICE_CLASSNAME = "tech.units.indriya.unit.DefaultSystemOfUnitsService";
+	private static final String DEFAULT_SERVICE_CLASSNAME = "systems.uom.common.spi.CommonSystemService";
 	private static final String COMMON_SERVICE_CLASSNAME = "systems.uom.common.spi.CommonSystemService";
 	private static final Logger LOGGER = Logger.getLogger(SystemOfUnitsServiceTest.class.getName());
-
-	private static final int NUM_OF_UNITS_DEFAULT = 43;
+	private static final Level LOGLEVEL = Level.INFO;
+	
+	private static final int NUM_OF_UNITS_DEFAULT = 45;
 	private static final int NUM_OF_UNITS_US = 45;
 	private static final int NUM_OF_UNITS_CGS = 12;
 
@@ -64,8 +66,8 @@ public class SystemOfUnitsServiceTest {
 		assertEquals(DEFAULT_SERVICE_CLASSNAME, defaultService.getClass().getName());
 		SystemOfUnits system = defaultService.getSystemOfUnits();
 		assertNotNull(system);
-		assertEquals("tech.units.indriya.unit.Units", system.getClass().getName());
-		assertEquals("Units", system.getName());
+		assertEquals("systems.uom.common.USCustomary", system.getClass().getName());
+		assertEquals("United States Customary Units", system.getName());
 		assertNotNull(system.getUnits());
 		assertEquals(NUM_OF_UNITS_DEFAULT, system.getUnits().size());
 	}
@@ -116,7 +118,7 @@ public class SystemOfUnitsServiceTest {
 		assertNotNull(services);
 		assertEquals(3, services.size());
 		for (ServiceProvider provider : services) {
-			LOGGER.info(String.valueOf(provider));
+			LOGGER.log(LOGLEVEL, String.valueOf(provider));
 			// TODO change to DEBUG or lower after https://github.com/unitsofmeasurement/unit-api/issues/195 was resolved
 		}
 		// for (SystemOfUnitsService service : services) {

@@ -28,6 +28,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package systems.uom.common.spi;
+import static systems.uom.common.spi.ServiceConstants.*;
 
 import javax.annotation.Priority;
 import javax.inject.Named;
@@ -39,14 +40,14 @@ import tech.units.indriya.spi.AbstractServiceProvider;
  * This class implements the {@link ServiceProvider} interface and hereby uses the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 1.0
+ * @version 2.0
  */
-@Named("Common")
-@Priority(1000)
+@Named(NAME)
+@Priority(PRIO)
 public class CommonServiceProvider extends AbstractServiceProvider {
 
     public int getPriority() {
-        return 1000;
+        return PRIO;
     }
 
     @Override
@@ -56,6 +57,6 @@ public class CommonServiceProvider extends AbstractServiceProvider {
     
     @Override
     public String toString() {
-        return "Common";
+        return NAME;
     }
 }

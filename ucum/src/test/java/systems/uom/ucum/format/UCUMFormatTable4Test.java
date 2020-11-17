@@ -61,9 +61,6 @@ import javax.measure.quantity.Frequency;
 
 import org.junit.jupiter.api.Test;
 
-import tech.units.indriya.ComparableUnit;
-
-
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  *
@@ -400,10 +397,12 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 		assertEquals("km/s", format.format(KILO(METER).divide(SECOND)), "The KILO prefix didn't work with a product unit");
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testNewton() {
 		final UnitFormat format = UCUMFormat.getInstance(PRINT);
-		ComparableUnit newton = (ComparableUnit) KILO(GRAM).multiply(METER).divide(SECOND).divide(SECOND);
+		@SuppressWarnings("rawtypes")
+		Unit newton = KILO(GRAM).multiply(METER).divide(SECOND).divide(SECOND);
 		assertTrue(newton.isEquivalentTo(NEWTON));
 		assertEquals("kg.m/s2", format.format(newton));
 	}

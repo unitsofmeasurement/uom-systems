@@ -42,7 +42,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class SystemOfUnitsServiceTest {
-	private static final int NUM_OF_UNITS = 44;
+	private static final int NUM_OF_UNITS_OTH = 44;
 	private static final int NUM_OF_UNITS_CLDR = 96;
 
 	private static SystemOfUnitsService defaultService;
@@ -55,13 +55,13 @@ public class SystemOfUnitsServiceTest {
 	@Test
 	public void testDefaultUnitSystemService() {
 		assertNotNull(defaultService);
-		assertEquals("tech.units.indriya.unit.DefaultSystemOfUnitsService", defaultService.getClass().getName());
+		assertEquals("systems.uom.unicode.spi.CLDRSystemService", defaultService.getClass().getName());
 		SystemOfUnits system = defaultService.getSystemOfUnits();
 		assertNotNull(system);
-		assertEquals("tech.units.indriya.unit.Units", system.getClass().getName());
-		assertEquals("Units", system.getName());
+		assertEquals("systems.uom.unicode.CLDR", system.getClass().getName());
+		assertEquals("Unicode CLDR", system.getName());
 		assertNotNull(system.getUnits());
-		assertEquals(NUM_OF_UNITS, system.getUnits().size());
+		assertEquals(NUM_OF_UNITS_CLDR, system.getUnits().size());
 	}
 	
 	@Test
