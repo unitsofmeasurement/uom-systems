@@ -51,14 +51,17 @@ import tech.units.indriya.format.SimpleQuantityFormat;
  * UCUM format service.
  *
  * @author Werner Keil
- * @version 1.2, January 11, 2020
+ * @version 2.0, November 18, 2020
  */
 public final class UCUMFormatService implements FormatService {
 
-	private static final String DEFAULT_UNIT_FORMAT = Variant.CASE_SENSITIVE.name();
+	private static final String UNIT_FORMAT_KEY_CASE_SENSITIVE = "UCUM_CS";
+	private static final String UNIT_FORMAT_KEY_CASE_INSENSITIVE = "UCUM_CI";
+	private static final String UNIT_FORMAT_KEY_PRINT = "UCUM_PRINT";
+	private static final String DEFAULT_UNIT_FORMAT = UNIT_FORMAT_KEY_CASE_SENSITIVE;
 
 	private final Map<String, UnitFormat> unitFormats = new HashMap<>();
-	private final Map<String, String> aliases = new HashMap<>();
+	private final Map<String, String> unitFormatAliases = new HashMap<>();
 
 	private static final String DEFAULT_QUANTITY_FORMAT = "Simple";
 
@@ -77,16 +80,19 @@ public final class UCUMFormatService implements FormatService {
 		quantityFormats.put("Local", NumberDelimiterQuantityFormat.getInstance(LOCALE_SENSITIVE));
 
 		unitFormats.put(DEFAULT_UNIT_FORMAT, UCUMFormat.getInstance(Variant.CASE_SENSITIVE));
-		unitFormats.put(Variant.CASE_INSENSITIVE.name(), UCUMFormat.getInstance(Variant.CASE_INSENSITIVE));
-		unitFormats.put(Variant.PRINT.name(), UCUMFormat.getInstance(Variant.PRINT));
+		unitFormats.put(UNIT_FORMAT_KEY_CASE_INSENSITIVE, UCUMFormat.getInstance(Variant.CASE_INSENSITIVE));
+		unitFormats.put(UNIT_FORMAT_KEY_PRINT, UCUMFormat.getInstance(Variant.PRINT));
 
-		aliases.put("UCUM", DEFAULT_UNIT_FORMAT);
-		aliases.put("CS", DEFAULT_UNIT_FORMAT);
-		aliases.put("C/S", DEFAULT_UNIT_FORMAT);
-		aliases.put("CASE SENSITIVE", DEFAULT_UNIT_FORMAT);
-		aliases.put("CI", Variant.CASE_INSENSITIVE.name());
-		aliases.put("C/I", Variant.CASE_INSENSITIVE.name());
-		aliases.put("CASE INSENSITIVE", DEFAULT_UNIT_FORMAT);
+		unitFormatAliases.put("UCUM", DEFAULT_UNIT_FORMAT);
+		unitFormatAliases.put(Variant.CASE_SENSITIVE.name(), DEFAULT_UNIT_FORMAT);
+		unitFormatAliases.put(Variant.CASE_INSENSITIVE.name(), UNIT_FORMAT_KEY_CASE_INSENSITIVE);
+		unitFormatAliases.put(Variant.PRINT.name(), UNIT_FORMAT_KEY_PRINT);
+		unitFormatAliases.put("CS", DEFAULT_UNIT_FORMAT);
+		unitFormatAliases.put("C/S", DEFAULT_UNIT_FORMAT);
+		unitFormatAliases.put("CASE SENSITIVE", DEFAULT_UNIT_FORMAT);
+		unitFormatAliases.put("CI", UNIT_FORMAT_KEY_CASE_INSENSITIVE);
+		unitFormatAliases.put("C/I", UNIT_FORMAT_KEY_CASE_INSENSITIVE);
+		unitFormatAliases.put("CASE INSENSITIVE", UNIT_FORMAT_KEY_CASE_INSENSITIVE);
 	}
 
 	/*
@@ -97,7 +103,7 @@ public final class UCUMFormatService implements FormatService {
 	@Override
 	public UnitFormat getUnitFormat(String key) {
 		Objects.requireNonNull(key, "Format name or alias required");
-		String alias = aliases.get(key.toUpperCase());
+		String alias = unitFormatAliases.get(key.toUpperCase());
 		if (alias != null && alias.length() > 0) {
 			return unitFormats.get(alias);
 		}
@@ -140,7 +146,11 @@ public final class UCUMFormatService implements FormatService {
 
 	@Override
 	public UnitFormat getUnitFormat(String name, String variant) {
-		// TODO apply variant here
-		return getUnitFormat(name);
+		final StringBuilder sb = new StringBuilder(name);
+		if (null != variant && !variant.isEmpty()) { 
+			sb.append("_");
+			sb.append(variant);
+		}
+		return getUnitFormat(sb.toString());
 	}
 }

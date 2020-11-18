@@ -500,5 +500,12 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         public Unit<? extends Quantity<?>> parse(CharSequence csq) throws MeasurementParseException {
             return parse(csq, new ParsePosition(0));
         }
+
+		@Override
+		public String toString() {
+			return "UCUM Parsing [" +  
+					(caseSensitive ? "Case Sensitive" : "Case Insensitive") + 
+					"]";
+		}
     }
 }
