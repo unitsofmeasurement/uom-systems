@@ -97,4 +97,23 @@ public class UnitFormatTest extends UCUMFormatTestBase {
     	Unit newton = KILO(UCUM.GRAM).multiply(UCUM.METER).divide(UCUM.SECOND).divide(UCUM.SECOND);
     	assertEquals("kg.m/s2", format.format(newton));
     }
+    
+    @Test
+    public void testMs2() {
+    	final UnitFormat format = UCUMFormat.getInstance(PRINT);
+    	Unit u = UCUM.METER.divide(UCUM.SECOND).divide(UCUM.SECOND);
+    	assertEquals("m/s2", format.format(u));
+    }
+    
+    @Test
+    public void testMs2CS() {
+    	Unit u = UCUM.METER.divide(UCUM.SECOND).divide(UCUM.SECOND);
+    	assertEquals("m/s2", FORMAT_CS.format(u));
+    }
+    
+    @Test
+    public void testMs2CI() {
+    	Unit u = UCUM.METER.divide(UCUM.SECOND).divide(UCUM.SECOND);
+    	assertEquals("M/S2", FORMAT_CI.format(u));
+    }
 }
