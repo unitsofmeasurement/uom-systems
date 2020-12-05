@@ -5,6 +5,7 @@ Units of Measurement Systems
 
 [![Maven Central](https://img.shields.io/maven-central/v/systems.uom/systems-parent)](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22systems.uom)
 [![Circle CI](https://circleci.com/gh/unitsofmeasurement/uom-systems.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/uom-systems)
+[![Travis CI](https://travis-ci.org/unitsofmeasurement/uom-systems.svg?branch=master)](https://travis-ci.org/unitsofmeasurement/uom-systems)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f1ce1fbf3ff24b67a48592c27869d023)](https://www.codacy.com/app/unitsofmeasurement/uom-systems?utm_source=github.com&utm_medium=referral&utm_content=unitsofmeasurement/uom-systems&utm_campaign=badger)
 [![Stability: Active](https://masterminds.github.io/stability/active.svg)](https://masterminds.github.io/stability/active.html)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
