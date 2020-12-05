@@ -1,13 +1,12 @@
 arch:
   - amd64
-  - ppc64le
 language: java
 jdk:
-- openjdk10
-- openjdk11
+- openjdk9
 - openjdk12
 - openjdk13
 - openjdk14
+- openjdk15
 
 install: skip
 
