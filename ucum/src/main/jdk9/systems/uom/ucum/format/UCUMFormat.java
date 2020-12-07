@@ -80,7 +80,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 2.3, 17, November 2020
+ * @version 2.4, 7, December 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -415,6 +415,11 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
             return parse(csq, new ParsePosition(0));
 
         }
+        
+		@Override
+		public String toString() {
+			return "UCUM Print";
+		}
     }
 
     /**
@@ -503,5 +508,12 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         public Unit<? extends Quantity<?>> parse(CharSequence csq) throws MeasurementParseException {
             return parse(csq, new ParsePosition(0));
         }
+        
+		@Override
+		public String toString() {
+			return "UCUM Parsing [" +  
+					(caseSensitive ? "Case Sensitive" : "Case Insensitive") + 
+					"]";
+		}
     }
 }

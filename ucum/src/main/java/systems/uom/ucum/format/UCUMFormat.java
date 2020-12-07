@@ -80,7 +80,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @author Andi Huber
- * @version 2.2, 17 November 2020
+ * @version 2.3, 7 December 2020
  */
 public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
@@ -161,9 +161,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         this.symbolMap = symbolMap;
     }
 
-    // ///////////
+    /////////////
     // Parsing //
-    // ///////////
+    /////////////
     public abstract Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws MeasurementParseException;
 
     protected Unit<?> parse(CharSequence csq, int index) throws MeasurementParseException {
@@ -364,9 +364,9 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         appendable.append('}');
     }
 
-    // /////////////////
+    ///////////////////
     // Inner classes //
-    // /////////////////
+    ///////////////////
 
     /**
      * Variant of unit representation in the UCUM standard
@@ -415,6 +415,11 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
             return parse(csq, new ParsePosition(0));
 
         }
+        
+		@Override
+		public String toString() {
+			return "UCUM Print";
+		}
     }
 
     /**
@@ -443,9 +448,8 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                             throw new NullPointerException();
                         if (locale.equals(new Locale("", "CI"))) {
                             return Arrays.asList(locale, Locale.ROOT);
-                        } else if (locale.equals(Locale.GERMANY)) { // TODO
-                            // why
-                            // GERMANY?
+                        } else if (locale.equals(Locale.GERMANY)) {
+                            // TODO why GERMANY?
                             return Arrays.asList(locale,
                                     // no Locale.GERMAN here
                                     Locale.ROOT);
@@ -464,8 +468,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
 
         @Override
         public Unit<? extends Quantity<?>> parse(CharSequence csq, ParsePosition cursor) throws MeasurementParseException {
-            // Parsing reads the whole character sequence from the parse
-            // position.
+            // Parsing reads the whole character sequence from the parse position.
             int start = cursor.getIndex();
             int end = csq.length();
             if (end <= start) {

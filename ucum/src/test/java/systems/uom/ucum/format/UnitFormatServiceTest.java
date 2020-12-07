@@ -32,6 +32,7 @@ package systems.uom.ucum.format;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.measure.spi.ServiceProvider;
+import javax.measure.format.UnitFormat;
 import javax.measure.spi.FormatService;
 
 import org.junit.jupiter.api.Test;
@@ -46,29 +47,37 @@ public class UnitFormatServiceTest {
   public void testGetService() throws Exception {
 	final FormatService fs = ServiceProvider.current().getFormatService();
     assertNotNull(fs);
-    assertNotNull(fs.getUnitFormat());
-    assertEquals("Parsing", fs.getUnitFormat().getClass().getSimpleName());
+    final UnitFormat uf = fs.getUnitFormat(); 
+    assertNotNull(uf);    
+    assertEquals("Parsing", uf.getClass().getSimpleName());
+    assertEquals("UCUM Parsing [Case Sensitive]", uf.toString());
   }
 
   @Test
   public void testGetCIFound() throws Exception {
 	final FormatService fs = ServiceProvider.current().getFormatService();
     assertNotNull(fs);
-    assertNotNull(fs.getUnitFormat("CI"));
+    final UnitFormat uf = fs.getUnitFormat("UCUM", "CI");
+    assertNotNull(uf);
+    assertEquals("UCUM Parsing [Case Insensitive]", uf.toString());
   }
   
   @Test
   public void testGetCSFound() throws Exception {
 	final FormatService fs = ServiceProvider.current().getFormatService();
     assertNotNull(fs);
-    assertNotNull(fs.getUnitFormat("CS"));
+    final UnitFormat uf = fs.getUnitFormat("UCUM", "CS");
+    assertNotNull(uf);
+    assertEquals("UCUM Parsing [Case Sensitive]", uf.toString());
   }
 
   @Test
   public void testGetPrintFound() throws Exception {
 	final FormatService fs = ServiceProvider.current().getFormatService();
     assertNotNull(fs);
-    assertNotNull(fs.getUnitFormat("Print"));
+    final UnitFormat uf = fs.getUnitFormat("UCUM", "Print");
+    assertNotNull(uf);
+    assertEquals("UCUM Print", uf.toString());
   }
   
   @Test
@@ -83,5 +92,26 @@ public class UnitFormatServiceTest {
 	final FormatService fs = ServiceProvider.current().getFormatService();
     assertNotNull(fs);
     assertNotNull(fs.getUnitFormat("UCUM"));
+  }
+  
+  @Test
+  public void testGetFormatAliasCI() throws Exception {
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNotNull(fs.getUnitFormat("CI"));
+  }
+  
+  @Test
+  public void testGetFormatAliasCS() throws Exception {
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNotNull(fs.getUnitFormat("CS"));
+  }
+
+  @Test
+  public void testGetFormatAliasPrint() throws Exception {
+	final FormatService fs = ServiceProvider.current().getFormatService();
+    assertNotNull(fs);
+    assertNotNull(fs.getUnitFormat("Print"));
   }
 }

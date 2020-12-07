@@ -47,7 +47,6 @@ import tech.units.indriya.function.AbstractConverter;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.TransformedUnit;
 import tech.units.indriya.unit.Units;
-import systems.uom.ucum.UCUM;
 import tech.units.indriya.AbstractUnit;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
