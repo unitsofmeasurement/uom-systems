@@ -276,7 +276,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         if (numeratorCount == 1) {
             sb.append("1");
         }
-        if (denominatorUnits.size() >0){
+        if (denominatorUnits.size() > 0){
             // append division symbol
             sb.append("/");
             int denominatorCount = 1;

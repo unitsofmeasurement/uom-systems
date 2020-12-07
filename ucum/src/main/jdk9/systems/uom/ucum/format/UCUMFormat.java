@@ -276,7 +276,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
         if (numeratorCount == 1) {
             sb.append("1");
         }
-        if (denominatorUnits.size() >0){
+        if (denominatorUnits.size() > 0){
             // append division symbol
             sb.append("/");
             int denominatorCount = 1;
@@ -292,7 +292,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
                 // add individual unit string
                 format(u.getKey(),sb);
                 // add power number if abs greater than 1
-                if (Math.abs(u.getValue()) < -1){
+                if (u.getValue() < -1){
                     sb.append(-u.getValue());
                 }
                 // if there is more than one denominator unit and this is the last, add close parenthesis
