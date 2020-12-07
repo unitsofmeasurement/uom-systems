@@ -39,6 +39,7 @@ import javax.measure.MeasurementException;
 import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import systems.uom.ucum.UCUM;
@@ -51,21 +52,22 @@ public class UnitFormatTest extends UCUMFormatTestBase {
 
     @Test
     public void testUnitsUCUMpureASCII() {
-	for (Unit<?> u : UCUM.getInstance().getUnits()) {
-	    // try {
-	    // Unit<?> v = format.parse("1/" + u.toString());
-	    //LOGGER.log(LOG_LEVEL, String.format("%s @ %s @ %s @ %s", 
-		    assertTrue(isPureAscii(FORMAT_CS.format(u)), String.format("CS format %s contains non-ASCII characters", FORMAT_CS.format(u)));
-		    assertTrue(isPureAscii(FORMAT_CI.format(u)), String.format("CI format %s contains non-ASCII characters", FORMAT_CI.format(u)));
-//		    assertTrue(String.format("Print format %s contains non-ASCII characters", pr.format(u)), isPureAscii(pr.format(u)));
-	    // } catch (ParserException pex) {
-	    // logger.log(Level.WARNING, String.format(" %s parsing %s", pex,"
-	    // u));
-	    // }
-	}
+		for (Unit<?> u : UCUM.getInstance().getUnits()) {
+		    // try {
+		    // Unit<?> v = format.parse("1/" + u.toString());
+		    //LOGGER.log(LOG_LEVEL, String.format("%s @ %s @ %s @ %s", 
+			    assertTrue(isPureAscii(FORMAT_CS.format(u)), String.format("CS format %s contains non-ASCII characters", FORMAT_CS.format(u)));
+			    assertTrue(isPureAscii(FORMAT_CI.format(u)), String.format("CI format %s contains non-ASCII characters", FORMAT_CI.format(u)));
+	//		    assertTrue(String.format("Print format %s contains non-ASCII characters", pr.format(u)), isPureAscii(pr.format(u)));
+		    // } catch (ParserException pex) {
+		    // logger.log(Level.WARNING, String.format(" %s parsing %s", pex,"
+		    // u));
+		    // }
+		}
     }
     
     @Test
+    @Disabled("Not doing anything different from testUnitsUCUMpureASCII")
     public void testUnitsUCUM() {
 	for (Unit<?> u : UCUM.getInstance().getUnits()) {
 	    // try {
@@ -93,27 +95,17 @@ public class UnitFormatTest extends UCUMFormatTestBase {
     
     @Test
     public void testNewton() {
-    	final UnitFormat format = UCUMFormat.getInstance(PRINT);
-    	Unit newton = KILO(UCUM.GRAM).multiply(UCUM.METER).divide(UCUM.SECOND).divide(UCUM.SECOND);
-    	assertEquals("kg.m/s2", format.format(newton));
+    	final Unit<?> newton = KILO(UCUM.GRAM).multiply(UCUM.METER).divide(UCUM.SECOND).divide(UCUM.SECOND);
+    	assertEquals("kg.m/s2", FORMAT_PRINT.format(newton));
+    	assertEquals("kg.m/s2", FORMAT_CS.format(newton));
+    	assertEquals("KG.M/S2", FORMAT_CI.format(newton));
     }
     
     @Test
     public void testMs2() {
-    	final UnitFormat format = UCUMFormat.getInstance(PRINT);
-    	Unit u = UCUM.METER.divide(UCUM.SECOND).divide(UCUM.SECOND);
-    	assertEquals("m/s2", format.format(u));
-    }
-    
-    @Test
-    public void testMs2CS() {
-    	Unit u = UCUM.METER.divide(UCUM.SECOND).divide(UCUM.SECOND);
+    	final Unit<?> u = UCUM.METER.divide(UCUM.SECOND).divide(UCUM.SECOND);
+    	assertEquals("m/s2", FORMAT_PRINT.format(u));
     	assertEquals("m/s2", FORMAT_CS.format(u));
-    }
-    
-    @Test
-    public void testMs2CI() {
-    	Unit u = UCUM.METER.divide(UCUM.SECOND).divide(UCUM.SECOND);
     	assertEquals("M/S2", FORMAT_CI.format(u));
-    }
+    }    
 }
