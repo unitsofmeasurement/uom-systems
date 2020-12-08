@@ -32,13 +32,10 @@ package systems.uom.ucum.format;
 import static javax.measure.MetricPrefix.KILO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static systems.uom.ucum.format.UCUMFormat.Variant.PRINT;
 import static systems.uom.ucum.format.StringUtils.isPureAscii;
 
 import javax.measure.MeasurementException;
 import javax.measure.Unit;
-import javax.measure.format.UnitFormat;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -46,7 +43,7 @@ import systems.uom.ucum.UCUM;
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- *
+ * @version 1.0
  */
 public class UnitFormatTest extends UCUMFormatTestBase {
 

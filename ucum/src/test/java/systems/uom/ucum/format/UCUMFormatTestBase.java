@@ -32,15 +32,12 @@ package systems.uom.ucum.format;
 import static systems.uom.ucum.format.UCUMFormat.Variant.*;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.measure.format.*;
-import systems.uom.ucum.format.UCUMFormat;
 import tech.units.indriya.format.EBNFUnitFormat;
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- *
+ * @version 1.0
  */
 abstract class UCUMFormatTestBase {
     

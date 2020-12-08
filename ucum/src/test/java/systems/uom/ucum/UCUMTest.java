@@ -31,7 +31,12 @@ package systems.uom.ucum;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static systems.uom.ucum.UCUM.*;
+
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -45,16 +50,20 @@ import tech.units.indriya.quantity.Quantities;
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- *
+ * @version 1.1
  */
 public class UCUMTest {
-
+	protected static final Level LOG_LEVEL = Level.FINEST;
+	static final Logger logger = Logger.getLogger(UCUMTest.class.getName());
+	
     @Test
     public void testLiterToDm3() {
 		final Quantity<Volume> oneLiter = Quantities.getQuantity(1, LITER);
 		final Quantity<Volume> oneDm3 = Quantities.getQuantity(1, LITER_DM3);
 		assertEquals(1, oneLiter.to(LITER_DM3).getValue());
-		//assertEquals(oneLiter, oneDm3);
+		assertNotEquals(oneLiter, oneDm3); 
+		// There are two liter definitions in UCUM, they are not equal but equivalent
+		assertTrue(oneLiter.isEquivalentTo(oneDm3));
     }
     
     @Test
@@ -82,13 +91,13 @@ public class UCUMTest {
     
     @Test
     public void testStToLiter() {
-	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
-	assertEquals(1000, oneLiter.to(LITER).getValue());
+    	final Quantity<Volume> oneLiter = Quantities.getQuantity(1, STERE);
+    	assertEquals(1000, oneLiter.to(LITER).getValue());
     }
     
     @Test
     public void testAMU() {
     	Unit<Mass> atomicMassUnit = ATOMIC_MASS_UNIT;
-    	System.out.println(atomicMassUnit.getSymbol());
+    	logger.log(LOG_LEVEL, atomicMassUnit.getSymbol());
     }
 }
