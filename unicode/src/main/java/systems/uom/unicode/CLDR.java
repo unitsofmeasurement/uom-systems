@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2021, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -65,7 +65,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 1.0, $Date: 2019-06-23 $
+ * @version 2.0, $Date: 2021-01-20 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -397,14 +397,16 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @stable ICU 54.
      */
-    public static final Unit<Volume> GALLON = addUnit(CUBIC_INCH.multiply(231));
+    public static final Unit<Volume> GALLON = addUnit(CUBIC_INCH.multiply(231),
+    		"US liquid gallon", "US.liq.gal");
 
     /**
      * Constant for unit of volume: gallon-imperial
      * 
      * @stable ICU 57.
      */
-    public static final Unit<Volume> GALLON_IMPERIAL = addUnit(LITER.multiply(454609).divide(100000));
+    public static final Unit<Volume> GALLON_IMPERIAL = addUnit(LITER.multiply(454609).divide(100000),
+    		"Imperial gallon", "Imp. gal");
 
     /**
      * Constant for unit of volume: cubic-foot<br>
@@ -436,6 +438,21 @@ public final class CLDR extends AbstractSystemOfUnits {
      * A unit of volume equal to <code>1 / 128 {@link #GALLON_LIQUID}</code> (standard name <code>oz_fl</code>).
      */
     public static final Unit<Volume> FLUID_OUNCE = addUnit(GALLON.divide(128));
+    
+    /**
+     * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
+     * (standard name <code>fl_oz_uk</code>).
+     */
+    private static final Unit<Volume> FLUID_OUNCE_UK = GALLON_IMPERIAL.divide(160);
+
+    /**
+     * Constant for unit of volume: fluid-ounce-imperial<br>
+     * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
+     * (standard name <code>fl_oz</code>).
+     * 
+     * @stable ICU 64.
+     */
+    public static final Unit<Volume> FLUID_OUNCE_IMPERIAL = addUnit(FLUID_OUNCE_UK, "fl_oz", true);
 
     /**
      * An acre-foot is a unit of volume commonly used in the United States in reference to large-scale water resources, such as reservoirs, aqueducts,
@@ -467,12 +484,20 @@ public final class CLDR extends AbstractSystemOfUnits {
 
     /**
      * Constant for unit of volume: pint<br>
-     * A unit of volume equal to <code>20 {@link #FLUID_OUNCE}</code> (standard name <code>pt</code>).
+     * A unit of volume equal to <code>16 {@link #FLUID_OUNCE}</code> (standard name <code>pt</code>).
      * 
      * @stable ICU 54
      */
-    public static final Unit<Volume> PINT = addUnit(FLUID_OUNCE.multiply(20), "Pint", "pt", true);
+    public static final Unit<Volume> PINT = addUnit(FLUID_OUNCE.multiply(16), "US liquid pint", "pt", true);
 
+    /**
+     * Constant for unit of volume: pint-imperial<br>
+     * A unit of volume equal to <code>20 {@link #FLUID_OUNCE_IMPERIAL}</code> (standard name <code>pt</code>).
+     * 
+     * @draft Unit Systems 2.1
+     */
+    public static final Unit<Volume> PINT_IMPERIAL = addUnit(FLUID_OUNCE_IMPERIAL.multiply(20), "Imperial pint", "pt", true);
+    
     /**
      * Constant for unit of volume: pint-metric
      * 
@@ -483,12 +508,20 @@ public final class CLDR extends AbstractSystemOfUnits {
 
     /**
      * Constant for unit of volume: quart<br>
-     * A unit of volume equal to <code>40 {@link #FLUID_OUNCE}</code> (standard name <code>qt</code>).
+     * A unit of volume equal to <code>32 {@link #FLUID_OUNCE}</code> (standard name <code>qt</code>).
      * 
      * @stable ICU 54
      */
-    public static final Unit<Volume> QUART = addUnit(FLUID_OUNCE.multiply(40), "Quart", "qt");
+    public static final Unit<Volume> QUART = addUnit(FLUID_OUNCE.multiply(32), "Quart", "qt");
 
+    /**
+     * Constant for unit of volume: quart-imperial<br>
+     * A unit of volume equal to <code>40 {@link #FLUID_OUNCE_IMPERIAL}</code> (standard name <code>qt</code>).
+     * 
+     * @draft ICU 68
+     */
+    public static final Unit<Volume> QUART_IMPERIAL = addUnit(FLUID_OUNCE_IMPERIAL.multiply(40), "Quart", "qt");
+    
     /**
      * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard name <code>min</code>).
      */

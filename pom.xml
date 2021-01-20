@@ -33,7 +33,7 @@
 		<jsr.version>2.1.1</jsr.version>
 		<ri.version>2.1.2-SNAPSHOT</ri.version>
 		<si.version>2.1-SNAPSHOT</si.version>
-		<quantity.version>2.0.2</quantity.version><!-- only need to change when new quantities added -->
+		<quantity.version>2.1-SNAPSHOT</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>2.1-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
