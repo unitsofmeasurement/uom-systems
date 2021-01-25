@@ -1,7 +1,6 @@
-
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2020, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2021, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -27,8 +26,7 @@
  * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */package systems.uom.ucum.spi;
-
+ */
 class ServiceConstants {
 	static final String NAME = "UCUM";
 	static final int PRIO = 1000;

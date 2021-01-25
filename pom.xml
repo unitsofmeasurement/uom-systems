@@ -128,12 +128,14 @@
 						<header>src/main/config/header.txt</header>
 						<properties>
 							<owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-							<currentYear>2020</currentYear>
+							<currentYear>2021</currentYear>
 						</properties>
 						<excludes>
 							<exclude>**/README</exclude>
 							<exclude>**/pom.xml</exclude>
+							<exclude>**/*toolchains.xml</exclude>
 							<exclude>**/settings.xml</exclude>
+							<exclude>docs/**</exclude>
 							<exclude>src/test/resources/**</exclude>
 							<exclude>src/main/resources/**</exclude>
 							<exclude>src/main/config/**</exclude>
