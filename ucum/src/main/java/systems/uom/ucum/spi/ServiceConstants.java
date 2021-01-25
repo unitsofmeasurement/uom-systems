@@ -27,6 +27,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
+package systems.uom.ucum.spi;
+
 class ServiceConstants {
 	static final String NAME = "UCUM";
 	static final int PRIO = 1000;
