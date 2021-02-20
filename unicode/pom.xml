@@ -79,6 +79,43 @@
 	</dependencies>
 	<build>
 		<plugins>
+		    <!-- ======================================================= -->
+            <!-- Packaging (OSGi bundle) -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>biz.aQute.bnd</groupId>
+                <artifactId>bnd-maven-plugin</artifactId>
+                <configuration>
+			        <bnd><![CDATA[
+			            Automatic-Module-Name: systems.uom.unicode
+			        ]]></bnd>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>bnd-process</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ======================================================= -->
+            <!-- JAR packaging -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                    <manifestEntries>
+                        <mode>development</mode>                        
+                        <key>value</key>
+                    </manifestEntries>
+                </configuration>
+            </plugin>
+    
 			<!-- ======================================================= -->
 			<!-- Source Attachment -->
 			<!-- ======================================================= -->
@@ -110,7 +147,7 @@
 					</instructions>
 				</configuration>
 			</plugin>
-			-->
+			-->								
 		</plugins>
 	</build>
 	
