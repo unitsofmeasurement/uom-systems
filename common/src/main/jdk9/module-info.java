@@ -37,7 +37,7 @@ module systems.uom.common {
     requires si.uom.units;
     
     exports systems.uom.common;
-    exports systems.uom.common.ancient;
+    exports systems.uom.common.historic;
     exports systems.uom.common.spi;
     
     provides javax.measure.spi.ServiceProvider with

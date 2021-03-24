@@ -27,27 +27,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.common.ancient;
+package systems.uom.common.historic;
 
 import javax.measure.Prefix;
 
 /**
  * Utility class holding  traditional numbers of the Ancient Tamil Country, Tamizhakam.
- * Unit<Length> PATU_METER = METER.prefix(PATU); </code>
+ * Unit<Length> PATHU_METER = PATHU(METER); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @version 1.0, $Date: 2019-06-28 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
- *      Tamil units of measurement - Sanskritized version</a>
+ *      Tamil units of measurement - Whole numbers</a>
  * @draft 2.0
  */
 // FIXME Update
-public enum TamilAncientPrefix implements Prefix {
+public enum TamilSanskritPrefix implements Prefix {
     /** <p>
 	 * ௰ (pathu)
 	 * </p> Prefix for 10<sup>21</sup>. */
-	PATU("P", 10, 1),
+	PATHU("P", 10, 1),
     /** Prefix for 10<sup>18</sup>. */
 	nūru("S", 10, 2),
     /** Prefix for 10<sup>15</sup>. */
@@ -98,7 +98,7 @@ public enum TamilAncientPrefix implements Prefix {
      * @param exponent
      *          part of the associated factor in base^exponent representation.
      */
-    private TamilAncientPrefix(String symbol, int base, int exponent) {
+    private TamilSanskritPrefix(String symbol, int base, int exponent) {
         this.symbol = symbol;
         this.base = base;
         this.exponent = exponent;

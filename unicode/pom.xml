@@ -15,6 +15,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jdkVersion>1.8</jdkVersion>
+		<jpms.name>systems.uom.unicode</jpms.name>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -87,7 +88,7 @@
                 <artifactId>bnd-maven-plugin</artifactId>
                 <configuration>
 			        <bnd><![CDATA[
-			            Automatic-Module-Name: systems.uom.unicode
+			            Automatic-Module-Name: ${jpms.name}
 			        ]]></bnd>
                 </configuration>
                 <executions>
