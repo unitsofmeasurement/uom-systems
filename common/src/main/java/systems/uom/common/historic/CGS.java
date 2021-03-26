@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package systems.uom.common;
+package systems.uom.common.historic;
 
 import static tech.units.indriya.AbstractUnit.ONE;
 import static javax.measure.MetricPrefix.CENTI;
@@ -68,8 +68,8 @@ import tech.units.indriya.unit.Units;
  * 
  * @noextend This class is not intended to be extended by clients.
  * 
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, $Date: 2019-06-19$
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
+ * @version 1.1, $Date: 2021-03-24$
  * @see <a href= "https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">Wikipedia: Centimetre–gram–second system of
  *      units</a>
  * @since 0.6

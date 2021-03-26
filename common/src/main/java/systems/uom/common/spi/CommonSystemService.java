@@ -34,14 +34,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.measure.spi.SystemOfUnits;
-import systems.uom.common.CGS;
+import systems.uom.common.historic.CGS;
 import systems.uom.common.Imperial;
 import systems.uom.common.USCustomary;
 import tech.units.indriya.spi.AbstractSystemOfUnitsService;
 
 /**
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.2, January 11, 2020
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
+ * @version 2.0, March 24, 2021
  */
 public class CommonSystemService extends AbstractSystemOfUnitsService {
 	private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
