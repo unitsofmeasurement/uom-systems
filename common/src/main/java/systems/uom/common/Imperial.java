@@ -58,7 +58,7 @@ import tech.units.indriya.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.1, $Date: 2019-01-21 $
+ * @version 1.2, $Date: 2021-03-26 $
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
