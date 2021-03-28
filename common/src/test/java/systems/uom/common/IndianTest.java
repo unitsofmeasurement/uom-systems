@@ -35,7 +35,7 @@ import static systems.uom.common.IndianPrefix.LAKH;
 import static javax.measure.MetricPrefix.KILO;
 import static tech.units.indriya.unit.Units.METRE;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.function.MultiplyConverter;
 
