@@ -70,7 +70,9 @@ import javax.measure.spi.SystemOfUnits;
  */
 public final class USCustomary extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "United States Customary Units";
-
+    
+    private static final USCustomary INSTANCE = new USCustomary();
+    
     /**
      * Default constructor (prevents this class from being instantiated).
      */
@@ -84,9 +86,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static SystemOfUnits getInstance() {
         return INSTANCE;
-    }
-
-    private static final USCustomary INSTANCE = new USCustomary();
+    }    
 
     ////////////
     // Length //

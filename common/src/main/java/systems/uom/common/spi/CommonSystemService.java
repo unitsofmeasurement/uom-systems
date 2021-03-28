@@ -42,7 +42,7 @@ import tech.units.indriya.spi.AbstractSystemOfUnitsService;
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 2.1, March 27, 2021
+ * @version 2.2, March 28, 2021
  */
 public class CommonSystemService extends AbstractSystemOfUnitsService {
 	private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
@@ -57,6 +57,7 @@ public class CommonSystemService extends AbstractSystemOfUnitsService {
 		souMap.put(CGS_KEY, CGS.getInstance());
 		souMap.put(MKPS_KEY, MKpS.getInstance());		
 		aliases.put("US", DEFAULT_SYSTEM_NAME);
+		aliases.put("UK", "Imperial");
 		aliases.put("Centimetre–gram–second", CGS_KEY);
 		aliases.put("Gravitational metric system", MKPS_KEY);
 		aliases.put("MKfS", MKPS_KEY);

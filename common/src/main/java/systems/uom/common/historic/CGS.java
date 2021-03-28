@@ -36,6 +36,7 @@ import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.NEWTON;
 import static tech.units.indriya.unit.Units.PASCAL;
 
+import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Energy;
@@ -105,7 +106,7 @@ public final class CGS extends AbstractSystemOfUnits {
     /**
      * A unit of length equal to <code>1/100 of metre</code> (standard name <code>cm</code>).
      */
-    public static final Unit<Length> CENTIMETRE = addUnit(CENTI(METRE));
+    public static final Unit<Length> CENTIMETRE = addUnit(CENTI(METRE), Length.class);
 
     //////////
     // Mass //
@@ -113,7 +114,7 @@ public final class CGS extends AbstractSystemOfUnits {
     /**
      * A unit of mass equal to 1/12 the mass of the carbon-12 atom (standard name <code>g</code>).
      */
-    public static final Unit<Mass> GRAM = addUnit(Units.GRAM);
+    public static final Unit<Mass> GRAM = addUnit(Units.GRAM, Mass.class);
 
     //////////
     // Time //
@@ -123,7 +124,7 @@ public final class CGS extends AbstractSystemOfUnits {
      * corresponding to the transition between two hyperfine levels of the ground state of cesium (1967 Standard).
      * 
      */
-    public static final Unit<Time> SECOND = addUnit(Units.SECOND);
+    public static final Unit<Time> SECOND = addUnit(Units.SECOND, Time.class);
 
     //////////////
     // Speed    //
@@ -212,18 +213,19 @@ public final class CGS extends AbstractSystemOfUnits {
     public String getName() {
         return SYSTEM_NAME;
     }
-
-    /**
-     * Adds a new unit not mapped to any specified quantity type.
-     *
-     * @param unit
-     *            the unit being added.
-     * @return <code>unit</code>.
-     */
-    private static <U extends Unit<?>> U addUnit(U unit) {
-        INSTANCE.units.add(unit);
-        return unit;
-    }
+    
+	/**
+	 * Adds a new unit and maps it to the specified quantity type.
+	 *
+	 * @param unit the unit being added.
+	 * @param type the quantity type.
+	 * @return <code>unit</code>.
+	 */
+	private static <U extends Unit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
+		INSTANCE.units.add(unit);
+		INSTANCE.quantityToUnit.put(type, unit);
+		return unit;
+	}
 
     /**
      * Adds a new unit not mapped to any specified quantity type and puts a text as symbol or label.

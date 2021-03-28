@@ -31,6 +31,7 @@ package systems.uom.common.historic;
 
 import static javax.measure.MetricPrefix.KILO;
 import static tech.units.indriya.unit.Units.JOULE;
+import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.PASCAL;
 import static tech.units.indriya.unit.Units.WATT;
 import static systems.uom.common.historic.CGS.DYNE;
@@ -51,10 +52,8 @@ import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.unit.BaseUnit;
 import tech.units.indriya.unit.ProductUnit;
 import tech.units.indriya.unit.TransformedUnit;
-import tech.units.indriya.unit.UnitDimension;
 import tech.units.indriya.unit.Units;
 
 /**
@@ -69,7 +68,7 @@ import tech.units.indriya.unit.Units;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 0.9, $Date: 2021-03-28$
+ * @version 1.0, $Date: 2021-03-28$
  * @see <a href= "https://en.wikipedia.org/wiki/Gravitational_metric_system">Wikipedia: Gravitational metric system</a>
  * @see <a href= "http://ww2.cnam.fr/physique/PHR011_ELECTRICITE/ap2/SI_Anglo.htm">Systèmes de mesure - Measure systems</a>
  *      
@@ -100,52 +99,20 @@ public final class MKpS extends AbstractSystemOfUnits {
     // Length //
     ////////////    
 	/**
-	 * The metre, symbol m, is the SI unit of length. It is defined by taking the
-	 * fixed numerical value of the speed of light in vacuum c to be 299 792 458
-	 * when expressed in the unit m s⁻¹, where the second is defined in terms of the
-	 * caesium frequency ∆νCs.
-	 *
-	 * This definition implies the exact relation c = 299 792 458 m s⁻¹. Inverting
-	 * this relation gives an exact expression for the metre in terms of the
-	 * defining constants c and ∆νCs:
-	 * <code>
-	 * 1 m = (c / 299 792 458)s = 9 192 631 770 c / 299 792 458 ∆νCs ≈ 30.663 319 c
-	 * / ∆νCs
-	 * </code>
-     * <dl>
-     * <dt><span class="strong">Implementation Note:</span></dt><dd>SI Base Unit</dd>
-     * </dl>
+	 * The unit of length is the metre, defined by the distance, at 0°, between the axes of the <br>
+	 * two central lines marked on the bar of platinum–iridium kept at the Bureau International des Poids et Mesures <br>
+	 * and declared Prototype of the metre by the 1st Conférence Générale des Poids et Mesures,<br>
+	 * this bar being subject to standard atmospheric pressure and supported on two cylinders of at least one centimetre diameter, symmetrically placed in the same horizontal plane at a distance of 571 mm from each other.	 
 	 */
-	public static final Unit<Length> METRE = addUnit(Units.METRE);
+	public static final Unit<Length> METRE = addUnit(Units.METRE, Length.class);
 
     //////////
     // Mass //
     //////////
 	/**
-	 * The kilogram, symbol kg, is the SI unit of mass. It is defined by taking the
-	 * fixed numerical value of the Planck constant h to be 6.626 070 15 Ã— 10â�»Â³â�´
-	 * when expressed in the unit J s, which is equal to kg mÂ² sâˆ’1, where the metre
-	 * and the second are defined in terms of c and âˆ†Î½Cs.
-	 *
-	 * This definition implies the exact relation h = 6.626 070 15 Ã— 10âˆ’34 kg mÂ²
-	 * sâ�»Â¹. Inverting this relation gives an exact expression for the kilogram in
-	 * terms of the three defining constants h, âˆ†Î½Cs and c:
-	 *<code>
-	 * 1 kg = (h / 6.626 070 15 Ã— 10â�»Â³â�´) mâ�»Â² s
-	 *</code>
-	 * <dl>
-     * <dt><span class="strong">Implementation Note:</span></dt><dd>SI Base Unit</dd>
-     * </dl>
-	 * @see <a href="https://en.wikipedia.org/wiki/Kilogram">Wikipedia: Kilogram</a>
-	 * @see #METRE
-	 * @see #SECOND
-	 */
-	public static final Unit<Mass> KILOGRAM = addUnit(new BaseUnit<Mass>("kg", "Kilogram", UnitDimension.MASS), Mass.class);
-
-	/**
 	 * The hyl, metric slug (mug), or TME (German: technische Masseneinheit, lit. 'technical mass unit'), is the mass that accelerates at 1 m/s2 under a force of 1 kgf.[4] The hyl has also been used as the unit of mass in a metre–gram-force–second (mgfs) system.
 	 */
-	public static final Unit<Mass> HYL = addUnit(KILOGRAM.multiply(9.80665), "Hyl", "hyl");
+	public static final Unit<Mass> HYL = addUnit(KILOGRAM.multiply(9.80665), "Hyl", "hyl", Mass.class);
 	
 	/**
 	 * The TME (German: technische Masseneinheit, lit. 'technical mass unit'), is the mass that accelerates at 1 m/s2 under a force of 1 kgf.[4] The hyl has also been used as the unit of mass in a metre–gram-force–second (mgfs) system.
@@ -160,7 +127,7 @@ public final class MKpS extends AbstractSystemOfUnits {
      * corresponding to the transition between two hyperfine levels of the ground state of cesium (1967 Standard).
      * 
      */
-    public static final Unit<Time> SECOND = addUnit(Units.SECOND);
+    public static final Unit<Time> SECOND = addUnit(Units.SECOND, Time.class);
 
     //////////////
     // Speed    //
@@ -178,7 +145,7 @@ public final class MKpS extends AbstractSystemOfUnits {
      * 
      * <code>1 kp⋅m = gn kg⋅m = 9.806 65 kg⋅m2/s2 = 9.806 65 J</code>
      */
-    public static final Unit<Energy> KILOPOND_METRE = addUnit(JOULE.multiply(9.80665), "Kilopond-metre", "kpm");
+    public static final Unit<Energy> KILOPOND_METRE = addUnit(JOULE.multiply(9.80665), "Kilopond-metre", "kpm", Energy.class);
 
     ///////////
     // Force //
@@ -186,7 +153,7 @@ public final class MKpS extends AbstractSystemOfUnits {
     /**
      * In English contexts the unit of force is usually formed by simply appending the suffix "force" to the name of the unit of mass, thus gram-force (gf) or kilogram-force (kgf), which follows the tradition of pound-force (lbf). In other, international, contexts the special name pond (p) or kilopond (kp) respectively is more frequent.
      */
-    public static final Unit<Force> POND = addUnit(DYNE.multiply(980.665), "Pond", "p");
+    public static final Unit<Force> POND = addUnit(DYNE.multiply(980.665), "Pond", "p", Force.class);
 
     ///////////
     // Power //
@@ -197,8 +164,19 @@ public final class MKpS extends AbstractSystemOfUnits {
      * of piston engines, turbines, electric motors, and other machinery. The definition of the unit varied between geographical regions. Most
      * countries now use the SI unit watt for measurement of power. With the implementation of the EU Directive 80/181/EEC on January 1, 2010, the use
      * of horsepower in the EU is only permitted as supplementary unit.
+     * @see #PONCELET
      */
     public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499), "Horsepower", "HP");
+
+    /**
+     * In 19th-century France there was as a unit of power, the poncelet, which was defined as the power required to raise a mass of 1 quintal (1 q = 100 kg) at a velocity of 1 m/s.<br>
+     * The German or metric horsepower (PS, Pferdestärke) is arbitrarily selected to be three quarters thereof.
+     * <p>
+     * <code>1 pq = 1 qf⋅m/s = 100 kp⋅m/s = 100 × gn kg⋅m/s = 980.665 kg⋅m2/s3 = 0.980 665 kW</code>
+     * 
+     * @see #HORSEPOWER
+     */
+    public static final Unit<Power> PONCELET = addUnit(WATT.multiply(980.665), "Poncelet", "Pq", Power.class);
 
     //////////////
     // Pressure //
@@ -207,7 +185,7 @@ public final class MKpS extends AbstractSystemOfUnits {
      * The gravitational unit of pressure is the technical atmosphere (at). It is the gravitational force of one kilogram, i.e. 1 kgf, exerted on an area of one square centimetre.
      * <code>1 at = 1 kp/cm2 = 10 000 × gn kg/m2 = 98 066.5 kg/(m⋅s2) = 98.066 5 kPa</code>
      */
-    public static final Unit<Pressure> TECHNICAL_ATMOSPHERE = addUnit(KILO(PASCAL).multiply(98.06650), "Technical atmosphere", "at");
+    public static final Unit<Pressure> TECHNICAL_ATMOSPHERE = addUnit(KILO(PASCAL).multiply(98.06650), "Technical atmosphere", "at", Pressure.class);
     
     /**
      * A metre, centimetre or millimetre of water are less commonly used measures of pressure derived from pressure head.
@@ -289,6 +267,23 @@ public final class MKpS extends AbstractSystemOfUnits {
         return addUnit(unit, name, text, true);
     }
     
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @param text
+     *            the string to use as label
+     * @param type the quantity type.
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name, String text, Class<? extends Quantity<?>> type) {
+    	INSTANCE.quantityToUnit.put(type, unit);
+        return addUnit(unit, name, text, true);
+    }
+    
 	/**
 	 * Adds a new unit and maps it to the specified quantity type.
 	 *
@@ -296,7 +291,7 @@ public final class MKpS extends AbstractSystemOfUnits {
 	 * @param type the quantity type.
 	 * @return <code>unit</code>.
 	 */
-	private static <U extends AbstractUnit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
+	private static <U extends Unit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
 		INSTANCE.units.add(unit);
 		INSTANCE.quantityToUnit.put(type, unit);
 		return unit;

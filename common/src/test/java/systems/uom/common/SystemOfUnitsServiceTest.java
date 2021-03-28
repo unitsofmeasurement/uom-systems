@@ -48,12 +48,13 @@ public class SystemOfUnitsServiceTest {
 	private static final String COMMON_SERVICE_CLASSNAME = "systems.uom.common.spi.CommonSystemService";
 	private static final Logger LOGGER = Logger.getLogger(SystemOfUnitsServiceTest.class.getName());
 	private static final Level LOGLEVEL = Level.INFO;
-	
-	private static final int NUM_OF_UNITS_DEFAULT = 45;
+		
 	private static final int NUM_OF_UNITS_US = 45;
+	private static final int NUM_OF_UNITS_IMPER = 24;
 	private static final int NUM_OF_UNITS_CGS = 12;
 	private static final int NUM_OF_UNITS_MKPS = 12;
-
+	private static final int NUM_OF_UNITS_DEFAULT = NUM_OF_UNITS_US;
+	
 	private static SystemOfUnitsService defaultService;
 
 	@BeforeAll
@@ -104,6 +105,15 @@ public class SystemOfUnitsServiceTest {
 		assertEquals(NUM_OF_UNITS_US, system.getUnits().size());
 		SystemOfUnits system2 = commonService.getSystemOfUnits("US");
 		assertEquals(system, system2);
+		
+		system = commonService.getSystemOfUnits("Imperial");
+		assertNotNull(system);
+		assertEquals("systems.uom.common.Imperial", system.getClass().getName());
+		assertEquals("Imperial Units", system.getName());
+		assertNotNull(system.getUnits());
+		assertEquals(NUM_OF_UNITS_IMPER, system.getUnits().size());
+		system2 = commonService.getSystemOfUnits("UK");
+		assertEquals(system, system2);
 
 		system = commonService.getSystemOfUnits("CGS");
 		assertNotNull(system);
@@ -115,9 +125,12 @@ public class SystemOfUnitsServiceTest {
 		system = commonService.getSystemOfUnits("MKpS");
 		assertNotNull(system);
 		assertEquals("Gravitational metric system", system.getName());
+		assertEquals(NUM_OF_UNITS_MKPS, system.getUnits().size());		
 		system2 = commonService.getSystemOfUnits("Gravitational metric system");
 		assertEquals(system, system2);
-		assertEquals(NUM_OF_UNITS_MKPS, system.getUnits().size());
+		SystemOfUnits system3 = commonService.getSystemOfUnits("MKfS");
+		assertEquals(system, system3);
+		assertEquals(system2, system3);
 	}
 
 	@Test
@@ -133,37 +146,4 @@ public class SystemOfUnitsServiceTest {
 		// checkService(service);
 		// }
 	}
-	/*
-	 * private void checkService(SystemOfUnitsService service) { SystemOfUnits
-	 * system; switch (service.getClass().getName()) { case
-	 * "systems.uom.iso80k.internal.ISO80kSystemService":
-	 * assertEquals("systems.uom.iso80k.internal.ISO80kSystemService",
-	 * service.getClass().getName());
-	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
-	 * service.getAvailableSystemsOfUnits().size()); system =
-	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("ISO80000",
-	 * system.getName()); system = service.getSystemOfUnits("ISO80000");
-	 * assertNotNull(system); assertEquals("ISO80000", system.getName()); break;
-	 * case "systems.uom.common.internal.CommonSystemService":
-	 * assertEquals("systems.uom.common.internal.CommonSystemService",
-	 * service.getClass().getName());
-	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(2,
-	 * service.getAvailableSystemsOfUnits().size()); system =
-	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("US",
-	 * system.getName()); system = service.getSystemOfUnits("Imperial");
-	 * assertNotNull(system); assertEquals("Imperial", system.getName()); break;
-	 * case "si.uom.impl.SISystemService":
-	 * assertEquals("si.uom.impl.SISystemService", service.getClass() .getName());
-	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
-	 * service.getAvailableSystemsOfUnits().size()); system =
-	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("SI",
-	 * system.getName()); break; case
-	 * "tech.units.indriya.internal.DefaultSystemOfUnitsService":
-	 * assertEquals("tech.units.indriya.internal.DefaultSystemOfUnitsService",
-	 * service.getClass().getName());
-	 * assertNotNull(service.getAvailableSystemsOfUnits()); assertEquals(1,
-	 * service.getAvailableSystemsOfUnits().size()); system =
-	 * service.getSystemOfUnits(); assertNotNull(system); assertEquals("Units",
-	 * system.getName()); break; default: break; } }
-	 */
 }

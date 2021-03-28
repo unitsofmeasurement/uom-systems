@@ -56,22 +56,22 @@ import tech.units.indriya.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.3, $Date: 2021-03-28 $
- * @see <a href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia: Imperial
+ * @version 1.4, $Date: 2021-03-28 $
+ * @see <a href="http://en.wikipedia.org/wiki/Imperial_units">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
  *      "https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems">
  * @since 0.2
  */
 public final class Imperial extends AbstractSystemOfUnits {
-    private static final String SYSTEM_NAME = "Imperial";
+    private static final String SYSTEM_NAME = "Imperial Units";
     
     /**
      * Holds the avoirdupois pound: 0.45359237 kg exact
      */
-    static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
+    private static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
 
-    static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
+    private static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
     
     /**
      * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
@@ -79,6 +79,8 @@ public final class Imperial extends AbstractSystemOfUnits {
     private static final int STANDARD_GRAVITY_DIVIDEND = 980665;
 
     private static final int STANDARD_GRAVITY_DIVISOR = 100000;
+
+    private static final Imperial INSTANCE = new Imperial();
 
     /**
      * Default constructor (prevents this class from being instantiated).
@@ -92,11 +94,9 @@ public final class Imperial extends AbstractSystemOfUnits {
      * @return the Imperial instance.
      */
     public static SystemOfUnits getInstance() {
-	return INSTANCE;
+    	return INSTANCE;
     }
-
-    private static final Imperial INSTANCE = new Imperial();
-
+ 
     ////////////
     // Length //
     ////////////
@@ -268,7 +268,6 @@ public final class Imperial extends AbstractSystemOfUnits {
      */
     static final Unit<Force> KILOGRAM_FORCE = addUnit(
 	    NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
-
     
     /**
      * Adds a new unit not mapped to any specified quantity type.
