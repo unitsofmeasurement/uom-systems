@@ -52,7 +52,7 @@ public class SystemOfUnitsServiceTest {
 	private static final int NUM_OF_UNITS_DEFAULT = 45;
 	private static final int NUM_OF_UNITS_US = 45;
 	private static final int NUM_OF_UNITS_CGS = 12;
-	private static final int NUM_OF_UNITS_MKPS = 10;
+	private static final int NUM_OF_UNITS_MKPS = 12;
 
 	private static SystemOfUnitsService defaultService;
 

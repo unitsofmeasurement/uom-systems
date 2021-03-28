@@ -48,6 +48,7 @@ import javax.measure.quantity.Pressure;
 import javax.measure.quantity.Speed;
 import javax.measure.quantity.Time;
 
+import si.uom.quantity.Impulse;
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
@@ -211,7 +212,27 @@ public final class MKpS extends AbstractSystemOfUnits {
      * <code>1 at = 1 kp/cm2 = 10 000 × gn kg/m2 = 98 066.5 kg/(m⋅s2) = 98.066 5 kPa</code>
      */
     public static final Unit<Pressure> TECHNICAL_ATMOSPHERE = addUnit(KILO(PASCAL).multiply(98.06650), "Technical atmosphere", "at");
+    
+    /**
+     * A metre, centimetre or millimetre of water are less commonly used measures of pressure derived from pressure head.
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water">Wikipedia: Centimetre or millimetre of water</a>
+     */
+    public static final Unit<Pressure> METER_OF_WATER_COLUMN = addUnit(KILO(PASCAL).multiply(980665).divide(100000));
 
+    /////////////
+    // Impulse //
+    /////////////
+	/**
+     * The kilopond-second unit of impulse.<br>
+	 * 
+	 * <code>1 kps = 1 kp·s = 9,806 65 kg·m/s</code>
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Impulse_(physics)">Wikipedia: Impulse (physics)</a>
+	 */
+	public static final Unit<Impulse> KILOPOND_SECOND = addUnit(
+			new ProductUnit<Impulse>(KILO(POND).multiply(SECOND)), Impulse.class);
+    
     /////////////////////
     // Collection View //
     /////////////////////
