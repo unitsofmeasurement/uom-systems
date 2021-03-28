@@ -36,8 +36,6 @@ import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.NEWTON;
 import static tech.units.indriya.unit.Units.PASCAL;
 
-import java.util.Objects;
-
 import javax.measure.Unit;
 import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Energy;
@@ -69,7 +67,7 @@ import tech.units.indriya.unit.Units;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.1, $Date: 2021-03-24$
+ * @version 1.2, $Date: 2021-03-28$
  * @see <a href= "https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">Wikipedia: Centimetre–gram–second system of
  *      units</a>
  * @since 0.6
@@ -84,6 +82,8 @@ public final class CGS extends AbstractSystemOfUnits {
 
     static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
 
+    private static final CGS INSTANCE = new CGS();
+    
     /**
      * Default constructor (prevents this class from being instantiated).
      */
@@ -99,12 +99,9 @@ public final class CGS extends AbstractSystemOfUnits {
         return INSTANCE;
     }
 
-    private static final CGS INSTANCE = new CGS();
-
     ////////////
     // Length //
     ////////////
-
     /**
      * A unit of length equal to <code>1/100 of metre</code> (standard name <code>cm</code>).
      */
@@ -129,7 +126,7 @@ public final class CGS extends AbstractSystemOfUnits {
     public static final Unit<Time> SECOND = addUnit(Units.SECOND);
 
     //////////////
-    // Velocity //
+    // Speed    //
     //////////////
     /**
      * A unit of velocity (cgs unit, standard name <code>cm/s</code>.
@@ -139,7 +136,6 @@ public final class CGS extends AbstractSystemOfUnits {
     //////////////////
     // Acceleration //
     //////////////////
-
     /**
      * A unit of acceleration (cgs unit, standard name <code>Gal</code>).
      * 
@@ -167,7 +163,6 @@ public final class CGS extends AbstractSystemOfUnits {
     ///////////
     // Power //
     ///////////
-
     /**
      * A unit of power (cgs unit, standard name <code>erg/s</code>).
      */
@@ -176,7 +171,6 @@ public final class CGS extends AbstractSystemOfUnits {
     //////////////
     // Pressure //
     //////////////
-
     /**
      * The barye (symbol: <code>Ba</code>), or sometimes barad, barrie, bary, baryd, baryed, or barie, is the centimetre–gram–second (CGS) unit of
      * pressure. It is equal to 1 dyne per square centimetre.
@@ -188,7 +182,6 @@ public final class CGS extends AbstractSystemOfUnits {
     ///////////////
     // Viscosity //
     ///////////////
-
     /**
      * A unit of dynamic viscosity equal to <code>1 g/(cmÂ·s)</code> (cgs unit standard name <code>P</code>.
      * 
@@ -206,7 +199,6 @@ public final class CGS extends AbstractSystemOfUnits {
     ////////////////
     // Wavenumber //
     ////////////////
-
     /**
      * A unit of wavenumber equal to <code>1/cm</code> (cgs unit, standard name <code>cm&#8315;&#185;</code>).
      */
@@ -219,15 +211,6 @@ public final class CGS extends AbstractSystemOfUnits {
 
     public String getName() {
         return SYSTEM_NAME;
-    }
-
-    @Override
-    public Unit<?> getUnit(String string) {
-        Objects.requireNonNull(string);
-        return this.getUnits().stream()
-                  .filter((u) -> string.equals(u.toString()))
-                  .findAny()
-                  .orElse(null);
     }
 
     /**

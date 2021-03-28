@@ -35,8 +35,6 @@ import static tech.units.indriya.unit.Units.PASCAL;
 import static tech.units.indriya.unit.Units.WATT;
 import static systems.uom.common.historic.CGS.DYNE;
 
-import java.util.Objects;
-
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Energy;
@@ -80,6 +78,8 @@ import tech.units.indriya.unit.Units;
 public final class MKpS extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Gravitational metric system";
 
+    private static final MKpS INSTANCE = new MKpS();
+    
     /**
      * Default constructor (prevents this class from being instantiated).
      */
@@ -95,12 +95,10 @@ public final class MKpS extends AbstractSystemOfUnits {
         return INSTANCE;
     }
 
-    private static final MKpS INSTANCE = new MKpS();
 
     ////////////
     // Length //
-    ////////////
-    
+    ////////////    
 	/**
 	 * The metre, symbol m, is the SI unit of length. It is defined by taking the
 	 * fixed numerical value of the speed of light in vacuum c to be 299 792 458
@@ -123,7 +121,6 @@ public final class MKpS extends AbstractSystemOfUnits {
     //////////
     // Mass //
     //////////
-    
 	/**
 	 * The kilogram, symbol kg, is the SI unit of mass. It is defined by taking the
 	 * fixed numerical value of the Planck constant h to be 6.626 070 15 Ã— 10â�»Â³â�´
@@ -168,7 +165,6 @@ public final class MKpS extends AbstractSystemOfUnits {
     //////////////
     // Speed    //
     //////////////
-    
 	/**
 	 * The standard unit for speed quantities (standard name <code>m/s</code>).
 	 */
@@ -239,15 +235,6 @@ public final class MKpS extends AbstractSystemOfUnits {
 
     public String getName() {
         return SYSTEM_NAME;
-    }
-
-    @Override
-    public Unit<?> getUnit(String string) {
-        Objects.requireNonNull(string);
-        return this.getUnits().stream()
-                  .filter((u) -> string.equals(u.toString()))
-                  .findAny()
-                  .orElse(null);
     }
 
     /**
