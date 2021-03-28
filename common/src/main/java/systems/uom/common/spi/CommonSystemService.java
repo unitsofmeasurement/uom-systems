@@ -35,25 +35,31 @@ import java.util.Map;
 
 import javax.measure.spi.SystemOfUnits;
 import systems.uom.common.historic.CGS;
+import systems.uom.common.historic.MKpS;
 import systems.uom.common.Imperial;
 import systems.uom.common.USCustomary;
 import tech.units.indriya.spi.AbstractSystemOfUnitsService;
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 2.0, March 24, 2021
+ * @version 2.1, March 27, 2021
  */
 public class CommonSystemService extends AbstractSystemOfUnitsService {
 	private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
-
+	private static final String CGS_KEY = "CGS";
+	private static final String MKPS_KEY = "MKpS";
+	
 	private final Map<String, String> aliases = new HashMap<>();
 
 	public CommonSystemService() {
 		souMap.put("Imperial", Imperial.getInstance());
 		souMap.put(DEFAULT_SYSTEM_NAME, USCustomary.getInstance());
-		souMap.put("CGS", CGS.getInstance());
+		souMap.put(CGS_KEY, CGS.getInstance());
+		souMap.put(MKPS_KEY, MKpS.getInstance());		
 		aliases.put("US", DEFAULT_SYSTEM_NAME);
-		aliases.put("Centimetre–gram–second", "CGS");
+		aliases.put("Centimetre–gram–second", CGS_KEY);
+		aliases.put("Gravitational metric system", MKPS_KEY);
+		aliases.put("MKfS", MKPS_KEY);
 	}
 
 	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
@@ -62,7 +68,7 @@ public class CommonSystemService extends AbstractSystemOfUnitsService {
 
 	@Override
 	public SystemOfUnits getSystemOfUnits() {
-		return getSystemOfUnits(DEFAULT_SYSTEM_NAME); // We assume US Customary as the more
+		return getSystemOfUnits(DEFAULT_SYSTEM_NAME); // We assume US Customary as the most
 		// common system here
 	}
 

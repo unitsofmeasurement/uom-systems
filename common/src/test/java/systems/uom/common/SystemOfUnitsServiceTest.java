@@ -29,8 +29,8 @@
  */
 package systems.uom.common;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Collection;
 import java.util.logging.Level;
@@ -40,8 +40,8 @@ import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class SystemOfUnitsServiceTest {
 	private static final String DEFAULT_SERVICE_CLASSNAME = "systems.uom.common.spi.CommonSystemService";
@@ -52,10 +52,11 @@ public class SystemOfUnitsServiceTest {
 	private static final int NUM_OF_UNITS_DEFAULT = 45;
 	private static final int NUM_OF_UNITS_US = 45;
 	private static final int NUM_OF_UNITS_CGS = 12;
+	private static final int NUM_OF_UNITS_MKPS = 10;
 
 	private static SystemOfUnitsService defaultService;
 
-	@BeforeClass
+	@BeforeAll
 	public static void setUp() {
 		defaultService = ServiceProvider.current().getSystemOfUnitsService();
 	}
@@ -110,6 +111,13 @@ public class SystemOfUnitsServiceTest {
 		system2 = commonService.getSystemOfUnits("Centimetre–gram–second");
 		assertEquals(system, system2);
 		assertEquals(NUM_OF_UNITS_CGS, system.getUnits().size());
+		
+		system = commonService.getSystemOfUnits("MKpS");
+		assertNotNull(system);
+		assertEquals("Gravitational metric system", system.getName());
+		system2 = commonService.getSystemOfUnits("Gravitational metric system");
+		assertEquals(system, system2);
+		assertEquals(NUM_OF_UNITS_MKPS, system.getUnits().size());
 	}
 
 	@Test
