@@ -65,7 +65,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 2.0, $Date: 2021-01-20 $
+ * @version 2.1, $Date: 2021-03-28 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -377,7 +377,6 @@ public final class CLDR extends AbstractSystemOfUnits {
      * @stable ICU 53
      */
     public static final Unit<Volume> LITER = new TransformedUnit<Volume>(CUBIC_METRE, MultiplyConverter.ofRational(1, 1000));
-    // private static final Unit<Volume> LITRE = addUnit(Units.LITRE);
 
     /**
      * Constant for unit of volume: cubic-meter (<code>m³</code>).
@@ -831,7 +830,6 @@ public final class CLDR extends AbstractSystemOfUnits {
     ///////////////////
     // Concentration //
     ///////////////////
-
     /**
      * Constant for unit of concentr: milligram-per-deciliter
      * 
@@ -841,9 +839,8 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Concentration<Mass>> MILLIGRAM_PER_DECILITER = addUnit(MILLI(GRAM).divide(DECI(LITER)).asType(Concentration.class));
 
     ///////////////////
-    // Consumption //
+    // Consumption   //
     ///////////////////
-
     /**
      * Constant for unit of consumption: liter-per-100kilometers
      * 
@@ -977,7 +974,7 @@ public final class CLDR extends AbstractSystemOfUnits {
         return addUnit(unit, null, text, isLabel);
     }
 
-    // //////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     // Label adjustments for CLDR system
     static {
         SimpleUnitFormat.getInstance().alias(BYTE, "B");
@@ -987,10 +984,5 @@ public final class CLDR extends AbstractSystemOfUnits {
         SimpleUnitFormat.getInstance().label(BAR, "b");
         SimpleUnitFormat.getInstance().label(PARSEC, "pc");
         SimpleUnitFormat.getInstance().label(SQUARE_FOOT, "sft");
-    }
-
-    public Unit<?> getUnit(String string) {
-        // TODO Auto-generated method stub
-        return null;
     }
 }

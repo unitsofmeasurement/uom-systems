@@ -32,8 +32,6 @@ package systems.uom.common;
 import static javax.measure.MetricPrefix.MICRO;
 import static tech.units.indriya.unit.Units.*;
 
-import java.util.Objects;
-
 import javax.measure.Unit;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Force;
@@ -57,8 +55,8 @@ import tech.units.indriya.unit.ProductUnit;
  * 
  * @noextend This class is not intended to be extended by clients.
  * 
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.2, $Date: 2021-03-26 $
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
+ * @version 1.3, $Date: 2021-03-28 $
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
@@ -99,20 +97,18 @@ public final class Imperial extends AbstractSystemOfUnits {
 
     private static final Imperial INSTANCE = new Imperial();
 
-    // //////////
+    ////////////
     // Length //
-    // //////////
-
+    ////////////
     /**
      * A unit of length equal to <code>0.0254 m</code> (standard name
      * <code>in</code>).
      */
     public static final Unit<Length> INCH = addUnit(USCustomary.INCH, "Inch", "in");
 
-    // ////////
+    //////////
     // Mass //
-    // ////////
-
+    //////////
     /**
      * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
      * standard name <code>lb</code>).
@@ -144,10 +140,9 @@ public final class Imperial extends AbstractSystemOfUnits {
      */
     public static final Unit<Mass> METRIC_TON = addUnit(KILOGRAM.multiply(1000), "t");
 
-    // ///////////////
+    /////////////////
     // Temperature //
-    // ///////////////
-
+    /////////////////
     /**
      * A unit of temperature equal to <code>5/9 °K</code> (standard name
      * <code>°R</code>).
@@ -180,7 +175,6 @@ public final class Imperial extends AbstractSystemOfUnits {
     //////////
     // Area //
     //////////
-
     /**
      * A unit of area (standard name <code>sft</code> ).
      */
@@ -214,12 +208,6 @@ public final class Imperial extends AbstractSystemOfUnits {
     public static final Unit<Volume> GALLON_UK = addUnit(LITRE.multiply(454609).divide(100000), "gal_uk");
 
     /**
-     * A unit of volume equal to one UK gallon, Liquid Unit.
-     */
-    // public static final Unit<Volume> GALLON_LIQUID =
-    // addUnit(CUBIC_INCH.multiply(277.42));
-
-    /**
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
      * (standard name <code>fl_oz_uk</code>).
      */
@@ -230,13 +218,6 @@ public final class Imperial extends AbstractSystemOfUnits {
      * (standard name <code>fl_oz</code>).
      */
     public static final Unit<Volume> FLUID_OUNCE = addUnit(FLUID_OUNCE_UK, "fl_oz", true);
-
-    /**
-     * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
-     * (standard name <code>fl_oz</code>).
-     * @deprecated use FLUID_OUNCE
-     */
-    public static final Unit<Volume> OUNCE_LIQUID = FLUID_OUNCE_UK;
 
     /**
      * A unit of volume equal to <code>5 {@link #FLUID_OUNCE}</code> (standard
@@ -373,21 +354,12 @@ public final class Imperial extends AbstractSystemOfUnits {
         return addUnit(unit, null, text, true);
     }
 
-    // ///////////////////
+    /////////////////////
     // Collection View //
-    // ///////////////////
+    /////////////////////
 
     @Override
     public String getName() {
         return SYSTEM_NAME;
-    }
-    
-    @Override
-    public Unit<?> getUnit(String string) {
-        Objects.requireNonNull(string);
-        return this.getUnits().stream()
-                  .filter((u) -> string.equals(u.toString()))
-                  .findAny()
-                  .orElse(null);
     }
 }

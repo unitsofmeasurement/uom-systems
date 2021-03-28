@@ -32,8 +32,6 @@ package systems.uom.common;
 import static javax.measure.MetricPrefix.MICRO;
 import static tech.units.indriya.unit.Units.*;
 
-import java.util.Objects;
-
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.SimpleUnitFormat;
@@ -64,8 +62,8 @@ import javax.measure.spi.SystemOfUnits;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.29, January 23, 2019
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
+ * @version 2.0, March 28, 2021
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units"> Wikipedia: United State Customary Units</a>
  * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems"> Wikipedia: United State Customary Units</a>
  * @since 0.3
@@ -137,7 +135,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
     //////////
     // Mass //
     //////////
-
     /**
      * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound, standard name <code>lb</code>).
      */
@@ -157,7 +154,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
     /////////////////
     // Temperature //
     /////////////////
-
     /**
      * A unit of temperature equal to <code>5/9 °K</code> (standard name <code>°R</code>).
      */
@@ -173,7 +169,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
     ///////////
     // Angle //
     ///////////
-
     /**
      * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
      * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
@@ -205,9 +200,9 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static final Unit<Angle> GRADE = addUnit(REVOLUTION.divide(400));
 
-    // ////////////
-    // Time //
-    // ////////////
+    //////////////
+    //Time      //
+    //////////////
     /**
      * A unit of time equal to <code>60 s</code> (standard name <code>min</code> ).
      */
@@ -218,9 +213,9 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
 
-    // ////////////
-    // Speed //
-    // ////////////
+    //////////////
+    // Speed    //
+    //////////////
     /**
      * A unit of velocity expressing the number of {@link #FOOT feet} per {@link SI#SECOND second}.
      * 
@@ -229,23 +224,9 @@ public final class USCustomary extends AbstractSystemOfUnits {
     public static final Unit<Speed> FOOT_PER_SECOND = addUnit(FOOT.divide(SECOND).asType(Speed.class));
 
     /**
-     * Alias for {@link FOOT_PER_SECOND}
-     * 
-     * @deprecated use FOOT_PER_SECOND.
-     */
-    public static final Unit<Speed> FEET_PER_SECOND = FOOT_PER_SECOND;
-
-    /**
      * A unit of velocity expressing the number of international {@link #MILE miles} per {@link #HOUR hour} (abbreviation <code>mph</code>).
      */
     public static final Unit<Speed> MILE_PER_HOUR = addUnit(MILE.divide(HOUR).asType(Speed.class), "Mile per hour", "mph");
-
-    /**
-     * Alias for {@link MILE_PER_HOUR}
-     * 
-     * @deprecated use MILE_PER_HOUR.
-     */
-    public static final Unit<Speed> MILES_PER_HOUR = MILE_PER_HOUR;
 
     /**
      * A unit of velocity expressing the number of {@link #NAUTICAL_MILE nautical miles} per {@link #HOUR hour} (abbreviation <code>kn</code>).
@@ -255,7 +236,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
     //////////
     // Area //
     //////////
-
     /**
      * A unit of area (standard name <code>sft</code> ).
      */
@@ -282,16 +262,14 @@ public final class USCustomary extends AbstractSystemOfUnits {
     ////////////
     // Energy //
     ////////////
-
     /**
      * A unit of energy equal to one electron-volt (standard name <code>eV</code>, also recognized <code>keV, MeV, GeV</code>).
      */
     public static final Unit<Energy> ELECTRON_VOLT = addUnit(JOULE.multiply(1.602176462e-19), "Electron Volt", "eV");
 
     ////////////
-    // Power //
+    // Power  //
     ////////////
-
     /**
      * Horsepower (HP) is the name of several units of measurement of power. The most common definitions equal between 735.5 and 750 watts. Horsepower
      * was originally defined to compare the output of steam engines with the power of draft horses. The unit was widely adopted to measure the output
@@ -301,9 +279,9 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499), "Horsepower", "HP");
 
-    // //////////
+    ////////////
     // Volume //
-    // //////////
+    ////////////
     /**
      * A unit of volume equal to one cubic decimeter (default label <code>L</code>, also recognized <code>µL, mL, cL, dL</code>).
      */
@@ -388,19 +366,6 @@ public final class USCustomary extends AbstractSystemOfUnits {
     public String getName() {
         return SYSTEM_NAME;
     }
-
-    @Override
-    public Unit<?> getUnit(String string) {
-        Objects.requireNonNull(string);
-        return this.getUnits().stream().filter((u) -> string.equals(u.toString())).findAny().orElse(null);
-    }
-
-    /**
-     * Holds the international foot: 0.3048 m exact.
-     */
-    // private static final int INTERNATIONAL_FOOT_DIVIDEND = 3048;
-
-    // private static final int INTERNATIONAL_FOOT_DIViSOR = 10000;
 
     /**
      * Adds a new unit not mapped to any specified quantity type.
