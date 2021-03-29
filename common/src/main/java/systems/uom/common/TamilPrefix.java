@@ -36,43 +36,42 @@ import javax.measure.Unit;
 /**
  * Utility class holding Tamil-System prefixes used today in parts of India and Sri Lanka;
  * based on grouping by two decimal places, rather than the
- * three decimal places common in most parts of the world.</br><code> import static
- * systems.uom.common.TamilPrefix.*; // Static import. ... Unit<Pressure>
- * ONDRU_PASCAL = ONDRU(PASCAL); 
- * Unit<Length> PATHU_METER = PATHU(METER); </code>
+ * three decimal places common in most parts of the world.<br>
+ * <code>import static systems.uom.common.TamilPrefix.*; // Static import.<br>
+ * {@literal Unit<Pressure>} KOTI_PASCAL = KOTI(PASCAL);<br> 
+ * {@literal Unit<Length>} PATTUK_KOTI_METER = METER.prefix(PATTUK_KOTI);</code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.5, $Date: 2019-06-28 $
+ * @version 1.6, $Date: 2021-03-29 $
  * @see <a
  *      href="https://en.wikipedia.org/wiki/Tamil_numerals#Tamil-System">Wikipedia:
  *      Tamil numerals - Tamil-System</a>
  */
-// FIXME Update
 public enum TamilPrefix implements Prefix {
     /** Prefix for 10<sup>5</sup>. */
-	LATCHAM("L", 10, 5),
+	ILATCAM("௱௲", "ilaṭcam", 10, 5),
     /** Prefix for 10<sup>6</sup>. */
-	PATHU_LATCHAM("PL", 10, 6),
+	PATTU_ILATCAM("௲௲", "pattu ilaṭcam", 10, 6),
     /** Prefix for 10<sup>7</sup>. */
-	KODI("K", 10, 7),
+	KOTI("௰௲௲", "kōṭi", 10, 7),
     /** Prefix for 10<sup>8</sup>. */
-	PATHU_KODI("N", 10, 8),
-    /** Prefix for 10<sup>1</sup>. */
-	aṟputam("Pa", 10, 9),
-    /** Prefix for 10<sup>-1</sup>. */
-	nikarputam("NI", 10, 11),
-    /** Prefix for 10<sup>-2</sup>. */
-	karvam("M", 10, 13),
+	PATTUK_KOTI("௱௲௲", "pattuk kōṭi", 10, 8),
+    /** Prefix for 10<sup>9</sup>. */
+	ARPUTAM("௲௲௲", "aṟputam", 10, 9),
+    /** Prefix for 10<sup>11</sup>. */
+	NIKARPPUTAM("௲௲௲", "nikarpputam", 10, 11),
+    /** Prefix for 10<sup>13</sup>. */
+	KARVAM("௲௲௲௲", "karvam", 10, 13),
     /** Prefix for 10<sup>15</sup>. */
-	saṅkam("M", 10, 15),
+	SANKAM("௲௲௲௲௲", "śaṅkam", 10, 15),
     /** Prefix for 10<sup>17</sup>. */
-	arttam("M", 10, 17),
+	ARTTAM("௲௲௲௲௲௲", "arttam", 10, 17),
     /** Prefix for 10<sup>19</sup>. */
-	pūriyam("M", 10, 19),
+	PURIYAM("௱௲௲௲௲௲௲", "pūriyam", 10, 19),
     /** Prefix for 10<sup>21</sup>. */
-	mukkoți("M", 10, 21),
+	MUKKOTI("௲௲௲௲௲௲௲", "mukkoṭi", 10, 21),
     /** Prefix for 10<sup>25</sup>. */
-	māyukam("M", 10, 25);
+	MAYUKAM("௰௲௲௲௲௲௲௲", "māyukam", 10, 25);
 	
     /**
      * The symbol of this prefix, as returned by {@link #getSymbol}.
@@ -82,6 +81,14 @@ public enum TamilPrefix implements Prefix {
      */
     private final String symbol;
 
+    /**
+     * The name of this prefix, as returned by {@link #getName}.
+     *
+     * @serial
+     * @see #getName()
+     */
+    private final String name;
+    
     /**
      * Base part of the associated factor in base^exponent representation.
      */
@@ -97,11 +104,14 @@ public enum TamilPrefix implements Prefix {
      *
      * @param symbol
      *          the symbol of this prefix.
+     * @param name
+     *          the (display) name of this prefix.          
      * @param exponent
      *          part of the associated factor in base^exponent representation.
      */
-    private TamilPrefix(String symbol, int base, int exponent) {
+    private TamilPrefix(String symbol, String name, int base, int exponent) {
         this.symbol = symbol;
+        this.name= name;
         this.base = base;
         this.exponent = exponent;
     }
@@ -129,7 +139,7 @@ public enum TamilPrefix implements Prefix {
      */
     @Override
     public String getName() {
-        return name();
+        return name;
     }
     
     /**
@@ -144,7 +154,7 @@ public enum TamilPrefix implements Prefix {
 
 	/**
 	 * <p>
-	 * ௱௲ (lațcham)
+	 * ௱௲ (ilaṭcam)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>5</sup></code>
@@ -153,13 +163,13 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e5)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> latcham(Unit<Q> unit) {
-		return unit.prefix(LATCHAM);
+	public static final <Q extends Quantity<Q>> Unit<Q> ILATCAM(Unit<Q> unit) {
+		return unit.prefix(ILATCAM);
 	}
 	
 	/**
 	 * <p>
-	 * ௲௲ (pathu lațcham)
+	 * ௲௲ (pattu ilaṭcam)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>6</sup></code>
@@ -168,13 +178,13 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e6)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> pathuLatcham(Unit<Q> unit) {
-		return unit.prefix(PATHU_LATCHAM);
+	public static final <Q extends Quantity<Q>> Unit<Q> PATTU_ILATCAM(Unit<Q> unit) {
+		return unit.prefix(PATTU_ILATCAM);
 	}
 
 	/**
 	 * <p>
-	 * ௰௲௲ (kōdi)
+	 * ௰௲௲, (kōṭi)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>7</sup></code>
@@ -183,8 +193,8 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e7)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> kodi(Unit<Q> unit) {
-		return unit.prefix(KODI);
+	public static final <Q extends Quantity<Q>> Unit<Q> KOTI(Unit<Q> unit) {
+		return unit.prefix(KOTI);
 	}
 
 	/**
@@ -198,13 +208,43 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e8)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> pathuKodi(Unit<Q> unit) {
-		return unit.prefix(PATHU_KODI);
+	public static final <Q extends Quantity<Q>> Unit<Q> PATTUK_KOTI(Unit<Q> unit) {
+		return unit.prefix(PATTUK_KOTI);
 	}
 
 	/**
 	 * <p>
-	 * नील (Neel)
+	 * ௲௲௲ (aṟputam)
+	 * </p>
+	 * Returns the specified unit multiplied by the factor
+	 * <code>10<sup>9</sup></code>
+	 * 
+	 * @param unit
+	 *            any unit.
+	 * @return <code>unit.times(1e9)</code>.
+	 */
+	public static final <Q extends Quantity<Q>> Unit<Q> ARPUTAM(Unit<Q> unit) {
+		return unit.prefix(ARPUTAM);
+	}
+
+	/**
+	 * <p>
+	 * ௲௲௲ (nikarpputam)
+	 * </p>
+	 * Returns the specified unit multiplied by the factor
+	 * <code>10<sup>11</sup></code>
+	 * 
+	 * @param unit
+	 *            any unit.
+	 * @return <code>unit.times(1e11)</code>.
+	 */
+	public static final <Q extends Quantity<Q>> Unit<Q> NIKARPPUTAM(Unit<Q> unit) {
+		return unit.prefix(NIKARPPUTAM);
+	}
+
+	/**
+	 * <p>
+	 * ௲௲௲௲ (karvam)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>13</sup></code>
@@ -213,13 +253,13 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e13)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> NEEL(Unit<Q> unit) {
-		return unit.prefix(LATCHAM);
+	public static final <Q extends Quantity<Q>> Unit<Q> KARVAM(Unit<Q> unit) {
+		return unit.prefix(KARVAM);
 	}
 
 	/**
 	 * <p>
-	 * पद्म (Padma)
+	 * ௲௲௲௲௲ (śaṅkam)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>15</sup></code>
@@ -228,13 +268,28 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e15)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> PADMA(Unit<Q> unit) {
-		return unit.prefix(LATCHAM);
-	}
-
+	public static final <Q extends Quantity<Q>> Unit<Q> SANKAM(Unit<Q> unit) {
+		return unit.prefix(SANKAM);
+	}	
+	
 	/**
 	 * <p>
-	 * ஆம்பல் (pūriyam)
+	 * ௲௲௲௲௲௲ (arttam)
+	 * </p>
+	 * Returns the specified unit multiplied by the factor
+	 * <code>10<sup>17</sup></code>
+	 * 
+	 * @param unit
+	 *            any unit.
+	 * @return <code>unit.times(1e17)</code>.
+	 */
+	public static final <Q extends Quantity<Q>> Unit<Q> ARTTAM(Unit<Q> unit) {
+		return unit.prefix(ARTTAM);
+	}
+	
+	/**
+	 * <p>
+	 * ௱௲௲௲௲௲௲ (pūriyam)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
 	 * <code>10<sup>19</sup></code>
@@ -243,22 +298,37 @@ public enum TamilPrefix implements Prefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e19)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> pūriyam(Unit<Q> unit) {
-		return unit.prefix(pūriyam);
+	public static final <Q extends Quantity<Q>> Unit<Q> PURIYAM(Unit<Q> unit) {
+		return unit.prefix(PURIYAM);
 	}
-
+	
 	/**
 	 * <p>
-	 * महाशंख (Mahashankh)
+	 * ௲௲௲௲௲௲௲ (mukkoṭi)
 	 * </p>
 	 * Returns the specified unit multiplied by the factor
-	 * <code>10<sup>19</sup></code>
+	 * <code>10<sup>21</sup></code>
 	 * 
 	 * @param unit
 	 *            any unit.
-	 * @return <code>unit.times(1e19)</code>.
+	 * @return <code>unit.times(1e21)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<Q> MAHASHANKH(Unit<Q> unit) {
-		return unit.prefix(LATCHAM);
+	public static final <Q extends Quantity<Q>> Unit<Q> MUKKOTI(Unit<Q> unit) {
+		return unit.prefix(MUKKOTI);
+	}
+	
+	/**
+	 * <p>
+	 * ௰௲௲௲௲௲௲௲ (māyukam)
+	 * </p>
+	 * Returns the specified unit multiplied by the factor
+	 * <code>10<sup>25</sup></code>
+	 * 
+	 * @param unit
+	 *            any unit.
+	 * @return <code>unit.times(1e25)</code>.
+	 */
+	public static final <Q extends Quantity<Q>> Unit<Q> MAYUKAM(Unit<Q> unit) {
+		return unit.prefix(MAYUKAM);
 	}
 }

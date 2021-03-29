@@ -44,13 +44,22 @@ import systems.uom.quantity.Consumption;
  * Test unit conversions.
  */
 @Disabled("currently fails: https://github.com/unitsofmeasurement/uom-systems/issues/177")
-class FuelConsumptionTest {
+public class FuelConsumptionTest {
 
+//    @Test
+//    public void testLiterPer100KilometersToMilesPerGallon() {
+//        // Just comment that the only value that seems to be working fine is 1 liter per 100 km.
+//        final double literPer100Kilometers = 10;
+//        final double milesPerGallonActual = LITER_PER_100KILOMETERS.getConverterTo(MILE_PER_GALLON).convert(literPer100Kilometers);
+//        final double milesPerGallonExpected = (100 * 3.785411784) / (1.609344 * literPer100Kilometers);
+//        assertEquals(milesPerGallonExpected, milesPerGallonActual, 0.001);
+//    }
+    
     @Test
-    public void testLiterPer100KilometersToMilesPerGallon() {
+    public void testLiterPerilometerToMilesPerGallon() {
         // Just comment that the only value that seems to be working fine is 1 liter per 100 km.
         final double literPer100Kilometers = 10;
-        final double milesPerGallonActual = LITER_PER_100KILOMETERS.getConverterTo(MILE_PER_GALLON).convert(literPer100Kilometers);
+        final double milesPerGallonActual = LITER_PER_KILOMETER.getConverterTo(MILE_PER_GALLON).convert(literPer100Kilometers);
         final double milesPerGallonExpected = (100 * 3.785411784) / (1.609344 * literPer100Kilometers);
         assertEquals(milesPerGallonExpected, milesPerGallonActual, 0.001);
     }

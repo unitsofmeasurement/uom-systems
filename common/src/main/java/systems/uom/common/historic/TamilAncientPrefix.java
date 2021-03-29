@@ -32,45 +32,43 @@ package systems.uom.common.historic;
 import javax.measure.Prefix;
 
 /**
- * Utility class holding  traditional numbers of the Ancient Tamil Country, Tamizhakam.
- * Unit<Length> PATU_METER = METER.prefix(PATU); </code>
+ * Utility class holding  traditional numbers of the Ancient Tamil Country, Tamizhakam.<br>
+ * <code>{@literal Unit<Length>} NURU_METER = METER.prefix(NURU); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.0, $Date: 2019-06-28 $
+ * @version 1.1, $Date: 2021-03-29 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
- *      Tamil units of measurement - Sanskritized version</a>
- * @draft 2.0
+ *      Tamil units of measurement - Whole numbers</a> 
+ * @draft 3
  */
-// FIXME Update
 public enum TamilAncientPrefix implements Prefix {
     /** <p>
 	 * ௰ (pathu)
-	 * </p> Prefix for 10<sup>21</sup>. */
-	PATU("P", 10, 1),
-    /** Prefix for 10<sup>18</sup>. */
-	nūru("S", 10, 2),
-    /** Prefix for 10<sup>15</sup>. */
-	āyiram("SA", 10, 3),
-    /** Prefix for 10<sup>12</sup>. */
-	pattāyiram("Lk", 10, 4),
-    /** Prefix for 10<sup>9</sup>. */
-	nūraiyiram("Cr", 10, 5),
-    /** Prefix for 10<sup>6</sup>. */
-	meiyyiram("A", 10, 6),
-    /** Prefix for 10<sup>3</sup>. */
-	tollun("K", 10, 9),
+	 * </p> Prefix for 10<sup>1</sup>. */
+	PATHU("௰", "pathu", 10, 1),
     /** Prefix for 10<sup>2</sup>. */
-	īkiyam("N", 10, 12),
+	NURU("௱", "nūru", 10, 2),
+    /** Prefix for 10<sup>15</sup>. */
+	AYIRAM("௲", "āyiram", 10, 3),
+    /** Prefix for 10<sup>4</sup>. */
+	PATTAYIRAM("௰௲", "pattāyiram", 10, 4),
+    /** Prefix for 10<sup>9</sup>. */
+	NURAIYIRAM("௱௲", "nūraiyiram", 10, 5),
+    /** Prefix for 10<sup>6</sup>. */
+	MEIYYIRAM("௲௲", "meiyyiram", 10, 6),
+    /** Prefix for 10<sup>9</sup>. */
+	TOLLUN("௲௲௲", "tollun", 10, 9),
+    /** Prefix for 10<sup>12</sup>. */
+	IKIYAM("௲௲௲௲", "īkiyam", 10, 12),
     /** Prefix for 10<sup>1</sup>. */
-	neļai("Pa", 10, 15),
-    /** Prefix for 10<sup>-1</sup>. */
-	iļañci("SH", 10, 18),
-    /** Prefix for 10<sup>-2</sup>. */
-	veļļam("M", 10, 20),
-    /** Prefix for 10<sup>-2</sup>. */
-	āmpal("M", 10, 21);
-	
+	NELAI("௲௲௲௲௲", "neļai", 10, 15),
+    /** Prefix for 10<sup>18</sup>. */
+	ILANCI("௲௲௲௲௲௲", "iļañci", 10, 18),
+    /** Prefix for 10<sup>20</sup>. */
+	VELLAM("௱௲௲௲௲௲௲", "veļļam", 10, 20),
+    /** Prefix for 10<sup>21</sup>. */
+	AMPAL("௲௲௲௲௲௲௲", "āmpal", 10, 21);	
 	
     /**
      * The symbol of this prefix, as returned by {@link #getSymbol}.
@@ -79,6 +77,14 @@ public enum TamilAncientPrefix implements Prefix {
      * @see #getSymbol()
      */
     private final String symbol;
+    
+    /**
+     * The name of this prefix, as returned by {@link #getName}.
+     *
+     * @serial
+     * @see #getName()
+     */
+    private final String name;
 
     /**
      * Base part of the associated factor in base^exponent representation.
@@ -95,11 +101,14 @@ public enum TamilAncientPrefix implements Prefix {
      *
      * @param symbol
      *          the symbol of this prefix.
+     * @param name
+     *          the (display) name of this prefix.
      * @param exponent
      *          part of the associated factor in base^exponent representation.
      */
-    private TamilAncientPrefix(String symbol, int base, int exponent) {
+    private TamilAncientPrefix(String symbol, String name, int base, int exponent) {
         this.symbol = symbol;
+        this.name = name;
         this.base = base;
         this.exponent = exponent;
     }
@@ -128,7 +137,7 @@ public enum TamilAncientPrefix implements Prefix {
      */
     @Override
     public String getName() {
-        return name();
+        return name;
     }
     
     /**

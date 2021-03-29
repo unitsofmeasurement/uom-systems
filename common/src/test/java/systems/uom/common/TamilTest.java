@@ -30,8 +30,8 @@
 package systems.uom.common;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static systems.uom.common.IndianPrefix.CRORE;
-import static systems.uom.common.IndianPrefix.LAKH;
+import static systems.uom.common.TamilPrefix.ARPUTAM;
+import static systems.uom.common.TamilPrefix.MUKKOTI;
 import static javax.measure.MetricPrefix.KILO;
 import static tech.units.indriya.unit.Units.METRE;
 
@@ -39,28 +39,28 @@ import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.function.MultiplyConverter;
 
-public class IndianTest {
+public class TamilTest {	
 	@Test
-	public void testLakhMethod() {
-		assertEquals(MultiplyConverter.ofTenExponent(2), 
-			LAKH(METRE).getConverterTo(KILO(METRE)));
+	public void testAṟputamMethod() {
+		assertEquals(MultiplyConverter.ofTenExponent(6), 
+			ARPUTAM(METRE).getConverterTo(KILO(METRE)));
 	}
 	
 	@Test
-	public void testLakhPrefix() {
-		assertEquals(MultiplyConverter.ofTenExponent(2), 
-			METRE.prefix(LAKH).getConverterTo(KILO(METRE)));
+	public void testAṟputamPrefix() {
+		assertEquals(MultiplyConverter.ofTenExponent(6), 
+			METRE.prefix(ARPUTAM).getConverterTo(KILO(METRE)));
 	}
 	
 	@Test
-	public void testCroreMethod() {
-		assertEquals(MultiplyConverter.ofTenExponent(4), 
-			CRORE(METRE).getConverterTo(KILO(METRE)));
+	public void testMukkoṭiMethod() {
+		assertEquals(MultiplyConverter.ofTenExponent(18), 
+			MUKKOTI(METRE).getConverterTo(KILO(METRE)));
 	}
 	
 	@Test
-	public void testCrorePrefix() {
-		assertEquals(MultiplyConverter.ofTenExponent(4), 
-			METRE.prefix(CRORE).getConverterTo(KILO(METRE)));
+	public void testMukkoṭiPrefix() {
+		assertEquals(MultiplyConverter.ofTenExponent(18), 
+			METRE.prefix(MUKKOTI).getConverterTo(KILO(METRE)));
 	}
 }

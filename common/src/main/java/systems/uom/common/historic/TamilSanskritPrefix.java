@@ -36,11 +36,11 @@ import javax.measure.Prefix;
  * Unit<Length> PATHU_METER = PATHU(METER); </code>
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.0, $Date: 2019-06-28 $
+ * @version 1.1, $Date: 2021-03-29 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
- *      Tamil units of measurement - Whole numbers</a>
- * @draft 2.0
+ *      Tamil units of measurement - Sanskritized version</a> *      
+ * @draft 2.1
  */
 // FIXME Update
 public enum TamilSanskritPrefix implements Prefix {

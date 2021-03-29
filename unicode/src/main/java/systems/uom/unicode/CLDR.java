@@ -857,7 +857,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * @stable ICU 54
      */
     @SuppressWarnings("unchecked")
-    public static final Unit<Consumption<Volume>> LITER_PER_KILOMETER = addUnit(KILOMETER.divide(LITER).asType(Consumption.class));
+    public static final Unit<Consumption<Volume>> LITER_PER_KILOMETER = addUnit(LITER.divide(KILOMETER).asType(Consumption.class));
 
     /**
      * Constant for unit of consumption: mile-per-gallon
@@ -865,7 +865,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * @stable ICU 54
      */
     @SuppressWarnings("unchecked")
-    public static final Unit<Consumption<Volume>> MILE_PER_GALLON = addUnit(MILE.divide(GALLON).asType(Consumption.class));
+    public static final Unit<Consumption<Volume>> MILE_PER_GALLON = addUnit(GALLON.divide(MILE).asType(Consumption.class));
 
     /////////////////////
     // Collection View //
