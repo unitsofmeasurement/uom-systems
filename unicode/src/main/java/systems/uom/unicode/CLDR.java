@@ -65,7 +65,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 2.1, $Date: 2021-03-28 $
+ * @version 2.2, $Date: 2021-03-29 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -773,8 +773,6 @@ public final class CLDR extends AbstractSystemOfUnits {
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Energy> CALORIE = addUnit(CALORIE_THERMOCHEMICAL);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    // private static final Unit<Energy> CALORIE_FOOD =
-    // addUnit(KILO(CALORIE_THERMOCHEMICAL));
 
     /**
      * Constant for unit of power: horsepower

@@ -49,7 +49,7 @@ public class SystemOfUnitsServiceTest {
 	private static final Logger LOGGER = Logger.getLogger(SystemOfUnitsServiceTest.class.getName());
 	private static final Level LOGLEVEL = Level.INFO;
 		
-	private static final int NUM_OF_UNITS_US = 45;
+	private static final int NUM_OF_UNITS_US = 46;
 	private static final int NUM_OF_UNITS_IMPER = 24;
 	private static final int NUM_OF_UNITS_CGS = 12;
 	private static final int NUM_OF_UNITS_MKPS = 12;

@@ -32,6 +32,8 @@ package systems.uom.common;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static systems.uom.common.USCustomary.POUND; 
+import static systems.uom.common.USCustomary.HORSEPOWER;
+import static systems.uom.common.USCustomary.ELECTRICAL_HORSEPOWER;
 import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.GRAM;
 import static tech.units.indriya.unit.Units.KILOGRAM;
@@ -40,8 +42,18 @@ import org.junit.jupiter.api.Test;
 
 public class USTest {
 	@Test
-	public void testFormat() {	
+	public void testFormatPound() {	
 		assertEquals("lb", POUND.toString());
+	}
+	
+	@Test
+	public void testFormatHorsepower() {	
+		assertEquals("hp", HORSEPOWER.toString());
+	}
+	
+	@Test
+	public void testFormatElectricalHorsepower() {	
+		assertEquals("hp(E)", ELECTRICAL_HORSEPOWER.toString());
 	}
 	
 	@Test

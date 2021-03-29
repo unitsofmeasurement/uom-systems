@@ -63,7 +63,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 2.0, March 28, 2021
+ * @version 2.1, March 29, 2021
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units"> Wikipedia: United State Customary Units</a>
  * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems"> Wikipedia: United State Customary Units</a>
  * @since 0.3
@@ -271,14 +271,20 @@ public final class USCustomary extends AbstractSystemOfUnits {
     // Power  //
     ////////////
     /**
-     * Horsepower (HP) is the name of several units of measurement of power. The most common definitions equal between 735.5 and 750 watts. Horsepower
+     * Horsepower (hp) is the name of several units of measurement of power. The most common definitions equal between 735.5 and 750 watts. Horsepower
      * was originally defined to compare the output of steam engines with the power of draft horses. The unit was widely adopted to measure the output
      * of piston engines, turbines, electric motors, and other machinery. The definition of the unit varied between geographical regions. Most
      * countries now use the SI unit watt for measurement of power. With the implementation of the EU Directive 80/181/EEC on January 1, 2010, the use
      * of horsepower in the EU is only permitted as supplementary unit.
      */
-    public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499), "Horsepower", "HP");
+    public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(745.69987158227), "Horsepower", "hp");
 
+    /**
+     * Nameplates on electrical motors show their power output, not the power input (the power delivered at the shaft, not the power consumed to drive the motor). <br>
+     * This power output is ordinarily stated in watts or kilowatts. In the United States, the power output is stated in horsepower, which for this purpose is defined as exactly 746 W.
+     */
+    public static final Unit<Power> ELECTRICAL_HORSEPOWER = addUnit(WATT.multiply(746), "Horsepower (Electrical)", "hp(E)");
+    
     ////////////
     // Volume //
     ////////////
