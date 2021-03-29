@@ -28,21 +28,18 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 /**
- * This package provides SPI implementations in conformity with the
+ * This package provides <b>historic</b> Units of Measurement systems and prefixes implementing the
  * <a href="http://unitsofmeasurement.github.io/">Units of Measurement API</a>.
  *
- * <h3> Common / Non Standard Units</h3>
+ * <h3> Historic Non Standard Units</h3>
  * <ul>
- *    <li> The class {@link USCustomary} contains units 
- *      as defined in the <a href="http://en.wikipedia.org/wiki/United_States_customary_units">
- *      "United States customary system"</a>.</li>
  *    <li> The class {@link CGS} contains other common units defined in the pre SI <a href="https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">
  *      "Centimetre–gram–second" system</a>.</li>
+ *    <li> The class {@link MKpS} contains other common units defined in the pre SI <a href="https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">
+ *      "Gravitational metric" system</a>.</li>      
  * </ul>
  *
- *
- * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 0.3
+ * @version 0.1
  */
-package systems.uom.common;
+package systems.uom.common.historic;
