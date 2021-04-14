@@ -31,10 +31,12 @@ package systems.uom.common;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static systems.uom.common.USCustomary.METER;
 import static systems.uom.common.USCustomary.POUND; 
 import static systems.uom.common.USCustomary.HORSEPOWER;
 import static systems.uom.common.USCustomary.ELECTRICAL_HORSEPOWER;
 import static javax.measure.MetricPrefix.*;
+import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.GRAM;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 
@@ -54,6 +56,12 @@ public class USTest {
 	@Test
 	public void testFormatElectricalHorsepower() {	
 		assertEquals("hp(E)", ELECTRICAL_HORSEPOWER.toString());
+	}
+	
+	
+	@Test
+	public void testMetreMeter() {	
+		assertEquals(METRE, METER);
 	}
 	
 	@Test
