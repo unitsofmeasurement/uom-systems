@@ -34,7 +34,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static systems.uom.ucum.UCUM.*;
 
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,7 +49,7 @@ import tech.units.indriya.quantity.Quantities;
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.1
+ * @version 1.2
  */
 public class UCUMTest {
 	protected static final Level LOG_LEVEL = Level.FINEST;
@@ -100,4 +99,9 @@ public class UCUMTest {
     	Unit<Mass> atomicMassUnit = ATOMIC_MASS_UNIT;
     	logger.log(LOG_LEVEL, atomicMassUnit.getSymbol());
     }
+    
+	@Test
+	public void testToString() {		
+		assertEquals("(kPa*1333220)/10000·(cm*254)/100/m", INCH_OF_MERCURY_COLUMN.toString());
+	}
 }

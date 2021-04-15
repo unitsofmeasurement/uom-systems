@@ -251,7 +251,8 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @stable ICU 53
      */
-    public static final Unit<Pressure> INCH_HG = addUnit(new ProductUnit<Pressure>(METER_OF_MERCURY_COLUMN.multiply(INCH).divide(METER)));
+    public static final Unit<Pressure> INCH_HG = addUnit(new ProductUnit<Pressure>(METER_OF_MERCURY_COLUMN.multiply(INCH).divide(METER)), 
+    		"Inch of Mercury", "in-hg");
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Energy> JOULE = addUnit(Units.JOULE);

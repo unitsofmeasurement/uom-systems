@@ -52,6 +52,7 @@ public class CLDRTest {
 	public void testFormat() {	
 		assertEquals("kg", KILOGRAM.toString());
 		assertEquals("ct", CARAT.toString());
+		assertEquals("in-hg", INCH_HG.toString());
 	}
 	
 	@Test
