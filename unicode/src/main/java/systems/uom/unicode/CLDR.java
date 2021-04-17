@@ -63,9 +63,9 @@ import javax.measure.quantity.*;
  * 
  * @noextend This class is not intended to be extended by clients.
  *
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 2.2, $Date: 2021-03-29 $
+ * @version 2.3, $Date: 2021-04-17 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -166,7 +166,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @stable ICU 53.
      */
-    public static final Unit<Length> FATHOM = addUnit(FOOT.multiply(6));
+    public static final Unit<Length> FATHOM = addUnit(FOOT.multiply(6), "Fathom", "fm");
 
     /**
      * Constant for unit of length: mile-scandinavian
@@ -621,7 +621,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @stable ICU 54
      */
-    public static final Unit<Mass> STONE = addUnit(POUND.multiply(14));
+    public static final Unit<Mass> STONE = addUnit(POUND.multiply(14), "Stone", "st");
 
     ///////////////////
     // NATURAL UNITS //
@@ -934,14 +934,12 @@ public final class CLDR extends AbstractSystemOfUnits {
      *            the unit being added.
      * @param name
      *            the string to use as name
-     * @param text
-     *            the string to use as label or symbol
-     * @param isLabel
-     *            if the string should be used as a label or not
+     * @param label
+     *            the string to use as label
      * @return <code>unit</code>.
      */
-    private static <U extends Unit<?>> U addUnit(U unit, String name, String text) {
-        return addUnit(unit, name, text, true);
+    private static <U extends Unit<?>> U addUnit(U unit, String name, String label) {
+        return addUnit(unit, name, label, true);
     }
 
     /**

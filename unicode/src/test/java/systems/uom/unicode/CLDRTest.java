@@ -29,14 +29,14 @@
  */
 package systems.uom.unicode;
 
+import static javax.measure.BinaryPrefix.*;
 import static javax.measure.MetricPrefix.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static tech.units.indriya.unit.Units.KILOGRAM;
+import static systems.uom.unicode.CLDR.*;
 
 import java.math.BigDecimal;
-
-import static systems.uom.unicode.CLDR.*;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Speed;
@@ -49,10 +49,13 @@ import tech.units.indriya.unit.Units;
 
 public class CLDRTest {
 	@Test
-	public void testFormat() {	
+	public void testToString() {
 		assertEquals("kg", KILOGRAM.toString());
 		assertEquals("ct", CARAT.toString());
 		assertEquals("in-hg", INCH_HG.toString());
+		assertEquals("dct", DECI(CARAT).toString());
+		assertEquals("st", STONE.toString());
+		assertEquals("Kist", KIBI(STONE).toString());		
 	}
 	
 	@Test

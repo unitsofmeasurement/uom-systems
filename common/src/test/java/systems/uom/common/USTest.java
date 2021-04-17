@@ -35,6 +35,7 @@ import static systems.uom.common.USCustomary.METER;
 import static systems.uom.common.USCustomary.POUND; 
 import static systems.uom.common.USCustomary.HORSEPOWER;
 import static systems.uom.common.USCustomary.ELECTRICAL_HORSEPOWER;
+import static javax.measure.BinaryPrefix.*;
 import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.GRAM;
@@ -44,17 +45,19 @@ import org.junit.jupiter.api.Test;
 
 public class USTest {
 	@Test
-	public void testFormatPound() {	
+	public void testPound() {	
 		assertEquals("lb", POUND.toString());
+		assertEquals("klb", KILO(POUND).toString());
+		assertEquals("Kilb", KIBI(POUND).toString());
 	}
 	
 	@Test
-	public void testFormatHorsepower() {	
+	public void testHorsepower() {	
 		assertEquals("hp", HORSEPOWER.toString());
 	}
 	
 	@Test
-	public void testFormatElectricalHorsepower() {	
+	public void testElectricalHorsepower() {	
 		assertEquals("hp(E)", ELECTRICAL_HORSEPOWER.toString());
 	}
 	

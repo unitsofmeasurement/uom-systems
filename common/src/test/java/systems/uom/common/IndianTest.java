@@ -35,6 +35,9 @@ import static systems.uom.common.IndianPrefix.LAKH;
 import static javax.measure.MetricPrefix.KILO;
 import static tech.units.indriya.unit.Units.METRE;
 
+import javax.measure.Unit;
+import javax.measure.quantity.Length;
+
 import org.junit.jupiter.api.Test;
 
 import tech.units.indriya.function.MultiplyConverter;
@@ -60,7 +63,11 @@ public class IndianTest {
 	
 	@Test
 	public void testCrorePrefix() {
+		final Unit<Length> croreMetre = METRE.prefix(CRORE);
 		assertEquals(MultiplyConverter.ofTenExponent(4), 
-			METRE.prefix(CRORE).getConverterTo(KILO(METRE)));
+			croreMetre.getConverterTo(KILO(METRE)));
+		//assertEquals("crm", croreMetre.toString()); 
+		// FIXME registering new/unknown prefixes with SimpleUnitFormat does not work right now
 	}
+	
 }
