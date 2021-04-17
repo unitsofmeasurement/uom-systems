@@ -34,6 +34,7 @@ import static javax.measure.MetricPrefix.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static tech.units.indriya.unit.Units.KILOGRAM;
+import static tech.units.indriya.unit.Units.METRE;
 import static systems.uom.unicode.CLDR.*;
 
 import java.math.BigDecimal;
@@ -43,6 +44,7 @@ import javax.measure.quantity.Speed;
 
 import org.junit.jupiter.api.Test;
 
+import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.function.RationalNumber;
 import tech.units.indriya.quantity.Quantities;
 import tech.units.indriya.unit.Units;
@@ -71,5 +73,12 @@ public class CLDRTest {
 		Quantity<Speed> kph = Quantities.getQuantity(30, Units.KILOMETRE_PER_HOUR);
 		Quantity<Speed> knots = kph.to(CLDR.KNOT);
 		assertEquals(RationalNumber.of(new BigDecimal("16.19870410367170626349892008639309")), knots.getValue());
+	}
+	
+	@Test
+	public void testParse() {
+		assertEquals(KILOGRAM, AbstractUnit.parse("kg"));
+		assertEquals(CARAT, AbstractUnit.parse("ct"));
+		assertEquals(DECI(METRE), AbstractUnit.parse("dm"));		
 	}
 }
