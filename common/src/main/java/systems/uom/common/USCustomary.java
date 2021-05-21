@@ -44,6 +44,7 @@ import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
 
 import javax.measure.quantity.Energy;
+import javax.measure.quantity.Frequency;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Power;
@@ -52,6 +53,8 @@ import javax.measure.quantity.Time;
 import javax.measure.quantity.Speed;
 import javax.measure.quantity.Volume;
 import javax.measure.spi.SystemOfUnits;
+
+import si.uom.quantity.AngularSpeed;
 
 /**
  * <p>
@@ -63,7 +66,7 @@ import javax.measure.spi.SystemOfUnits;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 2.1, March 29, 2021
+ * @version 2.2, May 21, 2021
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units"> Wikipedia: United State Customary Units</a>
  * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems"> Wikipedia: United State Customary Units</a>
  * @since 0.3
@@ -368,6 +371,20 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> PINT = addUnit(GILL_LIQUID.multiply(4), "Pint", "pt");
 
+    
+	///////////////////
+	// Angular Speed //
+	//////////////////
+    
+    /**
+     * Revolutions per minute (abbreviated <code>rpm</code>, RPM, rev/min, r/min, or with the notation min−1) is the number of turns in one minute. It is a unit of rotational speed or the frequency of rotation around a fixed axis.
+     * 
+ 	 * @see <a href="https://en.wikipedia.org/wiki/Revolutions_per_minute"> Wikipedia: Revolutions per minute</a>
+     * @since 2.1
+     */
+    public static final Unit<AngularSpeed> REVOLUTION_PER_MINUTE = addUnit(REVOLUTION.divide(MINUTE), "Pint", "rpm")
+    		.asType(AngularSpeed.class);
+    
     @Override
     public String getName() {
         return SYSTEM_NAME;
