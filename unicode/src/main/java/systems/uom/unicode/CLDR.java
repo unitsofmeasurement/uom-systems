@@ -39,6 +39,7 @@ import systems.uom.quantity.Concentration;
 import systems.uom.quantity.Consumption;
 import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
+import systems.uom.quantity.Resolution;
 import tech.units.indriya.*;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.MultiplyConverter;
@@ -234,7 +235,12 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Frequency> HERTZ = addUnit(Units.HERTZ);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Force> NEWTON = addUnit(Units.NEWTON);
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
+    /**
+     *  Constant for unit of pressure: pascal
+     *  As per <a href="http//cldr.unicode.org/">CLDR</a> standard.
+     *  
+     *  @stable ICU 65.
+     */
     public static final Unit<Pressure> PASCAL = addUnit(Units.PASCAL);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
@@ -566,7 +572,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @stable ICU 4.0
      */
-    public static final Unit<Time> YEAR = addUnit(Units.DAY.multiply(365.25));
+    public static final Unit<Time> YEAR = addUnit(Units.YEAR);
 
     /**
      * Constant for unit of duration: month
@@ -581,10 +587,28 @@ public final class CLDR extends AbstractSystemOfUnits {
      * @see <a href="http://www.aqua-calc.com/what-is/time/century">What Is century?</a>
      * @stable ICU 56.
      */
-    public static final Unit<Time> CENTURY = addUnit(YEAR.multiply(100));
+    public static final Unit<Time> CENTURY = addUnit(YEAR.multiply(100), "Century", "C");
 
-    /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
+    /**
+     * Constant for unit of duration: decade
+     * 
+     * @stable ICU 65.
+     */
+    public static final Unit<Time> DECADE = addUnit(YEAR.multiply(10), "Decade", "dec");
+    
+    /** 
+     * Constant for unit of pressure: bar
+     * As per <a href="http//cldr.unicode.org/">CLDR</a> standard.
+     * 
+     * @stable ICU 65. 
+     */    
     private static final Unit<Pressure> BAR = addUnit(Units.PASCAL.multiply(100000));
+    
+    /** 
+     * Constant for unit of mass: gram
+     * 
+     * @stable ICU 53. 
+     */ 
     public static final Unit<Mass> GRAM = addUnit(Units.GRAM);
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
@@ -595,7 +619,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     /**
      * Constant for unit of mass: pound
      * 
-     * @stable ICU 53
+     * @stable ICU 53.
      */
     public static final Unit<Mass> POUND = addUnit(GRAIN.multiply(7000));
 
@@ -732,21 +756,45 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Length> PARSEC = addUnit(METRE.multiply(30856770e9));
 
     ///////////////////////////////
-    // TYPESETTER'S LENGTH UNITS //
+    // GRAPHIC LENGTH UNITS      //
     ///////////////////////////////
+    
+    /**
+     * Constant for unit of graphics: dot
+     * 
+     * @stable ICU 68
+     */
+    public static final Unit<Length> DOT = addUnit(new AlternateUnit<Length>(ONE, "dot"), "Dot", "dot", Length.class);
+    
+    /** 
+     * Constant for unit of graphics: em
+     * 
+     * @stable ICU 65 
+     */
+    public static final Unit<Length> EM = addUnit(INCH_INTERNATIONAL.multiply(2), "Em", "em");
+    
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
-    static final Unit<Length> LINE = addUnit(INCH_INTERNATIONAL.divide(12));
+    private static final Unit<Length> LINE = INCH_INTERNATIONAL.divide(12);    
+    
+    /**
+     * A pixel is equivalent to 0.0002636 metre.
+     * 
+     * @see <a href="http://www.convert-me.com/en/convert/length/pixel.html?u=pixel&v=177">Pixel Converter</a>
+     * @stable ICU 65
+     */
+    public static final Unit<Length> PIXEL = addUnit(METRE.multiply(0.0002636));
+    
     /**
      * A unit of length equal to <code>0.013837 {@link #INCH}</code> exactly (standard name <code>pt</code>).
      * 
      * @see #PIXEL
+     * @stable ICU 59
      */
-    /*
-     * public static final Unit<Length> POINT = addUnit(LINE.divide(6)); //
-     * static final Unit<Length> POINT = addUnit(INCH.multiply(13837) //
-     * .divide(1000000));
-     * 
-     * /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. public
+    public static final Unit<Length> POINT = addUnit(LINE.divide(6), "Point", "pt"); //
+//      static final Unit<Length> POINT = addUnit(INCH.multiply(13837) //
+//      .divide(1000000));
+      
+     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. public
      * static final Unit<Length> PICA = addUnit(POINT.multiply(12)); /** As per
      * <a href="http//cldr.unicode.org/">CLDR</a> standard. public static final
      * Unit<Length> POINT_PRINTER =
@@ -754,6 +802,50 @@ public final class CLDR extends AbstractSystemOfUnits {
      * <a href="http//cldr.unicode.org/">CLDR</a> standard. public static final
      * Unit<Length> PICA_PRINTER = addUnit(POINT_PRINTER.multiply(12));
      */
+    
+    /**
+     * Pixel per centimeter describe the resolution for any output device (monitor,
+     * printer) that deals with outputting digital raster images.
+     * 
+     * @see #DOT
+     * @see #METER
+     * @stable ICU 65
+     */
+    public static final Unit<Resolution> DOT_PER_CENTIMETER = addUnit(DOT.divide(CENTI(METER)).asType(Resolution.class), 
+    		"Dot per centimeter", "dpc");
+    
+    /**
+     * Pixel per inch describe the resolution for any output device (monitor,
+     * printer) that deals with outputting digital raster images.
+     * 
+     * @see #INCH
+     * @see #DOT
+     * @stable ICU 65 
+     */
+    public static final Unit<Resolution> DOT_PER_INCH = addUnit(DOT.divide(INCH).asType(Resolution.class), 
+    		"Dot per inch", "dpi");
+ 
+    
+    /**
+     * Pixel per centimeter describe the resolution for any output device (monitor,
+     * printer) that deals with outputting digital raster images.
+     * 
+     * @see #PIXEL
+     * @see #METER
+     */
+    public static final Unit<Resolution> PIXEL_PER_CENTIMETER = addUnit(PIXEL.divide(CENTI(METER)).asType(Resolution.class), 
+    		"Pixel per centimeter", "ppc");
+    
+    /**
+     * Pixel per inch describe the resolution for any output device (monitor,
+     * printer) that deals with outputting digital raster images.
+     * 
+     * @see #INCH
+     * @see #PIXEL
+     */
+    public static final Unit<Resolution> PIXEL_PER_INCH = addUnit(PIXEL.divide(INCH).asType(Resolution.class), 
+    		"Pixel per inch", "ppi");
+    
     //////////////////////////////
     // OTHER LEGACY UNITS: CLDR //
     //////////////////////////////
@@ -775,6 +867,20 @@ public final class CLDR extends AbstractSystemOfUnits {
     public static final Unit<Energy> CALORIE = addUnit(CALORIE_THERMOCHEMICAL);
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
 
+    /**
+     * Constant for unit of energy: british-thermal-unit
+     * 
+     * @stable ICU 64.
+     */
+    public static final Unit<Energy> BRITISH_THERMAL_UNIT = addUnit(JOULE.multiply(1055.06));    
+
+    /**
+     * Constant for unit of energy: thermal-us
+     * 
+     * @stable ICU 65.
+     */
+    public static final Unit<Energy> THERM_US = addUnit(JOULE.multiply(1.055e+8));
+    
     /**
      * Constant for unit of power: horsepower
      * 
