@@ -391,22 +391,34 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Speed> KNOT_INTERNATIONAL = addUnit(
 	    new ProductUnit<Speed>(NAUTICAL_MILE_INTERNATIONAL.divide(HOUR)));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. 
+     * @deprecated Per [http://unitsofmeasure.org/ucum.html#para-34](§34 international customary units)
+     */
     public static final Unit<Area> SQUARE_INCH_INTERNATIONAL = addUnit(
 	    new ProductUnit<Area>(INCH_INTERNATIONAL.pow(2)));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard.
+     * @deprecated Per [http://unitsofmeasure.org/ucum.html#para-34](§34 international customary units)
+     */
     public static final Unit<Area> SQUARE_FOOT_INTERNATIONAL = addUnit(
 	    new ProductUnit<Area>(FOOT_INTERNATIONAL.pow(2)));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard.
+     * @deprecated Per [http://unitsofmeasure.org/ucum.html#para-34](§34 international customary units)
+     */
     public static final Unit<Area> SQUARE_YARD_INTERNATIONAL = addUnit(
 	    new ProductUnit<Area>(YARD_INTERNATIONAL.pow(2)));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. 
+     * @deprecated Per [http://unitsofmeasure.org/ucum.html#para-34](§34 international customary units) 
+     */
     public static final Unit<Volume> CUBIC_INCH_INTERNATIONAL = addUnit(
 	    new ProductUnit<Volume>(INCH_INTERNATIONAL.pow(3)));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard.
+     * @deprecated Per [http://unitsofmeasure.org/ucum.html#para-34](§34 international customary units) 
+     */
     public static final Unit<Volume> CUBIC_FOOT_INTERNATIONAL = addUnit(
 	    new ProductUnit<Volume>(FOOT_INTERNATIONAL.pow(3)));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. 
+     * @deprecated Per [http://unitsofmeasure.org/ucum.html#para-34](§34 international customary units)
+     */
     public static final Unit<Volume> CUBIC_YARD_INTERNATIONAL = addUnit(
 	    new ProductUnit<Volume>(YARD_INTERNATIONAL.pow(3)));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
@@ -453,7 +465,9 @@ public final class UCUM extends AbstractSystemOfUnits {
     // public static final Unit<Area> ACRE_US_SURVEY = addUnit(new
     // ProductUnit<Area>(
     // ROD_US_SURVEY.pow(2).multiply(160)));
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard.
+     * @deprecated Per [http://unitsofmeasure.org/ucum.html#para-34](§34 international customary units)
+     */
     public static final Unit<Area> SQUARE_ROD_US_SURVEY = addUnit(new ProductUnit<Area>(ROD_US_SURVEY.pow(2)));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Area> SQUARE_MILE_US_SURVEY = addUnit(new ProductUnit<Area>(MILE_US_SURVEY.pow(2)));
