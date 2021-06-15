@@ -30,12 +30,12 @@
 	<!-- ======================================================= -->
 	<properties>		
 		<jdkVersion>1.8</jdkVersion>
-		<lib.version>2.1</lib.version>
+		<lib.version>2.1.1-SNAPSHOT</lib.version>
 		<jsr.version>2.1.2</jsr.version>
 		<ri.version>2.1.2</ri.version>
-		<si.version>2.1</si.version>
-		<quantity.version>2.1</quantity.version><!-- only need to change when new quantities added -->
-		<systems.version>2.1</systems.version>
+		<si.version>2.1.1-SNAPSHOT</si.version>
+		<quantity.version>2.1.1-SNAPSHOT</quantity.version><!-- only need to change when new quantities added -->
+		<systems.version>2.1.1-SNAPSHOT</systems.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -308,7 +308,7 @@
 					<plugin>
 						<groupId>org.reficio</groupId>
 						<artifactId>p2-maven-plugin</artifactId>
-						<version>1.2.0</version>
+						<version>1.7.0</version>
 						<executions>
 							<execution>
 								<id>default-cli</id>
@@ -340,13 +340,6 @@
 					</plugin>
 				</plugins>
 			</build>
-
-			<pluginRepositories>
-				<pluginRepository>
-					<id>reficio</id>
-					<url>http://repo.reficio.org/maven/</url>
-				</pluginRepository>
-			</pluginRepositories>
 		</profile>
 	</profiles>		
 </project>
