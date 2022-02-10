@@ -31,7 +31,7 @@
 	<properties>		
 		<jdkVersion>1.8</jdkVersion>
 		<lib.version>2.1</lib.version>
-		<jsr.version>2.1.2</jsr.version>
+		<jsr.version>2.1.3</jsr.version>
 		<ri.version>2.1.2</ri.version>
 		<si.version>2.1</si.version>
 		<quantity.version>2.1</quantity.version><!-- only need to change when new quantities added -->
@@ -317,16 +317,18 @@
 										<!-- specify your depencies here -->
 										<artifact>
 											<id>javax.measure:unit-api:${jsr.version}</id>
+											<transitive>false</transitive>
 										</artifact>
 										<artifact>
 											<id>tech.uom.lib:uom-lib-common:${lib.version}</id>
-											<override>true</override>
+											 <transitive>false</transitive>
 										</artifact>
 										<artifact>
 											<id>si.uom:si-quantity:${si.version}</id>
 										</artifact>
 										<artifact>
 											<id>systems.uom:systems-quantity:${quantity.version}</id>
+											<transitive>false</transitive>
 										</artifact>
 										<artifact>
 											<id>systems.uom:systems-unicode:${systems.version}</id>
