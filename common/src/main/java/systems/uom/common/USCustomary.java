@@ -75,22 +75,7 @@ import si.uom.quantity.AngularSpeed;
 public final class USCustomary extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "United States Customary Units";
     
-    private static final USCustomary INSTANCE = new USCustomary();
-    
-    /**
-     * Default constructor (prevents this class from being instantiated).
-     */
-    private USCustomary() {
-    }
-
-    /**
-     * Returns the unique instance of this class.
-     * 
-     * @return the USCustomary instance.
-     */
-    public static SystemOfUnits getInstance() {
-        return INSTANCE;
-    }    
+    private static final USCustomary INSTANCE = new USCustomary();  
 
     ////////////
     // Length //
@@ -386,6 +371,21 @@ public final class USCustomary extends AbstractSystemOfUnits {
      */
     public static final Unit<AngularSpeed> REVOLUTION_PER_MINUTE = addUnit(REVOLUTION.divide(MINUTE), "Pint", "rpm")
     		.asType(AngularSpeed.class);
+    
+    /**
+     * Default constructor (prevents this class from being instantiated).
+     */
+    private USCustomary() {
+    }
+
+    /**
+     * Returns the unique instance of this class.
+     * 
+     * @return the USCustomary instance.
+     */
+    public static SystemOfUnits getInstance() {
+        return INSTANCE;
+    }  
     
     @Override
     public String getName() {
