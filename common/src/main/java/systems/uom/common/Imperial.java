@@ -56,7 +56,7 @@ import tech.units.indriya.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.4, $Date: 2021-03-28 $
+ * @version 1.5, $Date: 2022-03-26 $
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_units">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
@@ -81,21 +81,6 @@ public final class Imperial extends AbstractSystemOfUnits {
     private static final int STANDARD_GRAVITY_DIVISOR = 100000;
 
     private static final Imperial INSTANCE = new Imperial();
-
-    /**
-     * Default constructor (prevents this class from being instantiated).
-     */
-    private Imperial() {
-    }
-
-    /**
-     * Returns the unique instance of this class.
-     * 
-     * @return the Imperial instance.
-     */
-    public static SystemOfUnits getInstance() {
-    	return INSTANCE;
-    }
  
     ////////////
     // Length //
@@ -357,8 +342,23 @@ public final class Imperial extends AbstractSystemOfUnits {
     // Collection View //
     /////////////////////
 
+    /**
+     * Default constructor (prevents this class from being instantiated).
+     */
+    private Imperial() {
+    }
+    
     @Override
     public String getName() {
         return SYSTEM_NAME;
+    }
+    
+    /**
+     * Returns the unique instance of this class.
+     * 
+     * @return the Imperial instance.
+     */
+    public static SystemOfUnits getInstance() {
+    	return INSTANCE;
     }
 }
