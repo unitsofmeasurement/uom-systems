@@ -30,6 +30,7 @@
 package systems.uom.common;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static systems.uom.common.USCustomary.METER;
 import static systems.uom.common.USCustomary.POUND; 
@@ -38,6 +39,9 @@ import static systems.uom.common.USCustomary.ELECTRICAL_HORSEPOWER;
 import static javax.measure.BinaryPrefix.*;
 import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.METRE;
+
+import javax.measure.Unit;
+
 import static tech.units.indriya.unit.Units.GRAM;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 
@@ -45,7 +49,7 @@ import org.junit.jupiter.api.Test;
 
 public class USTest {
 	@Test
-	public void testPound() {	
+	public void testPoundPrefixes() {	
 		assertEquals("lb", POUND.toString());
 		assertEquals("klb", KILO(POUND).toString());
 		assertEquals("Kilb", KIBI(POUND).toString());
@@ -71,15 +75,21 @@ public class USTest {
 	public void testGetSymbol() {
 		// TODO see https://github.com/unitsofmeasurement/uom-se/issues/54 / https://java.net/jira/browse/UNITSOFMEASUREMENT-109
 		assertEquals("kg", KILOGRAM.getSymbol());
-//		assertEquals("kg", SI.GRAM.getSymbol()); //"g"
-//		assertEquals("kg", UCUM.POUND.getSymbol()); //"lb"
-//		assertEquals("kg", UCUM.OUNCE.getSymbol());//"oz"
 		assertNull(KILO(GRAM).getSymbol());
-//		assertEquals("kg", UCUM.GRAM.getSymbol()); //"g"
-//		assertEquals("kg", US.POUND.getSymbol()); //"lb"
 		assertEquals("g", GRAM.toString());
 		assertNull(GRAM.getSymbol());
 		assertEquals("lb", POUND.toString());
 		assertNull(POUND.getSymbol());
+	}
+	
+	@Test
+	public void testName() {
+		USCustomary.getInstance().getUnits().forEach((Unit<?> unit) -> assertNotNull(unit.getName(), 
+				String.format("%s has no name", unit)));
+	}
+	
+	@Test
+	public void testToString() {
+		USCustomary.getInstance().getUnits().forEach((Unit<?> unit) -> assertNotNull(unit.toString()));
 	}
 }

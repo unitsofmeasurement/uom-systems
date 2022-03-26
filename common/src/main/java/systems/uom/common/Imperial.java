@@ -147,7 +147,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of temperature equal to <code>5/9 °K</code> (standard name
      * <code>°R</code>).
      */
-    static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9), "°R", true);
+    static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9), "Rankine", "°R", true);
 
     /**
      * A unit of temperature equal to degree Rankine minus

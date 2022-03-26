@@ -29,7 +29,9 @@
  */
 package systems.uom.common;
 
+import static javax.measure.MetricPrefix.CENTI;
 import static javax.measure.MetricPrefix.MICRO;
+import static tech.units.indriya.format.UnitStyle.NAME;
 import static tech.units.indriya.unit.Units.*;
 
 import tech.units.indriya.AbstractSystemOfUnits;
@@ -44,7 +46,6 @@ import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
 
 import javax.measure.quantity.Energy;
-import javax.measure.quantity.Frequency;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Power;
@@ -66,7 +67,7 @@ import si.uom.quantity.AngularSpeed;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 2.2, May 21, 2021
+ * @version 2.3, March 26, 2022
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units"> Wikipedia: United State Customary Units</a>
  * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems"> Wikipedia: United State Customary Units</a>
  * @since 0.3
@@ -147,12 +148,12 @@ public final class USCustomary extends AbstractSystemOfUnits {
     /**
      * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name <code>oz</code>).
      */
-    public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16), "oz");
+    public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16), "Ounce", "oz");
 
     /**
      * A unit of mass equal to <code>2000 {@link #POUND}</code> (short ton, standard name <code>ton</code>).
      */
-    public static final Unit<Mass> TON = addUnit(POUND.multiply(2000), "ton_us");
+    public static final Unit<Mass> TON = addUnit(POUND.multiply(2000), "Ton (US)", "ton_us");
 
     /////////////////
     // Temperature //
@@ -160,14 +161,14 @@ public final class USCustomary extends AbstractSystemOfUnits {
     /**
      * A unit of temperature equal to <code>5/9 °K</code> (standard name <code>°R</code>).
      */
-    public static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9));
+    public static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9), "Rankine", "°R");
 
     /**
      * A unit of temperature equal to degree Rankine minus <code>459.67 °R</code> (standard name <code>°F</code>).
      * 
      * @see #RANKINE
      */
-    public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67), "°F");
+    public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67), "Fahrenheit", "°F");
 
     ///////////
     // Angle //
@@ -176,32 +177,32 @@ public final class USCustomary extends AbstractSystemOfUnits {
      * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
      * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
      */
-    public static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class), "rev");
+    public static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class), "Revolution", "rev");
 
     /**
      * A unit of angle equal to <code>1/360 {@link #REVOLUTION}</code> (standard name <code>deg</code>).
      */
-    public static final Unit<Angle> DEGREE_ANGLE = addUnit(REVOLUTION.divide(360));
+    public static final Unit<Angle> DEGREE_ANGLE = addUnit(REVOLUTION.divide(360), "Degree Angle", "deg");
 
     /**
      * A unit of angle equal to <code>1/60 {@link #DEGREE_ANGLE}</code> (standard name <code>'</code>).
      */
-    public static final Unit<Angle> MINUTE_ANGLE = addUnit(DEGREE_ANGLE.divide(60));
+    public static final Unit<Angle> MINUTE_ANGLE = addUnit(DEGREE_ANGLE.divide(60), "Minute Angle", "'");
 
     /**
      * A unit of angle equal to <code>1/60 {@link #MINUTE_ANGLE}</code> (standard name <code>"</code>).
      */
-    public static final Unit<Angle> SECOND_ANGLE = addUnit(MINUTE_ANGLE.divide(60));
+    public static final Unit<Angle> SECOND_ANGLE = addUnit(MINUTE_ANGLE.divide(60), "Second Angle", "\"");
 
     /**
      * A unit of angle equal to <code>0.01 {@link SI#RADIAN}</code> (standard name <code>centiradian</code>).
      */
-    public static final Unit<Angle> CENTIRADIAN = addUnit(RADIAN.divide(100));
+    public static final Unit<Angle> CENTIRADIAN = Helper.addUnit(INSTANCE.units, CENTI(RADIAN), "Centiradian", NAME);
 
     /**
      * A unit of angle measure equal to <code>1/400 {@link #REVOLUTION}</code> (standard name <code>grade</code> ).
      */
-    public static final Unit<Angle> GRADE = addUnit(REVOLUTION.divide(400));
+    public static final Unit<Angle> GRADE = addUnit(REVOLUTION.divide(400), "Grade", "grad");
 
     //////////////
     //Time      //
@@ -209,12 +210,12 @@ public final class USCustomary extends AbstractSystemOfUnits {
     /**
      * A unit of time equal to <code>60 s</code> (standard name <code>min</code> ).
      */
-    public static final Unit<Time> MINUTE = addUnit(SECOND.multiply(60));
+    public static final Unit<Time> MINUTE = addUnit(SECOND.multiply(60), "Minute", "min");
 
     /**
      * A unit of duration equal to <code>60 {@link #MINUTE}</code> (standard name <code>h</code>).
      */
-    public static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
+    public static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60), "Hour", "h");
 
     //////////////
     // Speed    //
@@ -224,7 +225,8 @@ public final class USCustomary extends AbstractSystemOfUnits {
      * 
      * @since 0.5.1
      */
-    public static final Unit<Speed> FOOT_PER_SECOND = addUnit(FOOT.divide(SECOND).asType(Speed.class));
+    public static final Unit<Speed> FOOT_PER_SECOND = Helper.addUnit(INSTANCE.units, FOOT.divide(SECOND).asType(Speed.class), 
+    		"Foot per second", NAME);
 
     /**
      * A unit of velocity expressing the number of international {@link #MILE miles} per {@link #HOUR hour} (abbreviation <code>mph</code>).
@@ -242,7 +244,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
     /**
      * A unit of area (standard name <code>sft</code> ).
      */
-    public static final Unit<Area> SQUARE_FOOT = addUnit(new ProductUnit<Area>((AbstractUnit<?>) FOOT.multiply(FOOT)), "sft");
+    public static final Unit<Area> SQUARE_FOOT = addUnit(new ProductUnit<Area>((AbstractUnit<?>) FOOT.multiply(FOOT)), "Square Foot", "sft");
 
     /**
      * A unit of area equal to <code>100 m²</code> (standard name <code>a</code> ).
@@ -299,14 +301,14 @@ public final class USCustomary extends AbstractSystemOfUnits {
     /**
      * A unit of volume equal to one cubic inch (<code>in³</code>).
      */
-    public static final Unit<Volume> CUBIC_INCH = addUnit(INCH.pow(3).asType(Volume.class), "in³");
+    public static final Unit<Volume> CUBIC_INCH = addUnit(INCH.pow(3).asType(Volume.class), "Cubic inch", "in³");
 
     /**
      * The cubic foot is an imperial and US customary (non-metric) unit of volume, used in the United States, Canada, and the United Kingdom. It is
      * defined as the volume of a cube with sides of one foot (0.3048 m) in length. Its volume is 28.3168 liters or about 1⁄35 of a cubic meter. (
      * <code>ft³</code>).
      */
-    public static final Unit<Volume> CUBIC_FOOT = addUnit(CUBIC_INCH.multiply(1728), "ft³");
+    public static final Unit<Volume> CUBIC_FOOT = addUnit(CUBIC_INCH.multiply(1728), "Cubic foot", "ft³");
 
     /**
      * An acre-foot is a unit of volume commonly used in the United States in reference to large-scale water resources, such as reservoirs, aqueducts,
