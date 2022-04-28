@@ -56,6 +56,11 @@
 			<groupId>si.uom</groupId>
 			<artifactId>si-units</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
+
 		<dependency>
 			<groupId>systems.uom</groupId>
 			<artifactId>systems-quantity</artifactId>

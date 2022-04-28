@@ -30,7 +30,7 @@
 package systems.uom.common.spi;
 import static systems.uom.common.spi.ServiceConstants.*;
 
-import javax.annotation.Priority;
+import jakarta.annotation.Priority;
 import javax.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;

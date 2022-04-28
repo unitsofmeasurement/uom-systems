@@ -32,7 +32,7 @@ module systems.uom.ucum {
     requires transitive si.uom.quantity;
     requires transitive si.uom.units;
     requires transitive tech.units.indriya;
-    requires transitive java.annotation;
+    requires transitive jakarta.annotation;
     requires transitive systems.uom.quantity;
     
     exports systems.uom.ucum;
