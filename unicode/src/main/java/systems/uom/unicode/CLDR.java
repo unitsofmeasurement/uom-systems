@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 2.3, $Date: 2021-04-17 $
+ * @version 2.3.1, $Date: 2022-06-07 $
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
