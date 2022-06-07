@@ -122,7 +122,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @stable ICU 53
      */
-    public static final Unit<Length> KILOMETER = KILO(METRE);
+    public static final Unit<Length> KILOMETER = addUnit(KILO(METRE), "Kilometer"); // TODO upper/lower-case compared to ICU?
 
     /**
      * A unit of length equal to <code>0.3048 m</code> (standard name <code>ft</code>).
@@ -609,7 +609,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      * 
      * @stable ICU 53. 
      */ 
-    public static final Unit<Mass> GRAM = addUnit(Units.GRAM);
+    public static final Unit<Mass> GRAM = addUnit(Units.GRAM, "Gram"); // TODO case?
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
     public static final Unit<Mass> TONNE = addUnit(Units.KILOGRAM.multiply(1000));
@@ -1046,6 +1046,19 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     private static <U extends Unit<?>> U addUnit(U unit, String name, String label) {
         return addUnit(unit, name, label, true);
+    }
+    
+    /**
+     * Adds a new unit not mapped to any specified quantity type and puts a text as symbol or label.
+     *
+     * @param unit
+     *            the unit being added.
+     * @param name
+     *            the string to use as name
+     * @return <code>unit</code>.
+     */
+    private static <U extends Unit<?>> U addUnit(U unit, String name) {
+        return addUnit(unit, name, "", false);
     }
 
     /**

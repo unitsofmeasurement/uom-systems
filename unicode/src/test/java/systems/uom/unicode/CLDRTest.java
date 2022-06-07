@@ -69,6 +69,13 @@ public class CLDRTest {
 	}
 	
 	@Test
+	public void testGetName() {
+		// TODO see https://github.com/unitsofmeasurement/uom-se/issues/54 / https://java.net/jira/browse/UNITSOFMEASUREMENT-109
+		assertEquals("Kilometer", KILOMETER.getName());
+		assertEquals("Gram", GRAM.getName());
+	}
+	
+	@Test
 	public void testConvert() {
 		Quantity<Speed> kph = Quantities.getQuantity(30, Units.KILOMETRE_PER_HOUR);
 		Quantity<Speed> knots = kph.to(CLDR.KNOT);
