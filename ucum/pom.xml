@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>2.1</version>
+		<version>2.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>systems-ucum</artifactId>
 	<name>Units of Measurement UCUM System</name>
@@ -52,14 +52,14 @@
 				<version>${jsr.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>tech.units</groupId>
-				<artifactId>indriya</artifactId>
-				<version>${ri.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>systems.uom</groupId>
 				<artifactId>systems-quantity</artifactId>
 				<version>${quantity.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tech.units</groupId>
+				<artifactId>indriya</artifactId>
+				<version>${ri.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>systems.uom</groupId>
@@ -89,7 +89,7 @@
 		<dependency>
 		  <groupId>jakarta.inject</groupId>
 		  <artifactId>jakarta.inject-api</artifactId>
-		  <version>2.0.0</version>
+		  <version>2.0.1</version>
 		</dependency>
 		
 		<!-- Testing -->

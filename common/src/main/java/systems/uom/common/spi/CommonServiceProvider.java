@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2021, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2023, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -31,7 +31,7 @@ package systems.uom.common.spi;
 import static systems.uom.common.spi.ServiceConstants.*;
 
 import javax.annotation.Priority;
-import javax.inject.Named;
+import jakarta.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
 import tech.units.indriya.spi.AbstractServiceProvider;

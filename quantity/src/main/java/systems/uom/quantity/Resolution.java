@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2021, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2023, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *

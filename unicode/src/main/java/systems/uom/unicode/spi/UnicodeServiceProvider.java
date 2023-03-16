@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2021, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2023, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,7 +29,7 @@
  */
 package systems.uom.unicode.spi;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
 import tech.units.indriya.spi.AbstractServiceProvider;
@@ -39,7 +39,7 @@ import tech.units.indriya.spi.AbstractServiceProvider;
  * the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 0.5
+ * @version 1.0
  */
 @Named("Unicode")
 public class UnicodeServiceProvider extends AbstractServiceProvider {
