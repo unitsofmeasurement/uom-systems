@@ -50,7 +50,7 @@ import tech.units.indriya.unit.AnnotatedUnit;
  *
  * @author Andi Huber
  * @author Werner Keil
- * @version 1.1, 17 November 2020
+ * @version 1.2, 3 April 2023
  */
 @SuppressWarnings("rawtypes")
 final class UCUMFormatHelper {
@@ -155,8 +155,8 @@ final class UCUMFormatHelper {
         
         for(MetricPrefix metricPrefix : MetricPrefix.values()) {
             
-            if(metricPrefix == MetricPrefix.DEKA) {
-                continue; // excluding DEKA should not be necessary, but currently is, for tests to succeed
+            if(metricPrefix == MetricPrefix.DECA) {
+                continue; // excluding DECA should not be necessary, but currently is, for tests to succeed
             }
             
             final MultiplyConverter prefixConverter = MultiplyConverter.ofExponent(10, metricPrefix.getExponent());
@@ -166,6 +166,5 @@ final class UCUMFormatHelper {
         }
         
     }
-    
-    
+        
 }

@@ -32,6 +32,7 @@ module systems.uom.common {
     requires transitive si.uom.quantity;       
     requires transitive tech.uom.lib.common;
     requires transitive java.annotation;
+    requires transitive jakarta.inject;
     requires transitive systems.uom.quantity;
     requires tech.units.indriya;
     requires si.uom.units;

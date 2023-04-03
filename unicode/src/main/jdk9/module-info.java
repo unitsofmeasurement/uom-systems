@@ -31,6 +31,7 @@ module systems.uom.unicode {
     requires transitive java.measure;
     requires transitive tech.uom.lib.common;
     requires transitive systems.uom.quantity;
+    requires transitive jakarta.inject;
     requires tech.units.indriya;
         
     exports systems.uom.unicode;

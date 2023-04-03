@@ -37,6 +37,7 @@ import static systems.uom.ucum.format.UCUMFormat.Variant.PRINT;
 import static javax.measure.MetricPrefix.ATTO;
 import static javax.measure.MetricPrefix.CENTI;
 import static javax.measure.MetricPrefix.DECI;
+import static javax.measure.MetricPrefix.DECA;
 import static javax.measure.MetricPrefix.DEKA;
 import static javax.measure.MetricPrefix.EXA;
 import static javax.measure.MetricPrefix.FEMTO;
@@ -116,7 +117,7 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 		Unit<Frequency> hertzMultiple;
 
 		hertzMultiple = DEKA(HERTZ);
-		assertEquals("daHz", format.format(hertzMultiple), String.format(PREFIX_PATTERN, DEKA));
+		assertEquals("daHz", format.format(hertzMultiple), String.format(PREFIX_PATTERN, DECA));
 
 		hertzMultiple = HECTO(HERTZ);
 		assertEquals("hHz", format.format(hertzMultiple));
@@ -195,8 +196,8 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 		final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 		Unit<Frequency> hertzMultiple;
 
-		hertzMultiple = DEKA(HERTZ);
-		assertEquals("DAHZ", format.format(hertzMultiple), String.format(PREFIX_PATTERN, DEKA));
+		hertzMultiple = DECA(HERTZ);
+		assertEquals("DAHZ", format.format(hertzMultiple), String.format(PREFIX_PATTERN, DECA));
 
 		hertzMultiple = HECTO(HERTZ);
 		assertEquals("HHZ", format.format(hertzMultiple));
@@ -252,7 +253,7 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 	public void testParseUCUMCSWithPositivePrefix() {
 		final UnitFormat format = UCUMFormat.getInstance(CASE_SENSITIVE);
 
-		assertEquals(DEKA(HERTZ), format.parse("daHz"), String.format(PREFIX_PATTERN, DEKA));
+		assertEquals(DECA(HERTZ), format.parse("daHz"), String.format(PREFIX_PATTERN, DECA));
 
 		assertEquals(HECTO(HERTZ), format.parse("hHz"), String.format(PREFIX_PATTERN, HECTO));
 
@@ -307,7 +308,7 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 	public void testParseUCUMCIWithPositivePrefix() {
 		final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 
-		assertEquals(DEKA(HERTZ), format.parse("DAHz"), String.format(PREFIX_PATTERN, DEKA));
+		assertEquals(DEKA(HERTZ), format.parse("DAHz"), String.format(PREFIX_PATTERN, DECA));
 		assertEquals(HECTO(HERTZ), format.parse("HHz"), String.format(PREFIX_PATTERN, HECTO));
 		assertEquals(KILO(HERTZ), format.parse("KHz"), String.format(PREFIX_PATTERN, KILO));
 		assertEquals(MEGA(HERTZ), format.parse("MAHz"), String.format(PREFIX_PATTERN, MEGA));
@@ -365,7 +366,7 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 		Unit<Frequency> hertzMultiple;
 
 		hertzMultiple = DEKA(HERTZ);
-		assertEquals("daHz", format.format(hertzMultiple), String.format(PREFIX_PATTERN, DEKA));
+		assertEquals("daHz", format.format(hertzMultiple), String.format(PREFIX_PATTERN, DECA));
 
 		hertzMultiple = HECTO(HERTZ);
 		assertEquals("hHz", format.format(hertzMultiple));
