@@ -30,8 +30,8 @@
 	<properties>		
 		<jdkVersion>1.8</jdkVersion>
 		<lib.version>2.2-SNAPSHOT</lib.version>
-		<jsr.version>2.2-SNAPSHOT</jsr.version>
-		<ri.version>2.2-SNAPSHOT</ri.version>
+		<jsr.version>2.2</jsr.version>
+		<ri.version>2.2</ri.version>
 		<si.version>2.1</si.version>
 		<quantity.version>2.2-SNAPSHOT</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>2.2-SNAPSHOT</systems.version>
