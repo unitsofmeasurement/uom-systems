@@ -37,15 +37,12 @@ import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
 import systems.uom.ucum.UCUM;
-import tech.uom.lib.common.function.IntPrioritySupplier;
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.1, January 11, 2020
+ * @version 2.0, August 23, 2023
  */
-public final class UCUMSystemService implements SystemOfUnitsService,
-	IntPrioritySupplier {
-    static final int PRIO = 100;
+public final class UCUMSystemService implements SystemOfUnitsService {
     private static final String DEFAULT_SYSTEM_NAME = "UCUM";
 
     private final Map<String, SystemOfUnits> souMap = new HashMap<>();
@@ -72,10 +69,5 @@ public final class UCUMSystemService implements SystemOfUnitsService,
 		    return souMap.get(alias);
 		}
 		return souMap.get(name);
-    }
-
-    @Override
-    public int getPriority() {
-    	return PRIO;
     }
 }

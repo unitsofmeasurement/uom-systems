@@ -31,5 +31,5 @@ package systems.uom.ucum.spi;
 
 class ServiceConstants {
 	static final String NAME = "UCUM";
-	static final int PRIO = 1000;
+	static final int PRIO = 5000;
 }
