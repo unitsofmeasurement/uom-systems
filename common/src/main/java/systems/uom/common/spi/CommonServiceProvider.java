@@ -30,7 +30,7 @@
 package systems.uom.common.spi;
 import static systems.uom.common.spi.ServiceConstants.*;
 
-import javax.annotation.Priority;
+import jakarta.annotation.Priority;
 import jakarta.inject.Named;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
@@ -40,7 +40,7 @@ import tech.units.indriya.spi.AbstractServiceProvider;
  * This class implements the {@link ServiceProvider} interface and hereby uses the JDK {@link java.util.ServiceLoader} to load the services required.
  *
  * @author Werner Keil
- * @version 2.0
+ * @version 2.1
  */
 @Named(NAME)
 @Priority(PRIO)
