@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2023, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -67,7 +67,7 @@ import si.uom.quantity.AngularSpeed;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 2.3, March 26, 2022
+ * @version 2.4, August 16, 2024
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units"> Wikipedia: United State Customary Units</a>
  * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems"> Wikipedia: United State Customary Units</a>
  * @since 0.3
@@ -369,7 +369,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
  	 * @see <a href="https://en.wikipedia.org/wiki/Revolutions_per_minute"> Wikipedia: Revolutions per minute</a>
      * @since 2.1
      */
-    public static final Unit<AngularSpeed> REVOLUTION_PER_MINUTE = addUnit(REVOLUTION.divide(MINUTE), "Pint", "rpm")
+    public static final Unit<AngularSpeed> REVOLUTION_PER_MINUTE = addUnit(REVOLUTION.divide(MINUTE), "RPM", "rpm")
     		.asType(AngularSpeed.class);
     
     /**

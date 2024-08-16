@@ -127,7 +127,7 @@
 						<header>src/main/config/header.txt</header>
 						<properties>
 							<owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-							<currentYear>2023</currentYear>
+							<currentYear>2024</currentYear>
 						</properties>
 						<excludes>
 							<exclude>**/README</exclude>
@@ -160,7 +160,7 @@
 				<plugin>
 					<groupId>biz.aQute.bnd</groupId>
 					<artifactId>bnd-maven-plugin</artifactId>
-					<version>5.2.0</version>					
+					<version>7.0.0</version>					
 					<executions>
 						<execution>
 							<goals>
