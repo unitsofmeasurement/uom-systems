@@ -45,6 +45,8 @@ import systems.uom.quantity.Information;
 
 public class UnitFormatPrefixTest extends UCUMFormatTestBase {
 
+	// Metric Prefixes
+	
     @Test
     public void testKiloMeter() {
         Unit<Length> m1 = KILO(METER);
@@ -75,7 +77,21 @@ public class UnitFormatPrefixTest extends UCUMFormatTestBase {
 		Unit<Mass> m1 = NANO(GRAM);
 		assertEquals("ng", FORMAT_PRINT.format(m1));
 	}
+	
+	@Test
+	public void testQuettabit() {
+		Unit<Information> i1 = QUETTA(BIT);
+		assertEquals("Qbit", FORMAT_PRINT.format(i1));
+	}
+	
+	@Test
+	public void testRontoGram() {
+		Unit<Mass> m1 = RONTO(GRAM);
+		assertEquals("rg", FORMAT_PRINT.format(m1));
+	}
 
+	// Binary Prefixes
+	
 	@Test
 	public void testGibiMeter() {
 		Unit<Length> m1 = GIBI(METER);

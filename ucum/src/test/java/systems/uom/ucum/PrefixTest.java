@@ -52,4 +52,10 @@ public class PrefixTest {
         UnitConverter conv = KILO(METER).getConverterTo(GIGA(METER));
         assertEquals(MultiplyConverter.ofTenExponent(-6), conv);
     }
+    
+    @Test
+    public void testBetweenPrefixes3() {
+        UnitConverter conv = QUETTA(METER).getConverterTo(RONNA(METER));
+        assertEquals(MultiplyConverter.ofTenExponent(3), conv);
+    }
 }
