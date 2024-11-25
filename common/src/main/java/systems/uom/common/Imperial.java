@@ -33,6 +33,7 @@ import static javax.measure.MetricPrefix.MICRO;
 import static tech.units.indriya.unit.Units.*;
 
 import javax.measure.Unit;
+import javax.measure.quantity.Acceleration;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Force;
 import javax.measure.quantity.Length;
@@ -56,7 +57,7 @@ import tech.units.indriya.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.5, $Date: 2022-03-26 $
+ * @version 1.6, Nov 25, 2024
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_units">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
@@ -74,7 +75,7 @@ public final class Imperial extends AbstractSystemOfUnits {
     private static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
     
     /**
-     * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
+     * Holds the standard gravity constant: 9.80665 m/s² exact.
      */
     private static final int STANDARD_GRAVITY_DIVIDEND = 980665;
 
@@ -240,6 +241,21 @@ public final class Imperial extends AbstractSystemOfUnits {
      */
     public static final Unit<Volume> FLUID_DRACHM = addUnit(FLUID_SCRUPLE.multiply(3), "fl drc", true);
     
+    //////////////////
+    // Acceleration //
+    //////////////////
+    
+    /**
+     * Standard acceleration of free fall, sometimes abbreviated as standard gravity. A unit of acceleration equal to the gravity at the earth's surface (standard
+     * name <code>g<sub>n</sub></code>).
+     */
+    public static final Unit<Acceleration> STANDARD_GRAVITY = addUnit(METRE_PER_SQUARE_SECOND.multiply(STANDARD_GRAVITY_DIVIDEND)
+            .divide(STANDARD_GRAVITY_DIVISOR), "g\\u2099");
+      
+    ///////////
+    // Force //
+    ///////////
+    
     /**
      * A unit of force equal to <code>{@link #POUND}Â·{@link #G}</code>
      * (standard name <code>lbf</code>).
@@ -247,12 +263,14 @@ public final class Imperial extends AbstractSystemOfUnits {
     public static final Unit<Force> POUND_FORCE = addUnit(
 	    NEWTON.multiply(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND)
 		    .divide(1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR), "lbf");
-    /**
-     * A unit of force equal to <code>9.80665 N</code> (standard name
-     * <code>kgf</code>).
-     */
-    static final Unit<Force> KILOGRAM_FORCE = addUnit(
-	    NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR));
+
+	/**
+	 * A unit of force equal to <code>9.80665 N</code> (standard name
+	 * <code>kgf</code>).
+	 */
+	public static final Unit<Force> KILOGRAM_FORCE = addUnit(
+			NEWTON.multiply(STANDARD_GRAVITY_DIVIDEND).divide(STANDARD_GRAVITY_DIVISOR), "kgf");
+
     
     /**
      * Adds a new unit not mapped to any specified quantity type.

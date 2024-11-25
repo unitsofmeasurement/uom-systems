@@ -162,7 +162,10 @@ public final class USCustomary extends AbstractSystemOfUnits {
      * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
      * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
      */
-    public static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class), "Revolution", "rev");
+    public static final Unit<Angle> REVOLUTION = addUnit(new TransformedUnit<Angle>(RADIAN,
+			MultiplyConverter.ofPiExponent(1).concatenate(MultiplyConverter.ofRational(2, 1))),
+			"Revolution", "rev"); 
+    		//addUnit(RADIAN.multiply(2).multiply(Math.PI).asType(Angle.class), "Revolution", "rev");
 
     /**
      * A unit of angle equal to <code>1/360 {@link #REVOLUTION}</code> (standard name <code>deg</code>).

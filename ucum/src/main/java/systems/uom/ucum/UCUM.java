@@ -40,6 +40,7 @@ import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import si.uom.quantity.Level;
 import si.uom.SI;
+import si.uom.NonSI;
 import tech.units.indriya.*;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.LogConverter;
@@ -69,7 +70,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 2.5.1, $Date: 2020-12-06 $
+ * @version 2.6, Nov 25, 2024
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -260,12 +261,12 @@ public final class UCUM extends AbstractSystemOfUnits {
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Pressure> BAR = addUnit(Units.PASCAL.multiply(100000));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Mass> ATOMIC_MASS_UNIT = addUnit(SI.UNIFIED_ATOMIC_MASS);
+    public static final Unit<Mass> ATOMIC_MASS_UNIT = addUnit(NonSI.UNIFIED_ATOMIC_MASS);
 
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Energy> ELECTRON_VOLT = addUnit(SI.ELECTRON_VOLT);
+    public static final Unit<Energy> ELECTRON_VOLT = addUnit(NonSI.ELECTRON_VOLT);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
-    public static final Unit<Length> ASTRONOMIC_UNIT = addUnit(SI.ASTRONOMICAL_UNIT);
+    public static final Unit<Length> ASTRONOMIC_UNIT = addUnit(NonSI.ASTRONOMICAL_UNIT);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Length> PARSEC = addUnit(Units.METRE.multiply(3.085678E16));
 
@@ -292,7 +293,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     // MagneticPermeability.class);
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<ElectricCharge> ELEMENTARY_CHARGE = addUnit(
-	    Units.COULOMB.transform(((AbstractUnit<Energy>) SI.ELECTRON_VOLT).getSystemConverter()));
+	    Units.COULOMB.transform(((AbstractUnit<Energy>) NonSI.ELECTRON_VOLT).getSystemConverter()));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
     public static final Unit<Mass> ELECTRON_MASS = addUnit(GRAM.multiply(9.1093897E-28));
     /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */

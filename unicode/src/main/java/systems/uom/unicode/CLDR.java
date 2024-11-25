@@ -66,7 +66,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 2.3.1, $Date: 2022-06-07 $
+ * @version 2.5, Nov 25, 2024
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -687,9 +687,12 @@ public final class CLDR extends AbstractSystemOfUnits {
     /**
      * Constant for unit of length: nautical-mile
      * 
+     * A unit of length equal to <code>1852.0 m</code> (standard name
+     * <code>nmi</code>).
+     * 
      * @stable ICU 54
      */
-    public static final Unit<Length> NAUTICAL_MILE = addUnit(METRE.multiply(1852));
+    public static final Unit<Length> NAUTICAL_MILE = addUnit(METRE.multiply(1852), "nautical-mile", "nmi");
 
     /**
      * Constant for unit of speed: knot
