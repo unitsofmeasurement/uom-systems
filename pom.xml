@@ -32,8 +32,8 @@
 		<jdkVersion>1.8</jdkVersion>
 		<lib.version>2.2</lib.version>
 		<jsr.version>2.2</jsr.version>
-		<ri.version>2.2.2-SNAPSHOT</ri.version>
-		<si.version>2.2-SNAPSHOT</si.version>
+		<ri.version>2.2.3-SNAPSHOT</ri.version>
+		<si.version>2.2</si.version>
 		<quantity.version>2.2-SNAPSHOT</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>2.2-SNAPSHOT</systems.version>
 		<jakarta.annotation.version>2.0.0</jakarta.annotation.version>
