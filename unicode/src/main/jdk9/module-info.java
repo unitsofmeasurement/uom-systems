@@ -33,7 +33,8 @@ module systems.uom.unicode {
     requires transitive systems.uom.quantity;
     requires transitive jakarta.inject;
     requires tech.units.indriya;
-        
+    requires java.logging;
+    
     exports systems.uom.unicode;
     exports systems.uom.unicode.spi;
     
