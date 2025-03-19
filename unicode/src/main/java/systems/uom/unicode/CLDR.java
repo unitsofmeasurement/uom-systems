@@ -252,12 +252,21 @@ public final class CLDR extends AbstractSystemOfUnits {
     // private static final Unit<Pressure> INCH_OF_WATER_COLUMN =
     // new
     // ProductUnit<Pressure>(METER_OF_WATER_COLUMN.multiply(INCH).divide(METER));
+
+    /**
+     * Constant for unit of pressure: millimeter-ofhg
+     * 
+     * @stable ICU 54
+     */
+    public static final Unit<Pressure> MILLIMETER_OF_MERCURY = addUnit(MILLI(METER_OF_MERCURY_COLUMN), 
+    		"Millimeter of Mercury", "millimeter-ofhg");
+        
     /**
      * Constant for unit of pressure: inch-hg
      * 
      * @stable ICU 53
      */
-    public static final Unit<Pressure> INCH_HG = addUnit(new ProductUnit<Pressure>(METER_OF_MERCURY_COLUMN.multiply(INCH).divide(METER)), 
+    public static final Unit<Pressure> INCH_HG = addUnit(MILLIMETER_OF_MERCURY.multiply(0.0393701), 
     		"Inch of Mercury", "in-hg");
 
     /** As per <a href="http//cldr.unicode.org/">CLDR</a> standard. */
