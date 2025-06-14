@@ -207,10 +207,16 @@
 		</pluginManagement>
 		
 		<plugins>
-			<plugin>
+		     <plugin>
 		          <groupId>org.sonatype.central</groupId>
 		          <artifactId>central-publishing-maven-plugin</artifactId>
-			</plugin>
+		          <extensions>true</extensions>
+		          <configuration>
+		             <publishingServerId>central</publishingServerId>
+		             <autoPublish>true</autoPublish>
+		             <waitUntil>published</waitUntil>
+		          </configuration>
+		        </plugin>
 		</plugins>
 	</build>
 
