@@ -137,6 +137,11 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 			
+			<plugin>
+	          <groupId>org.sonatype.central</groupId>
+	          <artifactId>central-publishing-maven-plugin</artifactId>
+			</plugin>
+			
 			<!-- ======================================================= -->
 			<!-- Packaging (OSGi bundle) -->
 			<!-- ======================================================= -->

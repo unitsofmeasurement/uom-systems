@@ -115,7 +115,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<plugins>		
+		<plugins>
 			<!-- Use toolchains to select the compilers -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -212,6 +212,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+	          <groupId>org.sonatype.central</groupId>
+	          <artifactId>central-publishing-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 		<pluginManagement>

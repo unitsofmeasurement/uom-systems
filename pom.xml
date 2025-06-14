@@ -188,6 +188,10 @@
 							</excludes>
 					</configuration>
 				</plugin>
+				
+				<!-- ======================================================= -->
+				<!-- Sonatype Central -->
+				<!-- ======================================================= -->
 		        <plugin>
 		          <groupId>org.sonatype.central</groupId>
 		          <artifactId>central-publishing-maven-plugin</artifactId>
@@ -201,6 +205,13 @@
 		        </plugin>    	
 			</plugins>
 		</pluginManagement>
+		
+		<plugins>
+			<plugin>
+		          <groupId>org.sonatype.central</groupId>
+		          <artifactId>central-publishing-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
 
 	<!-- Dependency Management -->
@@ -296,7 +307,7 @@
         </repository>       
     </repositories>
 
-    <!-- Deployment to public servers -->
+    <!-- Deployment to public servers 
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -311,6 +322,7 @@
 			<url>scp://unitsofmeasurement.github.io/www/docs/uom-systems/</url>
 		</site>
 	</distributionManagement>
+-->
 
 	<profiles>
 		<profile>
