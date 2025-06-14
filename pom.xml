@@ -296,7 +296,7 @@
         </repository>       
     </repositories>
 
-    <!-- Deployment to public servers -->
+    <!-- Deployment to public servers 
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -311,6 +311,7 @@
 			<url>scp://unitsofmeasurement.github.io/www/docs/uom-systems/</url>
 		</site>
 	</distributionManagement>
+-->
 
 	<profiles>
 		<profile>
