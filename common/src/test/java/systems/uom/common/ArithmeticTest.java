@@ -29,8 +29,8 @@
  */
 package systems.uom.common;
 
-import static org.junit.Assert.*;
 import static tech.units.indriya.unit.Units.METRE;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
@@ -69,8 +69,8 @@ public class ArithmeticTest {
 		Quantity<Length> result = km.add(mile);
 		assertEquals(2609.344d, result.getValue().doubleValue(), 0d);
 		assertEquals(Units.METRE, result.getUnit());
-	}
-	
+	}	
+
 	@Test
 	public void testAdd2() {
 		Quantity<Mass> kg = Quantities.getQuantity(50d, Units.KILOGRAM);

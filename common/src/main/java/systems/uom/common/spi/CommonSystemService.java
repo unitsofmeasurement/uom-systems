@@ -36,31 +36,35 @@ import java.util.Map;
 import javax.measure.spi.SystemOfUnits;
 import systems.uom.common.historic.CGS;
 import systems.uom.common.historic.MKpS;
+import systems.uom.common.historic.ObsoleteUnits;
 import systems.uom.common.Imperial;
 import systems.uom.common.USCustomary;
 import tech.units.indriya.spi.AbstractSystemOfUnitsService;
 
 /**
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 2.2, March 28, 2021
+ * @version 2.3, June 15, 2025
  */
 public class CommonSystemService extends AbstractSystemOfUnitsService {
-	private static final String DEFAULT_SYSTEM_NAME = "USCustomary";
+	private static final String US_SYSTEM_NAME = "USCustomary";
 	private static final String CGS_KEY = "CGS";
 	private static final String MKPS_KEY = "MKpS";
+	private static final String OBS_KEY = "ObsoleteUnits";
 	
 	private final Map<String, String> aliases = new HashMap<>();
 
 	public CommonSystemService() {
 		souMap.put("Imperial", Imperial.getInstance());
-		souMap.put(DEFAULT_SYSTEM_NAME, USCustomary.getInstance());
+		souMap.put(US_SYSTEM_NAME, USCustomary.getInstance());
 		souMap.put(CGS_KEY, CGS.getInstance());
 		souMap.put(MKPS_KEY, MKpS.getInstance());		
-		aliases.put("US", DEFAULT_SYSTEM_NAME);
+		souMap.put(OBS_KEY, ObsoleteUnits.getInstance());
+		aliases.put("US", US_SYSTEM_NAME);
 		aliases.put("UK", "Imperial");
 		aliases.put("Centimetre–gram–second", CGS_KEY);
 		aliases.put("Gravitational metric system", MKPS_KEY);
 		aliases.put("MKfS", MKPS_KEY);
+		aliases.put("Obsolete", OBS_KEY);
 	}
 
 	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
@@ -69,7 +73,7 @@ public class CommonSystemService extends AbstractSystemOfUnitsService {
 
 	@Override
 	public SystemOfUnits getSystemOfUnits() {
-		return getSystemOfUnits(DEFAULT_SYSTEM_NAME); // We assume US Customary as the most
+		return getSystemOfUnits(US_SYSTEM_NAME); // We assume US Customary as the most
 		// common system here
 	}
 
