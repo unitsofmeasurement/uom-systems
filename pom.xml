@@ -46,7 +46,6 @@
 		<module>quantity</module>
 		<module>common</module>
 		<module>unicode</module>
-		<module>ucum</module>
 	</modules>
 
 	<build>
