@@ -69,11 +69,11 @@
 			
 			<!-- ======================================================= -->
 			<!-- Sonatype Central -->
-			<!-- ======================================================= -->
+			<!-- ======================================================= 
 			<plugin>
 		          <groupId>org.sonatype.central</groupId>
 		          <artifactId>central-publishing-maven-plugin</artifactId>
-			</plugin>
+			</plugin -->
 		</plugins>
 	</build>
 	
