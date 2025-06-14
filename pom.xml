@@ -307,28 +307,11 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-            <id>ossrh-snapshot</id>
-            <name>OSSRH Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <id>central-snapshot</id>
+            <name>Central Snapshots</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
         </repository>       
     </repositories>
-
-    <!-- Deployment to public servers 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-		<site>
-			<id>unitsofmeasurement.github.io</id>
-			<url>scp://unitsofmeasurement.github.io/www/docs/uom-systems/</url>
-		</site>
-	</distributionManagement>
--->
 
 	<profiles>
 		<profile>
