@@ -62,9 +62,11 @@ import tech.units.indriya.format.SimpleUnitFormat;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.0, 14 June 2025
+ * @version 1.0.1, 15 June 2025
  * @see <a href= "https://en.wikipedia.org/wiki/List_of_obsolete_units_of_measurement">Wikipedia: List of obsolete units of measurement
  *      </a>
+ * @see <a href= "https://metricviews.uk/2024/08/30/which-non-si-units-are-accepted-for-use-with-the-si/">Metric Views: Which non-SI units are accepted for use with the SI?
+ *      </a>      
  * @since 2.2
  */
 public final class ObsoleteUnits extends AbstractSystemOfUnits {

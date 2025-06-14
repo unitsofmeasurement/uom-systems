@@ -89,7 +89,6 @@
 		<dependency>
 		  <groupId>jakarta.inject</groupId>
 		  <artifactId>jakarta.inject-api</artifactId>
-		  <version>2.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.annotation</groupId>
@@ -215,16 +214,8 @@
 			</plugin>
 			
 			<plugin>
-		          <groupId>org.sonatype.central</groupId>
-		          <artifactId>central-publishing-maven-plugin</artifactId>
-		          <version>0.7.0</version>
-		          <extensions>true</extensions>
-		          <configuration>
-		             <publishingServerId>central</publishingServerId>
-		             <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
-		             <autoPublish>true</autoPublish>
-		             <waitUntil>published</waitUntil>
-		          </configuration>
+		    	<groupId>org.sonatype.central</groupId>
+		        <artifactId>central-publishing-maven-plugin</artifactId>
 		    </plugin>			
 		</plugins>
 		
