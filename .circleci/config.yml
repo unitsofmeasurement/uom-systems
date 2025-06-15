@@ -5,7 +5,7 @@
 version: 2.1
 
 parameters:
-  run_integration_tests:
+  deploy_release:
     type: boolean
     default: false
     
