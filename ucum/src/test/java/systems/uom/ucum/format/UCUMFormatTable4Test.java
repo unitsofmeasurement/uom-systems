@@ -34,27 +34,7 @@ import static systems.uom.ucum.UCUM.*;
 import static systems.uom.ucum.format.UCUMFormat.Variant.CASE_INSENSITIVE;
 import static systems.uom.ucum.format.UCUMFormat.Variant.CASE_SENSITIVE;
 import static systems.uom.ucum.format.UCUMFormat.Variant.PRINT;
-import static javax.measure.MetricPrefix.ATTO;
-import static javax.measure.MetricPrefix.CENTI;
-import static javax.measure.MetricPrefix.DECI;
-import static javax.measure.MetricPrefix.DECA;
-import static javax.measure.MetricPrefix.DECA;
-import static javax.measure.MetricPrefix.EXA;
-import static javax.measure.MetricPrefix.FEMTO;
-import static javax.measure.MetricPrefix.GIGA;
-import static javax.measure.MetricPrefix.HECTO;
-import static javax.measure.MetricPrefix.KILO;
-import static javax.measure.MetricPrefix.MEGA;
-import static javax.measure.MetricPrefix.MICRO;
-import static javax.measure.MetricPrefix.MILLI;
-import static javax.measure.MetricPrefix.NANO;
-import static javax.measure.MetricPrefix.PETA;
-import static javax.measure.MetricPrefix.PICO;
-import static javax.measure.MetricPrefix.TERA;
-import static javax.measure.MetricPrefix.YOCTO;
-import static javax.measure.MetricPrefix.YOTTA;
-import static javax.measure.MetricPrefix.ZEPTO;
-import static javax.measure.MetricPrefix.ZETTA;
+import static javax.measure.MetricPrefix.*;
 
 import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
@@ -70,7 +50,7 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 
 	private static final String PREFIX_PATTERN = "The %s prefix didn't work";
 
-	// TODO try to make most of these more generic, e.g. going over an enum or via parameterized tests
+	// TODO try to make most of these even more generic, e.g. going over an enum or via parameterized tests
 	
 	@Test
 	public void testFormatUCUMCSWithNegativePrefix() {
@@ -106,6 +86,13 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 
 		hertzSubmultiple = YOCTO(HERTZ);
 		assertEquals("yHz", format.format(hertzSubmultiple));
+		
+		hertzSubmultiple = QUECTO(HERTZ);
+		assertEquals("qHz", format.format(hertzSubmultiple));
+		
+		hertzSubmultiple = RONTO(HERTZ);
+		assertEquals("rHz", format.format(hertzSubmultiple));
+
 
 		assertEquals("mm/s",
 				format.format(MILLI(METER).divide(SECOND)), "The MILLI prefix didn't work with a product unit");
@@ -145,6 +132,13 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 
 		hertzMultiple = YOTTA(HERTZ);
 		assertEquals("YHz", format.format(hertzMultiple));
+		
+		hertzMultiple = QUETTA(HERTZ);
+		assertEquals("QHz", format.format(hertzMultiple));
+		
+		hertzMultiple = RONNA(HERTZ);
+		assertEquals("RHz", format.format(hertzMultiple));
+		
 
 		assertEquals("km/s",
 				format.format(KILO(METER).divide(SECOND)), "The KILO prefix didn't work with a product unit");
@@ -187,6 +181,13 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 		hertzSubmultiple = YOCTO(HERTZ);
 		assertEquals("YOHZ", format.format(hertzSubmultiple));
 
+		hertzSubmultiple = QUECTO(HERTZ);
+		assertEquals("QOHZ", format.format(hertzSubmultiple));
+		
+		hertzSubmultiple = RONTO(HERTZ);
+		assertEquals("ROHZ", format.format(hertzSubmultiple));
+		
+		
 		assertEquals("MM/S",
 				format.format(MILLI(METER).divide(SECOND)), "The MILLI prefix didn't work with a product unit");
 	}
@@ -221,11 +222,18 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 		assertEquals("EXHZ", format.format(hertzMultiple));
 
 		hertzMultiple = ZETTA(HERTZ);
-		assertEquals("ZAHZ", format.format(hertzMultiple));
+		assertEquals("ZHZ", format.format(hertzMultiple));
 
 		hertzMultiple = YOTTA(HERTZ);
-		assertEquals("YAHZ", format.format(hertzMultiple));
+		assertEquals("YHZ", format.format(hertzMultiple));
+		
+		hertzMultiple = QUETTA(HERTZ);
+		assertEquals("QHZ", format.format(hertzMultiple));
+		
+		hertzMultiple = RONNA(HERTZ);
+		assertEquals("RHZ", format.format(hertzMultiple));
 
+		
 		assertEquals("KM/S",
 				format.format(KILO(METER).divide(SECOND)), "The KILO prefix didn't work with a product unit");
 	}
@@ -280,25 +288,18 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 	public void testParseUCUMCIWithNegativePrefix() {
 		final UnitFormat format = UCUMFormat.getInstance(CASE_INSENSITIVE);
 
-		assertEquals(DECI(HERTZ), format.parse("DHz"), "The DECI prefix didn't work");
-
-		assertEquals(CENTI(HERTZ), format.parse("CHz"), "The CENTI prefix didn't work");
-
-		assertEquals(MILLI(HERTZ), format.parse("MHz"), "The MILLI prefix didn't work");
-
-		assertEquals(MICRO(HERTZ), format.parse("UHz"), "The MICRO prefix didn't work");
-
-		assertEquals(NANO(HERTZ), format.parse("NHz"), "The NANO prefix didn't work");
-
-		assertEquals(PICO(HERTZ), format.parse("PHz"), "The PICO prefix didn't work");
-
-		assertEquals(FEMTO(HERTZ), format.parse("FHz"), "The FEMTO prefix didn't work");
-
-		assertEquals(ATTO(HERTZ), format.parse("AHz"), "The ATTO prefix didn't work");
-
-		assertEquals(ZEPTO(HERTZ), format.parse("ZOHz"), "The ZEPTO prefix didn't work");
-
-		assertEquals(YOCTO(HERTZ), format.parse("YOHz"), "The YOCTO prefix didn't work");
+		assertEquals(DECI(HERTZ), format.parse("DHz"), String.format(PREFIX_PATTERN, DECI));
+		assertEquals(CENTI(HERTZ), format.parse("CHz"), String.format(PREFIX_PATTERN, CENTI));
+		assertEquals(MILLI(HERTZ), format.parse("MHz"), String.format(PREFIX_PATTERN, MILLI));
+		assertEquals(MICRO(HERTZ), format.parse("UHz"), String.format(PREFIX_PATTERN, MICRO));
+		assertEquals(NANO(HERTZ), format.parse("NHz"), String.format(PREFIX_PATTERN, NANO));
+		assertEquals(PICO(HERTZ), format.parse("PHz"), String.format(PREFIX_PATTERN, PICO));
+		assertEquals(FEMTO(HERTZ), format.parse("FHz"), String.format(PREFIX_PATTERN, FEMTO));
+		assertEquals(ATTO(HERTZ), format.parse("AHz"), String.format(PREFIX_PATTERN, ATTO));
+		assertEquals(ZEPTO(HERTZ), format.parse("ZOHz"), String.format(PREFIX_PATTERN, ZEPTO));
+		assertEquals(YOCTO(HERTZ), format.parse("YOHz"), String.format(PREFIX_PATTERN, YOCTO));
+		assertEquals(QUECTO(HERTZ), format.parse("QOHz"), String.format(PREFIX_PATTERN, QUECTO));
+		assertEquals(RONTO(HERTZ), format.parse("ROHz"), String.format(PREFIX_PATTERN, RONTO));		
 
 		assertEquals(MILLI(METER).divide(SECOND), format.parse("MM/S"),
 				"The MILLI prefix didn't work with a product unit");
@@ -316,8 +317,11 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 		assertEquals(TERA(HERTZ), format.parse("TRHz"), String.format(PREFIX_PATTERN, TERA));
 		assertEquals( PETA(HERTZ), format.parse("PTHz"), String.format(PREFIX_PATTERN, PETA));
 		assertEquals(EXA(HERTZ), format.parse("EXHz"), String.format(PREFIX_PATTERN, EXA));
-		assertEquals(ZETTA(HERTZ), format.parse("ZAHz"), String.format(PREFIX_PATTERN, ZETTA));
-		assertEquals(YOTTA(HERTZ), format.parse("YAHz"), String.format(PREFIX_PATTERN, YOTTA));
+		assertEquals(ZETTA(HERTZ), format.parse("ZHz"), String.format(PREFIX_PATTERN, ZETTA));
+		assertEquals(YOTTA(HERTZ), format.parse("YHz"), String.format(PREFIX_PATTERN, YOTTA));
+		assertEquals(QUETTA(HERTZ), format.parse("QHz"), String.format(PREFIX_PATTERN, QUETTA));
+		assertEquals(RONNA(HERTZ), format.parse("RHz"), String.format(PREFIX_PATTERN, RONNA));
+
 		assertEquals(KILO(METER).divide(SECOND), format.parse("KM/S"), "The KILO prefix didn't work with a product unit");
 	}
 
@@ -355,6 +359,13 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 
 		hertzSubmultiple = YOCTO(HERTZ);
 		assertEquals("yHz", format.format(hertzSubmultiple));
+		
+		hertzSubmultiple = QUECTO(HERTZ);
+		assertEquals("qHz", format.format(hertzSubmultiple));
+		
+		hertzSubmultiple = RONTO(HERTZ);
+		assertEquals("rHz", format.format(hertzSubmultiple));
+
 
 		assertEquals("mm/s",
 				format.format(MILLI(METER).divide(SECOND)), "The MILLI prefix didn't work with a product unit");
@@ -395,6 +406,13 @@ public class UCUMFormatTable4Test extends UCUMFormatTestBase {
 		hertzMultiple = YOTTA(HERTZ);
 		assertEquals("YHz", format.format(hertzMultiple), String.format(PREFIX_PATTERN, YOTTA));
 
+		hertzMultiple = QUETTA(HERTZ);
+		assertEquals("QHz", format.format(hertzMultiple));
+		
+		hertzMultiple = RONNA(HERTZ);
+		assertEquals("RHz", format.format(hertzMultiple));
+		
+		
 		assertEquals("km/s", format.format(KILO(METER).divide(SECOND)), "The KILO prefix didn't work with a product unit");
 	}
 	

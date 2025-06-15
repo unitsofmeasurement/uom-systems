@@ -84,6 +84,14 @@ public class UnitFormatPrefixTest extends UCUMFormatTestBase {
 		assertEquals("Qbit", FORMAT_PRINT.format(i1));
 	}
 	
+	
+	
+	@Test
+	public void testQuectoMeter() {
+		Unit<Length> i1 = QUECTO(METER);
+		assertEquals("qm", FORMAT_PRINT.format(i1));
+	}
+	
 	@Test
 	public void testRontoGram() {
 		Unit<Mass> m1 = RONTO(GRAM);
