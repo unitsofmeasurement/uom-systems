@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -136,6 +136,12 @@ public class SystemOfUnitsServiceTest {
 		SystemOfUnits system3 = commonService.getSystemOfUnits("MKfS");
 		assertEquals(system, system3);
 		assertEquals(system2, system3);
+		
+		system = commonService.getSystemOfUnits("ObsoleteUnits");
+		assertNotNull(system);
+		assertEquals("Obsolete Units", system.getName());		
+		system2 = commonService.getSystemOfUnits("Obsolete");
+		assertEquals(system, system2);		
 	}
 
 	@Test

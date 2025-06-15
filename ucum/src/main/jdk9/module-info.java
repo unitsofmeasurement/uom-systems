@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -30,8 +30,8 @@
 module systems.uom.ucum {
     requires transitive java.measure;
     requires transitive si.uom.quantity;
-    requires transitive si.uom.units;
-    requires transitive tech.units.indriya;
+    requires si.uom.units;
+    requires tech.units.indriya;
     requires transitive jakarta.annotation;
     requires transitive systems.uom.quantity;
     

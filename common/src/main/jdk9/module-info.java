@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -35,7 +35,7 @@ module systems.uom.common {
     requires transitive jakarta.inject;
     requires transitive systems.uom.quantity;
     requires tech.units.indriya;
-    requires si.uom.units;
+    requires java.logging;
     
     exports systems.uom.common;
     exports systems.uom.common.historic;

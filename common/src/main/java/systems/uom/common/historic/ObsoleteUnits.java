@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -29,21 +29,27 @@
  */
 package systems.uom.common.historic;
 
+import static javax.measure.MetricPrefix.KILO;
 import static tech.units.indriya.AbstractUnit.ONE;
 import static tech.units.indriya.unit.Units.BECQUEREL;
+import static tech.units.indriya.unit.Units.CELSIUS;
 import static tech.units.indriya.unit.Units.COULOMB;
+import static tech.units.indriya.unit.Units.GRAM;
 import static tech.units.indriya.unit.Units.KILOGRAM;
 import static tech.units.indriya.unit.Units.METRE;
 import static tech.units.indriya.unit.Units.SECOND;
 import static tech.units.indriya.unit.Units.STERADIAN;
+import static systems.uom.common.USCustomary.CUBIC_FOOT;
 
-import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Dimensionless;
+import javax.measure.quantity.Mass;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Radioactivity;
 import javax.measure.quantity.SolidAngle;
+import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
+import javax.measure.quantity.Volume;
 
 import si.uom.quantity.IonizingRadiation;
 import tech.units.indriya.AbstractSystemOfUnits;
@@ -52,7 +58,7 @@ import tech.units.indriya.format.SimpleUnitFormat;
 
 /**
  * <p>
- * This class contains obsolete units, no longer used e.g. with the SI system.
+ * This class contains obsolete units, no longer used with the SI system or other systems of units.
  * </p>
  * 
  * <p>
@@ -62,7 +68,7 @@ import tech.units.indriya.format.SimpleUnitFormat;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.0.1, 15 June 2025
+ * @version 1.1, 15 June 2025
  * @see <a href= "https://en.wikipedia.org/wiki/List_of_obsolete_units_of_measurement">Wikipedia: List of obsolete units of measurement
  *      </a>
  * @see <a href= "https://metricviews.uk/2024/08/30/which-non-si-units-are-accepted-for-use-with-the-si/">Metric Views: Which non-SI units are accepted for use with the SI?
@@ -71,13 +77,6 @@ import tech.units.indriya.format.SimpleUnitFormat;
  */
 public final class ObsoleteUnits extends AbstractSystemOfUnits {
     private static final String SYSTEM_NAME = "Obsolete Units";
-
-    /**
-     * Holds the avoirdupois pound: 0.45359237 kg exact
-     */
-    static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
-
-    static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
 
     private static final ObsoleteUnits INSTANCE = new ObsoleteUnits();
     
@@ -147,6 +146,66 @@ public final class ObsoleteUnits extends AbstractSystemOfUnits {
 	 */
 	public static final Unit<Length> BOHR_RADIUS = addUnit(METRE.multiply(5.291772106712E-11), "Bohr Radius", "a0");
 
+	/**
+	 * A unit of length equal to <code>0.3 m</code> (standard name <code>pied</code>).
+	 * One pied (1 fuss) was equal to 0.30 m, according to the fixed value defined during the transition to the metric system.
+	 */
+	public static final Unit<Length> PIED = addUnit(METRE.multiply(0.3), "Pied", "pied");
+	
+	/**
+	 * A unit of length equal to <code>1/144 pied</code> (Symbol <code>ligne</code>).
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Ligne"> Wikipedia: Ligne</a> 
+	 */
+	public static final Unit<Length> LIGNE = addUnit(PIED.divide(144), "Ligne", "ligne");
+	
+	/**
+	 * A toise (French pronunciation: [twaz]; symbol: <code>T</code>) is a unit of measure for length, 
+	 * area and volume originating in pre-revolutionary France. 
+	 * In North America, it was used in colonial French establishments in early New France, 
+	 * French Louisiana (Louisiane), Acadia (Acadie) and Quebec. 
+	 * The related toesa (Portuguese pronunciation: [tuˈezɐ]) was used in Portugal, Brazil, 
+	 * and other parts of the Portuguese Empire until the adoption of the metric system.
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Toise"> Wikipedia: Toise</a> 
+	 */
+	public static final Unit<Length> TOISE = addUnit(LIGNE.multiply(864), "Toise", "T");
+	
+	
+	/**
+	 * The rod, perch, or pole (sometimes also lug) is a surveyor's tool and 
+	 * unit of length of various historical definitions. 
+	 * In British imperial and US customary units, it is defined as 16+1⁄2 feet, 
+	 * equal to exactly 1⁄320 of a mile, or 5+1⁄2 yards (a quarter of a surveyor's chain), 
+	 * and is exactly 5.0292 meters. (Symbol <code>rod</code>)
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Rod_(unit)"> Wikipedia: Rod (unit)</a> 
+	 */
+	public static final Unit<Length> ROD = addUnit(METRE.multiply(5.0292), "Rod", "rod");
+	
+	/**
+	* The spat (symbol <code>S</code>) is an obsolete unit of distance used in astronomy. 
+	* It is equal to 1,000,000,000 kilometres (620,000,000 mi; 6.7 au). A light-year is about 9460 S.
+	 * 
+	 * @see <a href="https://en.wikipedia.org/wiki/Spat_(distance_unit)"> Wikipedia: Spat (distance unit)</a> 
+	 */
+	public static final Unit<Length> SPAT = addUnit(KILO(METRE).multiply(1000000000L), "Spat", "S");
+	
+    //////////////////////////
+    // Mass                 //
+    //////////////////////////
+
+    /**
+	 * A pennyweight (dwt) is a unit of mass equal to 24 grains, 1⁄20 of a troy ounce, 1⁄240 of a troy pound, 
+	 * 48⁄875 avoirdupois ounce and exactly 1.55517384 grams.
+	 * It is abbreviated dwt, d standing for denarius – (an ancient Roman coin), 
+	 * and later used as the symbol of an old British penny. 
+     * @see <a href="https://en.wikipedia.org/wiki/Pennyweight"> Wikipedia:
+     *  Pennyweight</a>
+     */
+    public static final Unit<Mass> PENNYWEIGHT = addUnit(GRAM.multiply(1.55517384),
+    		"Pennyweight", "dwt");
+	
     //////////////////////////
     // Radioactivity        //
     //////////////////////////
@@ -177,9 +236,23 @@ public final class ObsoleteUnits extends AbstractSystemOfUnits {
      * (standard name <code>sphere</code>).
      *  
      */
-    protected static final Unit<SolidAngle> SPHERE = addUnit(
+    public static final Unit<SolidAngle> SPHERE = addUnit(
             STERADIAN.multiply(4).multiply(PI).asType(SolidAngle.class), "Sphere", "sphere");
 
+    /////////////////
+    // Temperature //
+    /////////////////
+    
+    /**
+     * The Réaumur scale (French pronunciation: [ʁeomy(ː)ʁ]; °Ré, °Re, °r), also known as the "octogesimal division", 
+     * is a temperature scale for which the melting and boiling points of water are defined as 0 and 80 degrees respectively. 
+     * (standard name <code>°Ré</code>)
+     * 
+     * @see <a href="https://en.wikipedia.org/wiki/R%C3%A9aumur_scale"> Wikipedia:
+     * Réaumur scale</a>
+     */
+    public static final Unit<Temperature> REAUMUR = addUnit(CELSIUS.multiply(1.25), "Réaumur", "°Ré");
+    
     ////////////
     // Time   //
     ////////////
@@ -188,8 +261,7 @@ public final class ObsoleteUnits extends AbstractSystemOfUnits {
      * A unit of duration equal to the time required for a complete rotation of the
      * earth in reference to any star or to the vernal equinox at the meridian,
      * equal to 23 hours, 56 minutes, 4.09 seconds (standard name
-     * <code>day_sidereal</code>).
-     * @deprecated Not supported with the SI anymore, will be moved to another module into ObsoleteUnits or similar 
+     * <code>day_sidereal</code>). 
      */
     public static final Unit<Time> DAY_SIDEREAL = addUnit(SECOND.multiply(86164.09),
     		"Day Sidereal", "day_sidereal");
@@ -211,6 +283,30 @@ public final class ObsoleteUnits extends AbstractSystemOfUnits {
      */
     public static final Unit<Time> YEAR_JULIEN = addUnit(SECOND.multiply(31557600),
     		"Year Julien", "year_julien");
+    
+    //////////////////////////
+    // Volume               //
+    //////////////////////////
+
+    /**
+     * A shipping ton, freight ton, measurement ton or ocean ton is a measure of volume used for shipments of freight in large vehicles, 
+     * trains or ships. In the USA, it is equivalent to 40 cubic feet (1.1 m3) while in the UK it is 42 cubic feet (1.2 m3).
+     *  
+     * @see <a href="https://en.wikipedia.org/wiki/Shipping_ton"> Wikipedia:
+     *  Shipping ton</a>
+     */
+    public static final Unit<Volume> SHIPPING_TON_US = addUnit(CUBIC_FOOT.multiply(40),
+    		"Shipping Ton (US)", "sh_ton_us");
+
+    /**
+     * A shipping ton, freight ton, measurement ton or ocean ton is a measure of volume used for shipments of freight in large vehicles, 
+     * trains or ships. In the USA, it is equivalent to 40 cubic feet (1.1 m3) while in the UK it is 42 cubic feet (1.2 m3).
+     *  
+     * @see <a href="https://en.wikipedia.org/wiki/Shipping_ton"> Wikipedia:
+     *  Shipping ton</a>
+     */
+    public static final Unit<Volume> SHIPPING_TON_UK = addUnit(CUBIC_FOOT.multiply(42),
+    		"Shipping Ton (UK)", "sh_ton_uk");
      
     /////////////////////
     // Collection View //
@@ -219,19 +315,6 @@ public final class ObsoleteUnits extends AbstractSystemOfUnits {
     public String getName() {
         return SYSTEM_NAME;
     }
-    
-	/**
-	 * Adds a new unit and maps it to the specified quantity type.
-	 *
-	 * @param unit the unit being added.
-	 * @param type the quantity type.
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends Unit<?>> U addUnit(U unit, Class<? extends Quantity<?>> type) {
-		INSTANCE.units.add(unit);
-		INSTANCE.quantityToUnit.put(type, unit);
-		return unit;
-	}
 
     /**
      * Adds a new unit not mapped to any specified quantity type and puts a text as symbol or label.

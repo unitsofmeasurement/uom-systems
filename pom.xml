@@ -40,11 +40,13 @@
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+		<maven.compiler.version>3.14.0</maven.compiler.version>
 	</properties>
 
 	<modules>
 		<module>quantity</module>
 		<module>common</module>
+		<module>ucum</module>
 		<module>unicode</module>
 	</modules>
 
@@ -126,7 +128,7 @@
 						<header>src/main/config/header.txt</header>
 						<properties>
 							<owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-							<currentYear>2024</currentYear>
+							<currentYear>2025</currentYear>
 						</properties>
 						<excludes>
 							<exclude>**/README</exclude>

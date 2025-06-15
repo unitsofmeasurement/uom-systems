@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2024, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -88,6 +88,12 @@ public class UnitFormatPrefixTest extends UCUMFormatTestBase {
 	public void testRontoGram() {
 		Unit<Mass> m1 = RONTO(GRAM);
 		assertEquals("rg", FORMAT_PRINT.format(m1));
+	}
+	
+	@Test
+	public void testRonnaBit() {
+		Unit<Information> i1 = RONNA(BIT);
+		assertEquals("Rbit", FORMAT_PRINT.format(i1));
 	}
 
 	// Binary Prefixes
