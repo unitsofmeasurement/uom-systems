@@ -2,7 +2,13 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-version: 2
+version: 2.1
+
+parameters:
+  do_release:
+    type: boolean
+    default: false
+    
 jobs:
   build:
     docker:
