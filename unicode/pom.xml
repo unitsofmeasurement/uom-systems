@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>2.2-SNAPSHOT</version>
+		<version>2.2</version>
 	</parent>
 	<artifactId>systems-unicode</artifactId>
 	<name>Units of Measurement Unicode CLDR System</name>
@@ -75,9 +75,6 @@
 	</dependencies>
 	<build>
 		<plugins>
-		    <!-- ======================================================= -->
-            <!-- Packaging (OSGi bundle) -->
-            <!-- ======================================================= -->
             <plugin>
                 <groupId>biz.aQute.bnd</groupId>
                 <artifactId>bnd-maven-plugin</artifactId>
@@ -95,9 +92,6 @@
                 </executions>
             </plugin>
 
-            <!-- ======================================================= -->
-            <!-- JAR packaging -->
-            <!-- ======================================================= -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -112,17 +106,11 @@
                 </configuration>
             </plugin>
     
-			<!-- ======================================================= -->
-			<!-- Source Attachment -->
-			<!-- ======================================================= -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 
-			<!-- ======================================================= -->
-			<!-- JavaDoc Attachment -->
-			<!-- ======================================================= -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -131,24 +119,7 @@
      		<plugin>
 		    	<groupId>org.sonatype.central</groupId>
 		        <artifactId>central-publishing-maven-plugin</artifactId>
-		    </plugin>
-
-			<!-- ======================================================= -->
-			<!-- Packaging (OSGi bundle) -->
-			<!-- ======================================================= -->
-			<!--
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Export-Package>systems.uom.unicode</Export-Package>
-						<Private-Package>systems.uom.unicode.internal</Private-Package>
-					</instructions>
-				</configuration>
-			</plugin>
-			-->								
+		    </plugin>						
 		</plugins>
 	</build>
 	

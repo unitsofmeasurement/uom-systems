@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>2.2-SNAPSHOT</version>
+		<version>2.2</version>
 	</parent>
 	<artifactId>systems-common</artifactId>
 	<name>Units of Measurement Common Unit Systems</name>
