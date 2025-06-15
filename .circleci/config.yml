@@ -3,6 +3,11 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2.1
+
+parameters:
+  run_integration_tests:
+    type: boolean
+    default: false
     
 jobs:
   build:
