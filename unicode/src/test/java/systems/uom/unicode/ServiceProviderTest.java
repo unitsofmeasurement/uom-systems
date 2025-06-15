@@ -1,5 +1,5 @@
 /*
- * International System of Units (SI)
+ * Units of Measurement Systems
  * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of SI System, Units of Measurement nor the names of their contributors may be used to
+ * 3. Neither the name of JSR-385, Units of Measurement nor the names of their contributors may be used to
  *    endorse or promote products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
