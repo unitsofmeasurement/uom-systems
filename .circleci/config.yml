@@ -11,6 +11,10 @@ parameters:
     
 jobs:
   build:
+    filters:
+      branches:
+        only: master
+        
     docker:
       # specify the version you desire here
       - image: cimg/openjdk:21.0.2
@@ -35,6 +39,10 @@ jobs:
 
       
   deployment:
+    filters:
+      branches:
+        only: master
+
     docker:
       # specify the version you desire here
       - image: cimg/openjdk:21.0.2
