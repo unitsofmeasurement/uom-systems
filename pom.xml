@@ -46,9 +46,11 @@
 
 	<modules>
 		<module>quantity</module>
+<!--		
 		<module>common</module>
 		<module>ucum</module>
 		<module>unicode</module>
+-->		
 	</modules>
 
 	<build>
