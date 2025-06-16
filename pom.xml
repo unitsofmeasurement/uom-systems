@@ -35,7 +35,7 @@
 		<ri.version>2.2.3</ri.version>
 		<si.version>2.2.2</si.version>
 		<quantity.version>2.2-SNAPSHOT</quantity.version><!-- only need to change when new quantities added -->
-		<systems.version>${project.version}</systems.version>
+		<systems.version>2.2-SNAPSHOT</systems.version>
 		<jakarta.annotation.version>2.0.0</jakarta.annotation.version>
 		<osgi.version>8.1.0</osgi.version>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
