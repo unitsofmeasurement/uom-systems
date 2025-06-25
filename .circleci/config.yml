@@ -61,7 +61,11 @@ workflows:
   build_deploy:
     unless: << pipeline.parameters.deploy_release >>
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - master
       - deployment:
           requires:
             - build
