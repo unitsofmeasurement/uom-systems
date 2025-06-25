@@ -9,7 +9,7 @@
 		<artifactId>uom-parent</artifactId>
 		<version>2.2.3</version>
 	</parent>
-	<version>2.2-SNAPSHOT</version>
+	<version>2.2</version>
 	<packaging>pom</packaging>
 	<name>Units of Measurement Systems Parent</name>
 	<url>http://www.uom.systems</url>
