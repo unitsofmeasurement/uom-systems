@@ -42,6 +42,7 @@
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<maven.compiler.version>3.14.0</maven.compiler.version>
+		<sonatype.central.snapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</sonatype.central.snapshotsUrl>
 	</properties>
 
 	<modules>
@@ -198,7 +199,7 @@
 		          <extensions>true</extensions>
 		          <configuration>
 		             <publishingServerId>central</publishingServerId>
-		             <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
+		             <centralSnapshotsUrl>${sonatype.central.snapshotsUrl></centralSnapshotsUrl>
 		             <autoPublish>true</autoPublish>
 		             <waitUntil>published</waitUntil>
 		          </configuration>
@@ -323,7 +324,7 @@
             </snapshots>
             <id>central-snapshot</id>
             <name>Central Snapshots</name>
-            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <url>${sonatype.central.snapshotsUrl></url>
         </repository>       
     </repositories>
 
