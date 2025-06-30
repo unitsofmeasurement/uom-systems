@@ -41,6 +41,7 @@ import systems.uom.quantity.Information;
 import systems.uom.quantity.InformationRate;
 import systems.uom.quantity.Resolution;
 import tech.units.indriya.*;
+import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.unit.AlternateUnit;
@@ -66,7 +67,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 2.5, Nov 25, 2024
+ * @version 2.6, Jul 1, 2025
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -1036,6 +1037,7 @@ public final class CLDR extends AbstractSystemOfUnits {
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
         if (isLabel) {
             SimpleUnitFormat.getInstance().label(unit, text);
+            EBNFUnitFormat.getInstance().label(unit, text);
         }
         if (name != null && unit instanceof AbstractUnit) {
             return Helper.addUnit(INSTANCE.units, unit, name);

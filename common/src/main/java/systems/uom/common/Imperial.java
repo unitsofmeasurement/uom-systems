@@ -45,6 +45,7 @@ import javax.measure.spi.SystemOfUnits;
 
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.unit.ProductUnit;
 
@@ -57,7 +58,7 @@ import tech.units.indriya.unit.ProductUnit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.6, Nov 25, 2024
+ * @version 1.7, June 30, 2025
  * @see <a href="http://en.wikipedia.org/wiki/Imperial_units">Wikipedia: Imperial
  *      Units</a>
  * @see <a href=
@@ -301,6 +302,7 @@ public final class Imperial extends AbstractSystemOfUnits {
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
     	if (isLabel) {
     	    SimpleUnitFormat.getInstance().label(unit, text);
+    	    EBNFUnitFormat.getInstance().label(unit, text);
     	}
     	if (name != null && unit instanceof AbstractUnit) {
     	    return Helper.addUnit(INSTANCE.units, unit, name);

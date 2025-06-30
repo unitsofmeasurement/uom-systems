@@ -33,7 +33,7 @@
 		<lib.version>2.2</lib.version>
 		<jsr.version>2.2</jsr.version>
 		<ri.version>2.2.3</ri.version>
-		<si.version>2.2.2</si.version>
+		<si.version>2.2.3-SNAPSHOT</si.version>
 		<quantity.version>2.2.1-SNAPSHOT</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>${project.version}</systems.version>
 		<jakarta.annotation.version>2.0.0</jakarta.annotation.version>
@@ -157,7 +157,7 @@
 				<plugin>
 					<groupId>biz.aQute.bnd</groupId>
 					<artifactId>bnd-maven-plugin</artifactId>
-					<version>7.0.0</version>					
+					<version>7.0.0</version>
 					<executions>
 						<execution>
 							<goals>
@@ -199,7 +199,7 @@
 		          <extensions>true</extensions>
 		          <configuration>
 		             <publishingServerId>central</publishingServerId>
-		             <centralSnapshotsUrl>${sonatype.central.snapshotsUrl></centralSnapshotsUrl>
+		             <centralSnapshotsUrl>${sonatype.central.snapshotsUrl}</centralSnapshotsUrl>
 		             <autoPublish>true</autoPublish>
 		             <waitUntil>published</waitUntil>
 		          </configuration>
@@ -324,7 +324,7 @@
             </snapshots>
             <id>central-snapshot</id>
             <name>Central Snapshots</name>
-            <url>${sonatype.central.snapshotsUrl></url>
+            <url>${sonatype.central.snapshotsUrl}</url>
         </repository>       
     </repositories>
 

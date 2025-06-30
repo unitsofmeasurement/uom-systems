@@ -50,6 +50,7 @@ import javax.measure.quantity.Time;
 import si.uom.quantity.Impulse;
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.unit.ProductUnit;
@@ -68,7 +69,7 @@ import tech.units.indriya.unit.Units;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 1.0, $Date: 2021-03-28$
+ * @version 1.1, $Date: 2025-07-01$
  * @see <a href= "https://en.wikipedia.org/wiki/Gravitational_metric_system">Wikipedia: Gravitational metric system</a>
  * @see <a href= "http://ww2.cnam.fr/physique/PHR011_ELECTRICITE/ap2/SI_Anglo.htm">Systèmes de mesure - Measure systems</a>
  *      
@@ -243,6 +244,7 @@ public final class MKpS extends AbstractSystemOfUnits {
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
         if (isLabel && text != null) {
             SimpleUnitFormat.getInstance().label(unit, text);
+            EBNFUnitFormat.getInstance().label(unit, text);
         }
         if (name != null && unit instanceof AbstractUnit) {
             return Helper.addUnit(INSTANCE.units, unit, name);

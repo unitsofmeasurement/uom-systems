@@ -42,6 +42,7 @@ import si.uom.quantity.Level;
 import si.uom.SI;
 import si.uom.NonSI;
 import tech.units.indriya.*;
+import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.LogConverter;
 import tech.units.indriya.function.MultiplyConverter;
@@ -70,7 +71,7 @@ import javax.measure.quantity.*;
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://www.unitsofmeasure.org">UCUM</a>
- * @version 2.6, Nov 25, 2024
+ * @version 2.7, Jul 1, 2025
  */
 public final class UCUM extends AbstractSystemOfUnits {
 
@@ -1000,6 +1001,7 @@ public final class UCUM extends AbstractSystemOfUnits {
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
     	if (isLabel) {
     	    SimpleUnitFormat.getInstance().label(unit, text);
+    	    EBNFUnitFormat.getInstance().label(unit, text);
     	}
     	if (name != null && unit instanceof AbstractUnit) {
     	    return Helper.addUnit(INSTANCE.units, unit, name);

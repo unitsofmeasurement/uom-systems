@@ -36,6 +36,7 @@ import static tech.units.indriya.unit.Units.*;
 
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.unit.ProductUnit;
@@ -67,7 +68,7 @@ import si.uom.quantity.AngularSpeed;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @version 2.4, August 16, 2024
+ * @version 2.5, July 1, 2025
  * @see <a href="http://en.wikipedia.org/wiki/United_States_customary_units"> Wikipedia: United State Customary Units</a>
  * @see <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems"> Wikipedia: United State Customary Units</a>
  * @since 0.3
@@ -375,6 +376,17 @@ public final class USCustomary extends AbstractSystemOfUnits {
     public static final Unit<AngularSpeed> REVOLUTION_PER_MINUTE = addUnit(REVOLUTION.divide(MINUTE), "RPM", "rpm")
     		.asType(AngularSpeed.class);
     
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Label adjustments for USCustomary
+    ////////////////////////////////////////////////////////////////////////////
+//    static {
+//        // Simple
+//
+//       // EBNF
+//       EBNFUnitFormat.getInstance().label(UNIT, "Symbol");       	
+//    }
+    
     /**
      * Default constructor (prevents this class from being instantiated).
      */
@@ -423,6 +435,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
     private static <U extends Unit<?>> U addUnit(U unit, String name, String text, boolean isLabel) {
         if (isLabel) {
             SimpleUnitFormat.getInstance().label(unit, text);
+            EBNFUnitFormat.getInstance().label(unit, text);
         }
         if (name != null && unit instanceof AbstractUnit) {
             return Helper.addUnit(INSTANCE.units, unit, name);
