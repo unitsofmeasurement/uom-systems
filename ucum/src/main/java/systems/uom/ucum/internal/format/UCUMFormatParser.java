@@ -42,12 +42,12 @@ import static systems.uom.ucum.internal.format.UCUMTokenConstants.*;
 /**
  * <p> 
  * Parser definition for parsing {@link AbstractUnit Unit}s
- * according to the <a href="http://unitsofmeasure.org">
+ * according to the <a href="http://ucum.org">
  * Uniform Code for CommonUnits of Measure</a>.
  * 
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
- * @see <a href="http://unitsofmeasure.org">UCUM</a>
+ * @see <a href="http://ucum.org">UCUM</a>
  * @version 1.0, June 23, 2019
  */
 public final class UCUMFormatParser {

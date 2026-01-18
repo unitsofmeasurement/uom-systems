@@ -641,7 +641,7 @@ public final class CLDR extends AbstractSystemOfUnits {
      */
     public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16), "oz", true);
 
-    /** As per <a href="http://unitsofmeasure.org/">UCUM</a> standard. */
+    /** As per <a href="http://ucum.org/">UCUM</a> standard. */
     private static final Unit<Mass> PENNYWEIGHT_TROY = GRAIN.multiply(24);
     /**
      * Constant for unit of mass: ounce-troy

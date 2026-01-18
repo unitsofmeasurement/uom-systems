@@ -34,7 +34,7 @@
  * <h3> UCUM Units</h3>
  * <ul>
  *    <li> The class {@link UCUM} contains standard and non-standard units 
- *      as defined by the <a href="http://unitsofmeasure.org/">
+ *      as defined by the <a href="http://ucum.org/">
  *      "Uniform Code for CommonUnits of Measure"</a>.</li>
  *    <li> The class {@link Units} contains other commonly used non-standard units.</li>
  * </ul>

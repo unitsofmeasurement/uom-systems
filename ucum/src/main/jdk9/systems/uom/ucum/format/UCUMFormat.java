@@ -63,7 +63,7 @@ import tech.units.indriya.unit.TransformedUnit;
 /**
  * <p>
  * This class provides the interface for formatting and parsing {@link AbstractUnit units} according to the
- * <a href="http://unitsofmeasure.org/">Uniform Code for Units of Measure</a> (UCUM).
+ * <a href="http://ucum.org/">Uniform Code for Units of Measure</a> (UCUM).
  * </p>
  *
  * <p>
@@ -72,7 +72,7 @@ import tech.units.indriya.unit.TransformedUnit;
  * </p>
  *
  * <p>
- * As of revision 1.16, the BNF in the UCUM standard contains an <a href="http://unitsofmeasure.org/ticket/4">error</a>. I've attempted to work around
+ * As of revision 1.16, the BNF in the UCUM standard contains an <a href="http://ucum.org/ticket/4">error</a>. I've attempted to work around
  * the problem by modifying the BNF productions for &lt;Term&gt;. Once the error in the standard is corrected, it may be necessary to modify the
  * productions in the UCUMFormatParser.jj file to conform to the standard.
  * </p>
@@ -371,7 +371,7 @@ public abstract class UCUMFormat extends AbstractUnitFormat {
     /**
      * Variant of unit representation in the UCUM standard
      * 
-     * @see <a href= "http://unitsofmeasure.org/ucum.html#section-Character-Set-and-Lexical-Rules"> UCUM - Character Set and Lexical Rules</a>
+     * @see <a href= "http://ucum.org/ucum.html#section-Character-Set-and-Lexical-Rules"> UCUM - Character Set and Lexical Rules</a>
      */
     public static enum Variant {
         CASE_SENSITIVE, CASE_INSENSITIVE, PRINT
