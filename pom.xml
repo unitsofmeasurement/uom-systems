@@ -34,7 +34,7 @@
 		<jsr.version>2.2</jsr.version>
 		<ri.version>2.2.3</ri.version>
 		<si.version>2.2.4-SNAPSHOT</si.version>
-		<quantity.version>2.2.4-SNAPSHOT</quantity.version><!-- only need to change when new quantities added -->
+		<quantity.version>2.2</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>${project.version}</systems.version>
 		<jakarta.annotation.version>2.0.0</jakarta.annotation.version>
 		<osgi.version>8.1.0</osgi.version>
