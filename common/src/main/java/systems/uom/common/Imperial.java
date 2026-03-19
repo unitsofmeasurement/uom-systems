@@ -134,7 +134,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of temperature equal to <code>5/9 °K</code> (standard name
      * <code>°R</code>).
      */
-    static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9), "Rankine", "°R", true);
+    public static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5).divide(9), "Rankine", "°R", true);
 
     /**
      * A unit of temperature equal to degree Rankine minus
@@ -142,7 +142,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * 
      * @see #RANKINE
      */
-    static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67), "°F", true);
+    public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE.shift(459.67), "°F", true);
 
     //////////////
     // Time     //
@@ -151,13 +151,13 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of time equal to <code>60 s</code> (standard name <code>min</code>
      * ).
      */
-    static final Unit<Time> MINUTE = addUnit(SECOND.multiply(60));
+    public static final Unit<Time> MINUTE = addUnit(SECOND.multiply(60));
 
     /**
      * A unit of duration equal to <code>60 {@link #MINUTE}</code> (standard
      * name <code>h</code>).
      */
-    static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
+    public static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
     
     //////////
     // Area //
