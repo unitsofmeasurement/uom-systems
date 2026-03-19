@@ -198,7 +198,7 @@ public final class Imperial extends AbstractSystemOfUnits {
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
      * (standard name <code>fl_oz_uk</code>).
      */
-    static final Unit<Volume> FLUID_OUNCE_UK = GALLON_UK.divide(160);
+    public static final Unit<Volume> FLUID_OUNCE_UK = GALLON_UK.divide(160);
 
     /**
      * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
