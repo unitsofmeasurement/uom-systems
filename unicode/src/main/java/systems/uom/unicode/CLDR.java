@@ -29,6 +29,7 @@
  */
 package systems.uom.unicode;
 
+import static javax.measure.BinaryPrefix.*;
 import static javax.measure.MetricPrefix.*;
 import static tech.units.indriya.unit.Units.CUBIC_METRE;
 import static tech.units.indriya.unit.Units.METRE;
@@ -67,7 +68,7 @@ import javax.measure.quantity.*;
  *
  * @author <a href="mailto:werner@uom.systems">Werner Keil</a>
  * @see <a href="http://cldr.unicode.org">Unicode CLDR</a>
- * @version 2.6, Jul 1, 2025
+ * @version 2.7, Mar 18, 2026
  */
 public final class CLDR extends AbstractSystemOfUnits {
 
@@ -925,6 +926,76 @@ public final class CLDR extends AbstractSystemOfUnits {
      * A unit of data amount equal to <code>8 {@link #BIT}</code> (BinarY TErm, standard name <code>byte</code>).
      */
     public static final Unit<Information> BYTE = addUnit(BIT.multiply(8), "Byte", "byte");
+
+    /**
+     * Constant for unit of data amount: kilobyte<br>
+     * This is a <b>convenience method</b> for <code>KILO(BYTE)</code>.
+     * 
+     * @stable ICU 54
+     */
+    public static final Unit<Information> KILOBYTE = addUnit(KILO(BYTE), "Kilobyte", "kB", true);
+
+    /**
+     * Constant for unit of data amount: kibibyte<br>
+     * This is a <b>convenience method</b> for <code>KIBI(BYTE)</code>.
+     */
+    public static final Unit<Information> KIBIBYTE = addUnit(KIBI(BYTE), "Kibibyte", "KiB", true);
+
+    /**
+     * Constant for unit of data amount: megabyte<br>
+     * This is a <b>convenience method</b> for <code>MEGA(BYTE)</code>.
+     * 
+     * @stable ICU 54
+     */
+    public static final Unit<Information> MEGABYTE = addUnit(MEGA(BYTE), "Megabyte", "MB", true);
+
+    /**
+     * Constant for unit of data amount: mebibyte<br>
+     * This is a <b>convenience method</b> for <code>MEBI(BYTE)</code>.
+     */
+    public static final Unit<Information> MEBIBYTE = addUnit(MEBI(BYTE), "Mebibyte", "MiB", true);
+
+    /**
+     * Constant for unit of data amount: gigabyte<br>
+     * This is a <b>convenience method</b> for <code>GIGA(BYTE)</code>.
+     * 
+     * @stable ICU 54
+     */
+    public static final Unit<Information> GIGABYTE = addUnit(GIGA(BYTE), "Gigabyte", "GB", true);
+
+    /**
+     * Constant for unit of data amount: gibibyte<br>
+     * This is a <b>convenience method</b> for <code>GIBI(BYTE)</code>.
+     */
+    public static final Unit<Information> GIBIBYTE = addUnit(GIBI(BYTE), "Gibibyte", "GiB", true);
+
+    /**
+     * Constant for unit of data amount: terabyte<br>
+     * This is a <b>convenience method</b> for <code>TERA(BYTE)</code>.
+     * 
+     * @stable ICU 54
+     */
+    public static final Unit<Information> TERABYTE = addUnit(TERA(BYTE), "Terabyte", "TB", true);
+
+    /**
+     * Constant for unit of data amount: tebibyte<br>
+     * This is a <b>convenience method</b> for <code>TEBI(BYTE)</code>.
+     */
+    public static final Unit<Information> TEBIBYTE = addUnit(TEBI(BYTE), "Tebibyte", "TiB", true);
+
+    /**
+     * Constant for unit of data amount: petabyte<br>
+     * This is a <b>convenience method</b> for <code>PETA(BYTE)</code>.
+     * 
+     * @stable ICU 63
+     */
+    public static final Unit<Information> PETABYTE = addUnit(PETA(BYTE), "Petabyte", "PB", true);
+
+    /**
+     * Constant for unit of data amount: pebibyte<br>
+     * This is a <b>convenience method</b> for <code>PEBI(BYTE)</code>.
+     */
+    public static final Unit<Information> PEBIBYTE = addUnit(PEBI(BYTE), "Pebibyte", "PiB", true);
 
     /**
      * The unit for binary information rate (standard name <code>bit/s</code>).
