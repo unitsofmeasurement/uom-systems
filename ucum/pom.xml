@@ -44,30 +44,6 @@
 		<!-- Will control compilation of the main code and the unit tests. -->
 		<base.java.version>8</base.java.version>
 	</properties>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>javax.measure</groupId>
-				<artifactId>unit-api</artifactId>
-				<version>${jsr.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>systems.uom</groupId>
-				<artifactId>systems-quantity</artifactId>
-				<version>${quantity.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>tech.units</groupId>
-				<artifactId>indriya</artifactId>
-				<version>${ri.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>systems.uom</groupId>
-				<artifactId>systems-common</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-		</dependencies>		
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>tech.units</groupId>

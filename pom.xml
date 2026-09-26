@@ -34,7 +34,7 @@
 		<jsr.version>2.2</jsr.version>
 		<ri.version>2.2.4</ri.version>
 		<si.version>2.2.3</si.version>
-		<quantity.version>2.2.1-SNAPSHOT</quantity.version><!-- only need to change when new quantities added -->
+		<quantity.version>${project.version}</quantity.version><!-- only need to change when new quantities added -->
 		<systems.version>${project.version}</systems.version>
 		<jakarta.annotation.version>2.0.0</jakarta.annotation.version>
 		<osgi.version>8.1.0</osgi.version>
@@ -238,7 +238,7 @@
 			<dependency>
 				<groupId>tech.units</groupId>
 				<artifactId>indriya</artifactId>
-				<version>${ri.version}</version>
+				<version>[${ri.version},)</version>
 			</dependency>
 			<dependency>
 				<groupId>si.uom</groupId>
@@ -250,7 +250,12 @@
 				<artifactId>si-units</artifactId>
 				<version>${si.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>systems.uom</groupId>
+				<artifactId>systems-quantity</artifactId>
+				<version>${quantity.version}</version>
+			</dependency>
+	
 			<dependency>
 				<groupId>jakarta.annotation</groupId>
 				<artifactId>jakarta.annotation-api</artifactId>

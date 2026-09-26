@@ -19,25 +19,6 @@
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>javax.measure</groupId>
-				<artifactId>unit-api</artifactId>
-				<version>${jsr.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>tech.units</groupId>
-				<artifactId>indriya</artifactId>
-				<version>${ri.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>systems.uom</groupId>
-				<artifactId>systems-quantity</artifactId>
-				<version>${quantity.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>javax.measure</groupId>
