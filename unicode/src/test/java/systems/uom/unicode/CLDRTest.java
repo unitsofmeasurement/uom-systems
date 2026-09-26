@@ -57,7 +57,11 @@ public class CLDRTest {
 		assertEquals("in-hg", INCH_HG.toString());
 		assertEquals("dct", DECI(CARAT).toString());
 		assertEquals("st", STONE.toString());
-		assertEquals("Kist", KIBI(STONE).toString());		
+		assertEquals("Kist", KIBI(STONE).toString());
+		assertEquals("kB", KILOBYTE.toString());
+		assertEquals("KiB", KIBIBYTE.toString());
+		assertEquals("MB", MEGABYTE.toString());
+		assertEquals("MiB", MEBIBYTE.toString());
 	}
 	
 	@Test
@@ -72,6 +76,8 @@ public class CLDRTest {
 	public void testGetName() {
 		assertEquals("Kilometer", KILOMETER.getName());
 		assertEquals("Gram", GRAM.getName());
+		assertEquals("Kilobyte", KILOBYTE.getName());
+		assertEquals("Kibibyte", KIBIBYTE.getName());
 	}
 	
 	@Test
@@ -85,6 +91,8 @@ public class CLDRTest {
 	public void testParse() {
 		assertEquals(KILOGRAM, AbstractUnit.parse("kg"));
 		assertEquals(CARAT, AbstractUnit.parse("ct"));
-		assertEquals(DECI(METRE), AbstractUnit.parse("dm"));		
+		assertEquals(DECI(METRE), AbstractUnit.parse("dm"));
+		assertEquals(KILOBYTE, AbstractUnit.parse("kB"));
+		assertEquals(KIBIBYTE, AbstractUnit.parse("KiB"));
 	}
 }
