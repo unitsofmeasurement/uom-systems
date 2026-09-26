@@ -1,6 +1,6 @@
 /*
  * Units of Measurement Systems
- * Copyright (c) 2005-2025, Jean-Marie Dautelle, Werner Keil and others.
+ * Copyright (c) 2005-2026, Jean-Marie Dautelle, Werner Keil and others.
  *
  * All rights reserved.
  *
@@ -43,7 +43,7 @@ import org.junit.jupiter.api.Test;
 
 public class SystemOfUnitsServiceTest {
 	//private static final int NUM_OF_UNITS_OTH = 44;
-	private static final int NUM_OF_UNITS_CLDR = 112;
+	private static final int NUM_OF_UNITS_CLDR = 122;
 
 	private static SystemOfUnitsService defaultService;
 

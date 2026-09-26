@@ -124,7 +124,7 @@
 						<header>src/main/config/header.txt</header>
 						<properties>
 							<owner>Jean-Marie Dautelle, Werner Keil and others</owner>
-							<currentYear>2025</currentYear>
+							<currentYear>2026</currentYear>
 						</properties>
 						<excludes>
 							<exclude>**/README</exclude>
