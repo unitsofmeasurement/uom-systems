@@ -9,6 +9,8 @@
 	</parent>
 	<artifactId>systems-common</artifactId>
 	<name>Units of Measurement Common Unit Systems</name>
+	<url>http://www.uom.systems</url>
+	<version>2.2.1.1</version>
 	<licenses>
 		<license>
 			<name>BSD</name>
@@ -64,7 +66,7 @@
 				<role>Spec Lead</role>
 			</roles>
 		</developer>
-		
+	</developers>
 	<dependencies>
 		<dependency>
 			<groupId>javax.measure</groupId>
@@ -264,6 +266,4 @@
 			</build>
 		</profile>
 	</profiles>
-</developers>
-	<url>http://www.uom.systems</url>
 </project>
