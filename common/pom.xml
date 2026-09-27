@@ -5,10 +5,16 @@
 	<parent>
 		<groupId>systems.uom</groupId>
 		<artifactId>systems-parent</artifactId>
-		<version>2.2.1-SNAPSHOT</version>
+		<version>2.2.1</version>
 	</parent>
 	<artifactId>systems-common</artifactId>
 	<name>Units of Measurement Common Unit Systems</name>
+	<licenses>
+		<license>
+			<name>BSD</name>
+			<url>LICENSE</url>
+		</license>
+	</licenses>
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
@@ -19,6 +25,46 @@
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 	</properties>
 
+	<developers>
+		<developer>
+			<id>dautelle</id>
+			<name>Jean-Marie Dautelle</name>
+			<email>jean-marie@dautelle.com</email>
+			<organization>Airbus</organization>
+			<organizationUrl>https://www.airbus.com</organizationUrl>
+			<timezone>+1</timezone>
+			<roles>
+				<role>Architect</role>
+				<role>Java Developer</role>
+				<role>Spec Lead</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>keilw</id>
+			<name>Werner Keil</name>
+			<email>werner@catmedia.us</email>
+			<organization>CATMedia</organization>
+			<organizationUrl>http://www.catmedia.us</organizationUrl>
+			<timezone>+1</timezone>
+			<roles>
+				<role>Architect</role>
+				<role>Java Developer</role>
+				<role>Spec Lead</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>otaviojava</id>
+			<name>Otávio Gonçalves de Santana</name>
+			<email>otaviopolianasantana@gmail.com</email>
+			<organization>Individual / SouJava</organization>
+			<timezone>0</timezone>
+			<roles>
+				<role>Expert</role>
+				<role>Java Developer</role>
+				<role>Spec Lead</role>
+			</roles>
+		</developer>
+		
 	<dependencies>
 		<dependency>
 			<groupId>javax.measure</groupId>
@@ -148,6 +194,11 @@
 				</configuration>
 			</plugin>
 			-->
+			
+			<plugin>
+	            <groupId>net.nicoulaj.maven.plugins</groupId>
+	            <artifactId>checksum-maven-plugin</artifactId>
+	        </plugin>
 		</plugins>
 	</build>
 	
@@ -213,4 +264,6 @@
 			</build>
 		</profile>
 	</profiles>
+</developers>
+	<url>http://www.uom.systems</url>
 </project>
